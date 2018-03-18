@@ -31,7 +31,7 @@ const PersistentDrawer = ({ classes, open, menu }) => {
   )
   return (
     <Drawer
-      type="persistent"
+      variant="persistent"
       classes={{
         paper: classes.drawerPaper,
       }}

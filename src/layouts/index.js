@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 
 import 'typeface-roboto'
 import { withStyles } from 'material-ui/styles';
+import classNames from 'classnames';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
@@ -15,6 +16,8 @@ import MenuIcon from 'material-ui-icons/Menu';
 import Drawer from './Drawer'
 
 import './index.css'
+
+const drawerWidth = 240;
 
 const styles = {
   root: {
@@ -41,18 +44,26 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  appBarShift: {
+    left: `${drawerWidth}px`,
+    width: `calc(100% - ${drawerWidth}px)`,
+    // transition: theme.transitions.create(['margin', 'width'], {
+    //   easing: theme.transitions.easing.easeOut,
+    //   duration: theme.transitions.duration.enteringScreen,
+    // }),
+  }
 };
 
-const Header = ({ classes, onClickMenu }) => (
-  <AppBar position="static" className={classes.appBar}>
+const Header = ({ classes, onClickMenu, menuOpen }) => (
+  <AppBar position="static" className={classNames(classes.appBar, {[classes.appBarShift]: menuOpen})}>
     <Toolbar>
-      <IconButton onClick={onClickMenu} className={classes.menuButton} color="contrast" aria-label="Menu">
+      <IconButton onClick={onClickMenu} className={classes.menuButton} color="inherit" aria-label="Menu">
         <MenuIcon />
       </IconButton>
       <Typography type="title" color="inherit" className={classes.flex}>
         Title
       </Typography>
-      <Button color="contrast">Login</Button>
+      <Button color="inherit">Login</Button>
     </Toolbar>
   </AppBar>
 )
@@ -81,8 +92,8 @@ class TemplateWrapper extends React.Component {
             { name: 'keywords', content: 'sample, something' },
           ]}
         />
+        <HeaderStyled onClickMenu={this.onClickMenu} menuOpen={this.state.menuOpen} />
         <Drawer open={this.state.menuOpen} menu={menu}/>
-        <HeaderStyled onClickMenu={this.onClickMenu} />
         <main
           style={{
             margin: '0 auto',
