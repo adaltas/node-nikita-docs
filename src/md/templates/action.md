@@ -1,7 +1,7 @@
 ---
 title: Contribute
 description: Helps us by providing feedbacks, reporting issues, improving the documentation and submitting patches.
-layout: page
+layout: template_action
 sort: 4
 community: yes
 ---
