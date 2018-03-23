@@ -40,9 +40,6 @@ const styles = {
   flex: {
     flex: 1,
   },
-  drawer: {
-    width: drawerWidth
-  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
@@ -104,7 +101,7 @@ class TemplateWrapper extends React.Component {
           ]}
         />
         <HeaderStyled onClickMenu={this.onClickMenu} menuOpen={this.state.menuOpen} />
-        <Drawer className={classes.drawer} open={this.state.menuOpen} menu={menu}/>
+        <Drawer open={this.state.menuOpen} menu={menu}/>
         <main
           className={classNames(classes.content, {[classes.contentShift]: this.state.menuOpen})}
         >
@@ -122,7 +119,7 @@ TemplateWrapper.propTypes = {
 export default withStyles(styles)(TemplateWrapper)
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query IndexQuerySection {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___sort] }) {
       edges {
         node {

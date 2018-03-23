@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Link from "gatsby-link";
 import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 import Divider from 'material-ui/Divider';
@@ -26,7 +27,9 @@ const PersistentDrawer = ({ classes, open, menu }) => {
   // const open = true;
   const pages = menu.map( page =>
       <ListItem key={ page.path } button>
-        <ListItemText primary={ page.title } />
+        <ListItemText>
+          <Link to={ page.path }>{ page.title }</Link>
+        </ListItemText>
       </ListItem>
   )
   return (
@@ -63,4 +66,3 @@ PersistentDrawer.propTypes = {
 };
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawer);
-

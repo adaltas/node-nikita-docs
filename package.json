@@ -1,10 +1,11 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
-  "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "name": "nikita-docs",
+  "description": "Nikita Official Documentation",
+  "version": "0.0.0",
+  "author": "David Worms <david@adaltas.com>",
   "dependencies": {
-    "gatsby": "^1.9.236",
+    "@material-ui/docs": "^1.0.0-alpha.0",
+    "gatsby": "^1.9.239",
     "gatsby-link": "^1.6.39",
     "gatsby-plugin-react-helmet": "^2.0.8",
     "gatsby-source-filesystem": "^1.5.27",
