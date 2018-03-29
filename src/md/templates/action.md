@@ -12,7 +12,7 @@ community: yes
 [Nikita website] is written is markdown and use the phenomic engine to convert its content to HTML.
 [Nikita website] is written is markdown and use the phenomic engine to convert its content to HTML.
 
-```js
+```javascript
 class TemplateWrapper extends React.Component {
   state = {
     menuOpen: false

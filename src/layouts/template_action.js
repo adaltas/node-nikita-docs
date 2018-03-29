@@ -19,6 +19,8 @@ import Tooltip from 'material-ui/Tooltip';
 import MenuIcon from 'material-ui-icons/Menu';
 import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
 import Github from '@material-ui/docs/svgIcons/GitHub';
+require("prismjs/themes/prism-tomorrow.css");
+
 
 const styles = theme => ({
   root: {
@@ -157,7 +159,6 @@ class AppFrame extends React.Component {
           classes={{
             paper: classNames(classes.paper),
           }}
-          onBackdropClick={onToggle}
           onClose={null}
           variant="persistent"
           anchor="left"
