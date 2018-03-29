@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
+import mixme from 'mixme'
 
 import 'typeface-roboto'
 import { withStyles } from 'material-ui/styles';
@@ -87,12 +88,12 @@ const styles = theme => ({
     // left: 0,
     // backgroundColor: theme.palette.background.paper,
   },
-  content: theme.mixins.gutters({
+  content: mixme(theme.typography, theme.mixins.gutters({
     paddingTop: 100,
     flex: '1 1 100%',
     maxWidth: '100%',
     margin: '0 auto',
-  }),
+  })),
   [theme.breakpoints.up(900 + theme.spacing.unit * 6)]: {
     content: {
       maxWidth: 900,
@@ -105,8 +106,7 @@ class AppFrame extends React.Component {
     drawerOpen: true
   }
   render() {
-    const { children, classes, uiTheme} = this.props;
-    console.log('uiTheme', uiTheme)
+    const { children, classes} = this.props;
     const onToggle = () => {
       this.setState({'drawerOpen': !this.state.drawerOpen})
     }
