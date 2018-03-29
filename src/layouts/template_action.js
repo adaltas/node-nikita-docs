@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 
 import 'typeface-roboto'
 import { withStyles } from 'material-ui/styles';
+import withRoot from './mui/withRoot';
 import classNames from 'classnames';
 
 import header from "./header.png";
@@ -142,7 +143,6 @@ class AppFrame extends React.Component {
             </Tooltip>
             <Tooltip id="appbar-github" title="Material-UI GitHub repo" enterDelay={300}>
               <IconButton
-                component="a"
                 color="inherit"
                 href="https://github.com/mui-org/material-ui"
                 aria-labelledby="appbar-github"
@@ -198,7 +198,6 @@ class AppFrame extends React.Component {
 }
 AppFrame.propTypes = {
   children: PropTypes.func,
-  uiTheme: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles, { withTheme: true })(AppFrame)
+export default withRoot(withStyles(styles, { withTheme: true })(AppFrame));
