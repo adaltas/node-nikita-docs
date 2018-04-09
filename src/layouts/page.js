@@ -22,7 +22,6 @@ const styles = theme => ({
     alignItems: 'stretch',
     minHeight: '100vh',
     width: '100%',
-    // marginLeft: 250,
   },
 });
 
@@ -36,12 +35,12 @@ class AppFrame extends React.Component {
     const site = data.site.siteMetadata;
     const menuAbout = this.props.data.about.edges.map( edge => { return edge.node } )
     const menuUsages = this.props.data.usages.edges.map( edge => { return edge.node } )
+    const menuOptions = this.props.data.options.edges.map( edge => { return edge.node } )
     const onToggle = () => {
       this.setState({'drawerOpen': !this.state.drawerOpen})
     }
-    const updateLayoutFunction = ({path}) => {
-      console.log('!!!!!!!!!!!!!!! updateLayoutFunction', path);
-      this.setState({'path': path});
+    const updateLayoutFunction = (data) => {
+      // Exemple on how to pass data from the page to the layout
     };
     return (
       <div className={classes.root}>
@@ -56,6 +55,7 @@ class AppFrame extends React.Component {
         <Drawer open={this.state.drawerOpen}>
           <Menu title='About' menu={menuAbout} path={this.state.path}></Menu>
           <Menu title='Usages' menu={menuUsages} path={this.state.path}></Menu>
+          <Menu title='Options' menu={menuOptions} path={this.state.path}></Menu>
         </Drawer>
         <Content>{children({...this.props, updateLayoutFunction})}</Content>
       </div>
@@ -92,6 +92,20 @@ export const pageQuery = graphql`
       }
     }
     usages: allMarkdownRemark(filter:{ fields: { slug: { regex: "/^\/usages\//" } } }, sort: { order: DESC, fields: [frontmatter___sort] }) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    options: allMarkdownRemark(filter:{ fields: { slug: { regex: "/^\/options\//" } } }, sort: { order: DESC, fields: [frontmatter___sort] }) {
       edges {
         node {
           id

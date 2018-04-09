@@ -9,16 +9,16 @@ import Link from "gatsby-link";
 import Collapse from 'material-ui/transitions/Collapse';
 import List from 'material-ui/List';
 import { ListItem, ListItemText } from 'material-ui/List';
+import { MenuList, MenuItem } from 'material-ui/Menu';
 
 import ExpandLess from 'material-ui-icons/ExpandLess';
 import ExpandMore from 'material-ui-icons/ExpandMore';
 
 const styles = theme => ({
   leaf: {
-    fontWeight: theme.typography.fontWeightMedium,
-  },
-  active: {
-    color: theme.palette.primary.main,
+    fontWeight: theme.typography.fontWeightLight,
+    paddingTop: 2,
+    paddingBottom: 2,
   },
   link: {
     textDecoration: 'none',
@@ -26,7 +26,10 @@ const styles = theme => ({
     '&:hover': {
       textDecoration: 'none',
     },
-  }
+  },
+  active: {
+    color: theme.palette.secondary.main,
+  },
 });
 
 class NestedList extends React.Component {
@@ -37,27 +40,36 @@ class NestedList extends React.Component {
   render() {
     const { classes, theme, menu } = this.props;
     const pages = menu.map( (page) => (
-      <ListItem focusRipple={false} disableRipple={false} dense button component={Link} to={page.fields.slug} activeClassName={classes.active} className={classNames(classes.leaf)}>
-        <ListItemText disableTypography={false}>
+      <MenuItem
+        focusRipple={false}
+        disableRipple={false}
+        dense
+        component={Link}
+        to={page.fields.slug}
+        className={classes.link}
+        activeClassName={classes.active}
+        className={classNames(classes.leaf)}
+      >
+        <ListItemText>
           {page.frontmatter.title}
         </ListItemText>
-      </ListItem>
+      </MenuItem>
     ))
     return (
       <div>
-        <List
+        <MenuList
           component="nav"
         >
-          <ListItem button onClick={this.handleClick}>
+          <MenuItem component='div' onClick={this.handleClick}>
             <ListItemText primary="Inbox" />
             {this.state.open ? <ExpandLess /> : <ExpandMore />}
-          </ListItem>
+          </MenuItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
+            <MenuList component='div' disablePadding>
               {pages}
-            </List>
+            </MenuList>
           </Collapse>
-        </List>
+        </MenuList>
       </div>
     );
   }
