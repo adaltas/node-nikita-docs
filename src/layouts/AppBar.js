@@ -27,11 +27,10 @@ const styles = theme => ({
       position: 'absolute',
     },
     backgroundColor: '#000 !important',
-    // backgroundImage: 'url("layouts/header.png") !important',
     backgroundImage: `url(${header}) !important`,
-    // background-size: 100% auto;
     backgroundSize: 'contain !important',
     backgroundAttachment: 'fixed !important',
+    // transition: theme.transitions.create('width'),
   },
   appBarShift: {
     left: 250,

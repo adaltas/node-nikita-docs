@@ -9,7 +9,6 @@ export default function Template({
 }) {
   const { markdownRemark } = data; // data.markdownRemark holds our post data
   const { frontmatter, html } = markdownRemark;
-  console.log('------------', markdownRemark.fields.slug)
   // updateLayoutFunction({path: markdownRemark.fields.slug})
   return (
     <div className="blog-post-container">

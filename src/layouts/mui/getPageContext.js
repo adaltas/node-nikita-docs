@@ -10,10 +10,13 @@ import green from 'material-ui/colors/green';
 // A theme with custom primary and secondary color.
 // It's optional.
 const theme = createMuiTheme({
+  nprogress: {
+    color: '#000'
+  },
+  link: {
+    normal: lightBlue[500],
+  },
   palette: {
-    link: {
-      normal: blueGrey[900],
-    },
     primary: {
       light: purple[300],
       main: purple[500],

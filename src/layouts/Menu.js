@@ -17,18 +17,24 @@ import ExpandMore from 'material-ui-icons/ExpandMore';
 const styles = theme => ({
   leaf: {
     fontWeight: theme.typography.fontWeightLight,
-    paddingTop: 2,
-    paddingBottom: 2,
+    paddingTop: theme.spacing.unit / 3,
+    paddingBottom: theme.spacing.unit / 3,
   },
   link: {
+    ...theme.typography.caption,
     textDecoration: 'none',
-    color: theme.palette.link.normal,
     '&:hover': {
       textDecoration: 'none',
     },
+    '&:active': {
+      color: theme.link.normal,
+    },
+    '& $primary, & $icon': {
+      color: theme.link.normal,
+    },
   },
   active: {
-    color: theme.palette.secondary.main,
+    color: theme.link.normal,
   },
 });
 
@@ -41,18 +47,13 @@ class NestedList extends React.Component {
     const { classes, theme, menu } = this.props;
     const pages = menu.map( (page) => (
       <MenuItem
-        focusRipple={false}
-        disableRipple={false}
-        dense
         component={Link}
+        key={page.fields.slug}
         to={page.fields.slug}
-        className={classes.link}
         activeClassName={classes.active}
-        className={classNames(classes.leaf)}
+        className={classNames(classes.link, classes.leaf)}
       >
-        <ListItemText>
-          {page.frontmatter.title}
-        </ListItemText>
+        {page.frontmatter.title}
       </MenuItem>
     ))
     return (
@@ -65,7 +66,7 @@ class NestedList extends React.Component {
             {this.state.open ? <ExpandLess /> : <ExpandMore />}
           </MenuItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-            <MenuList component='div' disablePadding>
+            <MenuList component='ul' disablePadding>
               {pages}
             </MenuList>
           </Collapse>

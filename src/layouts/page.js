@@ -6,6 +6,8 @@ import mixme from 'mixme'
 import 'typeface-roboto'
 import { withStyles } from 'material-ui/styles';
 import withRoot from './mui/withRoot';
+import NProgressBar from '@material-ui/docs/NProgressBar';
+import Hidden from 'material-ui/Hidden';
 
 import Collapse from 'material-ui/transitions/Collapse';
 
@@ -27,11 +29,10 @@ const styles = theme => ({
 
 class AppFrame extends React.Component {
   state = {
-    drawerOpen: true
+    drawerOpen: true,
   }
   render() {
     const { children, classes, data} = this.props;
-    // console.log(this.props)
     const site = data.site.siteMetadata;
     const menuAbout = this.props.data.about.edges.map( edge => { return edge.node } )
     const menuUsages = this.props.data.usages.edges.map( edge => { return edge.node } )
@@ -44,6 +45,7 @@ class AppFrame extends React.Component {
     };
     return (
       <div className={classes.root}>
+        <NProgressBar />
         <Helmet
           title={site.title}
           meta={[
@@ -51,12 +53,26 @@ class AppFrame extends React.Component {
             { name: 'keywords', content: 'sample, something' },
           ]}
         />
-      <AppBar open={this.state.drawerOpen} onMenuClick={onToggle} title={site.title} />
-        <Drawer open={this.state.drawerOpen}>
-          <Menu title='About' menu={menuAbout} path={this.state.path}></Menu>
-          <Menu title='Usages' menu={menuUsages} path={this.state.path}></Menu>
-          <Menu title='Options' menu={menuOptions} path={this.state.path}></Menu>
-        </Drawer>
+        <Hidden mdUp>
+          <AppBar onMenuClick={onToggle} title={site.title} />
+        </Hidden>
+        <Hidden smDown implementation="css">
+          <AppBar open={this.state.drawerOpen} onMenuClick={onToggle} title={site.title} />
+        </Hidden>
+        <Hidden mdUp>
+          <Drawer open={!this.state.drawerOpen} onClickShadow={onToggle} variant="temporary">
+            <Menu title='About' menu={menuAbout} path={this.state.path}></Menu>
+            <Menu title='Usages' menu={menuUsages} path={this.state.path}></Menu>
+            <Menu title='Options' menu={menuOptions} path={this.state.path}></Menu>
+          </Drawer>
+        </Hidden>
+        <Hidden smDown implementation="css">
+          <Drawer open={this.state.drawerOpen} onClickShadow={onToggle} variant="persistent">
+            <Menu title='About' menu={menuAbout} path={this.state.path}></Menu>
+            <Menu title='Usages' menu={menuUsages} path={this.state.path}></Menu>
+            <Menu title='Options' menu={menuOptions} path={this.state.path}></Menu>
+          </Drawer>
+        </Hidden>
         <Content>{children({...this.props, updateLayoutFunction})}</Content>
       </div>
     )
