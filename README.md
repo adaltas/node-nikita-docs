@@ -15,6 +15,7 @@ npm install
 
 * Improve inline code, currently padding is different between left and right
 * Menu generation must be generic like in GitBook, using README.md for section
+* Create homepage from the template
 * Apply footer already design in the template
 * Automatic conversion between CoffeeScript and JavaScript source code
 
