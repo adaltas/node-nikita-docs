@@ -1,13 +1,22 @@
-# gatsby-starter-default
+# Nikita Website
 
-The default Gatsby starter
+The official Nikita website based on Gatsby and Material-UI.
 
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/)
+To install and run the server:
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
 ```
-gatsby new gatsby-example-site
+git clone https://github.com/adaltas/node-nikita-docs.git nikita-docs
+cd nikita-docs
+npm install
+./node_modules/.bin/gatsby develop
 ```
+
+## TODO
+
+* Improve inline code, currently padding is different between left and right
+* Menu generation must be generic like in GitBook, using README.md for section
+* Apply footer already design in the template
+* Automatic conversion between CoffeeScript and JavaScript source code
 
 ## Request
 
