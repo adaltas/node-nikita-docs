@@ -9,6 +9,7 @@ const IndexPage = () => (
     <ul>
       <li><Link to="/page-2/">Go to page 2</Link></li>
       <li><Link to="/about/contribute">Contribute</Link></li>
+      <li><Link to="/about/guidelines">Guidelines</Link></li>
       <li><Link to="/templates/action">Template Action</Link></li>
     </ul>
     

@@ -1,5 +1,5 @@
 ---
-title: Contribute
+title: Guidelines
 description: 
 layout: page
 sort: 4

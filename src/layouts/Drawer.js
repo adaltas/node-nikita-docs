@@ -1,68 +1,66 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Link from "gatsby-link";
 import { withStyles } from 'material-ui/styles';
-import Drawer from 'material-ui/Drawer';
-import Divider from 'material-ui/Divider';
-import List from 'material-ui/List';
-import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import DraftsIcon from 'material-ui-icons/Drafts';
-// import IconButton from 'material-ui/IconButton';
-// import MenuIcon from 'material-ui-icons/Menu';
+import classNames from 'classnames';
 
-const drawerWidth = 240;
+import Divider from 'material-ui/Divider';
+import Drawer from 'material-ui/Drawer';
+import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
-  drawerPaper: {
-    position: 'relative',
-    height: '100%',
-    width: drawerWidth,
+  toolbar: {
+    ...theme.mixins.toolbar,
+    paddingLeft: theme.spacing.unit * 3,
+    display: 'flex',
+    flexGrow: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
-  list: {}
+  drawerShift: {
+    width: 250,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  paper: {
+    width: 250,
+  },
 });
 
-const PersistentDrawer = ({ classes, open, menu }) => {
-  const anchor = 'left';
-  // const open = true;
-  const pages = menu.map( page =>
-      <ListItem key={ page.path } button>
-        <ListItemText>
-          <Link to={ page.path }>{ page.title }</Link>
-        </ListItemText>
-      </ListItem>
-  )
-  return (
-    <Drawer
-      variant="persistent"
-      classes={{
-        paper: classes.drawerPaper,
-      }}
-      anchor={anchor}
-      open={open}
-    >
-      <div className={classes.drawerInner}>
-        <Divider />
-        <List className={classes.list}>
-          <ListItem button>
-            <ListItemIcon>
-              <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Element 1" />
-          </ListItem>
-        </List>
-        <Divider />
-        <List className={classes.list}>
-        {pages}
-        </List>
-      </div>
-    </Drawer>
-  )
+class AppDrawer extends React.Component {
+  render() {
+    const { classes, open, menu, children } = this.props
+    return (
+      <Drawer
+        className={classNames(classes.drawer, {[classes.drawerShift]: open})}
+        classes={{
+          paper: classNames(classes.paper),
+        }}
+        onClose={null}
+        variant="persistent"
+        anchor="left"
+        open={open}
+      >
+        <div className={classes.nav}>
+          <div className={classes.toolbar}>
+            <Typography variant="title" color="inherit">
+              Documentation
+            </Typography>
+            <Typography variant="caption">version 0.6</Typography>
+          </div>
+          <Divider />
+        </div>
+        {children}
+      </Drawer>
+    )
+  }
 }
-PersistentDrawer.propTypes = {
+AppDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  menu: PropTypes.array.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(PersistentDrawer);
+export default withStyles(styles, { withTheme: true })(AppDrawer);

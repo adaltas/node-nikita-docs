@@ -4,6 +4,8 @@ layout: page
 sort: 1
 ---
 
+We welcome you to discover Nikita! You will find below resources to learn more about what Nikita is, how to learn it and how to contribute to its success.
+
 Automation is central when operating and scaling complex systems The more servers and services there are to manage, the harder it gets for a team to fulfill their operational duties without proper automation in place. Automation is a workforce multiplier that helps teams to manage ever growing infrastructure but it can do much more :
 
 * Improve accuracy by being less error-prone than humans

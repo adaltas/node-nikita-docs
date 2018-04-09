@@ -1,127 +1,97 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
+import mixme from 'mixme'
 
 import 'typeface-roboto'
 import { withStyles } from 'material-ui/styles';
-import classNames from 'classnames';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
+import withRoot from './mui/withRoot';
 
-import Drawer from './Drawer'
+import Collapse from 'material-ui/transitions/Collapse';
 
-import './index.css'
+import AppBar from './AppBar';
+import Content from './Content'
+import Drawer from './Drawer';
+import Menu from './Menu';
 
-const drawerWidth = 240;
+require("prismjs/themes/prism-tomorrow.css");
 
-const styles = {
+const styles = theme => ({
   root: {
-    width: '100%',
-  },
-  appFrame: {
-    position: 'relative',
     display: 'flex',
+    alignItems: 'stretch',
+    minHeight: '100vh',
     width: '100%',
-    height: '100%',
+    // marginLeft: 250,
   },
-  appBar: {
-    position: 'absolute',
-    // zIndex: theme.zIndex.navDrawer + 1,
-    // transition: theme.transitions.create(['width', 'margin'], {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen,
-    // }),
-  },
-  flex: {
-    flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  appBarShift: {
-    marginLeft: `${drawerWidth}px`,
-    width: `calc(100% - ${drawerWidth}px)`,
-    // transition: theme.transitions.create(['margin', 'width'], {
-    //   easing: theme.transitions.easing.easeOut,
-    //   duration: theme.transitions.duration.enteringScreen,
-    // }),
-  },
-  content: {
-    margin: '0 auto',
-    maxWidth: 960,
-    padding: '0px 1.0875rem 1.45rem'
-  },
-  contentShift: {
-    marginLeft: drawerWidth
-  }
-};
+});
 
-const Header = ({ classes, onClickMenu, menuOpen }) => (
-  <AppBar position="static" className={classNames(classes.appBar, {[classes.appBarShift]: menuOpen})}>
-    <Toolbar>
-      <IconButton onClick={onClickMenu} className={classes.menuButton} color="inherit" aria-label="Menu">
-        <MenuIcon />
-      </IconButton>
-      <Typography type="title" color="inherit" className={classes.flex}>
-        Title
-      </Typography>
-      <Button color="inherit">Login</Button>
-    </Toolbar>
-  </AppBar>
-)
-Header.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-const HeaderStyled = withStyles(styles)(Header);
-
-class TemplateWrapper extends React.Component {
+class AppFrame extends React.Component {
   state = {
-    menuOpen: false
-  }
-  onClickMenu = () => {
-    console.log('onClickMenu')
-    this.setState({'menuOpen': !this.state.menuOpen})
+    drawerOpen: true
   }
   render() {
-    const { children, classes } = this.props
-    const menu = this.props.data.allMarkdownRemark.edges.map( edge => { return {path: edge.node.fields.slug, title: edge.node.frontmatter.title} } )
+    const { children, classes, data} = this.props;
+    // console.log(this.props)
+    const site = data.site.siteMetadata;
+    const menuAbout = this.props.data.about.edges.map( edge => { return edge.node } )
+    const menuUsages = this.props.data.usages.edges.map( edge => { return edge.node } )
+    const onToggle = () => {
+      this.setState({'drawerOpen': !this.state.drawerOpen})
+    }
+    const updateLayoutFunction = ({path}) => {
+      console.log('!!!!!!!!!!!!!!! updateLayoutFunction', path);
+      this.setState({'path': path});
+    };
     return (
-      <div className={classes.appFrame}>
+      <div className={classes.root}>
         <Helmet
-          title="Gatsby Default Starter"
+          title={site.title}
           meta={[
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
           ]}
         />
-        <HeaderStyled onClickMenu={this.onClickMenu} menuOpen={this.state.menuOpen} />
-        <Drawer open={this.state.menuOpen} menu={menu}/>
-        <main
-          className={classNames(classes.content, {[classes.contentShift]: this.state.menuOpen})}
-        >
-          xxxxxxxxxxxxxxxxxxxx<br/>xxxxxxxxxxxx
-          {children()}
-        </main>
+      <AppBar open={this.state.drawerOpen} onMenuClick={onToggle} title={site.title} />
+        <Drawer open={this.state.drawerOpen}>
+          <Menu title='About' menu={menuAbout} path={this.state.path}></Menu>
+          <Menu title='Usages' menu={menuUsages} path={this.state.path}></Menu>
+        </Drawer>
+        <Content>{children({...this.props, updateLayoutFunction})}</Content>
       </div>
     )
   }
 
 }
-TemplateWrapper.propTypes = {
+AppFrame.propTypes = {
   children: PropTypes.func,
+  data: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(TemplateWrapper)
+export default withRoot(withStyles(styles, { withTheme: true })(AppFrame));
 
 export const pageQuery = graphql`
-  query IndexQueryPage {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___sort] }) {
+  query drawerMenu {
+    site: site {
+      siteMetadata {
+        title
+      }
+    }
+    about: allMarkdownRemark(filter:{ fields: { slug: { regex: "/^\/about\//" } } }, sort: { order: DESC, fields: [frontmatter___sort] }) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    usages: allMarkdownRemark(filter:{ fields: { slug: { regex: "/^\/usages\//" } } }, sort: { order: DESC, fields: [frontmatter___sort] }) {
       edges {
         node {
           id

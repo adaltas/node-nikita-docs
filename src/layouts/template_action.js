@@ -1,26 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import mixme from 'mixme'
 
 import 'typeface-roboto'
 import { withStyles } from 'material-ui/styles';
 import withRoot from './mui/withRoot';
-import classNames from 'classnames';
 
-import header from "./header.png";
-import Drawer from 'material-ui/Drawer';
-import Typography from 'material-ui/Typography';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import IconButton from 'material-ui/IconButton';
-import Tooltip from 'material-ui/Tooltip';
-import MenuIcon from 'material-ui-icons/Menu';
-import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
-import Github from '@material-ui/docs/svgIcons/GitHub';
+import Collapse from 'material-ui/transitions/Collapse';
+
+import AppBar from './AppBar';
+import Content from './Content'
+import Drawer from './Drawer';
+import Menu from './Menu';
+
 require("prismjs/themes/prism-tomorrow.css");
-
 
 const styles = theme => ({
   root: {
@@ -30,77 +24,6 @@ const styles = theme => ({
     width: '100%',
     // marginLeft: 250,
   },
-  grow: {
-    flex: '1 1 auto',
-  },
-  appBar: {
-    left: 0,
-    right: 0,
-    '@media print': {
-      position: 'absolute',
-    },
-    backgroundColor: '#000 !important',
-    // backgroundImage: 'url("layouts/header.png") !important',
-    backgroundImage: `url(${header}) !important`,
-    // background-size: 100% auto;
-    backgroundSize: 'contain !important',
-    backgroundAttachment: 'fixed !important',
-  },
-  appBarShift: {
-    left: 250,
-    right: 0,
-    width: 'auto',
-    transition: theme.transitions.create('left', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  title: {
-    color: '#bc1b00',
-    display: 'inline-block',
-    fontSize: '2rem',
-    fontWeight: 'bold',
-    letterSpacing: '.3rem',
-    textShadow: '0 0 0.4rem rgba(255,255,255, 0.15)',
-    textTransform: 'uppercase',
-  },
-  // main: {
-  //   position: 'relative',
-  //   marginLeft: 0,
-  // },
-  // mainShift: {
-  //   marginLeft: 250,
-  //   transition: theme.transitions.create('margin-left', {
-  //     easing: theme.transitions.easing.easeOut,
-  //     duration: theme.transitions.duration.enteringScreen,
-  //   }),
-  // },
-  drawer: {
-    // width: 250,
-  },
-  drawerShift: {
-    width: 250,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  paper: {
-    width: 250,
-    // left: 0,
-    // backgroundColor: theme.palette.background.paper,
-  },
-  content: mixme(theme.typography, theme.mixins.gutters({
-    paddingTop: 100,
-    flex: '1 1 100%',
-    maxWidth: '100%',
-    margin: '0 auto',
-  })),
-  [theme.breakpoints.up(900 + theme.spacing.unit * 6)]: {
-    content: {
-      maxWidth: 900,
-    },
-  },
 });
 
 class AppFrame extends React.Component {
@@ -108,7 +31,9 @@ class AppFrame extends React.Component {
     drawerOpen: true
   }
   render() {
-    const { children, classes} = this.props;
+    const { children, classes, data} = this.props;
+    const menuAbout = this.props.data.about.edges.map( edge => { return edge.node } )
+    const menuUsages = this.props.data.usages.edges.map( edge => { return edge.node } )
     const onToggle = () => {
       this.setState({'drawerOpen': !this.state.drawerOpen})
     }
@@ -121,77 +46,12 @@ class AppFrame extends React.Component {
             { name: 'keywords', content: 'sample, something' },
           ]}
         />
-        <AppBar className={classNames(classes.appBar, {[classes.appBarShift]: this.state.drawerOpen})}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={onToggle}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography className={classes.title} color="inherit" noWrap>
-              Nikita
-            </Typography>
-            <div className={classes.grow} />
-            <Tooltip id="appbar-theme" title="Toggle light/dark theme" enterDelay={300}>
-              <IconButton
-                color="inherit"
-                onClick={null}
-                aria-labelledby="appbar-theme"
-              >
-                <LightbulbOutline />
-              </IconButton>
-            </Tooltip>
-            <Tooltip id="appbar-github" title="Material-UI GitHub repo" enterDelay={300}>
-              <IconButton
-                color="inherit"
-                href="https://github.com/mui-org/material-ui"
-                aria-labelledby="appbar-github"
-              >
-                <Github />
-              </IconButton>
-            </Tooltip>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          className={classNames(classes.drawer, {[classes.drawerShift]: this.state.drawerOpen})}
-          classes={{
-            paper: classNames(classes.paper),
-          }}
-          onClose={null}
-          variant="persistent"
-          anchor="left"
-          open={this.state.drawerOpen}
-        >
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
-          ok<br/>
+        <AppBar open={this.state.drawerOpen} onMenuClick={onToggle} />
+        <Drawer open={this.state.drawerOpen}>
+          <Menu title='About' menu={menuAbout}></Menu>
+          <Menu title='Usages' menu={menuUsages}></Menu>
         </Drawer>
-        <div className={classNames(classes.content)}>
-          {children()}
-        </div>
+        <Content>{children()}</Content>
       </div>
     )
   }
@@ -199,6 +59,40 @@ class AppFrame extends React.Component {
 }
 AppFrame.propTypes = {
   children: PropTypes.func,
+  data: PropTypes.object.isRequired,
 }
 
 export default withRoot(withStyles(styles, { withTheme: true })(AppFrame));
+
+export const pageQuery = graphql`
+  query templateActionMenu {
+    about: allMarkdownRemark(filter:{ fields: { slug: { regex: "/^\/about\//" } } }, sort: { order: DESC, fields: [frontmatter___sort] }) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    usages: allMarkdownRemark(filter:{ fields: { slug: { regex: "/^\/usages\//" } } }, sort: { order: DESC, fields: [frontmatter___sort] }) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`;

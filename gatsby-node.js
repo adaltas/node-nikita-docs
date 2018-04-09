@@ -13,11 +13,6 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       name: `slug`,
       value: slug
     })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug
-    })
   }
 };
 
