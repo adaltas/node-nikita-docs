@@ -31,58 +31,58 @@ underscore form.
 
 The [ssh2] options:
 
-*   `host` - < string >   
-    Hostname or IP address of the server. Default: 'localhost'
+*   `host` (string)   
+    Hostname or IP address of the server, default is 'localhost'.
 
-*   `port` - < integer >   
+*   `port` (integer)   
     Port number of the server. Default: 22
 
-*   `hostHash` - < string >   
+*   `hostHash` (string)   
     'md5' or 'sha1'. The host's key is hashed using this method and passed to the hostVerifier function. Default: (none)
 
-*   `hostVerifier` - < function >   
+*   `hostVerifier` (function)   
     Function that is passed a string hex hash of the host's key for verification purposes. Return true to continue with the connection, false to reject and disconnect. Default: (none)
 
-*   `username` - < string >   
+*   `username` (string)   
     Username for authentication. Default: (none)
 
-*   `password` - < string >   
+*   `password` (string)   
     Password for password-based user authentication. Default: (none)
 
-*   `agent` - < string >   
+*   `agent` (string)   
     Path to ssh-agent's UNIX socket for ssh-agent-based user authentication. Windows users: set to 'pageant' for authenticating with Pageant or (actual) path to a cygwin "UNIX socket." Default: (none)
 
-*   `privateKey` - < mixed >   
+*   `privateKey` (mixed)   
     Buffer or string that contains a private key for key-based user authentication (OpenSSH format). Default: (none)
 
-*   `passphrase` - < string >   
+*   `passphrase` (string)   
     For an encrypted private key, this is the passphrase used to decrypt it. Default: (none)
 
-*   `tryKeyboard` - < boolean >   
+*   `tryKeyboard` (boolean)   
     Try keyboard-interactive user authentication if primary user authentication method fails. Default: false
 
-*   `pingInterval` - < integer >   
+*   `pingInterval` (integer)   
     How often (in milliseconds) to send SSH-level keepalive packets to the server. Default: 60000
 
-*   `readyTimeout` - < integer >   
+*   `readyTimeout` (integer)   
     How long (in milliseconds) to wait for the SSH handshake to complete. Default: 10000
 
-*   `sock` - < ReadableStream >   
+*   `sock` (ReadableStream)   
     A ReadableStream to use for communicating with the server instead of creating and using a new TCP connection (useful for connection hopping).
 
-*   `agentForward` - < boolean >   
+*   `agentForward` (boolean)   
     Set to true to use OpenSSH agent forwarding ('auth-agent@openssh.com'). Default: false
 
 The [ssh2-connect] options:
 
--   `username`   
+-   `username` (string)   
     The username used to initiate the connection, default to the current
     environment user.
--   `privateKeyPath`   
+-   `privateKeyPath` (string)   
     Path to the file containing the private key.   
--   `retry`
+-   `retry` (integer)
     Attempt to reconnect multiple times, default to "1".   
--   `wait`
+-   `wait` (integer)
     Time to wait in milliseconds between each retry, default to "500".  
 
 ## Passing an existing SSH connection

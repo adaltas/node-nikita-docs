@@ -1,23 +1,22 @@
-
 // React
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames';
+import classNames from 'classnames'
 // Material UI
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import IconButton from 'material-ui/IconButton';
-import Tooltip from 'material-ui/Tooltip';
-import MenuIcon from 'material-ui-icons/Menu';
-import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
-import Github from '@material-ui/docs/svgIcons/GitHub';
+import AppBar from 'material-ui/AppBar'
+import Toolbar from 'material-ui/Toolbar'
+import IconButton from 'material-ui/IconButton'
+import Tooltip from 'material-ui/Tooltip'
+import MenuIcon from 'material-ui-icons/Menu'
+import LightbulbOutline from 'material-ui-icons/LightbulbOutline'
+import Github from '@material-ui/docs/svgIcons/GitHub'
 import { withStyles } from 'material-ui/styles'
-import Typography from 'material-ui/Typography';
+import Typography from 'material-ui/Typography'
 // Gatsby
 import Link from 'gatsby-link'
 // Local
-import header from "./header.png";;
-import withRoot from './mui/withRoot';
+import header from './header.png'
+import withRoot from './mui/withRoot'
 
 const styles = theme => ({
   appBar: {
@@ -30,7 +29,6 @@ const styles = theme => ({
     backgroundImage: `url(${header}) !important`,
     backgroundSize: 'contain !important',
     backgroundAttachment: 'fixed !important',
-    // transition: theme.transitions.create('width'),
   },
   appBarShift: {
     left: 250,
@@ -53,14 +51,15 @@ const styles = theme => ({
   grow: {
     flex: '1 1 auto',
   },
-});
+})
 
-class MyAppBar extends React.Component {
-  
-  render () {
-    const {classes, open, onMenuClick, title} = this.props;
+class MyAppBar extends Component {
+  render() {
+    const { classes, open, onMenuClick, site } = this.props
     return (
-      <AppBar className={classNames(classes.appBar, {[classes.appBarShift]: open})}>
+      <AppBar
+        className={classNames(classes.appBar, { [classes.appBarShift]: open })}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -71,11 +70,15 @@ class MyAppBar extends React.Component {
           </IconButton>
           <Link to="/">
             <Typography className={classes.title} color="inherit" noWrap>
-              {title}
+              {site.title}
             </Typography>
           </Link>
           <div className={classes.grow} />
-          <Tooltip id="appbar-theme" title="Toggle light/dark theme" enterDelay={300}>
+          <Tooltip
+            id="appbar-theme"
+            title="Toggle light/dark theme"
+            enterDelay={300}
+          >
             <IconButton
               color="inherit"
               onClick={onMenuClick}
@@ -84,10 +87,14 @@ class MyAppBar extends React.Component {
               <LightbulbOutline />
             </IconButton>
           </Tooltip>
-          <Tooltip id="appbar-github" title="Material-UI GitHub repo" enterDelay={300}>
+          <Tooltip
+            id="appbar-github"
+            title={site.github.title}
+            enterDelay={300}
+          >
             <IconButton
               color="inherit"
-              href="https://github.com/mui-org/material-ui"
+              href={site.github.url}
               aria-labelledby="appbar-github"
             >
               <Github />
@@ -99,4 +106,4 @@ class MyAppBar extends React.Component {
   }
 }
 
-export default withRoot(withStyles(styles, { withTheme: true })(MyAppBar));
+export default withRoot(withStyles(styles, { withTheme: true })(MyAppBar))

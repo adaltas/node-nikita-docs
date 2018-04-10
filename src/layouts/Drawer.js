@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { withStyles } from 'material-ui/styles';
-import classNames from 'classnames';
+import { withStyles } from 'material-ui/styles'
+import classNames from 'classnames'
 
-import Divider from 'material-ui/Divider';
-import Drawer from 'material-ui/Drawer';
-import Typography from 'material-ui/Typography';
+import Divider from 'material-ui/Divider'
+import Drawer from 'material-ui/Drawer'
+import Typography from 'material-ui/Typography'
 
 const styles = theme => ({
   toolbar: {
@@ -28,14 +28,14 @@ const styles = theme => ({
   paper: {
     width: 250,
   },
-});
+})
 
 class AppDrawer extends React.Component {
   render() {
     const { classes, open, menu, children, onClickShadow, variant } = this.props
     return (
       <Drawer
-        className={classNames(classes.drawer, {[classes.drawerShift]: open})}
+        className={classNames(classes.drawer, { [classes.drawerShift]: open })}
         classes={{
           paper: classNames(classes.paper),
         }}
@@ -62,6 +62,6 @@ class AppDrawer extends React.Component {
 AppDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(styles, { withTheme: true })(AppDrawer);
+export default withStyles(styles, { withTheme: true })(AppDrawer)

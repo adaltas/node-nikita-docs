@@ -1,6 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `Nikita`,
+    title: 'Nikita',
+    github: {
+      url: 'https://github.com/adaltas/node-nikita',
+      title: 'Nikita GitHub Repository'
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { withStyles } from 'material-ui/styles';
-import classNames from 'classnames';
+import { withStyles } from 'material-ui/styles'
+import classNames from 'classnames'
 
 const styles = theme => ({
   content: theme.mixins.gutters({
@@ -17,16 +17,14 @@ const styles = theme => ({
       maxWidth: 900,
     },
   },
-});
+})
 
-const Content = ({classes, children}) => (
-  <div className={classNames(classes.content)}>
-    {children}
-  </div>
+const Content = ({ classes, children }) => (
+  <div className={classNames(classes.content)}>{children}</div>
 )
 
 Content.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default withStyles(styles, { withTheme: true })(Content);
+export default withStyles(styles, { withTheme: true })(Content)
