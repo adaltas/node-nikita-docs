@@ -96,7 +96,6 @@ class TemplateWrapper extends React.Component {
     menuOpen: false,
   }
   onClickMenu = () => {
-    console.log('onClickMenu')
     this.setState({ menuOpen: !this.state.menuOpen })
   }
   render() {

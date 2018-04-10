@@ -19,8 +19,8 @@ const styles = theme => ({
   },
 })
 
-const Content = ({ classes, children }) => (
-  <div className={classNames(classes.content)}>{children}</div>
+const Content = ({ classes, children, theme }) => (
+  <main className={classNames(classes.content)}>{children}</main>
 )
 
 Content.propTypes = {

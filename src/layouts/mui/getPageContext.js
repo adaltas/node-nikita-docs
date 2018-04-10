@@ -28,6 +28,12 @@ const theme = createMuiTheme({
       dark: green[700],
     },
   },
+  typography: {
+    fontSize: 17,
+    body1: {
+      textAlign: 'justify'
+    }
+  },
 })
 
 function createPageContext() {
