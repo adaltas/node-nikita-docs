@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import mixme from 'mixme'
 
 import 'typeface-roboto'
 import { withStyles } from 'material-ui/styles';

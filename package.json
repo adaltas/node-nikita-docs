@@ -13,7 +13,6 @@
     "gatsby-transformer-remark": "^1.7.39",
     "material-ui": "^1.0.0-beta.25",
     "material-ui-icons": "^1.0.0-beta.36",
-    "mixme": "0.0.1",
     "prism-themes": "^1.0.0",
     "react-helmet": "^5.2.0",
     "typeface-roboto": "0.0.54"
