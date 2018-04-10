@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import 'typeface-roboto'
+
 import { withStyles } from 'material-ui/styles'
 import withRoot from './mui/withRoot'
 import NProgressBar from '@material-ui/docs/NProgressBar'

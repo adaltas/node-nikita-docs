@@ -4,6 +4,18 @@ const path = require("path");
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+exports.onCreatePage = ({ page, boundActionCreators }) => {
+  const { createPage } = boundActionCreators;
+  
+  return new Promise((resolve, reject) => {
+    if(page.path.match(/^\/test\/topography/)){
+      page.layout = 'blank'
+      createPage(page)
+    }
+    resolve();
+  });
+};
+
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators
   if (node.internal.type === `MarkdownRemark`) {
