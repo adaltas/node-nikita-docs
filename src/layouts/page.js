@@ -14,6 +14,7 @@ import Collapse from 'material-ui/transitions/Collapse'
 import AppBar from './AppBar'
 import Content from './Content'
 import Drawer from './Drawer'
+import Footer from './Footer'
 import Menu from './Menu'
 
 require('prismjs/themes/prism-tomorrow.css')
@@ -22,9 +23,13 @@ const styles = theme => ({
   root: {
     display: 'flex',
     alignItems: 'stretch',
+    // flexDirection: 'column',
     minHeight: '100vh',
     width: '100%',
   },
+  content: {
+    width: '100%'
+  }
 })
 
 class AppFrame extends React.Component {
@@ -91,7 +96,10 @@ class AppFrame extends React.Component {
             <Menu title="Options" menu={menuOptions} path={this.state.path} />
           </Drawer>
         </Hidden>
-        <Content>{children({ ...this.props, updateLayoutFunction })}</Content>
+        <div className={classes.content}>
+          <Content>{children({ ...this.props, updateLayoutFunction })}</Content>
+          <Footer site={site}></Footer>
+        </div>
       </div>
     )
   }
@@ -111,6 +119,14 @@ export const pageQuery = graphql`
         github {
           url
           title
+        }
+        footer {
+          title
+          content
+          links {
+            label
+            url
+          }
         }
       }
     }

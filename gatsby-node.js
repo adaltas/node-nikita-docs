@@ -8,7 +8,7 @@ exports.onCreatePage = ({ page, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
   
   return new Promise((resolve, reject) => {
-    if(page.path.match(/^\/test\/topography/)){
+    if(page.path.match(/^\/test\//)){
       page.layout = 'blank'
       createPage(page)
     }
@@ -30,9 +30,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
-
   const blogPostTemplate = path.resolve(`src/templates/template.js`);
-
   return graphql(`
     {
       allMarkdownRemark(

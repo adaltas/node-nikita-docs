@@ -5,6 +5,34 @@ module.exports = {
       url: 'https://github.com/adaltas/node-nikita',
       title: 'Nikita GitHub Repository'
     },
+    footer: [{
+      title: 'Navigate',
+      links: [{
+        label: 'Getting started',
+        url: '1',
+      }, {
+        label: 'Usages',
+        url: '2',
+      }, {
+        label: 'Options',
+        url: '3',
+      }]
+    },{
+      title: 'Contribute',
+      links: [{
+        label: 'GitHub',
+        url: 'https://github.com/adaltas/node-nikita',
+      }, {
+        label: 'Issue Tracker',
+        url: 'https://github.com/adaltas/node-nikita/issues',
+      }, {
+        label: 'License',
+        url: '/about/license',
+      }]
+    },{
+      title: 'About',
+      content: 'Nikita is an open source product hosted on <a href="https://www.github.com">GitHub</a> and developed by <a href="http://www.adaltas.com">Adaltas</a>.'
+    }]
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
