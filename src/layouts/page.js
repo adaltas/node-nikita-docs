@@ -132,7 +132,7 @@ export const pageQuery = graphql`
     }
     about: allMarkdownRemark(
       filter: { fields: { slug: { regex: "/^/about//" } } }
-      sort: { order: DESC, fields: [frontmatter___sort] }
+      sort: { order: ASC, fields: [frontmatter___sort] }
     ) {
       edges {
         node {
@@ -149,7 +149,7 @@ export const pageQuery = graphql`
     }
     usages: allMarkdownRemark(
       filter: { fields: { slug: { regex: "/^/usages//" } } }
-      sort: { order: DESC, fields: [frontmatter___sort] }
+      sort: { order: ASC, fields: [frontmatter___sort] }
     ) {
       edges {
         node {
@@ -166,7 +166,7 @@ export const pageQuery = graphql`
     }
     options: allMarkdownRemark(
       filter: { fields: { slug: { regex: "/^/options//" } } }
-      sort: { order: DESC, fields: [frontmatter___sort] }
+      sort: { order: ASC, fields: [frontmatter___title] }
     ) {
       edges {
         node {
