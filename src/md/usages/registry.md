@@ -1,6 +1,5 @@
 ---
 title: Action Registration
-layout: page
 sort: 3
 ---
 

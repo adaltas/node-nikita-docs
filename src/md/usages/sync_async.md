@@ -1,6 +1,5 @@
 ---
 title: Sync and async
-layout: page
 sort: 2
 ---
 

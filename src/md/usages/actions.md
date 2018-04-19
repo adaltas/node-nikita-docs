@@ -1,6 +1,5 @@
 ---
 title: Actions
-layout: page
 sort: 1
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Logging and Debugging
-layout: page
 sort: 6
 ---
 

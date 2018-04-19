@@ -1,6 +1,5 @@
 ---
 title: Option "once"
-layout: page
 ---
 
 Tutorial start now

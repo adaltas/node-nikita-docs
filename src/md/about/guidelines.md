@@ -1,7 +1,6 @@
 ---
 title: Guidelines
 description: 
-layout: page
 sort: 4
 community: yes
 ---

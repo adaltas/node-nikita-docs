@@ -1,6 +1,5 @@
 ---
 title: Option "log"
-layout: page
 ---
 
 Tutorial start now

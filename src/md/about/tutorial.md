@@ -1,6 +1,5 @@
 ---
 title: 15 minutes tutorial
-layout: page
 sort: 3
 ---
 

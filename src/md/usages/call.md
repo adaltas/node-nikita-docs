@@ -1,6 +1,5 @@
 ---
 title: Call
-layout: page
 sort: 2
 state: review
 ---

@@ -1,6 +1,5 @@
 ---
 title: Option "handler"
-layout: page
 ---
 
 Tutorial start now

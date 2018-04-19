@@ -1,6 +1,5 @@
 ---
 title: Option "relax"
-layout: page
 ---
 
 Tutorial start now

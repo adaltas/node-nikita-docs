@@ -1,6 +1,5 @@
 ---
 title: Getting Started
-layout: page
 sort: 3
 ---
 

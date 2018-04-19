@@ -1,6 +1,5 @@
 ---
 title: Error handling
-layout: page
 sort: 8
 ---
 

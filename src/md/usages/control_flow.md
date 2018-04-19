@@ -1,6 +1,5 @@
 ---
 title: Control Flow
-layout: page
 sort: 7
 ---
 

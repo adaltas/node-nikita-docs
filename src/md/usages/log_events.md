@@ -1,6 +1,5 @@
 ---
 title: Log and events
-layout: page
 sort: 9
 ---
 

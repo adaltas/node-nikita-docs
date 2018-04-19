@@ -1,6 +1,5 @@
 ---
 title: License
-layout: page
 sort: 4
 community: true
 ---

@@ -1,6 +1,5 @@
 ---
 title: Option "header"
-layout: page
 ---
 
 Tutorial start now

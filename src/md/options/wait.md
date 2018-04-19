@@ -1,6 +1,5 @@
 ---
 title: Option "wait"
-layout: page
 ---
 
 Tutorial start now

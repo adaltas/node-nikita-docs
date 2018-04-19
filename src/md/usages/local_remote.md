@@ -1,6 +1,5 @@
 ---
 title: Local and Remote (SSH)
-layout: page
 sort: 4
 ---
 

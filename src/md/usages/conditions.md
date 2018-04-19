@@ -1,6 +1,5 @@
 ---
 title: Conditions
-layout: page
 sort: 5
 state: review
 ---

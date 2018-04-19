@@ -1,6 +1,5 @@
 ---
 title: Philosophy and mission
-layout: page
 sort: 1
 ---
 
