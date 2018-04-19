@@ -16,7 +16,7 @@ import Typography from 'material-ui/Typography'
 import Link from 'gatsby-link'
 // Local
 import header from './header.png'
-import withRoot from './mui/withRoot'
+import withRoot from '../mui/withRoot'
 
 const styles = theme => ({
   appBar: {

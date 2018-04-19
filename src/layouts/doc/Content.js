@@ -10,7 +10,7 @@ const styles = theme => ({
     paddingTop: 100,
     flex: '1 1 100%',
     maxWidth: '100%',
-    margin: '0 auto',
+    margin: '0 auto 3rem',
   }),
   [theme.breakpoints.up(900 + theme.spacing.unit * 6)]: {
     content: {

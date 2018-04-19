@@ -13,7 +13,7 @@ import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
 
-import Drawer from './Drawer'
+import Drawer from './doc/Drawer'
 
 import './index.css'
 

@@ -58,7 +58,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       createPage({
         path: node.fields.slug,
         component: blogPostTemplate,
-        layout: node.frontmatter.layout || 'index',
+        layout: node.frontmatter.layout || 'doc',
         context: {}, // additional data can be passed via context
       });
     });

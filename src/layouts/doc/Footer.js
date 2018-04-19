@@ -10,7 +10,7 @@ import Typography from 'material-ui/Typography';
 // Gatsby
 import Link from 'gatsby-link'
 // Local
-import withRoot from './mui/withRoot'
+import withRoot from '../mui/withRoot'
 
 const styles = theme => ({
   root: {
@@ -47,21 +47,21 @@ const styles = theme => ({
       listStyle: 'none',
     },
     '& a': {
-      color: '#CCC8C7',
+      color: '#fff',
       textDecoration: 'none',
     },
     '& a:hover': {
-      color: '#FFF',
+      color: theme.link.normal,
     },
   },
   content: {
     color: '#CCC8C7',
     '& a': {
-      color: '#CCC8C7',
-      textDecoration: 'underline',
+      color: '#fff',
+      textDecoration: 'none',
     },
     '& a:hover': {
-      color: '#FFF',
+      color: theme.link.normal,
     },
   },
 })

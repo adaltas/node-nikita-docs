@@ -11,11 +11,11 @@ import Hidden from 'material-ui/Hidden'
 
 import Collapse from 'material-ui/transitions/Collapse'
 
-import AppBar from './AppBar'
-import Content from './Content'
-import Drawer from './Drawer'
-import Footer from './Footer'
-import Menu from './Menu'
+import AppBar from './doc/AppBar'
+import Content from './doc/Content'
+import Drawer from './doc/Drawer'
+import Footer from './doc/Footer'
+import Menu from './doc/Menu'
 
 require('prismjs/themes/prism-tomorrow.css')
 

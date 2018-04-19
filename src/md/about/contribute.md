@@ -3,7 +3,7 @@ title: Contribute
 description: Helps us by providing feedbacks, reporting issues, improving the documentation and submitting patches.
 sort: 4
 community: yes
-layout: page
+layout: doc
 ---
 
 # Contributing
