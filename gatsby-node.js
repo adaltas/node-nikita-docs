@@ -29,7 +29,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
 };
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
-  const { createPage } = boundActionCreators;
+  const { createPage, createRedirect } = boundActionCreators;
   const blogPostTemplate = path.resolve(`src/templates/template.js`);
   return graphql(`
     {
@@ -42,6 +42,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             frontmatter {
               title
               layout
+              redirects
             }
             fields {
               slug
@@ -61,6 +62,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         layout: node.frontmatter.layout || 'doc',
         context: {}, // additional data can be passed via context
       });
+      if(node.frontmatter.redirects){
+        node.frontmatter.redirects.map( redirect => {
+          createRedirect({ fromPath: redirect, toPath: node.fields.slug, isPermanent: true, redirectInBrowser: true })
+        })
+      }
     });
   });
 };
