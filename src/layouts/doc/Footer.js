@@ -55,6 +55,7 @@ const styles = theme => ({
     },
   },
   content: {
+    margin: '1rem 0',
     color: '#CCC8C7',
     '& a': {
       color: '#fff',
@@ -97,15 +98,15 @@ class Footer extends Component {
       )
     })
     return (
-      <div className={classes.root}>
+      <footer className={classes.root}>
         <div className={classes.rootInner}>
           <Grid container spacing={0}>
           {footer}
           </Grid>
         </div>
-      </div>
+      </footer>
     )
   }
 }
 
-export default withRoot(withStyles(styles, { withTheme: true })(Footer))
+export default withStyles(styles, { withTheme: true })(Footer)

@@ -44,7 +44,7 @@ class NestedList extends React.Component {
     this.setState({ open: !this.state.open })
   }
   render() {
-    const { classes, theme, menu } = this.props
+    const { classes, theme, title, menu } = this.props
     const pages = menu.map(page => (
       <MenuItem
         component={Link}
@@ -60,7 +60,7 @@ class NestedList extends React.Component {
       <div>
         <MenuList component="nav">
           <MenuItem component="div" onClick={this.handleClick}>
-            <ListItemText primary="Inbox" />
+            <ListItemText primary={title} />
             {this.state.open ? <ExpandLess /> : <ExpandMore />}
           </MenuItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>

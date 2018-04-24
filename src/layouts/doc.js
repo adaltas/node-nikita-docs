@@ -9,21 +9,16 @@ import withRoot from './mui/withRoot'
 import NProgressBar from '@material-ui/docs/NProgressBar'
 import Hidden from 'material-ui/Hidden'
 
-import Collapse from 'material-ui/transitions/Collapse'
-
 import AppBar from './doc/AppBar'
 import Content from './doc/Content'
 import Drawer from './doc/Drawer'
 import Footer from './doc/Footer'
 import Menu from './doc/Menu'
 
-require('prismjs/themes/prism-tomorrow.css')
-
 const styles = theme => ({
   root: {
     display: 'flex',
     alignItems: 'stretch',
-    // flexDirection: 'column',
     minHeight: '100vh',
     width: '100%',
   },
@@ -80,7 +75,7 @@ class AppFrame extends React.Component {
             onClickShadow={onToggle}
             variant="temporary"
           >
-            <Menu title="About" menu={menuAbout} path={this.state.path} />
+            <Menu title="Learning" menu={menuAbout} path={this.state.path} />
             <Menu title="Usages" menu={menuUsages} path={this.state.path} />
             <Menu title="Options" menu={menuOptions} path={this.state.path} />
           </Drawer>
@@ -91,7 +86,7 @@ class AppFrame extends React.Component {
             onClickShadow={onToggle}
             variant="persistent"
           >
-            <Menu title="About" menu={menuAbout} path={this.state.path} />
+            <Menu title="Learning" menu={menuAbout} path={this.state.path} />
             <Menu title="Usages" menu={menuUsages} path={this.state.path} />
             <Menu title="Options" menu={menuOptions} path={this.state.path} />
           </Drawer>
