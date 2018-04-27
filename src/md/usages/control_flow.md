@@ -14,13 +14,13 @@ Since an action may contain child actions, the way Nikita run is similar to how 
 ```js
 require('nikita')
 .call(function{
-  this.service('my_pkg_1');
-  this.service('my_pkg_2');
+  this.service('my_pkg_1')
+  this.service('my_pkg_2')
 })
 .file.yaml({
   target: '/etc/my_pkg/config.yaml',
-  	content: { my_property: 'my value' }
-});
+  content: { my_property: 'my value' }
+})
 ```
 
 The actions will be executed in this sequence:
@@ -32,18 +32,18 @@ The actions will be executed in this sequence:
 
 This tree-like traversal is leverage by the "header" option and the "log.cli" action to display a report to the therminal.
 
-```bash
+```js
 require('nikita')
 .log.cli({pad: {header: 20}})
 .call({header: 'Packages'}, function(){
-  this.service({header: 'My PKG 1'}, 'my_pkg_1');
-  this.service({header: 'My PKG 2'}, 'my_pkg_2');
+  this.service({header: 'My PKG 1'}, 'my_pkg_1')
+  this.service({header: 'My PKG 2'}, 'my_pkg_2')
 })
 .file.yaml({
   header: 'Config',
   target: '/etc/my_pkg/config.yaml',
   content: { my_property: 'my value' }
-});
+})
 ```
 
 Will output:
@@ -55,7 +55,67 @@ localhost   Packages             -  3ms
 localhost   Config               -  10ms
 ```
 
-## Interupting the execution
+## End of the execution
+
+The `next` function can be provided as a way to be notified once a list of actions has terminated or if any error occurred before. When called, it expect a function with two arguments:
+
+- `err`
+  The error object if any error occurred.
+- `status`
+  The final status of the previously executed actions.
+
+It can be called at the root of a workflow:
+
+```js
+require('nikita')
+.file({
+  target: '/tmp/hello-'+Date.now(),
+  content: 'hello'
+})
+.system.execute('rm /tmp/hello-*')
+.next(function(err, status){
+  console.log(status === true)
+})
+```
+
+It can also be called inside a handler:
+
+```js
+require('nikita')
+.call(function(){
+  this
+  .file({
+    target: '/tmp/hello-'+Date.now(),
+    content: 'hello'
+  })
+  .system.execute('rm /tmp/hello-*')
+  .next(function(err, status){
+    console.log(status === true)
+  })
+})
+.next(function(err, status){
+  console.log('We are done')
+})
+```
+
+More actions may be registered after `next`:
+
+```js
+require('nikita')
+.file({
+  target: '/tmp/hello-'+Date.now(),
+  content: 'hello'
+})
+.next(function(err, status){
+  console.log('Step 1:', err || status)
+})
+.system.execute('rm /tmp/hello-*')
+.next(function(err, status){
+  console.log('Step 2:', err || status)
+})
+```
+
+## Interrupting the execution
 
 At any point in time, it is possible to interrupt the execution of the current action by calling `end`. If executed on a parent action, the context will simply exit. It is common to call `end` from inside a callback, for exemple after executing a shell command:
 
@@ -72,7 +132,7 @@ require('nikita')
 .call(function(){
   console.log('This will not be executed if version is 1')
 })
-.then(function(){
+.next(function(){
   console.log('Done');
 });
 ```

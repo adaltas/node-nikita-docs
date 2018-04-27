@@ -13,6 +13,19 @@ const styles = theme => ({
     flex: '1 1 100%',
     maxWidth: '100%',
     margin: '0 auto 3rem',
+    '& a': {
+      textDecoration: 'none',
+      '&:visited': {
+        color: '#00618E',
+      },
+      '&:hover': {
+        textDecoration: 'none',
+        color: theme.link.normal,
+      },
+      // '&:active': {
+      //   color: '#000',
+      // },
+    },
     '& h1': {
       color: '#777777',
       fontWeight: 'normal',
@@ -25,10 +38,15 @@ const styles = theme => ({
       color: '#777777',
       fontWeight: 'normal',
     },
+    '& em': {
+      color: '#2D2D2D',
+    },
     '& p': {
+      color: '#2D2D2D',
       textAlign: 'justify'
     },
     '& li': {
+      color: '#2D2D2D',
       textAlign: 'justify'
     },
   }),

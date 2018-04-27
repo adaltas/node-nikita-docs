@@ -1,5 +1,7 @@
 ---
 title: Actions
+redirects:
+ - /toto/lulu/
 sort: 1
 ---
 
@@ -23,9 +25,9 @@ Options are use to contextualize the handler function. The are usually an object
 ```js
 nikita
 // Object with "cmd" option
-.executed({cmd: 'whoami'})
+.system.execute({cmd: 'whoami'})
 // Command as a string
-.executed('whoami');
+.system.execute('whoami');
 ```
 
 The string options is here for conveniency. Internally, the execute handler receive options as an object and search for the "argument" option. Here's an exemple:

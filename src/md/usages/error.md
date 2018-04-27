@@ -5,14 +5,70 @@ sort: 8
 
 # Error handling
 
-Tutorial start now
+The Nikita API implement error management by following familiar Node.js conventions. The handling of error different between synchronous and asynchronuous functions.
 
-Tutorial start now
+## Emitting errors
 
-Tutorial start now
+Synchronous handlers may throw an error:
 
-Tutorial start now
+```js
+require('nikita')
+// Synchronous function
+.call(function(options){
+  // Throw the error
+  throw Error 'Catch me'
+})
+// Catch the error
+.next(function(err){
+  console.info(err.message)  
+})
+```
 
-Tutorial start now
+Asynchronous handlers must pass the error as the first argument of the callback.
 
-Tutorial start now
+```js
+require('nikita')
+// Synchronous function
+.call(function(options, callback){
+  setImmediate(function(){
+    // Throw the error
+    callback(Error 'Catch me')
+  })
+})
+// Catch the error
+.next(function(err){
+  console.info(err.message)  
+})
+```
+
+## Catching errors
+
+In case an error encountered, the sequence of actions is interrupted and the Nikita session will exit with a failure. The error can be catch in the action callback, with the `nikita.next` function or with the 'error' event.
+
+The behavior can be altered to treat error as non destructive. Using the `relax` option, the error will be available in the callback function but the sequence of actions will not be interrupted and the error will not be propagated to any other actions.
+
+```js
+require('should')
+require('nikita')
+// Pass the relax option
+.call({relax: true}, function(options){
+  // Throw the error
+  throw Error 'Catch me'
+}, function(err){
+  // Error is available in the action callback
+  err.message.should.eql 'Catch me'
+})
+// Keep working
+.call(function(options, callback){
+  setImmediate(function(){
+    callback(null, true)
+  })
+})
+// Finalize the session
+.next(function(err){
+  // Error is not propagated
+  (err === undefined).should.be.true()
+  // Status was changed by the second action
+  status.should.be.true()
+})
+```
