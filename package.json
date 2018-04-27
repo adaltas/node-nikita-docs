@@ -17,6 +17,10 @@
     "react-helmet": "^5.2.0",
     "typeface-roboto": "0.0.54"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adaltas/node-nikita-docs"
+  },
   "keywords": [
     "gatsby"
   ],

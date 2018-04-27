@@ -41,6 +41,17 @@ const styles = theme => ({
     '& em': {
       color: '#2D2D2D',
     },
+    '& blockquote': {
+      borderLeft: '3px solid #777777',
+      margin: 0,
+      paddingLeft: '40px',
+    },
+    '& blockquote p': {
+      color: '#777777',
+    },
+    '& blockquote p > code[class*="language-"]': {
+      color: '#646464',
+    },
     '& p': {
       color: '#2D2D2D',
       textAlign: 'justify'
