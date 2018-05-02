@@ -484,7 +484,8 @@ require('nikita')
 
 Nikita is written from the ground up to be transparent whether it is executed locally or over SSH. In fact, all the tests are provided with an ssh argument and are executed twice. The first time with the connection set to null and the second time with an established SSH connection.
 
-Calling `nikita.ssh.open` and `nikita.ssh.close` will associate the Nikita current session with and without an SSH connection. Passing the `ssh` option locally activates and deactivates it for a specific action.
+Calling `nikita.ssh.open` and `nikita.ssh.close` will associate the Nikita current session with and without an SSH connection. The `nikita.ssh.open` action must be registered before scheduling any other actions and, 	
+inversely, the `nikita.ssh.close` action must be registered last. Both the `nikita.log.cli` and `nikital.log.md` actions are always executed locally. When SSH is setup, passing the `ssh` option to selected actions activates and deactivates the SSH connection.
 
 ```js
 require('nikita')
@@ -500,6 +501,23 @@ require('nikita')
 })
 // Close the SSH Connection
 .ssh.close()
+```
+
+The above example assumes that you can self connect with SSH locally. If this is not the case, SSH must be installed and listening on port 22 and you must follows the instruction targeting your operating system to get it up and running. A pair of SSH private and public keys, respectively installed at "~/.ssh/id_rsa" and "~/.ssh/id_rsa.pub", must be present and your public key must be registered inside "~/.ssh/authorized_keys". If this isn't already the case, you can run the following commands:
+
+```bash
+# Detect if private key is already present
+if [ ! -f ~/.ssh/id_rsa ]; then
+  # Generate private and public keys
+  ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
+fi
+# Allow self access
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+# Ensure permissions are valid
+chmod 0700 ~/.ssh
+chmod 0600 ~/.ssh/authorized_keys
+# Test access
+ssh `whoami`@127.0.0.1 "echo 'I am inside'; exit"
 ```
 
 ### Composition
@@ -579,16 +597,18 @@ options = {
     username: process.env.USER,
     private_key_path: '~/.ssh/id_rsa'
   },
-  cwd: '/tmp/nikita-tutorial',
-  config: {}
+  redis: {
+    cwd: '/tmp/nikita-tutorial',
+    config: {}
+  }
 }
 // Run the application
 require('nikita')
 .log.cli()
 .log.md()
 .ssh.open({header: 'SSH Open'}, options.ssh)
-.call({header: 'Redis Install'}, './lib/install', options)
-.call({header: 'Redis Check'}, './lib/check', options)
+.call({header: 'Redis Install'}, './lib/install', options.redis)
+.call({header: 'Redis Check'}, './lib/check', options.redis)
 .ssh.close({header: 'SSH Close'})
 ```
 
