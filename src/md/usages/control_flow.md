@@ -144,3 +144,44 @@ function(err, status, stdout){
   @end({if: stdout.split('.')[0] != 'v1'})
 }
 ```
+
+## Condition and status
+
+One way of controlling your flow is to mix [conditions](/usages/conditions) and [status](/usages/status).
+Indeed nikita has in its api, the status function which:
+  - if take no parameters return the gloabal status of previous actions
+
+  ```js
+  require('nikita')
+  .system.execute({
+    cmd: "cat nodejs | grep node" //return status true
+  })
+  .system.execute({
+    code_skipped: 1,
+    cmd: "cat nodejs | grep toto" //return status false
+  })
+  .call({if: function(){ this.status() }
+    , function(){
+      console.log('This will be executed if "nodejs" contains "node" or "toto"')
+  })
+  ```
+  
+  - if take one parameter (a number `n`) return the status of the `current-n` action executed
+  
+  ```js
+  require('nikita')
+  .system.execute({
+    cmd: "cat nodejs | grep node" //return status true
+  })
+  .system.execute({
+    code_skipped: 1,
+    cmd: "cat nodejs | grep toto" //return status false
+  })
+  .call(
+    {if: function{this.status(-2)}
+  , function(){
+    console.log('This will be executed if "nodejs" contains "node" so yes :)')
+  })
+  ```
+  
+  as previously said in [conditions](/usages/conditions) the status function should be wrapepd in a function, because the status is evaluated at runtime.
