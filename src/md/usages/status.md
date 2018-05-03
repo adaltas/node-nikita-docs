@@ -8,7 +8,7 @@ sort: 3
 The status is an information indicating whether an action had any impact or not. It's meaning may differ from one action to another, here are a few examples:
 
 - modification of a file   
-  The tatus is "true" if the content or any metadata associated with the file has changed. This include the content signature, a modification time or a change of ownership.
+  The status is "true" if the content or any metadata associated with the file has changed. This include the content signature, a modification time or a change of ownership.
 - modification of a property (json, yaml, ini...) file   
   The status is true if a property or any metadata associated with the file has changed. A change of format, like prettifying the source code, will not affect the status while the addition of a new property and the modification on the value of an existing property will set the status to "true".
 - checking if a port is open
