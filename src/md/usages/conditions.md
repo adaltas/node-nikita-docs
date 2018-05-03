@@ -72,7 +72,7 @@ require('nikita')
 })
 ```
 
-## Option `not_if`
+## Option `unless`
 
 Run an action if false.
 
@@ -95,7 +95,7 @@ require('nikita')
 .file({
   source:'/tmp/file',
   content: 'hello',
-  not_if: [
+  unless: [
     '',
     0,
     false,
@@ -128,11 +128,11 @@ require('nikita')
 })
 ```
   
-## Option `not_if_exec`
+## Option `unless_exec`
 
 Run an action unless a command succeed.
 
-Work on the property `not_if_exec` in `options`. The value may 
+Work on the property `unless_exec` in `options`. The value may 
 be a single shell command or an array of commands.
   
 ## Option `if_exists`
@@ -160,7 +160,7 @@ require('nikita')
 })
 ```
 
-## Option `not_if_exists`
+## Option `unless_exists`
 
 Skip an action if a file exists.
 
@@ -246,3 +246,51 @@ require('nikita/lib/misc/conditions').all({
   console.log('Conditions failed or pass an error')
 })
 ```
+
+## Condition Writing
+
+You should be aware of the nodejs required behavior. Indeed, most of the time, the conditions are wrapped in function because, they are read when the nikita action is declared, but are only evaluated at runtime.
+So for example if I write
+
+```js
+var isItTrue = null
+require('nikita')
+.system.execute({
+  cmd: 'tellmethefuture.sh'
+}, function(err, executed, stdout, stderr){
+  if(err) throw err
+  isIsTrue = (stdout ==="itistrue")
+})
+.file({
+  source: '/tmp/file',
+  content: 'hello',
+  if: isItTrue
+}, function(err, status){
+  console.log(err || "File written")
+})
+```
+
+The second action will never be executed, because `isItTrue` is `null` 
+and so the condition is not verified.
+
+whereas if you write:
+
+```js
+var isItTrue = null
+require('nikita')
+.system.execute({
+  cmd: 'tellmethefuture.sh'
+}, function(err, executed, stdout, stderr){
+  if(err) throw err
+  isIsTrue = (stdout ==="itistrue")
+})
+.file({
+  source: '/tmp/file',
+  content: 'hello',
+  if: function(){return isItTrue}
+}, function(err, status){
+  console.log(err || "File written")
+})
+```
+regarding of the output provided by the `tellmethefuture.sh` program
+the file might be written as expected.
