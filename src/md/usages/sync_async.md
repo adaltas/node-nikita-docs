@@ -13,7 +13,7 @@ A Nikita context is run asynchronously. Thus, any function declared after Nikita
 
 ```js
 require('nikita')
-.then(function(){
+.next(function(){
   console.log('This is executed after');
 });
 console.log('This is executed before');
@@ -60,12 +60,12 @@ require('nikita')
     cmd: "echo hostname: `hostname`"
   });
 })
-.then(function(){
+.next(function(){
   console.log('done');
 });
 ```
 
-The `execute` action is run asynchronously but it is declared inside a sync `call` action. This is made possible because calling an action in Nikita is like registering an instruction which will be scheduled later for execution. Think of it as stack in which we register an action `call`, then an action `execute` and finally an action `then`.
+The `execute` action is run asynchronously but it is declared inside a sync `call` action. This is made possible because calling an action in Nikita is like registering an instruction which will be scheduled later for execution. Think of it as stack in which we register an action `call`, then an action `execute` and finally an action `next`.
 
 Status of the synchronous parent handler is bubbled up from asynchronous child handlers. The rule is as follow, if any child has a status set to "true", then the parent has a status set to "true".
 
