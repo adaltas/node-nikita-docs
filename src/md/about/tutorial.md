@@ -16,28 +16,30 @@ Feel free to skip the first section if you are familiar with Node.js and its eco
 
 For detailed information, navigate the documentation or submit an issue if you don't find the answers to your questions. Also, if you are looking for examples, the source code is well documented and its test coverage quite complete. We highly encourage you to navigate the tests. Tests are self contained and very easy to understand. They also provide you the guaranty of reading a working code.
 
-## What is nikita ?
+## What is Nikita ?
 
-Nikita has been built as a library, providing simple function to execute action on a server (which can be local or remote).
+Nikita is build as a library, which provides simple functions on a host (server, desktop, machine, vm...) either locally or remotely over ssh.
 
-### Technos
+### Technologies
 
-Nikita is written in JavaScript and executed by nodejs.
-It is delivered as an node module and so is available on npm.
+Nikita is written in JavaScript and executed by NodeJs. It is delivered as a Node.js package and is available on npm.
 
 ### Use cases
-It can be used for multiple purposes. For example, it can be used
-in a website with nodejs backend, where you want to execute some action (writing files, copy, move, executing custom scripts..) or 
-you can use it to automate  and industrialize  component installation by orchestrating actions in the way you want.
-Take a view to [ryba](https://github.com/ryba-io/ryba) which does contain playbooks for
-big data component installation.
 
-### What is in nikita
+It can serve  multiple purposes. For example, it can be used in a website with a Node.js backend, where you want to execute actions (writing files, copy, move, executing custom scripts..) or you can use it to automate and orchestrate  components' deployments (installations, functional tests, lifecycle management...).
 
-Nikita comes with a set of default functions that you can find [here](http://nikita.io/)
-It covers a lot of low level and basic (system) function out of the box.
-If some actions are missing for your needs you can write your own ones, and register it
-to nikita's context. See [this section](/usages/registry) to have more information on how.
+Take a view at [ryba](https://github.com/ryba-io/ryba) which contains playbooks to setup and manage bigdata system.
+
+### What is inside Nikita
+
+Nikita comes with a set of default functions.
+It is bundled with many handy functions covering a large range of usage:
+  - write files
+  - execute shell commands
+  - package managements
+  - run docker containers
+
+You are encouraged to extend Nikita with your own actions. To write an action is just about writing a plain vanilla javascript function.
 
 ## Installation instructions
 
@@ -45,10 +47,10 @@ to nikita's context. See [this section](/usages/registry) to have more informati
 
 To run your code, you must have Node.js and NPM (or YARN) installed. The procedure depends on your operating system. They are multiple alternatives to install Node.js:
 
-- [Download](https://nodejs.org/en/download/)   
-  The [official download page](https://nodejs.org/en/download/) provides you with the choices of downloading an installer, the binary files and the source code.
-- [Package manager](https://nodejs.org/en/download/package-manager/)   
-  The [package manager](https://nodejs.org/en/download/package-manager/) is probably the fastest and easiest way to get Node.js installed and ready while being upgraded in the future. The choice of package managers will depends on your system.
+- [Download](https://Node.js.org/en/download/)   
+  The [official download page](https://Node.js.org/en/download/) provides you with the choices of downloading an installer, the binary files and the source code.
+- [Package manager](https://Node.js.org/en/download/package-manager/)   
+  The [package manager](https://Node.js.org/en/download/package-manager/) is probably the fastest and easiest way to get Node.js installed and ready while being upgraded in the future. The choice of package managers will depends on your system.
 - Node.js version manager
   [NVM](https://github.com/creationix/nvm) and [N](https://github.com/tj/n) will manage multiple versions of Node.js in parallel. For advance users, this is our recommended procedure as we personally use [N](https://github.com/tj/n).
 
@@ -56,7 +58,7 @@ Once installed, you should have the `node` and `npm` commands available from you
 
 ### Initialization
 
-We are going to use [version control systems (VCS)](https://en.wikipedia.org/wiki/Version_control) to follow our development.
+A Nikita project is a Node.js package. Everything is a file and it doesn't require you to rely on any external software such as a database. For this reason we will use [version control systems (VCS)](https://en.wikipedia.org/wiki/Version_control) to track our development.
 Several tools are available such as [GIT](https://git-scm.com/) and [Mercurial](https://www.mercurial-scm.org/). In this tutorial, we will be using [GIT](https://git-scm.com/) and publish the source code to the [node-nikita-tutorial repository on GitHub](https://github.com/adaltas/node-nikita-tutorial).
 
 ```bash
@@ -460,7 +462,7 @@ require('nikita')
 })
 ```
 
-Under the hood, both the `nikita.log.cli` and the `nikita.log.md` actions leverage the native Node.js [event API](https://nodejs.org/api/events.html). You can get more detailed information by visiting the [Logging and Debugging](/usages/logging_debugging) documentation.
+Under the hood, both the `nikita.log.cli` and the `nikita.log.md` actions leverage the native Node.js [event API](https://Node.js.org/api/events.html). You can get more detailed information by visiting the [Logging and Debugging](/usages/logging_debugging) documentation.
 
 ### Get the server up and running
 

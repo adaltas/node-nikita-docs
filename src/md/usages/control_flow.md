@@ -185,3 +185,4 @@ Indeed nikita has in its api, the status function which:
   ```
   
   as previously said in [conditions](/usages/conditions) the status function should be wrapepd in a function, because the status is evaluated at runtime.
+  

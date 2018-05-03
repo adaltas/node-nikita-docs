@@ -247,19 +247,21 @@ require('nikita/lib/misc/conditions').all({
 })
 ```
 
-## Condition Writing
+## Condition writing
 
-You should be aware of the nodejs required behavior. Indeed, most of the time, the conditions are wrapped in function because, they are read when the nikita action is declared, but are only evaluated at runtime.
+Nikita actions are not evaluated at declaration time.
+Due to its async nature, JavaScript functions are not executed sequentially.
+A variable declared inside an aysnchronous function  will not be available in its parent context and will generate w runtime error.
 So for example if I write
 
 ```js
 var isItTrue = null
 require('nikita')
 .system.execute({
-  cmd: 'tellmethefuture.sh'
+  cmd: 'echo -n isItTrue'
 }, function(err, executed, stdout, stderr){
   if(err) throw err
-  isIsTrue = (stdout ==="itistrue")
+  isItTrue = (stdout === "itistrue")
 })
 .file({
   source: '/tmp/file',
@@ -270,19 +272,16 @@ require('nikita')
 })
 ```
 
-The second action will never be executed, because `isItTrue` is `null` 
-and so the condition is not verified.
-
-whereas if you write:
+The second action will never be executed, because `isItTrue` is `null` and so the condition is not verified. Indeed, most of the time, the conditions are wrapped in function because they are read when the nikita action is declared, but are only evaluated at runtime:
 
 ```js
 var isItTrue = null
 require('nikita')
 .system.execute({
-  cmd: 'tellmethefuture.sh'
+  cmd: 'echo -n isItTrue'
 }, function(err, executed, stdout, stderr){
   if(err) throw err
-  isIsTrue = (stdout ==="itistrue")
+  isItTrue = (stdout === "itistrue")
 })
 .file({
   source: '/tmp/file',
@@ -292,5 +291,3 @@ require('nikita')
   console.log(err || "File written")
 })
 ```
-regarding of the output provided by the `tellmethefuture.sh` program
-the file might be written as expected.
