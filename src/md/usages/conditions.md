@@ -33,7 +33,7 @@ require('nikita')
     })
   }
 }, function(err, status){
-  console.log(err || "File written")
+  console.info(err || "File written")
 })
 ```
 
@@ -68,7 +68,7 @@ require('nikita')
     function(options, callback){ callback(null, true) }
   ]
 }, function(err, status){
-  console.log(err || "File written")
+  console.info(err || "File written")
 })
 ```
 
@@ -104,7 +104,7 @@ require('nikita')
     function(options, callback){ callback(null, false) }
   ]
 }, function(err, status){
-  console.log(err || "File written")
+  console.info(err || "File written")
 })
 ```
   
@@ -124,7 +124,7 @@ require('nikita')
   content: 'hello',
   if_exec: '[ -f "/tmp/flag" ]'
 }, function(err, status){
-  console.log(err || "File written")
+  console.info(err || "File written")
 })
 ```
   
@@ -156,7 +156,7 @@ require('nikita')
     "/tmp/flag"
   ]
 }, function(err, status){
-  console.log(err || "File written")
+  console.info(err || "File written")
 })
 ```
 
@@ -185,7 +185,7 @@ require('nikita')
     "/tmp/file"
   ]
 }, function(err, status){
-  console.log(err || "File written")
+  console.info(err || "File written")
 })
 ```
 
@@ -203,7 +203,7 @@ require('nikita')
   exec: 'if [ -f "/tmp/flag" ]; then touch "/tmp/file"; fi',
   should_not_exist: "/tmp/file"
 }, function(err, status){
-  console.log(err || "File written")
+  console.info(err || "File written")
 })
 ```
 
@@ -228,8 +228,8 @@ You can run a single condition by calling the function of the same name:
 ```js
 require("nikita/lib/misc/conditions").if_exec(
   { ssh: ssh, if_exec: "exit 1" },
-  function() { console.log("succeed") },
-  function() { console.log("skipped") }
+  function() { console.info("succeed") },
+  function() { console.info("skipped") }
 )
 ```
 
@@ -241,9 +241,9 @@ require('nikita/lib/misc/conditions').all({
   if_exists: __filename
   header: 'Condition Test'
 }, function(){
-  console.log('Conditions succeed')
+  console.info('Conditions succeed')
 }, function(err){
-  console.log('Conditions failed or pass an error')
+  console.info('Conditions failed or pass an error')
 })
 ```
 

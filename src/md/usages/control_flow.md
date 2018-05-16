@@ -74,7 +74,7 @@ require('nikita')
 })
 .system.execute('rm /tmp/hello-*')
 .next(function(err, status){
-  console.log(status === true)
+  console.info(status === true)
 })
 ```
 
@@ -90,11 +90,11 @@ require('nikita')
   })
   .system.execute('rm /tmp/hello-*')
   .next(function(err, status){
-    console.log(status === true)
+    console.info(status === true)
   })
 })
 .next(function(err, status){
-  console.log('We are done')
+  console.info('We are done')
 })
 ```
 
@@ -107,11 +107,11 @@ require('nikita')
   content: 'hello'
 })
 .next(function(err, status){
-  console.log('Step 1:', err || status)
+  console.info('Step 1:', err || status)
 })
 .system.execute('rm /tmp/hello-*')
 .next(function(err, status){
-  console.log('Step 2:', err || status)
+  console.info('Step 2:', err || status)
 })
 ```
 
@@ -125,15 +125,15 @@ require('nikita')
   cmd: "node -v"
 }, function(err, status, stdout){
   if(stdout.split('.')[0] != 'v1'){
-    console.log('That was a century ago');
+    console.info('That was a century ago');
     @end()
   }
 })
 .call(function(){
-  console.log('This will not be executed if version is 1')
+  console.info('This will not be executed if version is 1')
 })
 .next(function(){
-  console.log('Done');
+  console.info('Done');
 });
 ```
 

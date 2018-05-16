@@ -16,7 +16,7 @@ require('nikita')
 .next(function(){
   console.log('This is executed after');
 });
-console.log('This is executed before');
+console.info('This is executed before');
 ```
 
 ## The `call` action
@@ -44,10 +44,10 @@ Error are simply thrown and catched by Nikita. There is no direct way to modify 
 ```js
 require('nikita')
 .call(function(){
-  console.log('a first sync user function');
+  console.info('a first sync user function');
 });
 .call({type: 'sync'}, function(options){
-  console.log('a second ' + options.type + ' user function');
+  console.info('a second ' + options.type + ' user function');
 });
 ```
 
@@ -94,13 +94,13 @@ If any, errors are passed to the callback as its first argument. Otherwise, a va
 require('nikita')
 .call(function(options, callback){
   setImmediate(function(){
-    console.log('An async user function indicating a change in state');
+    console.info('An async user function indicating a change in state');
     callback(null, true);
   });
 })
 .call(function(options, callback){
   setImmediate(function(){
-    console.log('An async user function passing an error');
+    console.info('An async user function passing an error');
     callback(Error('CatchMe'));
   });
 });

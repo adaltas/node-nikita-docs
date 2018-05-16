@@ -100,7 +100,7 @@ connect({
     target: '/tmp/a_file'
   }, function(err, written){
     if(err) return process.exit(1);
-    console.log('File written: '+written);
+    console.info('File written: '+written);
     ssh.end();
   });
 });
@@ -119,7 +119,7 @@ mecano.touch({
   target: '/tmp/a_file'
 }, function(err, written){
   if(err) return process.exit(1);
-  console.log('File written: '+written);
+  console.info('File written: '+written);
   ssh.end();
 });
 ```

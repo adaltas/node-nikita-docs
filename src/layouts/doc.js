@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-import 'typeface-roboto'
+// import 'typeface-roboto'
 
 import { withStyles } from 'material-ui/styles'
 import withRoot from './mui/withRoot'
@@ -107,7 +107,7 @@ AppFrame.propTypes = {
 export default withRoot(withStyles(styles, { withTheme: true })(AppFrame))
 
 export const pageQuery = graphql`
-  query drawerMenu {
+  query DocLayout {
     site: site {
       siteMetadata {
         title

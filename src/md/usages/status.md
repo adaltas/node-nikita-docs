@@ -72,7 +72,7 @@ require('nikita')
 })
 // Then status is false
 .next(function(err, status){
-  console.log(status == false)
+  console.info(status == false)
 })
 // One actions is true
 .call(function(options, callback){
@@ -86,6 +86,6 @@ require('nikita')
 })
 // Then status is true
 .next(function(err, status){
-  console.log(status == true)
+  console.info(status == true)
 })
 ```

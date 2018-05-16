@@ -15,7 +15,7 @@ import withRoot from '../mui/withRoot'
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: "#000"
+    backgroundColor: 'rgba(44, 46, 67, 1)',
   },
   rootInner: theme.mixins.gutters({
     ...theme.typography,

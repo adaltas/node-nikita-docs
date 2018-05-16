@@ -60,6 +60,11 @@ const styles = theme => ({
       color: '#2D2D2D',
       textAlign: 'justify'
     },
+    '& :not(pre) > code[class*="language-"]': {
+      padding: '.2em .3em 0 .3em',
+      background: '#E6E6E6',
+      color: '#000',
+    }
   }),
   [theme.breakpoints.up(900 + theme.spacing.unit * 6)]: {
     content: {

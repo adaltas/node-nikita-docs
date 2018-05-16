@@ -57,7 +57,7 @@ require('./redis/install');
 require('nikita')
 .redis.install({port: 6379})
 .then(function(err, status){
-  console.log(err || 'Redis Installation '+(status?'+':'-'));
+  console.info(err || 'Redis Installation '+(status?'+':'-'));
 })
 ```
 
@@ -102,7 +102,7 @@ require('./redis/install')(n);
 n
 .redis.install({port: 6379})
 .then(function(err, status){
-  console.log(err || 'Redis Installation '+(status?'+':'-'));
+  console.info(err || 'Redis Installation '+(status?'+':'-'));
 })
 ```
 
@@ -150,7 +150,7 @@ With an action object:
 ```javascript
 nikita.register('third_action', {
   relax: true,
-  handler: function(options){ console.log(options.relax) }
+  handler: function(options){ console.info(options.relax) }
 })
 nikita.third_action(options);
 ```
@@ -160,7 +160,7 @@ With a namespace and an action object:
 ```javascript
 nikita.register(['fourth', 'action'], {
   relax: true,
-  handler: function(options){ console.log(options.relax) }
+  handler: function(options){ console.info(options.relax) }
 })
 nikita.fourth.action(options);
 ```

@@ -13,10 +13,10 @@ A call to Nikita is composed of three elements:
   Information transmitted to the callback
 * handler   
   Function handling the heavy duty
-* callback
-  Option notification function
+* callback   
+  Optional notification function
 
-We call this an action.
+We call this an action. At the end, it is an JavaScript object with the mandatory property "handler" and optional properties including "callback".
 
 ## Options
 
@@ -39,7 +39,7 @@ nikita
   // More code goes here
 });
 .execute('whoami', function(err, status, stdout){
-  console.log('I am ' + stdout.trim());
+  console.info('I am ' + stdout.trim());
 })
 ```
 
@@ -67,7 +67,7 @@ Options passed on Nikita instantiation are available globally to every handlers.
 ```js
 nikita({my_option: 'my value'})
 .call(function(options){
-  console.log('Value of "my_option" is ' + options.my_option);
+  console.info('Value of "my_option" is ' + options.my_option);
 });
 ```
 

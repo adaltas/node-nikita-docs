@@ -142,7 +142,7 @@ An action is the basic building block in Nikita. It is basically a function, cal
 {
   retry: 2,
   handler: function(options){
-    console.log(options.retry)
+    console.info(options.retry)
   }
 }
 ```
@@ -154,7 +154,7 @@ As you can see, options are made available as the first argument of the handler.
   retry: 2,
   handler: function(options, callback){
     setImmediate(function(){
-      console.log(options.retry)
+      console.info(options.retry)
     })
   }
 }
@@ -169,7 +169,7 @@ nikita = require('nikita')
 nikita.call({
   retry: 2,
   handler: function(options){
-    console.log(options.retry)
+    console.info(options.retry)
   }
 })
 ```
@@ -181,7 +181,7 @@ nikita = require('nikita')
 nikita.call({
   retry: 2
 }, function(options){
-    console.log(options.retry)
+    console.info(options.retry)
   }
 )
 ```
@@ -197,11 +197,11 @@ nikita = require('nikita')
 nikita.call(
   // Handler
   function(options){
-    console.log(options.retry)
+    console.info(options.retry)
   },
   // Callback
   function(err, status){
-    console.log(err ? err.message : status)
+    console.info(err ? err.message : status)
   }
 )
 ```
@@ -378,7 +378,7 @@ require('nikita')
   source: 'http://download.redis.io/redis-stable.tar.gz',
   target: 'cache/redis-stable.tar.gz'
 }, function(err, status){
-  console.log('Redis download', err ? 'x' : status ? '✔' : '-')
+  console.info('Redis download', err ? 'x' : status ? '✔' : '-')
 })
 ```
 
@@ -396,7 +396,7 @@ require('nikita')
   make
   `
 }, function(err, status){
-  console.log('Redis installation', err ? 'x' : status ? '✔' : '-')
+  console.info('Redis installation', err ? 'x' : status ? '✔' : '-')
 })
 ```
 
@@ -417,7 +417,7 @@ require('nikita')
     'port': 6379
   }
 }, function(err, status){
-  console.log('Redis configuration', err ? 'x' : status ? '✔' : '-')
+  console.info('Redis configuration', err ? 'x' : status ? '✔' : '-')
 })
 ```
 
@@ -425,7 +425,7 @@ require('nikita')
 
 *Learn how to activate pretty reporting and detailed logs written in Markdown.*
 
-So far, the action callback was used to catch errors and status and to manually output a message to the user with the `console.log` JavaScript function. This process is automatically managed by the `nikita.log.cli` action. A message is printed to the user terminal whenever the `header` option is present:
+So far, the action callback was used to catch errors and status and to manually output a message to the user with the `console.info` JavaScript function. This process is automatically managed by the `nikita.log.cli` action. A message is printed to the user terminal whenever the `header` option is present:
 
 ```js
 require('nikita')
@@ -481,7 +481,7 @@ require('nikita')
   nohup ./src/redis-server conf/redis.conf &
   `
 }, function(err, status){
-  console.log('Redis startup', err ? 'x' : status ? '✔' : '-')
+  console.info('Redis startup', err ? 'x' : status ? '✔' : '-')
 })
 ```
 
@@ -498,10 +498,10 @@ require('nikita')
   shy: true,
   cmd: './src/redis-cli -h 127.0.0.1 -p 6379 ping | grep PONG'
 }, function(err, status){
-  console.log('Redis check', err ? 'x' : status ? '✔' : '-')
+  console.info('Redis check', err ? 'x' : status ? '✔' : '-')
 })
 .next(function(err, status){
-  console.log('Finished', err ? 'x' : status ? '✔' : '-')
+  console.info('Finished', err ? 'x' : status ? '✔' : '-')
 })
 ```
 
@@ -524,7 +524,7 @@ require('nikita')
 })
 // Call one or multiple actions
 .call(function(){
-  console.log('Business as usual')
+  console.info('Business as usual')
 })
 // Close the SSH Connection
 .ssh.close()

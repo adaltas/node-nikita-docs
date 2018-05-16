@@ -1,69 +1,66 @@
 import React from 'react'
+import ReactDom from 'react-dom'
 import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
 import 'typeface-roboto'
+
 import { withStyles } from 'material-ui/styles'
-import classNames from 'classnames'
-import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar'
-import Typography from 'material-ui/Typography'
+import withRoot from './mui/withRoot'
+import NProgressBar from '@material-ui/docs/NProgressBar'
+import Hidden from 'material-ui/Hidden'
 import Button from 'material-ui/Button'
-import IconButton from 'material-ui/IconButton'
-import MenuIcon from 'material-ui-icons/Menu'
+import Typography from 'material-ui/Typography'
 
+import AppBar from './doc/AppBar'
+import Content from './doc/Content'
 import Drawer from './doc/Drawer'
+import Footer from './doc/Footer'
+import Menu from './doc/Menu'
+// Gatsby
+import Link from 'gatsby-link'
+// Particles
+import Particles from 'react-particles-js';
+import particles from './home/particles';
+import mw from './home/milky-way.jpg'
 
-import './index.css'
-
-const drawerWidth = 240
-
-const styles = {
+const styles = theme => ({
   root: {
-    width: '100%',
-  },
-  appFrame: {
-    position: 'relative',
     display: 'flex',
+    alignItems: 'stretch',
+    minHeight: '100vh',
     width: '100%',
-    height: '100%',
-  },
-  appBar: {
-    position: 'absolute',
-    // zIndex: theme.zIndex.navDrawer + 1,
-    // transition: theme.transitions.create(['width', 'margin'], {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen,
-    // }),
-  },
-  flex: {
-    flex: 1,
-  },
-  drawer: {
-    width: drawerWidth,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  appBarShift: {
-    marginLeft: `${drawerWidth}px`,
-    width: `calc(100% - ${drawerWidth}px)`,
-    // transition: theme.transitions.create(['margin', 'width'], {
-    //   easing: theme.transitions.easing.easeOut,
-    //   duration: theme.transitions.duration.enteringScreen,
-    // }),
   },
   content: {
-    margin: '0 auto',
-    maxWidth: 960,
-    padding: '0px 1.0875rem 1.45rem',
+    width: '100%',
   },
-  contentShift: {
-    marginLeft: drawerWidth,
+  particles: {
+    // backgroundColor: '#42456C !important',
+    background: `no-repeat url(${mw})`,
+    backgroundSize: `cover`,
+    position: 'relative',
   },
-}
+  particles_content: {
+    ...theme.typography,
+    bottom: '6%',
+    width: '100%',
+    position: 'absolute',
+    textAlign: 'center',
+    color: '#ffffff',
+    '& h1': {
+      fontSize: '6rem',
+    }
+  },
+  button: {
+    color: '#ffffff',
+    margin: theme.spacing.unit,
+    // background: 'rgba(255, 255, 255, .2)'
+    background: 'rgba(0, 0, 0, .5)',
+    '&:hover': {
+      background: 'rgba(0, 0, 0, .5)',
+    }
+  }
+})
 
 const Header = ({ classes, onClickMenu, menuOpen }) => (
   <AppBar
@@ -91,56 +88,175 @@ Header.propTypes = {
 }
 const HeaderStyled = withStyles(styles)(Header)
 
-class TemplateWrapper extends React.Component {
+class AppFrame extends React.Component {
   state = {
-    menuOpen: false,
+    drawerOpen: false,
+    particlesHeight: 0,
   }
-  onClickMenu = () => {
-    this.setState({ menuOpen: !this.state.menuOpen })
+  componentDidMount() {
+    this.setState({particlesHeight: window.innerHeight})
   }
   render() {
-    const { children, classes } = this.props
-    const menu = this.props.data.allMarkdownRemark.edges.map(edge => {
-      return { path: edge.node.fields.slug, title: edge.node.frontmatter.title }
+    const { children, classes, data } = this.props
+    const { particlesHeight } = this.state
+    const site = data.site.siteMetadata
+    const menuAbout = this.props.data.about.edges.map(edge => {
+      return edge.node
     })
+    const menuUsages = this.props.data.usages.edges.map(edge => {
+      return edge.node
+    })
+    const menuOptions = this.props.data.options.edges.map(edge => {
+      return edge.node
+    })
+    const onToggle = () => {
+      this.setState({ drawerOpen: !this.state.drawerOpen })
+    }
     return (
-      <div className={classes.appFrame}>
+      <div className={classes.root}>
+        <NProgressBar />
         <Helmet
-          title="Gatsby Default Starter"
+          title={site.title}
           meta={[
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
           ]}
         />
-        <HeaderStyled
-          onClickMenu={this.onClickMenu}
-          menuOpen={this.state.menuOpen}
-        />
-        <Drawer
-          className={classes.drawer}
-          open={this.state.menuOpen}
-          menu={menu}
-        />
-        <main
-          className={classNames(classes.content, {
-            [classes.contentShift]: this.state.menuOpen,
-          })}
-        >
-          {children()}
-        </main>
+        <Hidden mdUp>
+          <AppBar
+            ref={(child) => { this.appbar = child }}
+            onMenuClick={onToggle}
+            site={site}
+            opacity={.3}
+          />
+        </Hidden>
+        <Hidden smDown implementation="css">
+          <AppBar
+            ref={(child) => { this.appbar = child }}
+            open={this.state.drawerOpen}
+            onMenuClick={onToggle}
+            site={site}
+            opacity={.3}
+          />
+        </Hidden>
+        <Hidden mdUp>
+          <Drawer
+            open={!this.state.drawerOpen}
+            onClickShadow={onToggle}
+            variant="temporary"
+          >
+            <Menu title="Learning" menu={menuAbout} path={this.state.path} />
+            <Menu title="Usages" menu={menuUsages} path={this.state.path} />
+            <Menu title="Options" menu={menuOptions} path={this.state.path} />
+          </Drawer>
+        </Hidden>
+        <Hidden smDown implementation="css">
+          <Drawer
+            open={this.state.drawerOpen}
+            onClickShadow={onToggle}
+            variant="persistent"
+          >
+            <Menu title="Learning" menu={menuAbout} path={this.state.path} />
+            <Menu title="Usages" menu={menuUsages} path={this.state.path} />
+            <Menu title="Options" menu={menuOptions} path={this.state.path} />
+          </Drawer>
+        </Hidden>
+        <div ref='content' className={classes.content}>
+          <div className={classes.particles}>
+            { particlesHeight &&
+              <Particles 
+                ref="particles"
+                params={particles}
+                styles={classes.particles_canvas}
+                height={particlesHeight}
+              />
+            }
+            <span className={classes.particles_content}>
+              <h1>Nikita</h1>
+              <p>{'Write, test, version, configure and deploy in Node.js'}</p>
+              <Link to="/">
+                <Button size="large" variant="outlined" className={classes.button}>
+                  {'Get started'}
+                </Button>
+              </Link>
+              <Link to="/">
+                <Button size="large" variant="outlined" className={classes.button}>
+                  {'New in 0.x.x'}
+                </Button>
+              </Link>
+            </span>
+          </div>
+          <Content>{children()}</Content>
+          <Footer site={site}></Footer>
+        </div>
       </div>
     )
   }
 }
-TemplateWrapper.propTypes = {
+AppFrame.propTypes = {
   children: PropTypes.func,
+  data: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(TemplateWrapper)
+export default withRoot(withStyles(styles, { withTheme: true })(AppFrame))
 
-export const pageQuery = graphql`
+export const query = graphql`
   query IndexQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___sort] }) {
+    site: site {
+      siteMetadata {
+        title
+        github {
+          url
+          title
+        }
+        footer {
+          title
+          content
+          links {
+            label
+            url
+          }
+        }
+      }
+    }
+    about: allMarkdownRemark(
+      filter: { fields: { slug: { regex: "/^/about//" } } }
+      sort: { order: ASC, fields: [frontmatter___sort] }
+    ) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    usages: allMarkdownRemark(
+      filter: { fields: { slug: { regex: "/^/usages//" } } }
+      sort: { order: ASC, fields: [frontmatter___sort] }
+    ) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    options: allMarkdownRemark(
+      filter: { fields: { slug: { regex: "/^/options//" } } }
+      sort: { order: ASC, fields: [frontmatter___title] }
+    ) {
       edges {
         node {
           id

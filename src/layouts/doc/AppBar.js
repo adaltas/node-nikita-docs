@@ -1,5 +1,6 @@
 // React
 import React, { Component } from 'react'
+import ReactDom from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 // Material UI
@@ -15,7 +16,7 @@ import Typography from 'material-ui/Typography'
 // Gatsby
 import Link from 'gatsby-link'
 // Local
-import header from './header.png'
+// import header from './header.png'
 import withRoot from '../mui/withRoot'
 
 const styles = theme => ({
@@ -25,10 +26,18 @@ const styles = theme => ({
     '@media print': {
       position: 'absolute',
     },
-    backgroundColor: '#000 !important',
-    backgroundImage: `url(${header}) !important`,
-    backgroundSize: 'contain !important',
-    backgroundAttachment: 'fixed !important',
+    // backgroundColor: 'unset',
+    backgroundColor: 'rgba( 44, 46, 67, 1)',
+    // Doc
+    // backgroundColor: '#000 !important',
+    // backgroundImage: `url(${header}) !important`,
+    // backgroundSize: 'contain !important',
+    // backgroundAttachment: 'fixed !important',
+    // home
+    // backgroundPosition: 'top',
+    // backgroundImage: `url(${header}) !important`,
+    // backgroundSize: '100% !important',
+    // backgroundAttachment: 'fixed !important',
   },
   appBarShift: {
     left: 250,
@@ -54,10 +63,38 @@ const styles = theme => ({
 })
 
 class MyAppBar extends Component {
+  state = {
+    toto: 50
+  }
+  static defaultProps = {
+    opacity: 1
+  }
+  componentDidMount() {
+    const {opacity} = this.props;
+    if(opacity != 1){
+      window.addEventListener('scroll', this.handleScroll.bind(this));
+      this.handleScroll();
+    }
+  }
+  componentWillUnmount() {
+    const {opacity} = this.props;
+    if(opacity != 1){
+      window.removeEventListener('scroll', this.handleScroll.bind(this));
+    }
+  }
+  handleScroll(event) {
+    const scrollTop = window.scrollY,
+        opacity = Math.max(this.props.opacity, Math.floor(Math.min(window.innerHeight, scrollTop)/4*100) / 10000),
+        appbarNode = ReactDom.findDOMNode(this.refs.appbar);
+    if(appbarNode){
+      appbarNode.style.backgroundColor = 'rgba(44, 46, 67, '+opacity+')'
+    }
+  }
   render() {
     const { classes, open, onMenuClick, site } = this.props
     return (
       <AppBar
+        ref='appbar'
         className={classNames(classes.appBar, { [classes.appBarShift]: open })}
       >
         <Toolbar>
