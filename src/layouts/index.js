@@ -21,7 +21,7 @@ import Link from 'gatsby-link'
 // Particles
 import Particles from 'react-particles-js';
 import particles from './home/particles';
-import mw from './home/milky-way.jpg'
+import mw from './home/milky-way-dark.jpg'
 
 const styles = theme => ({
   root: {
@@ -48,15 +48,22 @@ const styles = theme => ({
     color: '#ffffff',
     '& h1': {
       fontSize: '6rem',
-    }
+    },
+    '& p': {
+      fontSize: '2rem',
+      margin: '0 0 1rem',
+    },
   },
   button: {
-    color: '#ffffff',
-    margin: theme.spacing.unit,
-    // background: 'rgba(255, 255, 255, .2)'
-    background: 'rgba(0, 0, 0, .5)',
+    margin: theme.spacing.unit
+  },
+  outlined: {
+    borderColor: '#fff',
+    color: '#fff',
+    // backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     '&:hover': {
-      background: 'rgba(0, 0, 0, .5)',
+      backgroundColor: 'rgba(255, 255, 255, 0.2)',
     }
   }
 })
@@ -145,14 +152,15 @@ class AppFrame extends React.Component {
             }
             <span className={classes.particles_content}>
               <h1>Nikita</h1>
-              <p>{'Write, test, version, configure and deploy in Node.js'}</p>
+              <p>{'Automation and deployment solution for Node.js'}</p>
+              <p>{'Deploy distributed apps and infrastructure'}</p>
               <Link to="/">
-                <Button size="large" variant="outlined" className={classes.button}>
+                <Button size="large" variant="outlined" className={classes.button} classes={{outlined: classes.outlined}}>
                   {'Get started'}
                 </Button>
               </Link>
               <Link to="/">
-                <Button size="large" variant="outlined" className={classes.button}>
+                <Button size="large" variant="outlined" className={classes.button} classes={{outlined: classes.outlined}}>
                   {'New in 0.x.x'}
                 </Button>
               </Link>

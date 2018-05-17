@@ -58,6 +58,10 @@ export default {
         "src": aws,
         "width": 50,
         "height": 50
+      },{
+        "src": mariadb,
+        "width": 50,
+        "height": 50
       }]
     },
     "opacity": {
