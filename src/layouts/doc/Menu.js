@@ -1,18 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { withStyles } from 'material-ui/styles'
+import { withStyles } from '@material-ui/core/styles'
 import classNames from 'classnames'
 
 import Link from 'gatsby-link'
 
-import Collapse from 'material-ui/transitions/Collapse'
-import List from 'material-ui/List'
-import { ListItem, ListItemText } from 'material-ui/List'
-import { MenuList, MenuItem } from 'material-ui/Menu'
+import Collapse from '@material-ui/core/Collapse'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
 
-import ExpandLess from 'material-ui-icons/ExpandLess'
-import ExpandMore from 'material-ui-icons/ExpandMore'
+import ExpandLess from '@material-ui/icons/ExpandLess'
+import ExpandMore from '@material-ui/icons/ExpandMore'
 
 const styles = theme => ({
   leaf: {

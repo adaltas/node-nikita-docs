@@ -3,14 +3,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 // Material UI
-import { withStyles } from 'material-ui/styles'
-import Paper from 'material-ui/Paper';
-import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography';
+import { withStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 // Gatsby
 import Link from 'gatsby-link'
-// Local
-import withRoot from '../mui/withRoot'
 
 const styles = theme => ({
   root: {

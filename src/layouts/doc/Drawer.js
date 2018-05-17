@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { withStyles } from 'material-ui/styles'
+import { withStyles } from '@material-ui/core/styles'
 import classNames from 'classnames'
 
-import Divider from 'material-ui/Divider'
-import Drawer from 'material-ui/Drawer'
-import Typography from 'material-ui/Typography'
+import Divider from '@material-ui/core/Divider'
+import Drawer from '@material-ui/core/Drawer'
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   toolbar: {

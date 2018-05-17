@@ -35,6 +35,7 @@ module.exports = {
     }]
   },
   plugins: [
+    `gatsby-plugin-react-next`,
     `gatsby-plugin-react-helmet`,
      {
       resolve: `gatsby-source-filesystem`,

@@ -4,20 +4,19 @@ import ReactDom from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 // Material UI
-import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar'
-import IconButton from 'material-ui/IconButton'
-import Tooltip from 'material-ui/Tooltip'
-import MenuIcon from 'material-ui-icons/Menu'
-import LightbulbOutline from 'material-ui-icons/LightbulbOutline'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import Tooltip from '@material-ui/core/Tooltip'
+import MenuIcon from '@material-ui/icons/Menu'
+import LightbulbOutline from '@material-ui/icons/LightbulbOutline'
 import Github from '@material-ui/docs/svgIcons/GitHub'
-import { withStyles } from 'material-ui/styles'
-import Typography from 'material-ui/Typography'
+import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 // Gatsby
 import Link from 'gatsby-link'
 // Local
 // import header from './header.png'
-import withRoot from '../mui/withRoot'
 
 const styles = theme => ({
   appBar: {
@@ -143,4 +142,4 @@ class MyAppBar extends Component {
   }
 }
 
-export default withRoot(withStyles(styles, { withTheme: true })(MyAppBar))
+export default withStyles(styles, { withTheme: true })(MyAppBar)

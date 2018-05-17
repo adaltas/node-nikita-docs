@@ -4,10 +4,9 @@ import Helmet from 'react-helmet'
 
 // import 'typeface-roboto'
 
-import { withStyles } from 'material-ui/styles'
+import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
-import NProgressBar from '@material-ui/docs/NProgressBar'
-import Hidden from 'material-ui/Hidden'
+import Hidden from '@material-ui/core/Hidden'
 
 import AppBar from './doc/AppBar'
 import Content from './doc/Content'
@@ -51,8 +50,7 @@ class AppFrame extends React.Component {
     }
     return (
       <div className={classes.root}>
-        <NProgressBar />
-        <Helmet
+         <Helmet
           title={site.title}
           meta={[
             { name: 'description', content: 'Sample' },

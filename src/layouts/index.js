@@ -5,12 +5,11 @@ import Helmet from 'react-helmet'
 
 import 'typeface-roboto'
 
-import { withStyles } from 'material-ui/styles'
+import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
-import NProgressBar from '@material-ui/docs/NProgressBar'
-import Hidden from 'material-ui/Hidden'
-import Button from 'material-ui/Button'
-import Typography from 'material-ui/Typography'
+import Hidden from '@material-ui/core/Hidden'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 
 import AppBar from './doc/AppBar'
 import Content from './doc/Content'
@@ -62,32 +61,6 @@ const styles = theme => ({
   }
 })
 
-const Header = ({ classes, onClickMenu, menuOpen }) => (
-  <AppBar
-    position="static"
-    className={classNames(classes.appBar, { [classes.appBarShift]: menuOpen })}
-  >
-    <Toolbar>
-      <IconButton
-        onClick={onClickMenu}
-        className={classes.menuButton}
-        color="inherit"
-        aria-label="Menu"
-      >
-        <MenuIcon />
-      </IconButton>
-      <Typography type="title" color="inherit" className={classes.flex}>
-        Title
-      </Typography>
-      <Button color="inherit">Login</Button>
-    </Toolbar>
-  </AppBar>
-)
-Header.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
-const HeaderStyled = withStyles(styles)(Header)
-
 class AppFrame extends React.Component {
   state = {
     drawerOpen: false,
@@ -114,7 +87,6 @@ class AppFrame extends React.Component {
     }
     return (
       <div className={classes.root}>
-        <NProgressBar />
         <Helmet
           title={site.title}
           meta={[
