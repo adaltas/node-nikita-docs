@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-// import 'typeface-roboto'
+import 'typeface-roboto'
 
 import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
@@ -22,11 +22,11 @@ const styles = theme => ({
     width: '100%',
   },
   content: {
-    width: '100%'
-  }
+    width: '100%',
+  },
 })
 
-class AppFrame extends React.Component {
+class Layout extends React.Component {
   state = {
     drawerOpen: true,
   }
@@ -45,12 +45,9 @@ class AppFrame extends React.Component {
     const onToggle = () => {
       this.setState({ drawerOpen: !this.state.drawerOpen })
     }
-    const updateLayoutFunction = data => {
-      // Exemple on how to pass data from the page to the layout
-    }
     return (
       <div className={classes.root}>
-         <Helmet
+        <Helmet
           title={site.title}
           meta={[
             { name: 'description', content: 'Sample' },
@@ -90,19 +87,15 @@ class AppFrame extends React.Component {
           </Drawer>
         </Hidden>
         <div className={classes.content}>
-          <Content>{children({ ...this.props, updateLayoutFunction })}</Content>
-          <Footer site={site}></Footer>
+          <Content>{children()}</Content>
+          <Footer site={site} />
         </div>
       </div>
     )
   }
 }
-AppFrame.propTypes = {
-  children: PropTypes.func,
-  data: PropTypes.object.isRequired,
-}
 
-export default withRoot(withStyles(styles, { withTheme: true })(AppFrame))
+export default withRoot(withStyles(styles, { withTheme: true })(Layout))
 
 export const pageQuery = graphql`
   query DocLayout {

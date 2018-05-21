@@ -43,8 +43,12 @@ module.exports = {
         path: `${__dirname}/src/md`,
         name: "markdown-pages",
       },
-    },
-    {
+    // },{
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/utils/typography.js`,
+    //   },
+    },{
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [

@@ -10,7 +10,7 @@ import mariadb from './logos/mariadb.svg'
 export default {
   "particles": {
     "number": {
-      "value": 20,
+      "value": 14,
       "density": {
         "enable": true,
         "value_area": 800

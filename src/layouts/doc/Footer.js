@@ -1,19 +1,16 @@
 // React
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 // Gatsby
 import Link from 'gatsby-link'
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'rgba(44, 46, 67, 1)',
+    backgroundColor: 'rgba(18, 24, 47, 1)',
   },
   rootInner: theme.mixins.gutters({
     ...theme.typography,
@@ -27,7 +24,7 @@ const styles = theme => ({
     },
   },
   subheading: {
-    color: '#CCC8C7'
+    color: '#CCC8C7',
   },
   paper: {
     padding: theme.spacing.unit * 2,
@@ -68,27 +65,32 @@ const styles = theme => ({
 class Footer extends Component {
   render() {
     const { classes, site } = this.props
-    const footer = site.footer.map( (footer, i) => {
+    const footer = site.footer.map((footer, i) => {
       const list = footer.links && (
         <ul className={classes.ul}>
-          {(footer.links.map( (link, j) => (
-            <li key={'footer'+i+'-'+j}>
-              {(
-              /^http/.test(link.url)
-              ? <a href={link.url}>{link.label}</a>
-              : <Link to={link.url}>{link.label}</Link>
+          {footer.links.map((link, j) => (
+            <li key={'footer' + i + '-' + j}>
+              {/^http/.test(link.url) ? (
+                <a href={link.url}>{link.label}</a>
+              ) : (
+                <Link to={link.url}>{link.label}</Link>
               )}
             </li>
-          )))}
+          ))}
         </ul>
       )
-      const content  = footer.content && (
-        <Typography className={classes.content} dangerouslySetInnerHTML={{ __html: footer.content }} />
+      const content = footer.content && (
+        <Typography
+          className={classes.content}
+          dangerouslySetInnerHTML={{ __html: footer.content }}
+        />
       )
       return (
-        <Grid key={'footer'+i} item xs={4}>
+        <Grid key={'footer' + i} item xs={4}>
           <div className={classes.paper}>
-            <Typography variant="subheading" className={classes.subheading}>{footer.title}</Typography>
+            <Typography variant="subheading" className={classes.subheading}>
+              {footer.title}
+            </Typography>
             {list}
             {content}
           </div>
@@ -99,7 +101,7 @@ class Footer extends Component {
       <footer className={classes.root}>
         <div className={classes.rootInner}>
           <Grid container spacing={0}>
-          {footer}
+            {footer}
           </Grid>
         </div>
       </footer>

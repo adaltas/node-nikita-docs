@@ -1,9 +1,8 @@
 import React from 'react'
-import Link from 'gatsby-link'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import Layout from '../layouts/index'
 
 const styles = theme => ({
   root: {
@@ -20,7 +19,7 @@ const styles = theme => ({
 
 class IndexPage extends React.Component {
   render() {
-    const { classes } = this.props;
+    const { classes, data } = this.props;
     return (
       <div>
         <Grid container className={classes.root} spacing={24}>

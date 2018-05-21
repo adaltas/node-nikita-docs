@@ -1,7 +1,6 @@
 // React
 import React, { Component } from 'react'
 import ReactDom from 'react-dom'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 // Material UI
 import AppBar from '@material-ui/core/AppBar'
@@ -26,7 +25,8 @@ const styles = theme => ({
       position: 'absolute',
     },
     // backgroundColor: 'unset',
-    backgroundColor: 'rgba( 44, 46, 67, 1)',
+    backgroundColor: 'rgba(18, 24, 47, 1)',
+    // backgroundColor: 'rgba( 18, 40, 47, 1)',
     // Doc
     // backgroundColor: '#000 !important',
     // backgroundImage: `url(${header}) !important`,
@@ -63,37 +63,40 @@ const styles = theme => ({
 
 class MyAppBar extends Component {
   state = {
-    toto: 50
+    toto: 50,
   }
   static defaultProps = {
-    opacity: 1
+    opacity: 1,
   }
   componentDidMount() {
-    const {opacity} = this.props;
-    if(opacity != 1){
-      window.addEventListener('scroll', this.handleScroll.bind(this));
-      this.handleScroll();
+    const { opacity } = this.props
+    if (opacity !== 1) {
+      window.addEventListener('scroll', this.handleScroll.bind(this))
+      this.handleScroll()
     }
   }
   componentWillUnmount() {
-    const {opacity} = this.props;
-    if(opacity != 1){
-      window.removeEventListener('scroll', this.handleScroll.bind(this));
+    const { opacity } = this.props
+    if (opacity !== 1) {
+      window.removeEventListener('scroll', this.handleScroll.bind(this))
     }
   }
   handleScroll(event) {
     const scrollTop = window.scrollY,
-        opacity = Math.max(this.props.opacity, Math.floor(Math.min(window.innerHeight, scrollTop)/4*100) / 10000),
-        appbarNode = ReactDom.findDOMNode(this.refs.appbar);
-    if(appbarNode){
-      appbarNode.style.backgroundColor = 'rgba(44, 46, 67, '+opacity+')'
+      opacity = Math.max(
+        this.props.opacity,
+        Math.floor(Math.min(window.innerHeight, scrollTop) / 4 * 100) / 10000
+      ),
+      appbarNode = ReactDom.findDOMNode(this.refs.appbar)
+    if (appbarNode) {
+      appbarNode.style.backgroundColor = 'rgba(18, 24, 47, ' + opacity + ')'
     }
   }
   render() {
     const { classes, open, onMenuClick, site } = this.props
     return (
       <AppBar
-        ref='appbar'
+        ref="appbar"
         className={classNames(classes.appBar, { [classes.appBarShift]: open })}
       >
         <Toolbar>

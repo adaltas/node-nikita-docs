@@ -1,12 +1,13 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import Layout from '../layouts/doc'
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
   updateLayoutFunction,
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds our post data
-  const { frontmatter, html } = markdownRemark
+  const { page } = data // data.markdownRemark holds our post data
+  const { frontmatter, html } = page
   // updateLayoutFunction({path: markdownRemark.fields.slug})
   return (
     <div className="blog-post-container">
@@ -27,7 +28,7 @@ export default function Template({
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
-    markdownRemark(fields: { slug: { eq: $path } }) {
+    page: markdownRemark(fields: { slug: { eq: $path } }) {
       html
       fields {
         slug

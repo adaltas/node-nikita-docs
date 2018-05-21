@@ -32,14 +32,13 @@ const styles = theme => ({
 
 class AppDrawer extends React.Component {
   render() {
-    const { classes, open, menu, children, onClickShadow, variant } = this.props
+    const { classes, open, children, onClickShadow, variant } = this.props
     return (
       <Drawer
         className={classNames(classes.drawer, { [classes.drawerShift]: open })}
         classes={{
           paper: classNames(classes.paper),
         }}
-        onClose={null}
         variant={variant}
         anchor="left"
         open={open}

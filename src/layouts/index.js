@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDom from 'react-dom'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
@@ -9,7 +8,6 @@ import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
 import Hidden from '@material-ui/core/Hidden'
 import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 
 import AppBar from './doc/AppBar'
 import Content from './doc/Content'
@@ -19,8 +17,8 @@ import Menu from './doc/Menu'
 // Gatsby
 import Link from 'gatsby-link'
 // Particles
-import Particles from 'react-particles-js';
-import particles from './home/particles';
+import Particles from 'react-particles-js'
+import particles from './home/particles'
 import mw from './home/milky-way-dark.jpg'
 
 const styles = theme => ({
@@ -55,7 +53,7 @@ const styles = theme => ({
     },
   },
   button: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
   },
   outlined: {
     borderColor: '#fff',
@@ -64,17 +62,17 @@ const styles = theme => ({
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
     '&:hover': {
       backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    }
-  }
+    },
+  },
 })
 
-class AppFrame extends React.Component {
+class Layout extends React.Component {
   state = {
     drawerOpen: false,
     particlesHeight: 0,
   }
   componentDidMount() {
-    this.setState({particlesHeight: window.innerHeight})
+    this.setState({ particlesHeight: window.innerHeight })
   }
   render() {
     const { children, classes, data } = this.props
@@ -103,19 +101,23 @@ class AppFrame extends React.Component {
         />
         <Hidden mdUp>
           <AppBar
-            ref={(child) => { this.appbar = child }}
+            ref={child => {
+              this.appbar = child
+            }}
             onMenuClick={onToggle}
             site={site}
-            opacity={.3}
+            opacity={0.3}
           />
         </Hidden>
         <Hidden smDown implementation="css">
           <AppBar
-            ref={(child) => { this.appbar = child }}
+            ref={child => {
+              this.appbar = child
+            }}
             open={this.state.drawerOpen}
             onMenuClick={onToggle}
             site={site}
-            opacity={.3}
+            opacity={0.3}
           />
         </Hidden>
         <Hidden mdUp>
@@ -140,45 +142,51 @@ class AppFrame extends React.Component {
             <Menu title="Options" menu={menuOptions} path={this.state.path} />
           </Drawer>
         </Hidden>
-        <div ref='content' className={classes.content}>
+        <div ref="content" className={classes.content}>
           <div className={classes.particles}>
-            { particlesHeight &&
-              <Particles 
+            {particlesHeight && (
+              <Particles
                 ref="particles"
                 params={particles}
                 styles={classes.particles_canvas}
                 height={particlesHeight}
               />
-            }
+            )}
             <span className={classes.particles_content}>
               <h1>Nikita</h1>
               <p>{'Automation and deployment solution for Node.js'}</p>
               <p>{'Deploy distributed apps and infrastructure'}</p>
               <Link to="/">
-                <Button size="large" variant="outlined" className={classes.button} classes={{outlined: classes.outlined}}>
+                <Button
+                  size="large"
+                  variant="outlined"
+                  className={classes.button}
+                  classes={{ outlined: classes.outlined }}
+                >
                   {'Get started'}
                 </Button>
               </Link>
               <Link to="/">
-                <Button size="large" variant="outlined" className={classes.button} classes={{outlined: classes.outlined}}>
+                <Button
+                  size="large"
+                  variant="outlined"
+                  className={classes.button}
+                  classes={{ outlined: classes.outlined }}
+                >
                   {'New in 0.x.x'}
                 </Button>
               </Link>
             </span>
           </div>
           <Content>{children()}</Content>
-          <Footer site={site}></Footer>
+          <Footer site={site} />
         </div>
       </div>
     )
   }
 }
-AppFrame.propTypes = {
-  children: PropTypes.func,
-  data: PropTypes.object.isRequired,
-}
 
-export default withRoot(withStyles(styles, { withTheme: true })(AppFrame))
+export default withRoot(withStyles(styles, { withTheme: true })(Layout))
 
 export const query = graphql`
   query IndexQuery {

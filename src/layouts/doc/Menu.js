@@ -7,11 +7,9 @@ import classNames from 'classnames'
 import Link from 'gatsby-link'
 
 import Collapse from '@material-ui/core/Collapse'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
+import MenuItem from '@material-ui/core/MenuItem'
+import MenuList from '@material-ui/core/MenuList'
 
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
@@ -31,9 +29,9 @@ const styles = theme => ({
     '&:active': {
       color: theme.link.normal,
     },
-    '& $primary, & $icon': {
-      color: theme.link.normal,
-    },
+    // '& $primary, & $icon': {
+    //   color: theme.link.normal,
+    // },
   },
   active: {
     color: theme.link.normal,
@@ -46,7 +44,7 @@ class NestedList extends React.Component {
     this.setState({ open: !this.state.open })
   }
   render() {
-    const { classes, theme, title, menu } = this.props
+    const { classes, title, menu } = this.props
     const pages = menu.map(page => (
       <MenuItem
         component={Link}
@@ -74,9 +72,6 @@ class NestedList extends React.Component {
       </div>
     )
   }
-}
-NestedList.propTypes = {
-  classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles, { withTheme: true })(NestedList)
