@@ -23,6 +23,7 @@ const styles = theme => ({
   },
   content: {
     width: '100%',
+    paddingTop: 60,
   },
 })
 

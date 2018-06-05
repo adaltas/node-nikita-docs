@@ -9,7 +9,7 @@ require('prismjs/themes/prism-tomorrow.css')
 const styles = theme => ({
   content: theme.mixins.gutters({
     ...theme.typography,
-    paddingTop: 100,
+    paddingTop: 40,
     flex: '1 1 100%',
     maxWidth: '100%',
     margin: '0 auto 3rem',
