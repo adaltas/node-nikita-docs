@@ -9,21 +9,24 @@ Nikita is an automation and deployment orchestration solution for distributed ap
 
 ## Software Automation
 
-Automation is central when operating and scaling complex systems. The more servers and services there are to manage, the harder it gets for a team to fulfill their operational duties without proper automation in place. Automation is a workforce multiplier that helps teams to manage ever growing infrastructure but it can do much more :
+Automation is central when operating and scaling complex systems. The more servers and services there are to manage, the harder it gets for a team to fulfill their operational duties without proper automation in place. Automation is a workforce multiplier that helps teams to manage ever growing infrastructure but it can do much more:
 
-* Confidence
+* Confidence   
   Provide the accuracy that no human could achieve.
-* Consistency
+* Consistency   
   Repeat the same process multiple times on multiple nodes with the same results.
-* Refinement
+* Refinement   
  Extend functionalities and improve reliability by incrementing the coverage of your processes.
-* Center of focus
+* Center of focus   
   Liberate the minds and save time for more important engineering workforce.
-* Productivity
-  Make processes faster with less room for mistakes
-* Enable more safeguards over time in all stages of a process
-* Empower users to do otherwise difficult or impossible tasks in a self-service manner
-* Accelerate deployments for both users and system administrators, with shorter and fewer interruptions
+* Productivity   
+  Make processes faster with less room for mistakes.
+* Continuous enhancement   
+  Enable more safeguards over time in all stages of a process.
+* Empowerment   
+  Empower users to do otherwise difficult or impossible tasks in a self-service manner.
+* Time to Market   
+  Accelerate deployments for both users and system administrators, with shorter and fewer interruptions.
 
 ## Helping developers and operators
 
@@ -34,6 +37,8 @@ A constant objective has been to optimize and facilitate the classical developer
 * Test   
   We carefully crafted a comprehensive and intuitive API. The code is easy is comprehend and it looks good. It make the writing of tests a pleasant experience, we hope you will agree with us.
 * Versioning   
-  In Nikita, everything is a file. No database to persist state, no agent to deploy and monitor, no server to expose any API. You could implement such dependencies but you are not forced to. Because everything is a file, it is very easy to version you source code in code and rely on NPM, the Node.js package manager, to package your code and its release versions.
-
-, version, configure and deploy.
+  In Nikita, everything is a file. No database to persist states, no agent to deploy and monitor, no server to expose any API. You could implement such dependencies but you are not forced to. Because everything is a file, it is very easy to version you source code with any SCM (Git, Mercurial...) and rely on NPM, the Node.js package manager, to package your code and its release versions.
+* Configure   
+  Passing configuration properties, whether it comes from a flat file, process argument or a database, is super easy, just pass a vanilla JavaScript object to your actions.
+* Deploy   
+  Because it only rely on files, deploy Nikita is easy. It can fully rely on version control and is quickly integrated to a CI/CD workflow if requested. There is nothing to install on the target machine and Nikita itself will not install anything either for its own purpose. On the host machine, only the Node.js engine to execute the code and NPM to deploy its dependency are expected.

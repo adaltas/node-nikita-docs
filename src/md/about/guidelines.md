@@ -2,7 +2,7 @@
 title: Guidelines
 description: 
 sort: 4
-community: yes
+community: true
 ---
 
 # Project Guideline

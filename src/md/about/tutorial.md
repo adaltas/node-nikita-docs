@@ -686,7 +686,7 @@ File "./lib/check.js"
 
 ```js
 module.exports = function(){
-  // Get option from config if present
+  // Get options from config if present
   if(options.config){
     if(options.config.host){ options.host = options.config.host }
     if(options.config.port){ options.port = options.config.port }
