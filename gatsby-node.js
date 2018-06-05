@@ -44,6 +44,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               title
               layout
               redirects
+              disabled
             }
             fields {
               slug
