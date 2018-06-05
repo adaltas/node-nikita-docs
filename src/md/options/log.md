@@ -1,15 +1,6 @@
 ---
 title: Option "log"
+disabled: true
 ---
 
-Tutorial start now
-
-Tutorial start now
-
-Tutorial start now
-
-Tutorial start now
-
-Tutorial start now
-
-Tutorial start now
+Page is disabled because log is probably going to disappear in its current form.
