@@ -249,10 +249,9 @@ require('nikita/lib/misc/conditions').all({
 
 ## Condition writing
 
-Nikita actions are not evaluated at declaration time.
-Due to its async nature, JavaScript functions are not executed sequentially.
-A variable declared inside an aysnchronous function  will not be available in its parent context and will generate w runtime error.
-So for example if I write
+Nikita actions are not evaluated at declaration time. Due to the Node.js async nature, JavaScript functions are not always executed sequentially. A variable declared inside an asynchronous function  will not be available in its parent context and could generate a runtime error.
+
+For example, the second action executed below will not pass its condition `if: isItTrue` and the file will not written.
 
 ```js
 var isItTrue = null
@@ -263,16 +262,15 @@ require('nikita')
   if(err) throw err
   isItTrue = (stdout === "itistrue")
 })
-.file({
+.file.touch({
   source: '/tmp/file',
-  content: 'hello',
   if: isItTrue
 }, function(err, status){
-  console.log(err || "File written")
+  console.log(err || "Is file touched:" + status)
 })
 ```
 
-The second action will never be executed, because `isItTrue` is `null` and so the condition is not verified. Indeed, most of the time, the conditions are wrapped in function because they are read when the nikita action is declared, but are only evaluated at runtime:
+ This is because `isItTrue` is `null` and so the condition is not verified. Indeed, most of the time, the conditions are wrapped in function because they are read when the nikita action is declared, but are only evaluated at runtime:
 
 ```js
 var isItTrue = null
