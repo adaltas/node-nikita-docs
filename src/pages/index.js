@@ -67,7 +67,7 @@ class IndexPage extends React.Component {
             <h3>{'Reporting'}</h3>
             <p>
               {
-                'Advanced report can be optained by providing a log function, listening to stdout and stderr streams, generating diffs and backups.'
+                'Advanced reports can be optained by providing a log function, listening to stdout and stderr streams, generating diffs and backups.'
               }
             </p>
           </Grid>
@@ -83,7 +83,7 @@ class IndexPage extends React.Component {
             <h3>{'Suppport'}</h3>
             <p>
               {
-                'The package is open sourced with one of the least restrictive license. Involve yourself or contributes to open source development by sending push request or requesting commercial support offered by Adaltas.'
+                'The package is open sourced with one of the least restrictive license. Involve yourself and contributes to open source development by sending push requests or requesting commercial support offered by Adaltas.'
               }
             </p>
           </Grid>
