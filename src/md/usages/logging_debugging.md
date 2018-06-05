@@ -9,7 +9,7 @@ Nikita provides multiple mechanisms to report, dive into the logs and intercept 
 
 ## Quick debugging
 
-While developing, you can use the "debug" options to get visual and detailed information. The option will be passed 
+While developing, you can use the ["debug" options](/options/debug) to get visual and detailed information. This option is ["cascade" option](/options/cascade) and, as such, will be passed to every child actions.
 
 The option can be provided directly to the action in trouble:
 
@@ -50,7 +50,7 @@ require('nikita')
 .ssh.open{header: 'SSH Open', host: node.ip}
 ```
 
-It will print short messages to the standart output (stdin) and detailed information inside the "./log" folder which will be created in case it does not yet exist.
+It will print short messages to the standart output (`stdout`) and detailed information inside the "./log" folder which will be created in case it does not yet exist.
 
 ## Deep dive into logging
 
@@ -65,34 +65,11 @@ Nikita provide a flexible architecture to intercept information. Users can write
 
 ### Listening to events
 
-At the heart of this architecture is the Events API. A Nikita session extends the [native Node.js Events API](https://nodejs.org/api/events.html). You may use the `on(event, handler)` function to catch event, extending the `nikita.log.stream` action is much easier by passing a string writer and a serializer function. Also, it is not recommended to call the `emit` function directly but instead your are encourage to call the `nikita.log` function which will associate the "type" property with the event of the same name.
-
-The events available provide you with multiple entry point to catch information across the entire life cycle:
-
-- `lifecycle`   
-  It indicates execution directives which may occur at different steps of the action life cycle. it uses the "message" property as a code to define what is happening. The following values exists: "disabled_false", "disabled_true", "conditions_passed", "conditions_failed".
-- `text`   
-  It is the default event when the function `log` is called.
-- `header`   
-  It is throw before an action is called if it contains the "header" option.
-- `stdin`   
-  It represents some stdin content, used for example by the `system.execute` action to provide the script being executed.
-- `diff`   
-  It represents content modification, used for example by the `file` action.
-- `handled`   
-  It is emitted once an handler has completed, whether it failed or was successful, and before calling the callback.
-- `stdout_stream`   
-  It is a stream input reader receiving stdout content, used for example by the `system.execute` action to send stdout output from the executed command.
-- `stderr_stream`   
-  It is a stream input reader receiving stderr content, used for example by the `system.execute` action to send stderr output from the executed command.
-- `end`   
-  It is throw if no error occured when no more action are scheduled for execution.
-- `error`   
-  It is thrown when an error occurred.
+At the heart of this architecture is the [Nikita Events API](/usages/events). A Nikita session extends the [native Node.js Events API](https://nodejs.org/api/events.html). All other mechanisms presented below rely on the events emitted inside the Nikita session. You may use the `on(event, handler)` function to catch event but extending the `nikita.log.stream` action is probably a bit easier, expecting a string writer and a serializer function.
 
 ### Extending `nikita.log.stream`
 
-It is a low level action which is not meant to be used directly. More specific actions could used the `nikita.log.stream` action by providing a [Node.js writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) and a serializer object.
+It is a low level action which is meant to be extended and not to be called directly. More specific actions could used the `nikita.log.stream` action by providing a [Node.js writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) and a serializer object.
 
 The serializer is an object which must be implemented by the user. Keys correspond to the event types and their associated value is a function which must be implemented to serialize the information.
 
