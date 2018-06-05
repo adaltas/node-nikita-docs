@@ -10,7 +10,7 @@ export default function Template({
   const { frontmatter, html } = page
   // updateLayoutFunction({path: markdownRemark.fields.slug})
   return (
-    <div className="blog-post-container">
+    <div>
       <Helmet
         title={'NIKITA - ' + frontmatter.title}
         meta={[
@@ -18,10 +18,7 @@ export default function Template({
           { name: 'keywords', content: frontmatter.keywords },
         ]}
       />
-      <div
-        className="blog-post-content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   )
 }
