@@ -148,41 +148,42 @@ function(err, status, stdout){
 ## Condition and status
 
 One way of controlling your flow is to mix [conditions](/usages/conditions) and [status](/usages/status).
-Indeed nikita has in its api, the status function which:
-  - if take no parameters return the gloabal status of previous actions
+Nikita expose the [status](/usages/status) function
 
-  ```js
-  require('nikita')
-  .system.execute({
-    cmd: "cat nodejs | grep node" //return status true
-  })
-  .system.execute({
-    code_skipped: 1,
-    cmd: "cat nodejs | grep toto" //return status false
-  })
-  .call({if: function(){ this.status() }
-    , function(){
-      console.log('This will be executed if "nodejs" contains "node" or "toto"')
-  })
-  ```
+When called without any parameter, it returns the status of all the previous sibling actions:
+
+```js
+require('nikita')
+.system.execute({
+  code_skipped: 1,
+  cmd: 'cat catchme | grep missyou' // Generate status false
+})
+.system.execute({
+  cmd: 'cat catchme | grep catchme' // Generate status true
+})
+.call({
+  if: function(){ this.status() }
+}, function(){
+  console.log('The condition passed because the second sibling action activate the status')
+})
+```
   
-  - if take one parameter (a number `n`) return the status of the `current-n` action executed
-  
-  ```js
-  require('nikita')
-  .system.execute({
-    cmd: "cat nodejs | grep node" //return status true
-  })
-  .system.execute({
-    code_skipped: 1,
-    cmd: "cat nodejs | grep toto" //return status false
-  })
-  .call(
-    {if: function{this.status(-2)}
-  , function(){
-    console.log('This will be executed if "nodejs" contains "node" so yes :)')
-  })
-  ```
-  
-  as previously said in [conditions](/usages/conditions) the status function should be wrapepd in a function, because the status is evaluated at runtime.
-  
+When called with one negative number, it returns the status of the `current-n` sibling action:
+
+```js
+require('nikita')
+.system.execute({
+  code_skipped: 1,
+  cmd: 'cat catchme | grep missyou' // Generate status false
+})
+.system.execute({
+  cmd: 'cat catchme | grep catchme' // Generate status true
+})
+.call({
+  if: function{ this.status(-1) }
+}, function(){
+  console.log('The condition passed because it references a sibling action which activates the status')
+})
+```
+
+Note: As mentioned in [conditions](/usages/conditions), the status function in the examples above is wrapped in a function because the status is evaluated at runtime.
