@@ -1,7 +1,5 @@
 ---
 title: Actions
-redirects:
- - /toto/lulu/
 sort: 1
 ---
 
