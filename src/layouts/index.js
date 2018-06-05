@@ -155,7 +155,7 @@ class Layout extends React.Component {
             <span className={classes.particles_content}>
               <h1>Nikita</h1>
               <p>{'Automation and deployment solution for Node.js'}</p>
-              <p>{'Deploy distributed apps and infrastructure'}</p>
+              <p>{'Deploy distributed apps and infrastructures'}</p>
               <Link to="/">
                 <Button
                   size="large"
@@ -208,7 +208,7 @@ export const query = graphql`
       }
     }
     about: allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/^/about//" } } }
+      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/about//" } } }
       sort: { order: ASC, fields: [frontmatter___sort] }
     ) {
       edges {
@@ -225,7 +225,7 @@ export const query = graphql`
       }
     }
     usages: allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/^/usages//" } } }
+      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/usages//" } } }
       sort: { order: ASC, fields: [frontmatter___sort] }
     ) {
       edges {
@@ -242,7 +242,7 @@ export const query = graphql`
       }
     }
     options: allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/^/options//" } } }
+      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/options//" } } }
       sort: { order: ASC, fields: [frontmatter___title] }
     ) {
       edges {

@@ -117,7 +117,7 @@ export const pageQuery = graphql`
       }
     }
     about: allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/^/about//" } } }
+      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/about//" } } }
       sort: { order: ASC, fields: [frontmatter___sort] }
     ) {
       edges {
@@ -134,7 +134,7 @@ export const pageQuery = graphql`
       }
     }
     usages: allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/^/usages//" } } }
+      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/usages//" } } }
       sort: { order: ASC, fields: [frontmatter___sort] }
     ) {
       edges {
@@ -151,7 +151,7 @@ export const pageQuery = graphql`
       }
     }
     options: allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/^/options//" } } }
+      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/options//" } } }
       sort: { order: ASC, fields: [frontmatter___title] }
     ) {
       edges {
