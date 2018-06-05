@@ -2,6 +2,8 @@
 title: Option "relax"
 ---
 
+# Option "relax"
+
 The "relax" option makes an action tolerant to errors.
 
 Sometimes, you wish to handle errors not in the action itself but inide the callback function or inside another sibling action executed before or after. This option is also often used conjointly with the status. For example, you may to execute a shell process and interpret non-zero codes as non fatal. 
