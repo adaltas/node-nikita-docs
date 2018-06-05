@@ -12,6 +12,9 @@ exports.onCreatePage = ({ page, boundActionCreators }) => {
       page.layout = 'blank'
       createPage(page)
     }
+    if(!page.path.match(/^\/$/)){
+      page.layout = 'doc'
+    }
     resolve();
   });
 };
