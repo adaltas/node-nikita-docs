@@ -5,14 +5,11 @@ sort: 1
 
 # Actions, options, handlers and callbacks
 
-A call to Nikita is composed of three elements:
+An action is a single unit of work in Nikita. It is made of a simple JavaScript object which we call options.
 
-* options   
-  Information transmitted to the callback
-* handler   
-  Function handling the heavy duty
-* callback   
-  Optional notification function
+The most important and only required option is the `handler` function, which does all the work. Handlers are designed to be stateless. They may itself call other actions to achieve its purpose. Such actions include writing a file in a given format, executing a shell command or controlling the life cycle of a Unix service.
+
+The handler may be completed with a `callback` function which will be called once the callback has been executed. The callback is used to be notified when an action has complete or has failed. It also provides information such as the status of the action or any additional information sent by the handler.
 
 We call this an action. At the end, it is an JavaScript object with the mandatory property "handler" and optional properties including "callback".
 

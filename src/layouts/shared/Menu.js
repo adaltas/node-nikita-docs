@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import Link from 'gatsby-link'
 
 import Collapse from '@material-ui/core/Collapse'
+import Button from '@material-ui/core/Button'
 import ListItemText from '@material-ui/core/ListItemText'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
@@ -38,30 +39,34 @@ const styles = theme => ({
   },
 })
 
-class NestedList extends React.Component {
+class Menu extends React.Component {
   state = { open: true }
   handleClick = () => {
     this.setState({ open: !this.state.open })
   }
   render() {
-    const { classes, title, menu } = this.props
-    const pages = menu.map(page => (
+    const { classes, menu } = this.props
+    const pages = Object.values(menu.children)
+    .sort( page => page.data.sort )
+    .map( page => (
       <MenuItem
         component={Link}
-        key={page.fields.slug}
-        to={page.fields.slug}
+        key={page.data.slug}
+        to={page.data.slug}
         activeClassName={classes.active}
         className={classNames(classes.link, classes.leaf)}
       >
-        {page.frontmatter.title}
+        {page.data.title}
       </MenuItem>
     ))
     return (
       <div>
         <MenuList component="nav">
-          <MenuItem component="div" onClick={this.handleClick}>
-            <ListItemText primary={title} />
-            {this.state.open ? <ExpandLess /> : <ExpandMore />}
+          <MenuItem component="div">
+            <ListItemText primary={menu.data.title} onClick={this.handleClick} />
+            <Button size="small" onClick={this.handleClick}>
+              {this.state.open ? <ExpandLess/> : <ExpandMore/>}
+            </Button>
           </MenuItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <MenuList component="ul" disablePadding>
@@ -74,4 +79,4 @@ class NestedList extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(NestedList)
+export default withStyles(styles, { withTheme: true })(Menu)

@@ -12,7 +12,7 @@ import AppBar from './doc/AppBar'
 import Content from './doc/Content'
 import Drawer from './doc/Drawer'
 import Footer from './doc/Footer'
-import Menu from './doc/Menu'
+import Menu from './shared/Menu'
 
 const styles = theme => ({
   root: {
@@ -34,18 +34,24 @@ class Layout extends React.Component {
   render() {
     const { children, classes, data } = this.props
     const site = data.site.siteMetadata
-    const menuAbout = this.props.data.about.edges.map(edge => {
-      return edge.node
-    })
-    const menuUsages = this.props.data.usages.edges.map(edge => {
-      return edge.node
-    })
-    const menuOptions = this.props.data.options.edges.map(edge => {
-      return edge.node
-    })
     const onToggle = () => {
       this.setState({ drawerOpen: !this.state.drawerOpen })
     }
+    const menu = {children: {}}
+    data.menu.edges.map( edge => {
+      const slugs = edge.node.fields.slug.split('/').filter( part => part )
+      let parentMenu = menu
+      slugs.map( slug => {
+        if( !parentMenu.children[slug] ) parentMenu.children[slug] = {data: {}, children: {}}
+        parentMenu = parentMenu.children[slug]
+      })
+      parentMenu.data = {
+        id: slugs.join('/'),
+        title: edge.node.frontmatter.title,
+        slug: edge.node.fields.slug,
+        sort: edge.node.frontmatter.sort || 99
+      }
+    })
     return (
       <div className={classes.root}>
         <Helmet
@@ -71,9 +77,9 @@ class Layout extends React.Component {
             onClickShadow={onToggle}
             variant="temporary"
           >
-            <Menu title="Learning" menu={menuAbout} path={this.state.path} />
-            <Menu title="Usages" menu={menuUsages} path={this.state.path} />
-            <Menu title="Options" menu={menuOptions} path={this.state.path} />
+            {
+              Object.values(menu.children).map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} />)
+            }
           </Drawer>
         </Hidden>
         <Hidden smDown implementation="css">
@@ -82,9 +88,9 @@ class Layout extends React.Component {
             onClickShadow={onToggle}
             variant="persistent"
           >
-            <Menu title="Learning" menu={menuAbout} path={this.state.path} />
-            <Menu title="Usages" menu={menuUsages} path={this.state.path} />
-            <Menu title="Options" menu={menuOptions} path={this.state.path} />
+            {
+              Object.values(menu.children).map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} />)
+            }
           </Drawer>
         </Hidden>
         <div className={classes.content}>
@@ -117,43 +123,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    about: allMarkdownRemark(
-      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/about//" } } }
+    menu: allMarkdownRemark(
+      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/.+/" } } }
       sort: { order: ASC, fields: [frontmatter___sort] }
-    ) {
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 250)
-          frontmatter {
-            title
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    usages: allMarkdownRemark(
-      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/usages//" } } }
-      sort: { order: ASC, fields: [frontmatter___sort] }
-    ) {
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 250)
-          frontmatter {
-            title
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    options: allMarkdownRemark(
-      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/options//" } } }
-      sort: { order: ASC, fields: [frontmatter___title] }
     ) {
       edges {
         node {
