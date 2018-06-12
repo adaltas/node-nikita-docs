@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* contribute: import guidelines
 * about: new page
 * theme: apply color in non visited links
 * menu: sort first level menu

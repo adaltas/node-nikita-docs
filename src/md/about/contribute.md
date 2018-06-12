@@ -8,7 +8,7 @@ layout: doc
 
 # Contributing
 
-Nikita is an Open Source project hosted on [GitHub](https://github.com/adaltas/node-nikita) originally written by [Adaltas](http://www.adaltas.com).
+Nikita is an open source project hosted on [GitHub](https://github.com/adaltas/node-nikita) originally written by [Adaltas](http://www.adaltas.com).
 
 Contributions go far beyond pull requests and commits. we are thrilled to receive a variety of other contributions including the following:
 
@@ -46,9 +46,23 @@ There are currently no channel dedicated to discuss about Nikita. For now, you m
 
 ## Proposing a Change
 
+### Pull requests
+
 If you intend to change the public API, or make any non-trivial changes to the implementation, we recommend [filing an issue](https://github.com/adaltas/node-nikita/issues/new). This lets us reach an agreement on your proposal before you put significant effort into it.
 
 If you’re only fixing a bug, it’s fine to submit a pull request right away but we still recommend to file an issue detailing what you’re fixing. This is helpful in case we don’t accept that specific fix but want to keep track of the issue.
+
+### Project Guideline
+
+Note, this section shall receive additional comments as we move forward.
+
+* Options are listed by alphabetical order
+* Options 1st line in the form of "* `name` (arg1, arg2)   "
+* Options arg list the accept types separated by "|", types are bool, string, obj, int, float
+* Options types can be surrounded by square braket to indicate an array, eg: "[int]"
+* Options dont list global options
+* Argument are listed in provided order
+* First two arguments must always be "err" and "status"
 
 ## Bugs
 
