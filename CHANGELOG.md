@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* particles: new osi logo
 * options: new page
 * contribute: import guidelines
 * about: new page

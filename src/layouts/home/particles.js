@@ -1,4 +1,5 @@
 import hadoop from './logos/hadoop.svg'
+import opensource from './logos/open-source.svg'
 import kubernetes from './logos/kubernetes.svg'
 import docker from './logos/docker.svg'
 import linux from './logos/linux.svg'
@@ -34,6 +35,11 @@ export default {
         height: 50,
       },
       images: [
+        {
+          src: opensource,
+          width: 50,
+          height: 50,
+        },
         {
           src: kubernetes,
           width: 50,
