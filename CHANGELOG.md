@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* conditions: add assertions
 * particles: new osi logo
 * options: new page
 * contribute: import guidelines

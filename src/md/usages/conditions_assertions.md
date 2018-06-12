@@ -1,18 +1,17 @@
 ---
-title: Conditions
+title: Conditions and assertions
 sort: 5
 state: review
 ---
 
-# Conditions
+# Conditions and assertions
 
-Conditions are a set of options available to every handlers to control their 
-execution.
+Conditions and assertions are a set of options available to every handlers to control and guaranty their execution.
 
-There are two type of conditions. Options "if\_*" and "not\_if\_*" are
-executed before a handler and all conditions must pass for the handler to be
-executed. Options "should\_*" and "should\_not\_*" are executed before a handler 
-and an error is thrown if the condition doesn't validate.
+Conditions are executed before a handler and all conditions must pass for the handler to be
+executed. The name of the options are prefixed with "if\_" and "unless\_".
+
+Assertions are executed after a handler and an error is thrown if the assertion doesn't validate. The name of hte options are prefixed with "should\_" and "should\_not\_".
 
 <!-- toc -->
 
