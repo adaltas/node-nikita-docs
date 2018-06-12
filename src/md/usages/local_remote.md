@@ -5,28 +5,21 @@ sort: 4
 
 # Local and remote (SSH) execution
 
-Nikita is designed to run either locally or remotely through SSH. The tests
-are themselves written to run in both modes.
+Nikita is designed to run transparently either locally or remotely through SSH. The tests are themselves written to run in both modes.
 
-The option "ssh" must be provided for the action to run remotely. This option
-may either be an existing SSH connection object or a configuration object.
+The option "ssh" must be provided for the action to run remotely. This option may either be an existing SSH connection object or a configuration object.
 
 ## Implementation
 
-Behind the scene, the [ssh2] package written by [Brian White][brian] is used to
-assure the SSH transport. This is a pure JavaScript package written for node.js.
+Behind the scene, the [ssh2] package written by [Brian White][brian] is used to assure the SSH transport. This is a pure JavaScript package written for node.js.
 
-To create the connection, we use the [ssh2-connect]. The package simplifies the
-creation of connection and also provides a few additionnal options.
+To create the connection, we use the [ssh2-connect]. The package simplifies the creation of connection and also provides a few additionnal options.
 
 ## Options
 
-If the ssh property is a configuration object, the options used to initialize
-the SSH connection are the one of the [ssh2] package as well as the one of
-the [ssh2-connect] package.
+If the ssh property is a configuration object, the options used to initialize the SSH connection are the one of the [ssh2] package as well as the one of the [ssh2-connect] package.
 
-Note that the [ssh2-connect] package will also camelize on property pass in
-underscore form.
+Note that the [ssh2-connect] package will also camelize on property pass in underscore form.
 
 The [ssh2] options:
 

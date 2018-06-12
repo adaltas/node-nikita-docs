@@ -5,7 +5,7 @@ sort: 8
 
 # Error handling
 
-The Nikita API implement error management by following familiar Node.js conventions. The handling of error different between synchronous and asynchronuous functions.
+Nikita implements error management by following familiar [Node.js](https://nodejs.org) conventions. The handling of errors different slightly between synchronous and asynchronous functions.
 
 ## Emitting errors
 

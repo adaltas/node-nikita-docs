@@ -30,7 +30,7 @@ nikita
 });
 ```
 
-Use the expanded object syntax to pass additional information. For exemple, we could add the retry option:
+Use the expanded object syntax to pass additional information. For example, we could add the retry option:
 
 ```js
 nikita

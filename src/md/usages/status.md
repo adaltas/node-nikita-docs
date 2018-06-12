@@ -5,11 +5,11 @@ sort: 3
 
 # Status
 
-The status is an information indicating whether an action had any impact or not. It's meaning may differ from one action to another, here are a few examples:
+The status is an information indicating whether an action had any impact or not. It's meaning may differ from one action to another. Here are a few examples:
 
-- modification of a file   
-  The status is "true" if the content or any metadata associated with the file has changed. This include the content signature, a modification time or a change of ownership.
-- modification of a property (json, yaml, ini...) file   
+- touching a file   
+  The status is "true" if the file was created or any metadata associated with the file has changed, such as the modification time or a change of ownership.
+- modification of a configuration file (json, yaml, ini...)   
   The status is true if a property or any metadata associated with the file has changed. A change of format, like prettifying the source code, will not affect the status while the addition of a new property and the modification on the value of an existing property will set the status to "true".
 - checking if a port is open
   The status is set to "true" if a server is listening on that port and "false" otherwise. This is arguably an alternative usage. In such case, it is often used conjointly with the "shy" option to ensure that parent actions don't get their status modified.

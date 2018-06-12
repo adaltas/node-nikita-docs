@@ -5,7 +5,7 @@ sort: 7
 
 # Control Flow
 
-Nikita run every actions sequentially. This behavior ensures there are no concflict between two commands executed simultanously and is aligned with SSH which execute one command at a time for a given connection.
+Nikita run every actions sequentially. This behavior ensures there are no conflict between two commands executed simultaneously. Moreover, this sequential nature is aligned with SSH which execute one command at a time over a given connection.
 
 ## Sequential execution
 
@@ -117,7 +117,7 @@ require('nikita')
 
 ## Interrupting the execution
 
-At any point in time, it is possible to interrupt the execution of the current action by calling `end`. If executed on a parent action, the context will simply exit. It is common to call `end` from inside a callback, for exemple after executing a shell command:
+At any point in time, it is possible to interrupt the execution of the current action by calling `end`. If executed on a parent action, the context will simply exit. It is common to call `end` from inside a callback, for example after executing a shell command:
 
 ```js
 require('nikita')
@@ -137,7 +137,7 @@ require('nikita')
 });
 ```
 
-Note, the function `end` may receive condition options. For example, the callback function from the previous exemple could be rewritten as:
+Note, the function `end` may receive condition options. For example, the callback function from the previous example could be rewritten as:
 
 ```js
 function(err, status, stdout){

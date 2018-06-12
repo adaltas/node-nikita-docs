@@ -5,7 +5,7 @@ sort: 2
 
 # Sync and async execution
 
-The asynchrone nature of JavaScript coupled with how Nikita register new action can be a little tricky.
+The asynchronous nature of JavaScript coupled with how Nikita register new actions can be a little tricky for newcomers. Handlers can be written in both synchronous and asynchronous based on the presence of a callback argument in the handler signature. Moreover, it is possible to write a synchronous handler which schedules asynchronous actions.
 
 ## Nikita context
 
@@ -21,7 +21,7 @@ console.info('This is executed before');
 
 ## The `call` action
 
-When using the [`call`] action, handlers in Nikita are be executed synchronously or asynchronously. Detection is based on the argument signature. Here's a simple exemple with the Node.js `fs.touch` function:
+When using the [`call`] action, handlers in Nikita are be executed synchronously or asynchronously. Detection is based on the argument signature. Here's a simple example with the Node.js `fs.touch` function:
 
 ```js
 nikita
@@ -39,7 +39,7 @@ nikita
 
 Synchronous handlers take an optional "options" argument. The function signature is `handler([options])`.
 
-Error are simply thrown and catched by Nikita. There is no direct way to modify the status unless asynchronous handlers are called as children.
+Errors are simply thrown and caught by Nikita. There is no direct way to modify the status unless asynchronous handlers are called as children.
 
 ```js
 require('nikita')
@@ -51,7 +51,7 @@ require('nikita')
 });
 ```
 
-A powerfull feature of Nikita is the ability to call asynchrous handlers inside synchronous handlers. This coding style is encouraged for the sake of code readability but can get a little triky. Take the following code in consideration:
+A powerful feature of Nikita is the ability to call asynchronous handlers inside synchronous handlers. This coding style is encouraged if it favor code readability but might look like black magic at first. Take the following code into consideration:
 
 ```js
 require('nikita')
@@ -65,7 +65,7 @@ require('nikita')
 });
 ```
 
-The `execute` action is run asynchronously but it is declared inside a sync `call` action. This is made possible because calling an action in Nikita is like registering an instruction which will be scheduled later for execution. Think of it as stack in which we register an action `call`, then an action `execute` and finally an action `next`.
+The `execute` action is run asynchronously but it is declared inside a sync `call` action. This is made possible because calling an action in Nikita schedule the action for later execution. Think of it as a stack in which 3 actions will are scheduled: first an action named `call`, then a second action named `execute` and finally an action named `next`.
 
 Status of the synchronous parent handler is bubbled up from asynchronous child handlers. The rule is as follow, if any child has a status set to "true", then the parent has a status set to "true".
 
@@ -88,7 +88,7 @@ nikita
 
 Asynchronous handlers take 2 arguments. The function signature is `handler(options, callback)`.
 
-If any, errors are passed to the callback as its first argument. Otherwise, a value of null or undefined indicate a success. The second value is the status passed as boolean. Set it to "true" to indicate a change in state. Additional arguments will be transmitted to the callback function.
+If any, errors are passed to the callback as its first argument. Otherwise, a value of "null" or "undefined" indicates a success. The second value is the status passed as boolean. Set it to "true" to indicate a change in state. Additional arguments will be transmitted to the callback function.
 
 ```js
 require('nikita')
@@ -128,7 +128,7 @@ nikita
 
 ## Status
 
-Getting the right status can also be a bit confusing. It is quite common to condition the execution of an action to the a change in state. In such case, a call to `@status()` is associated to a condition such as `if`.
+Getting the right status can also be a bit confusing. It is quite common to condition the execution of an action to a change in state. In such case, a call to `@status()` is associated with a condition such as `if`.
 
 However, setting the value of the `if` property directly as the value returned `@status()` will give you the state of the current scope, probably not the one you expect.
 
@@ -146,7 +146,7 @@ require('nikita')
 });
 ```
 
-Here, the call to `this.status()` does not return the state of after the git action but the parent one which is always "false". Instead, this exemple should be rewritten with `this.status()` wrapped inside a function:
+Here, the call to `this.status()` does not return the state of the git action declared just before. Instead, it reflect the status of the parent action, which is always "false". Instead, this example should be rewritten with `this.status()` wrapped inside a function:
 
 ```js
 require('nikita')

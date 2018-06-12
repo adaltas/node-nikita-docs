@@ -5,7 +5,7 @@ sort: 1
 
 # Actions, options, handlers and callbacks
 
-An action is a single unit of work in Nikita. It is made of a simple JavaScript object which we call options.
+An action is the single unit of work in Nikita. It is made of a simple JavaScript object which we call options.
 
 The most important and only required option is the `handler` function, which does all the work. Handlers are designed to be stateless. They may itself call other actions to achieve its purpose. Such actions include writing a file in a given format, executing a shell command or controlling the life cycle of a Unix service.
 
@@ -25,7 +25,7 @@ nikita
 .system.execute('whoami');
 ```
 
-The string options is here for conveniency. Internally, the execute handler receive options as an object and search for the "argument" option. Here's an exemple:
+The string options is here for conveniency. Internally, the execute handler receive options as an object and search for the "argument" option. Here's an example:
 
 ```js
 nikita

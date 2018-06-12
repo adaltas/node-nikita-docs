@@ -65,7 +65,7 @@ require('nikita')
 
 When registered locally, the action is only available to from one Nikita instance, without modifying the global scope.
 
-For exemple, our Redis example could be re-written :
+For example, our Redis example could be re-written :
 
 ```js
 moodule.exorts = function(nikita){

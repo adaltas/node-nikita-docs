@@ -1,11 +1,11 @@
 ---
-title: Events
+title: Events API
 sort: 6
 ---
 
-# Events
+# Events API
 
-At the heart of this architecture is the Events API. A Nikita session extends the [native Node.js Events API](https://nodejs.org/api/events.html).
+A Nikita session extends the [native Node.js Events API](https://nodejs.org/api/events.html). It provides a facility to listen to internal notification and know the current state of the program.
 
 ## Usage
 
