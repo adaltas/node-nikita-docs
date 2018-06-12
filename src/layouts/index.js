@@ -133,7 +133,9 @@ class Layout extends React.Component {
             variant="temporary"
           >
             {
-              Object.values(menu.children).map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} />)
+              Object.values(menu.children)
+              .sort( (p1, p2) => p1.data.sort > p2.data.sort )
+              .map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} />)
             }
           </Drawer>
         </Hidden>
@@ -144,7 +146,9 @@ class Layout extends React.Component {
             variant="persistent"
           >
             {
-              Object.values(menu.children).map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} />)
+              Object.values(menu.children)
+              .sort( (p1, p2) => p1.data.sort > p2.data.sort )
+              .map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} />)
             }
           </Drawer>
         </Hidden>
@@ -223,6 +227,7 @@ export const query = graphql`
           excerpt(pruneLength: 250)
           frontmatter {
             title
+            sort
           }
           fields {
             slug
