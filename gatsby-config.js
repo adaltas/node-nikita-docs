@@ -9,13 +9,13 @@ module.exports = {
       title: 'Navigate',
       links: [{
         label: 'Getting started',
-        url: '1',
+        url: '/about/',
       }, {
         label: 'Usages',
-        url: '2',
+        url: '/usages/',
       }, {
         label: 'Options',
-        url: '3',
+        url: '/options/',
       }]
     },{
       title: 'Contribute',

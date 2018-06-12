@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* footer: set main section links
 * conditions: add assertions
 * particles: new osi logo
 * options: new page
