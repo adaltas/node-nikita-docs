@@ -15,7 +15,7 @@ const styles = theme => ({
     margin: '0 auto 3rem',
     '& a': {
       textDecoration: 'none',
-      '&:visited': {
+      '&:link,&:visited': {
         color: '#00618E',
       },
       '&:hover': {

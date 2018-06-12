@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* theme: apply color in non visited links
 * menu: sort first level menu
 * menu: dissociate toggle button from menu item
 * option debug: typos
