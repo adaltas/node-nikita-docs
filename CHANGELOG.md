@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* about: new page
 * theme: apply color in non visited links
 * menu: sort first level menu
 * menu: dissociate toggle button from menu item

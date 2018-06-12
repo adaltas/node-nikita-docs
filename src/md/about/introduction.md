@@ -5,11 +5,11 @@ sort: 1
 
 # Introduction
 
-Nikita is an automation and deployment orchestration solution for distributed apps and infrastructure. You will find below resources to learn more about what Nikita is about, how to learn it and how to contribute to its success.
+Automation is central when operating and scaling complex systems. The more servers and services there are to manage, the harder it gets for a team to fulfill their operational duties without proper automation in place.
 
-## Software Automation
+## Purpose
 
-Automation is central when operating and scaling complex systems. The more servers and services there are to manage, the harder it gets for a team to fulfill their operational duties without proper automation in place. Automation is a workforce multiplier that helps teams to manage ever growing infrastructure but it can do much more:
+Automation is a workforce multiplier that helps teams to manage ever growing infrastructure but it can do much more:
 
 * Confidence   
   Provide the accuracy that no human could achieve.
@@ -28,9 +28,9 @@ Automation is central when operating and scaling complex systems. The more serve
 * Time to Market   
   Accelerate deployments for both users and system administrators, with shorter and fewer interruptions.
 
-## Helping developers and operators
+## Audience
 
-A constant objective has been to optimize and facilitate the classical developer workflow of writing, testing, versioning, configuring and deploying. Here's our approach:
+A constant objective has been to optimize and facilitate the classical developer and operator workflow of writing, testing, versioning, configuring and deploying. Here's our approach:
 
 * Write   
   Writing code should be easy. We didn't want to impose a new language, particularly a templating language. We choose the Node.js plateform because JavaScript is a widely adopted language, it is not too hard to learn otherwise and its package ecosystem is rich. Internally, we choose CoffeeScript over JavaScript for its expressivity and you are free to choose whichever language you like.
