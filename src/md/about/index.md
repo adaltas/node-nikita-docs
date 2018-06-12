@@ -12,10 +12,12 @@ Nikita is designed to help developers and operators to deploy infrastructures an
 You will find across this website resources to get familiar with Nikita purposes, how to master it and how to contribute to its success.
 
 * [Introduction](/about/introduction)   
-  Learn the core concept around software automation and its promises.
+  Learn the motivations of software automation and its promises.
 * [Tutorial](/about/tutorial)   
-  Get started with Nikita core concepts.
+  Get started with Nikita core concepts from installing to using advanced concepts.
 * [License](/about/license)   
-  Read the liberal new BSD license.
+  The open source and liberal new BSD license.
+* [Changelog](/about/changelog)   
+  Detailed log history of the current and previous releases.
 * [Contribute](/about/contribute)   
-  How to help this open source project to become a success.
+  Make this project become a success. Helps us by providing feedbacks, reporting issues, improving the documentation and submitting patches.
