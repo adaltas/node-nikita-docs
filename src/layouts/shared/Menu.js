@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import classNames from 'classnames'
 
-import Link from 'gatsby-link'
+import Link, { navigateTo } from 'gatsby-link'
 
 import Collapse from '@material-ui/core/Collapse'
-import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
 import ListItemText from '@material-ui/core/ListItemText'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
 
@@ -41,13 +42,24 @@ const styles = theme => ({
 
 class Menu extends React.Component {
   state = { open: true }
-  handleClick = () => {
+  handleClick = (e) => {
+    // e.stopPropagation()
     this.setState({ open: !this.state.open })
+    console.log('state', this.state.open)
+  }
+  navigate = (to) => {
+    const { menu } = this.props
+    navigateTo({
+      pathname: menu.data.slug,
+      state: {
+        // showPage: true,
+      }
+    })
   }
   render() {
     const { classes, menu } = this.props
     const pages = Object.values(menu.children)
-    .sort( page => page.data.sort )
+    .sort( (p1, p2) => p1.data.sort > p2.data.sort )
     .map( page => (
       <MenuItem
         component={Link}
@@ -62,11 +74,13 @@ class Menu extends React.Component {
     return (
       <div>
         <MenuList component="nav">
-          <MenuItem component="div">
-            <ListItemText primary={menu.data.title} onClick={this.handleClick} />
-            <Button size="small" onClick={this.handleClick}>
-              {this.state.open ? <ExpandLess/> : <ExpandMore/>}
-            </Button>
+          <MenuItem component={Link} to={menu.data.slug}>
+            <ListItemText primary={menu.data.title} onClick={this.navigate} />
+            <ListItemSecondaryAction>
+              <IconButton onClick={this.handleClick}>
+                {this.state.open ? <ExpandLess/> : <ExpandMore/>}
+              </IconButton>
+            </ListItemSecondaryAction>
           </MenuItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <MenuList component="ul" disablePadding>

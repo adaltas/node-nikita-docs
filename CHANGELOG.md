@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* menu: dissociate toggle button from menu item
 * option debug: typos
 * layout: unlimited 1st level menu
 * options attempt: new doc
