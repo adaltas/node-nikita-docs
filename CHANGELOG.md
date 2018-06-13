@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* package: use yarn
 * changelog: new page
 * footer: set main section links
 * conditions: add assertions
