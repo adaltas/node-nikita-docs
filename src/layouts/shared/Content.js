@@ -22,9 +22,6 @@ const styles = theme => ({
         textDecoration: 'none',
         color: theme.link.normal,
       },
-      // '&:active': {
-      //   color: '#000',
-      // },
     },
     '& h1': {
       color: '#777777',

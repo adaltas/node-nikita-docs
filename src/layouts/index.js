@@ -3,23 +3,19 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import 'typeface-roboto'
+import classNames from 'classnames'
 
+// Material UI
 import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
 import Hidden from '@material-ui/core/Hidden'
-import Button from '@material-ui/core/Button'
-
-import AppBar from './doc/AppBar'
-import Content from './doc/Content'
-import Drawer from './doc/Drawer'
-import Footer from './doc/Footer'
+// Local
+import AppBar from './shared/AppBar'
+import Content from './shared/Content'
+import Drawer from './shared/Drawer'
+import Footer from './shared/Footer'
 import Menu from './shared/Menu'
-// Gatsby
-import Link from 'gatsby-link'
-// Particles
-import Particles from 'react-particles-js'
-import particles from './home/particles'
-import mw from './home/milky-way-dark.jpg'
+import Intro from './home/Intro'
 
 const styles = theme => ({
   root: {
@@ -30,53 +26,16 @@ const styles = theme => ({
   },
   content: {
     width: '100%',
-  },
-  particles: {
-    // backgroundColor: '#42456C !important',
-    background: `no-repeat url(${mw})`,
-    backgroundSize: `cover`,
-    position: 'relative',
-  },
-  particles_content: {
-    ...theme.typography,
-    bottom: '6%',
-    width: '100%',
-    position: 'absolute',
-    textAlign: 'center',
-    color: '#ffffff',
-    '& h1': {
-      fontSize: '6rem',
-    },
-    '& p': {
-      fontSize: '2rem',
-      margin: '0 0 1rem',
-    },
-  },
-  button: {
-    margin: theme.spacing.unit,
-  },
-  outlined: {
-    borderColor: '#fff',
-    color: '#fff',
-    // backgroundColor: 'rgba(0, 0, 0, 0.2)',
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
-    '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    },
+    marginLeft: 0,
   },
 })
 
 class Layout extends React.Component {
   state = {
-    drawerOpen: false,
-    particlesHeight: 0,
-  }
-  componentDidMount() {
-    this.setState({ particlesHeight: window.innerHeight })
+    drawerOpen: true,
   }
   render() {
     const { children, classes, data } = this.props
-    const { particlesHeight } = this.state
     const site = data.site.siteMetadata
     const onToggle = () => {
       this.setState({ drawerOpen: !this.state.drawerOpen })
@@ -110,6 +69,7 @@ class Layout extends React.Component {
             ref={child => {
               this.appbar = child
             }}
+            open={!this.state.drawerOpen}
             onMenuClick={onToggle}
             site={site}
             opacity={0.3}
@@ -120,7 +80,7 @@ class Layout extends React.Component {
             ref={child => {
               this.appbar = child
             }}
-            open={this.state.drawerOpen}
+            open={!this.state.drawerOpen}
             onMenuClick={onToggle}
             site={site}
             opacity={0.3}
@@ -141,7 +101,7 @@ class Layout extends React.Component {
         </Hidden>
         <Hidden smDown implementation="css">
           <Drawer
-            open={this.state.drawerOpen}
+            open={!this.state.drawerOpen}
             onClickShadow={onToggle}
             variant="persistent"
           >
@@ -152,42 +112,8 @@ class Layout extends React.Component {
             }
           </Drawer>
         </Hidden>
-        <div ref="content" className={classes.content}>
-          <div className={classes.particles}>
-            {particlesHeight && (
-              <Particles
-                ref="particles"
-                params={particles}
-                styles={classes.particles_canvas}
-                height={particlesHeight}
-              />
-            )}
-            <span className={classes.particles_content}>
-              <h1>Nikita</h1>
-              <p>{'Automation and deployment solution for Node.js'}</p>
-              <p>{'Deploy distributed apps and infrastructures'}</p>
-              <Link to="/">
-                <Button
-                  size="large"
-                  variant="outlined"
-                  className={classes.button}
-                  classes={{ outlined: classes.outlined }}
-                >
-                  {'Get started'}
-                </Button>
-              </Link>
-              <Link to="/">
-                <Button
-                  size="large"
-                  variant="outlined"
-                  className={classes.button}
-                  classes={{ outlined: classes.outlined }}
-                >
-                  {'New in 0.x.x'}
-                </Button>
-              </Link>
-            </span>
-          </div>
+        <div ref="content" className={classNames(classes.content, {[classes.contentShift]: !this.state.drawerOpen})}>
+          <Intro />
           <Content>{children()}</Content>
           <Footer site={site} />
         </div>

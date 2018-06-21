@@ -3,6 +3,8 @@
 
 ## Trunk
 
+* drawer: fix in mobile
+* material-ui: fix css loading
 * package: use yarn
 * changelog: new page
 * footer: set main section links

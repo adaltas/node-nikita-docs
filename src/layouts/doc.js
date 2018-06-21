@@ -8,10 +8,10 @@ import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
 import Hidden from '@material-ui/core/Hidden'
 
-import AppBar from './doc/AppBar'
-import Content from './doc/Content'
-import Drawer from './doc/Drawer'
-import Footer from './doc/Footer'
+import AppBar from './shared/AppBar'
+import Content from './shared/Content'
+import Drawer from './shared/Drawer'
+import Footer from './shared/Footer'
 import Menu from './shared/Menu'
 
 const styles = theme => ({
@@ -62,7 +62,11 @@ class Layout extends React.Component {
           ]}
         />
         <Hidden mdUp>
-          <AppBar onMenuClick={onToggle} site={site} />
+          <AppBar
+            open={!this.state.drawerOpen}
+            onMenuClick={onToggle}
+            site={site}
+          />
         </Hidden>
         <Hidden smDown implementation="css">
           <AppBar

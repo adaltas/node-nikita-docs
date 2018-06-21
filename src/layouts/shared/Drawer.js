@@ -7,8 +7,10 @@ import classNames from 'classnames'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
+// Gatsby
+import Link from 'gatsby-link'
 
-const styles = theme => ({
+const styles = theme => (console.log(theme) || {
   toolbar: {
     ...theme.mixins.toolbar,
     paddingLeft: theme.spacing.unit * 3,
@@ -17,6 +19,10 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
+    '& a': {
+      textDecoration: 'none',
+      color: theme.typography.title.color
+    }
   },
   drawerShift: {
     width: 250,
@@ -46,9 +52,11 @@ class AppDrawer extends React.Component {
       >
         <div className={classes.nav}>
           <div className={classes.toolbar}>
-            <Typography variant="title" color="inherit">
-              Documentation
-            </Typography>
+            <Link to="/">
+              <Typography variant="title" color="inherit">
+                Documentation
+              </Typography>
+            </Link>
             <Typography variant="caption">version 0.6</Typography>
           </div>
           <Divider />

@@ -10,7 +10,7 @@ import mariadb from './logos/mariadb.svg'
 export default {
   particles: {
     number: {
-      value: 14,
+      value: 8,
       density: {
         enable: true,
         value_area: 800,
@@ -92,7 +92,7 @@ export default {
       random: false,
       anim: {
         enable: true,
-        speed: 10,
+        speed: 4,
         size_min: 40,
         sync: false,
       },
@@ -106,7 +106,7 @@ export default {
     },
     move: {
       enable: true,
-      speed: 2,
+      speed: 1,
       direction: 'none',
       random: false,
       straight: false,
@@ -141,7 +141,7 @@ export default {
       },
       bubble: {
         distance: 400,
-        size: 135.85544980141125,
+        size: 135,
         duration: 2,
         opacity: 8,
         speed: 3,

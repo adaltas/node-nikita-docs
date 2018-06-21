@@ -24,19 +24,7 @@ const styles = theme => ({
     '@media print': {
       position: 'absolute',
     },
-    // backgroundColor: 'unset',
     backgroundColor: 'rgba(18, 24, 47, 1)',
-    // backgroundColor: 'rgba( 18, 40, 47, 1)',
-    // Doc
-    // backgroundColor: '#000 !important',
-    // backgroundImage: `url(${header}) !important`,
-    // backgroundSize: 'contain !important',
-    // backgroundAttachment: 'fixed !important',
-    // home
-    // backgroundPosition: 'top',
-    // backgroundImage: `url(${header}) !important`,
-    // backgroundSize: '100% !important',
-    // backgroundAttachment: 'fixed !important',
   },
   appBarShift: {
     left: 250,
