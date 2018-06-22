@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import 'typeface-roboto'
-import classNames from 'classnames'
 
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -112,7 +111,7 @@ class Layout extends React.Component {
             }
           </Drawer>
         </Hidden>
-        <div ref="content" className={classNames(classes.content, {[classes.contentShift]: !this.state.drawerOpen})}>
+        <div ref="content" className={classes.content}>
           <Intro />
           <Content>{children()}</Content>
           <Footer site={site} />

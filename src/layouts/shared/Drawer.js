@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography'
 // Gatsby
 import Link from 'gatsby-link'
 
-const styles = theme => (console.log(theme) || {
+const styles = theme => ({
   toolbar: {
     ...theme.mixins.toolbar,
     paddingLeft: theme.spacing.unit * 3,
@@ -18,11 +18,14 @@ const styles = theme => (console.log(theme) || {
     flexGrow: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     '& a': {
       textDecoration: 'none',
       color: theme.typography.title.color
     }
+  },
+  drawer: {
+    width: 0,
   },
   drawerShift: {
     width: 250,

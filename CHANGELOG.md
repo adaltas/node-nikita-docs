@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* drawer: activate transition
 * drawer: fix in mobile
 * material-ui: fix css loading
 * package: use yarn
