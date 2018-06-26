@@ -5,6 +5,10 @@ module.exports = {
       url: 'https://github.com/adaltas/node-nikita',
       title: 'Nikita GitHub Repository'
     },
+    issues: {
+      url: 'https://github.com/adaltas/node-nikita/issues',
+      title: 'Report an issue'
+    },
     footer: [{
       title: 'Navigate',
       links: [{

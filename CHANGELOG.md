@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* AppBar: issues link
 * Menu: close temporary drawer on click
 * drawer: activate transition
 * drawer: fix in mobile

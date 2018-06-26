@@ -18,7 +18,6 @@ const styles = theme => ({
     flexGrow: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
-    // justifyContent: 'center',
     '& a': {
       textDecoration: 'none',
       color: theme.typography.title.color
@@ -60,7 +59,7 @@ class AppDrawer extends React.Component {
                 Documentation
               </Typography>
             </Link>
-            <Typography variant="caption">version 0.6</Typography>
+            <Typography variant="caption">{'version 0.6'}</Typography>
           </div>
           <Divider />
         </div>

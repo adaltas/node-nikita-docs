@@ -103,12 +103,12 @@ class MyAppBar extends Component {
           <div className={classes.grow} />
           <Tooltip
             id="appbar-theme"
-            title="Toggle light/dark theme"
+            title={site.issues.title}
             enterDelay={300}
           >
             <IconButton
               color="inherit"
-              onClick={onMenuClick}
+              href={site.issues.url}
               aria-labelledby="appbar-theme"
             >
               <LightbulbOutline />
