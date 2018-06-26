@@ -84,7 +84,7 @@ class Layout extends React.Component {
             {
               Object.values(menu.children)
               .sort( (p1, p2) => p1.data.sort > p2.data.sort )
-              .map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} />)
+              .map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} onClickLink={onToggle} />)
             }
           </Drawer>
         </Hidden>

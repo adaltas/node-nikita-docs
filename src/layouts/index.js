@@ -65,9 +65,6 @@ class Layout extends React.Component {
         />
         <Hidden mdUp>
           <AppBar
-            ref={child => {
-              this.appbar = child
-            }}
             open={!this.state.drawerOpen}
             onMenuClick={onToggle}
             site={site}
@@ -76,9 +73,6 @@ class Layout extends React.Component {
         </Hidden>
         <Hidden smDown implementation="css">
           <AppBar
-            ref={child => {
-              this.appbar = child
-            }}
             open={!this.state.drawerOpen}
             onMenuClick={onToggle}
             site={site}
@@ -94,7 +88,7 @@ class Layout extends React.Component {
             {
               Object.values(menu.children)
               .sort( (p1, p2) => p1.data.sort > p2.data.sort )
-              .map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} />)
+              .map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} onClickLink={onToggle} />)
             }
           </Drawer>
         </Hidden>

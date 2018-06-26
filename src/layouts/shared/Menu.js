@@ -45,7 +45,6 @@ class Menu extends React.Component {
   handleClick = (e) => {
     // e.stopPropagation()
     this.setState({ open: !this.state.open })
-    console.log('state', this.state.open)
   }
   navigate = (to) => {
     const { menu } = this.props
@@ -57,7 +56,7 @@ class Menu extends React.Component {
     })
   }
   render() {
-    const { classes, menu } = this.props
+    const { classes, menu, onClickLink } = this.props
     const pages = Object.values(menu.children)
     .sort( (p1, p2) => p1.data.sort > p2.data.sort )
     .map( page => (
@@ -67,6 +66,7 @@ class Menu extends React.Component {
         to={page.data.slug}
         activeClassName={classes.active}
         className={classNames(classes.link, classes.leaf)}
+        onClick={onClickLink}
       >
         {page.data.title}
       </MenuItem>
