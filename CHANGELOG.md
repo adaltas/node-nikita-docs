@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* template: remove unsued import
 * AppBar: issues link
 * Menu: close temporary drawer on click
 * drawer: activate transition
