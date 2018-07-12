@@ -93,5 +93,4 @@ require('nikita')({
     assert(my_cascaded_option, 'a value')
   })
 })
-.cascade.my_cascaded_option = true
 ```
