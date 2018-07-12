@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* retry: new page
 * once: new page
 * sleep: new page
 * handler: new page doc
