@@ -2,14 +2,32 @@
 title: Option "once"
 ---
 
-Tutorial start now
+# Option "once"
 
-Tutorial start now
+This option compare multiple actions in a Nikita session and ensure that the same actions are only executed once.
 
-Tutorial start now
+## Usage
 
-Tutorial start now
+If `true`, all the option will be compared, included values defined as function. Here is an example:
 
-Tutorial start now
+```js
+require('nikita')
+.call({once: true}, function(){
+  console.log('This message will appear only one time')
+})
+.call({once: true}, function(){
+  console.log('This message will appear only one time')
+})
+```
 
-Tutorial start now
+If a string or an array of strings, only the listed options will be compared:
+
+```js
+require('nikita')
+.call({once: ['key_a', 'key_b'], key_a: 'a', key_b: 'b'}, function(){
+  console.log('This action is called')
+})
+.call({once: ['key_a', 'key_b'], key_a: 'a', key_b: 'b'}, function(){
+  console.log('This action is never called')
+})
+```
