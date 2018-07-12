@@ -39,19 +39,20 @@ class Layout extends React.Component {
     const onToggle = () => {
       this.setState({ drawerOpen: !this.state.drawerOpen })
     }
-    const menu = {children: {}}
-    data.menu.edges.map( edge => {
-      const slugs = edge.node.fields.slug.split('/').filter( part => part )
+    const menu = { children: {} }
+    data.menu.edges.map(edge => {
+      const slugs = edge.node.fields.slug.split('/').filter(part => part)
       let parentMenu = menu
-      slugs.map( slug => {
-        if( !parentMenu.children[slug] ) parentMenu.children[slug] = {data: {}, children: {}}
+      slugs.map(slug => {
+        if (!parentMenu.children[slug])
+          parentMenu.children[slug] = { data: {}, children: {} }
         parentMenu = parentMenu.children[slug]
       })
       parentMenu.data = {
         id: slugs.join('/'),
         title: edge.node.frontmatter.title,
         slug: edge.node.fields.slug,
-        sort: edge.node.frontmatter.sort || 99
+        sort: edge.node.frontmatter.sort || 99,
       }
     })
     return (
@@ -85,11 +86,16 @@ class Layout extends React.Component {
             onClickShadow={onToggle}
             variant="temporary"
           >
-            {
-              Object.values(menu.children)
-              .sort( (p1, p2) => p1.data.sort > p2.data.sort )
-              .map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} onClickLink={onToggle} />)
-            }
+            {Object.values(menu.children)
+              .sort((p1, p2) => p1.data.sort > p2.data.sort)
+              .map(page => (
+                <Menu
+                  key={page.data.slug}
+                  menu={page}
+                  path={this.state.path}
+                  onClickLink={onToggle}
+                />
+              ))}
           </Drawer>
         </Hidden>
         <Hidden smDown implementation="css">
@@ -98,11 +104,11 @@ class Layout extends React.Component {
             onClickShadow={onToggle}
             variant="persistent"
           >
-            {
-              Object.values(menu.children)
-              .sort( (p1, p2) => p1.data.sort > p2.data.sort )
-              .map( page => <Menu key={page.data.slug} menu={page} path={this.state.path} />)
-            }
+            {Object.values(menu.children)
+              .sort((p1, p2) => p1.data.sort > p2.data.sort)
+              .map(page => (
+                <Menu key={page.data.slug} menu={page} path={this.state.path} />
+              ))}
           </Drawer>
         </Hidden>
         <div ref="content" className={classes.content}>
@@ -126,6 +132,10 @@ export const query = graphql`
           url
           title
         }
+        issues {
+          url
+          title
+        }
         footer {
           title
           content
@@ -137,7 +147,10 @@ export const query = graphql`
       }
     }
     menu: allMarkdownRemark(
-      filter: { frontmatter: { disabled: { eq: false } }, fields: { slug: { regex: "/^/.+/" } } }
+      filter: {
+        frontmatter: { disabled: { eq: false } }
+        fields: { slug: { regex: "/^/.+/" } }
+      }
       sort: { order: ASC, fields: [frontmatter___sort] }
     ) {
       edges {

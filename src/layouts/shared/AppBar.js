@@ -73,7 +73,7 @@ class MyAppBar extends Component {
     const scrollTop = window.scrollY,
       opacity = Math.max(
         this.props.opacity,
-        Math.floor(Math.min(window.innerHeight, scrollTop) / 4 * 100) / 10000
+        Math.floor((Math.min(window.innerHeight, scrollTop) / 4) * 100) / 10000
       ),
       appbarNode = ReactDom.findDOMNode(this.refs.appbar)
     if (appbarNode) {
@@ -101,11 +101,7 @@ class MyAppBar extends Component {
             </Typography>
           </Link>
           <div className={classes.grow} />
-          <Tooltip
-            id="appbar-theme"
-            title={site.issues.title}
-            enterDelay={300}
-          >
+          <Tooltip id="appbar-theme" title={site.issues.title} enterDelay={300}>
             <IconButton
               color="inherit"
               href={site.issues.url}

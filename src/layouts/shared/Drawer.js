@@ -20,8 +20,8 @@ const styles = theme => ({
     alignItems: 'flex-start',
     '& a': {
       textDecoration: 'none',
-      color: theme.typography.title.color
-    }
+      color: theme.typography.title.color,
+    },
   },
   drawer: {
     width: 0,

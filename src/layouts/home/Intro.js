@@ -1,11 +1,10 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import classnames from 'classnames';
+import classnames from 'classnames'
 // Material UI
 import Button from '@material-ui/core/Button'
-import withWidth, { isWidthDown, isWidthUp } from '@material-ui/core/withWidth';
+import withWidth, { isWidthDown, isWidthUp } from '@material-ui/core/withWidth'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 // Gatsby
@@ -37,7 +36,7 @@ const styles = theme => ({
     '& p': {
       fontSize: '1rem !important',
       margin: '0 0 .5rem !important',
-    }
+    },
   },
   content: {
     ...theme.typography,
