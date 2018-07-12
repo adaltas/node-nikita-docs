@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* handler: new page doc
 * cascade: new page
 * template: remove unsued import
 * AppBar: issues link
