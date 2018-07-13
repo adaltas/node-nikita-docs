@@ -41,7 +41,6 @@ module.exports = {
   plugins: [
     // Fix https://github.com/gatsbyjs/gatsby/issues/2049
     `gatsby-plugin-material-ui`,
-    `gatsby-plugin-react-next`,
     `gatsby-plugin-react-helmet`,
      {
       resolve: `gatsby-source-filesystem`,

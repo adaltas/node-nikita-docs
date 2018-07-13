@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
 // Gatsby
-import Link from 'gatsby-link'
+import {Link} from 'gatsby'
 
 const styles = theme => ({
   toolbar: {

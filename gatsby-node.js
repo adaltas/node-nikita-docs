@@ -4,8 +4,8 @@ const path = require("path");
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.onCreatePage = ({ page, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage } = actions;
   
   return new Promise((resolve, reject) => {
     if(page.path.match(/^\/test\//)){
@@ -19,8 +19,8 @@ exports.onCreatePage = ({ page, boundActionCreators }) => {
   });
 };
 
-exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
-  const { createNodeField } = boundActionCreators
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
   if (node.internal.type === `MarkdownRemark`) {
     node.frontmatter.disabled = !!node.frontmatter.disabled
     slug = createFilePath({ node, getNode, basePath: `pages` })
@@ -32,8 +32,8 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   }
 };
 
-exports.createPages = ({ boundActionCreators, graphql }) => {
-  const { createPage, createRedirect } = boundActionCreators;
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage, createRedirect } = actions;
   const blogPostTemplate = path.resolve(`src/templates/template.js`);
   return graphql(`
     {

@@ -8,13 +8,14 @@ import 'typeface-roboto'
 import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
 import Hidden from '@material-ui/core/Hidden'
+// Gatsby
+import { StaticQuery, graphql } from "gatsby"
 // Local
 import AppBar from './shared/AppBar'
 import Content from './shared/Content'
 import Drawer from './shared/Drawer'
 import Footer from './shared/Footer'
 import Menu from './shared/Menu'
-import Intro from './home/Intro'
 
 const styles = theme => ({
   root: {
@@ -25,7 +26,7 @@ const styles = theme => ({
   },
   content: {
     width: '100%',
-    marginLeft: 0,
+    paddingTop: 60,
   },
 })
 
@@ -69,15 +70,13 @@ class Layout extends React.Component {
             open={!this.state.drawerOpen}
             onMenuClick={onToggle}
             site={site}
-            opacity={0.3}
           />
         </Hidden>
         <Hidden smDown implementation="css">
           <AppBar
-            open={!this.state.drawerOpen}
+            open={this.state.drawerOpen}
             onMenuClick={onToggle}
             site={site}
-            opacity={0.3}
           />
         </Hidden>
         <Hidden mdUp>
@@ -100,7 +99,7 @@ class Layout extends React.Component {
         </Hidden>
         <Hidden smDown implementation="css">
           <Drawer
-            open={!this.state.drawerOpen}
+            open={this.state.drawerOpen}
             onClickShadow={onToggle}
             variant="persistent"
           >
@@ -111,9 +110,8 @@ class Layout extends React.Component {
               ))}
           </Drawer>
         </Hidden>
-        <div ref="content" className={classes.content}>
-          <Intro />
-          <Content>{children()}</Content>
+        <div className={classes.content}>
+          <Content>{children}</Content>
           <Footer site={site} />
         </div>
       </div>
@@ -121,51 +119,113 @@ class Layout extends React.Component {
   }
 }
 
-export default withRoot(withStyles(styles, { withTheme: true })(Layout))
+Layout.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+}
 
-export const query = graphql`
-  query IndexQuery {
-    site: site {
-      siteMetadata {
-        title
-        github {
-          url
-          title
-        }
-        issues {
-          url
-          title
-        }
-        footer {
-          title
-          content
-          links {
-            label
-            url
-          }
-        }
-      }
-    }
-    menu: allMarkdownRemark(
-      filter: {
-        frontmatter: { disabled: { eq: false } }
-        fields: { slug: { regex: "/^/.+/" } }
-      }
-      sort: { order: ASC, fields: [frontmatter___sort, fields___slug] }
-    ) {
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 250)
-          frontmatter {
+const WrappedLayout = (props) => (
+  <StaticQuery
+    query={graphql`
+      query DocQuery {
+        site: site {
+          siteMetadata {
             title
-            sort
+            github {
+              url
+              title
+            }
+            issues {
+              url
+              title
+            }
+            footer {
+              title
+              content
+              links {
+                label
+                url
+              }
+            }
           }
-          fields {
-            slug
+        }
+        menu: allMarkdownRemark(
+          filter: {
+            frontmatter: { disabled: { eq: false } }
+            fields: { slug: { regex: "/^/.+/" } }
+          }
+          sort: { order: ASC, fields: [frontmatter___sort, fields___slug] }
+        ) {
+          edges {
+            node {
+              id
+              excerpt(pruneLength: 250)
+              frontmatter {
+                title
+                sort
+              }
+              fields {
+                slug
+              }
+            }
           }
         }
       }
-    }
-  }
-`
+    `}
+    render={data => <Layout data={data} {...props} />}
+  />
+)
+
+export default withRoot(withStyles(styles, { withTheme: true })(WrappedLayout))
+
+// export const pageQuery = graphql`
+//   query DocLayout {
+//     site: site {
+//       siteMetadata {
+//         title
+//         github {
+//           url
+//           title
+//         }
+//         issues {
+//           url
+//           title
+//         }
+//         footer {
+//           title
+//           content
+//           links {
+//             label
+//             url
+//           }
+//         }
+//       }
+//     }
+//     menu: allMarkdownRemark(
+//       filter: {
+//         frontmatter: { disabled: { eq: false } }
+//         fields: { slug: { regex: "/^/.+/" } }
+//       }
+//       sort: { order: ASC, fields: [frontmatter___sort, fields___slug] }
+//     ) {
+//       edges {
+//         node {
+//           id
+//           excerpt(pruneLength: 250)
+//           frontmatter {
+//             title
+//             sort
+//           }
+//           fields {
+//             slug
+//           }
+//         }
+//       }
+//     }
+//   }
+// `

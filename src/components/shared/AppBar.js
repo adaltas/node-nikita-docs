@@ -13,7 +13,7 @@ import Github from '@material-ui/docs/svgIcons/GitHub'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 // Gatsby
-import Link from 'gatsby-link'
+import {Link} from 'gatsby'
 // Local
 // import header from './header.png'
 

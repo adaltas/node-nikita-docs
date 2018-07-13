@@ -8,7 +8,7 @@ import withWidth, { isWidthDown, isWidthUp } from '@material-ui/core/withWidth'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 // Gatsby
-import Link from 'gatsby-link'
+import {Link} from 'gatsby'
 // Particles
 import Particles from 'react-particles-js'
 import particles from './particles'
