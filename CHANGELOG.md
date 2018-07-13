@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* menu: order by sort then slug 
 * retry: new page
 * once: new page
 * sleep: new page

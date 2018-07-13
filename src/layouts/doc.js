@@ -146,7 +146,7 @@ export const pageQuery = graphql`
         frontmatter: { disabled: { eq: false } }
         fields: { slug: { regex: "/^/.+/" } }
       }
-      sort: { order: ASC, fields: [frontmatter___sort] }
+      sort: { order: ASC, fields: [frontmatter___sort, fields___slug] }
     ) {
       edges {
         node {
