@@ -71,7 +71,7 @@ class Footer extends Component {
           {footer.links.map((link, j) => (
             <li key={'footer' + i + '-' + j}>
               {/^http/.test(link.url) ? (
-                <a href={link.url}>{link.label}</a>
+                <a href={link.url} target="_blank">{link.label}</a>
               ) : (
                 <Link to={link.url}>{link.label}</Link>
               )}

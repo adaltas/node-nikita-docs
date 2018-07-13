@@ -13,7 +13,7 @@ import Link from 'gatsby-link'
 const styles = theme => ({
   toolbar: {
     ...theme.mixins.toolbar,
-    paddingLeft: theme.spacing.unit * 3,
+    paddingLeft: theme.spacing.unit * 2,
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -36,6 +36,19 @@ const styles = theme => ({
   paper: {
     width: 250,
   },
+  footer: {
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
+    borderTop: '1px solid rgb(200, 200, 200)',
+    marginTop: '20px',
+    padding: '20px 0',
+    backgroundColor: 'rgb(245, 245, 245)',
+    textAlign: 'justify',
+    '& a': {
+      textDecoration: 'none',
+      color: theme.typography.title.color,
+    },
+  }
 })
 
 class AppDrawer extends React.Component {
@@ -64,6 +77,10 @@ class AppDrawer extends React.Component {
           <Divider />
         </div>
         {children}
+        <Typography className={classes.footer} variant="caption">
+          Help us <a href="https://github.com/adaltas/node-nikita-docs/issues" target="_blank">improve the docs</a> by
+          fixing typos and proposing enhancements.
+        </Typography>
       </Drawer>
     )
   }
