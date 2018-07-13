@@ -56,7 +56,7 @@ Now, anyone could require the above module, let's call it "redis/install.js" and
 require('./redis/install');
 require('nikita')
 .redis.install({port: 6379})
-.then(function(err, status){
+.then(function(err, {status}){
   console.info(err || 'Redis Installation '+(status?'+':'-'));
 })
 ```
@@ -101,7 +101,7 @@ require('./redis/install')(n);
 // Execute
 n
 .redis.install({port: 6379})
-.then(function(err, status){
+.then(function(err, {status}){
   console.info(err || 'Redis Installation '+(status?'+':'-'));
 })
 ```

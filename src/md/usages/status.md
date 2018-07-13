@@ -20,7 +20,7 @@ When a handler is made of multiple child actions, the status will be `true` if a
 
 ## Sync versus Async handlers
 
-Asynchronous handlers receive a callback. On complete, the callback may be call with an error argument followed by the status as its second argument.
+Asynchronous handlers receive a callback. Once completed, the callback may be called with an error argument followed by an object containing the status property as its second argument or a Boolean value for its shorter version.
 
 ```javascript
 require('nikita')
@@ -28,21 +28,23 @@ require('nikita')
 .call(function(options, callback){
   // Do something
   setImmediate(function(){
-    // Set the status to "true"
+    // Set the status to "true", default is "false"
     callback(null, true)
   });
 }, function(err, status){
   // Status is now "true"
+  assert(status, true)
 })
 ```
-Synchronuous handlers doesn't modify the status directly. Instead it is derived from its child handlers.
+
+Synchronuous handlers don't modify the status directly. Instead, the status is derived from its child handlers.
 
 ```javascript
 require('nikita')
 // Parent action
 .call(function(){
   // Do something
-}, function(err, status){
+}, function(err, {status}){
   // By default, status is "false"
 })
 // Parent action
@@ -52,8 +54,9 @@ require('nikita')
     // Set the status to "true"
     callback(null, true)
   })
-}, function(err, status){
+}, function(err, {status}){
   // Status is now "true"
+  assert(status, true)
 })
 ```
 
@@ -71,8 +74,8 @@ require('nikita')
   callback(null, false)
 })
 // Then status is false
-.next(function(err, status){
-  console.info(status == false)
+.next(function(err, {status}){
+  assert(status, false)
 })
 // One actions is true
 .call(function(options, callback){
@@ -85,7 +88,7 @@ require('nikita')
   callback(null, false)
 })
 // Then status is true
-.next(function(err, status){
-  console.info(status == true)
+.next(function(err, {status}){
+  assert(status, true)
 })
 ```

@@ -190,7 +190,7 @@ nikita.call({
 
 A second function is interpreted as a method to get notified when your handler has completed. It will be converted  to an object with the `callback` property. We call it the action callback.
 
-The action callback is called with two arguments, an error if any and the action status.
+The action callback is called with two arguments, an error if any and an object containing information from the handler.
 
 ```js
 nikita = require('nikita')
@@ -200,7 +200,7 @@ nikita.call(
     console.info(options.retry)
   },
   // Callback
-  function(err, status){
+  function(err, {status}){
     console.info(err ? err.message : status)
   }
 )
@@ -232,11 +232,11 @@ touch = function(options, callback){
 // New Nikita session
 nikita
 // First time calling touch
-.call(touch, function(err, status){
+.call(touch, function(err, {status}){
   assert.equal(status, true)
 })
 // Second time calling touch
-.call(touch, function(err, status){
+.call(touch, function(err, {status}){
   assert.equal(status, false)
 })
 ```
@@ -274,7 +274,7 @@ touch = require('./lib/touch')
 // New Nikita session
 nikita
 // Calling touch module
-.call(touch, function(err, status){
+.call(touch, function(err, {status}){
   assert.equal(status, true)
 })
 ```
@@ -288,7 +288,7 @@ assert = require('assert')
 // New Nikita session
 nikita
 // Calling touch module
-.call('./lib/touch', function(err, status){
+.call('./lib/touch', function(err, {status}){
   assert.equal(status, true)
 })
 ```
@@ -322,7 +322,7 @@ nikita = require('nikita')
 // New Nikita session
 nikita
 // Calling touch module
-.call('./lib/touch', {'target': './touchme'}, function(err, status){
+.call('./lib/touch', {'target': './touchme'}, function(err, {status}){
   assert(status, true)
 })
 ```
@@ -340,7 +340,7 @@ nikita.registry.register({'touch': './lib/touch'})
 // New Nikita session
 nikita
 // Calling the touch action
-.touch({'target': './touchme'}, function(err, status){
+.touch({'target': './touchme'}, function(err, {status}){
   assert(status, true)
 })
 ```
@@ -377,7 +377,7 @@ require('nikita')
 .file.download({
   source: 'http://download.redis.io/redis-stable.tar.gz',
   target: 'cache/redis-stable.tar.gz'
-}, function(err, status){
+}, function(err, {status}){
   console.info('Redis download', err ? 'x' : status ? '✔' : '-')
 })
 ```
@@ -395,7 +395,7 @@ require('nikita')
   cd redis-stable
   make
   `
-}, function(err, status){
+}, function(err, {status}){
   console.info('Redis installation', err ? 'x' : status ? '✔' : '-')
 })
 ```
@@ -416,7 +416,7 @@ require('nikita')
     'protected-mode': 'yes',
     'port': 6379
   }
-}, function(err, status){
+}, function(err, {status}){
   console.info('Redis configuration', err ? 'x' : status ? '✔' : '-')
 })
 ```
@@ -480,7 +480,7 @@ require('nikita')
   # Otherwise start the server
   nohup ./src/redis-server conf/redis.conf &
   `
-}, function(err, status){
+}, function(err, {status}){
   console.info('Redis startup', err ? 'x' : status ? '✔' : '-')
 })
 ```
@@ -497,10 +497,10 @@ require('nikita')
   relax: true,
   shy: true,
   cmd: './src/redis-cli -h 127.0.0.1 -p 6379 ping | grep PONG'
-}, function(err, status){
+}, function(err, {status}){
   console.info('Redis check', err ? 'x' : status ? '✔' : '-')
 })
-.next(function(err, status){
+.next(function(err, {status}){
   console.info('Finished', err ? 'x' : status ? '✔' : '-')
 })
 ```

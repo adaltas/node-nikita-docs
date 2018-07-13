@@ -24,7 +24,7 @@ require('nikita')
   nohup /path/to/redis/redis-server /path/to/redis/redis.conf &
   `
 })
-.next(function(err, status){
+.next(function(err, {status}){
   // Status is only affected by the `system.execute` action
   console.info(err ? err.message : 'Redis started: ' + status)
 })
@@ -39,13 +39,13 @@ require('nikita')
 // Shy is desactivated, default behavior
 .call({shy: false}, function(_, callback){
   callback(null, true)
-}, function(err, status){
+}, function(err, {status}){
   assert(status, true)
 })
 // Shy is activated
 .call({shy: true}, function(_, callback){
   callback(null, true)
-}, function(err, status){
+}, function(err, {status}){
   assert(status, true)
 })
 ```
@@ -64,7 +64,7 @@ require('nikita')
   unless: function(){ this.status(-1) },
   cmd: 'nohup /path/to/redis/redis-server /path/to/redis/redis.conf &'
 })
-.next(function(err, status){
+.next(function(err, {status}){
   console.info(err ? err.message : 'Redis started: ' + status)
 })
 ```

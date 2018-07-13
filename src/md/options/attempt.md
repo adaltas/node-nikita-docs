@@ -19,7 +19,7 @@ require('nikita')
 }, function(options, callback){
   throw Error 'Oups' unless options.attempt is 0
   callbac(null, true)
-}, function(err, status){
+}, function(err, {status}){
   // The first attempt failed with an error
   assert(err, undefined)
   // but the second attempt succeed

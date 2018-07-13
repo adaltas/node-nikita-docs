@@ -73,7 +73,7 @@ require('nikita')
   content: 'hello'
 })
 .system.execute('rm /tmp/hello-*')
-.next(function(err, status){
+.next(function(err, {status}){
   console.info(status === true)
 })
 ```
@@ -89,11 +89,11 @@ require('nikita')
     content: 'hello'
   })
   .system.execute('rm /tmp/hello-*')
-  .next(function(err, status){
+  .next(function(err, {status}){
     console.info(status === true)
   })
 })
-.next(function(err, status){
+.next(function(err, {status}){
   console.info('We are done')
 })
 ```
@@ -106,11 +106,11 @@ require('nikita')
   target: '/tmp/hello-'+Date.now(),
   content: 'hello'
 })
-.next(function(err, status){
+.next(function(err, {status}){
   console.info('Step 1:', err || status)
 })
 .system.execute('rm /tmp/hello-*')
-.next(function(err, status){
+.next(function(err, {status}){
   console.info('Step 2:', err || status)
 })
 ```
@@ -123,7 +123,7 @@ At any point in time, it is possible to interrupt the execution of the current a
 require('nikita')
 .execute({
   cmd: "node -v"
-}, function(err, status, stdout){
+}, function(err, {stdout}){
   if(stdout.split('.')[0] != 'v1'){
     console.info('That was a century ago');
     @end()
@@ -140,7 +140,7 @@ require('nikita')
 Note, the function `end` may receive condition options. For example, the callback function from the previous example could be rewritten as:
 
 ```js
-function(err, status, stdout){
+function(err, {stdout}){
   @end({if: stdout.split('.')[0] != 'v1'})
 }
 ```

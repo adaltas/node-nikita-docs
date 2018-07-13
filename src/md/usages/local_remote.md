@@ -91,9 +91,9 @@ connect({
   nikita.touch({
     ssh: ssh
     target: '/tmp/a_file'
-  }, function(err, written){
+  }, function(err, {status}){
     if(err) return process.exit(1);
-    console.info('File written: '+written);
+    console.info('File written: ' + status);
     ssh.end();
   });
 });
@@ -110,9 +110,9 @@ mecano.touch({
     private_key_path: '~/.ssh/id_rsa'
   },
   target: '/tmp/a_file'
-}, function(err, written){
+}, function(err, {status}){
   if(err) return process.exit(1);
-  console.info('File written: '+written);
+  console.info('File written: ' + status);
   ssh.end();
 });
 ```

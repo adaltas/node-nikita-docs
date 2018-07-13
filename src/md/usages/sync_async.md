@@ -7,9 +7,9 @@ sort: 2
 
 The asynchronous nature of JavaScript coupled with how Nikita register new actions can be a little tricky for newcomers. Handlers can be written in both synchronous and asynchronous based on the presence of a callback argument in the handler signature. Moreover, it is possible to write a synchronous handler which schedules asynchronous actions.
 
-## Nikita context
+## Nikita session
 
-A Nikita context is run asynchronously. Thus, any function declared after Nikita will be executed before Nikita has completed:
+A Nikita session is run asynchronously. Thus, any function declared after Nikita will be executed before Nikita has completed:
 
 ```js
 require('nikita')
@@ -21,15 +21,15 @@ console.info('This is executed before');
 
 ## The `call` action
 
-When using the [`call`] action, handlers in Nikita are be executed synchronously or asynchronously. Detection is based on the argument signature. Here's a simple example with the Node.js `fs.touch` function:
+When using the [`call` action](/usages/call), [handler functions](/options/handler) in Nikita are executed synchronously or asynchronously. Detection is based on the argument signature. Here's a simple example with the Node.js `fs.touch` function:
 
 ```js
-nikita
-# Synchronous call
+require('nikita')
+// Synchronous call
 .call({file: '/tmp/sync_file'}, function(options){
   fs.touchSync(options.file);
 })
-# Asynchronous call
+// Asynchronous call
 .call file: '/tmp/async_file', function(options, callback){
   fs.touch(options.file, callback;
 )};
@@ -72,13 +72,13 @@ Status of the synchronous parent handler is bubbled up from asynchronous child h
 ```js
 nikita
 .call(function(){
-  @call(function(options, callback){
+  this.call(function(options, callback){
     callback(null, false);
   });
-  @call(function(options, callback){
+  this.call(function(options, callback){
     callback(null, true);
   });
-}, function(err, status){
+}, function(err, {status}){
   if(err){ throw err; }
   assert(status === true);
 });
@@ -111,16 +111,16 @@ require('nikita')
 Synchronous and asynchronous handlers can also be registered inside a callback. Back to the Node.js `fs.touch` function, an example is:
 
 ```js
-nikita
-.file.wait({target: '/tmp/wait_for_file'}, function(err, status){
-  # Entering the callback
+require('nikita')
+.file.wait({target: '/tmp/wait_for_file'}, function(err, {status}){
+  // Entering the callback
   if(err){ return throw err };
-  # Synchronous call
-  @call({file: '/tmp/sync_file'}, function(options){
+  // Synchronous call
+  this.call({file: '/tmp/sync_file'}, function(options){
     fs.touchSync(options.file);
   })
-  # Asynchronous call
-  @call file: '/tmp/async_file', function(options, callback){
+  // Asynchronous call
+  this.call file: '/tmp/async_file', function(options, callback){
     fs.touch(options.file, callback;
   )};
 })
@@ -128,9 +128,9 @@ nikita
 
 ## Status
 
-Getting the right status can also be a bit confusing. It is quite common to condition the execution of an action to a change in state. In such case, a call to `@status()` is associated with a condition such as `if`.
+Getting the right status can also be a bit confusing. It is quite common to condition the execution of an action to a change in state. In such case, a call to `this.status()` is associated with a condition such as `if`.
 
-However, setting the value of the `if` property directly as the value returned `@status()` will give you the state of the current scope, probably not the one you expect.
+However, setting the value of the `if` property directly as the value returned `this.status()` will give you the state of the current scope, probably not the one you expect.
 
 ```js
 require('nikita')
@@ -138,12 +138,12 @@ require('nikita')
   this.tools.git({
     source: "http://localhost/my_component.git",
     target: "/tmp/my_component"
-  });
+  })
   this.execute({
     if: this.status(),
     cmd: '/tmp/my_component/bin/restart.sh'
-  });
-});
+  })
+})
 ```
 
 Here, the call to `this.status()` does not return the state of the git action declared just before. Instead, it reflect the status of the parent action, which is always "false". Instead, this example should be rewritten with `this.status()` wrapped inside a function:
@@ -154,12 +154,10 @@ require('nikita')
   this.tools.git({
     source: "http://localhost/my_component.git",
     target: "/tmp/my_component"
-  });
+  })
   this.execute({
     if: function(){ this.status() },
     cmd: '/tmp/my_component/bin/restart.sh'
-  });
-});
+  })
+})
 ```
-
-[`call`]: ../call

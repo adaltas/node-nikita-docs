@@ -35,7 +35,7 @@ nikita
   options.cmd = options.argument if typeof options.argument is 'string'
   // More code goes here
 });
-.execute('whoami', function(err, status, stdout){
+.execute('whoami', function(err, {stdout}){
   console.info('I am ' + stdout.trim());
 })
 ```
@@ -87,7 +87,7 @@ Callbacks provides a solution to catch error, [status] information or data relat
 nikita
 .call(function(){
   
-}, function(err, status){
+}, function(err, {status}){
   
 })
 ```

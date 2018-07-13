@@ -31,7 +31,7 @@ require('nikita')
       callback(err, stat.uid === process.getuid())
     })
   }
-}, function(err, status){
+}, function(err, {status}){
   console.info(err || "File written")
 })
 ```
@@ -66,7 +66,7 @@ require('nikita')
     function(options){ return true },
     function(options, callback){ callback(null, true) }
   ]
-}, function(err, status){
+}, function(err, {status}){
   console.info(err || "File written")
 })
 ```
@@ -102,7 +102,7 @@ require('nikita')
     function(options){ return false },
     function(options, callback){ callback(null, false) }
   ]
-}, function(err, status){
+}, function(err, {status}){
   console.info(err || "File written")
 })
 ```
@@ -122,7 +122,7 @@ require('nikita')
   source: '/tmp/file',
   content: 'hello',
   if_exec: '[ -f "/tmp/flag" ]'
-}, function(err, status){
+}, function(err, {status}){
   console.info(err || "File written")
 })
 ```
@@ -154,7 +154,7 @@ require('nikita')
     true,
     "/tmp/flag"
   ]
-}, function(err, status){
+}, function(err, {status}){
   console.info(err || "File written")
 })
 ```
@@ -183,7 +183,7 @@ require('nikita')
     "/tmp/flag",
     "/tmp/file"
   ]
-}, function(err, status){
+}, function(err, {status}){
   console.info(err || "File written")
 })
 ```
@@ -201,7 +201,7 @@ require('nikita')
 .execute({
   exec: 'if [ -f "/tmp/flag" ]; then touch "/tmp/file"; fi',
   should_not_exist: "/tmp/file"
-}, function(err, status){
+}, function(err, {status}){
   console.info(err || "File written")
 })
 ```
@@ -264,7 +264,7 @@ require('nikita')
 .file.touch({
   source: '/tmp/file',
   if: isItTrue
-}, function(err, status){
+}, function(err, {status}){
   console.log(err || "Is file touched:" + status)
 })
 ```
@@ -284,7 +284,7 @@ require('nikita')
   source: '/tmp/file',
   content: 'hello',
   if: function(){return isItTrue}
-}, function(err, status){
+}, function(err, {status}){
   console.log(err || "File written")
 })
 ```

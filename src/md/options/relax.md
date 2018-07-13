@@ -36,7 +36,7 @@ require('nikita')
   relax: true
 },function(_, callback){
   callback(null, Math.round(Math.random())
-}, function(err, status){
+}, function(err, {status}){
   if(err) throw err
   if(!status) throw Error('You are out of luck')
 })
