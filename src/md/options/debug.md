@@ -4,7 +4,7 @@ title: Option "debug"
 
 # Option "debug"
 
-The "debug" option print all logs to the standard error output (`stderr`). It provides a quick and convenient solution to understand the various actions called, what they do and in which order.
+The "debug" option print detailed logs to the standard error output (`stderr`). It provides a quick and convenient solution to understand the various actions called, what they do and in which order.
 
 The information thrown by the "debug" option is similar to the output of the [logging](/usages/loging_debugging) facilities. So when shall debugging be used versus logging? The "debug" option is for developers who wish to punctually see on their shell what going on inside. The logging facilities are meant to be constantly activated.
 
