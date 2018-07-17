@@ -21,36 +21,10 @@ npm install
 
 ## Request
 
-From [GraphQL UI](http://localhost:8000/___graphql)
-
-Query to display a page :
+Encrypt the token:
 
 ```
-query BlogPostByPath($path: String!) {
-  markdownRemark(frontmatter: { path: { eq: $path } }) {
-    html
-    frontmatter {
-      date(formatString: "MMMM DD, YYYY")
-      path
-      title
-    }
-  }
-}
-# Query variable
-{"path": "/blog/my-first-post"}
-```
-
-```
-query BlogPostByPath($slug: String!) {
-  markdownRemark(fields: { slug: { eq: $slug } } ) {
-    html
-    frontmatter {
-      date(formatString: "MMMM DD, YYYY")
-      path
-      title
-    }
-  }
-}
-# Query variable
-{"slug": "/about/contribute/"}
+docker run --rm -v $PWD:/repo -v ~/.travis:/travis \
+  andredumas/travis-ci-cli \
+  encrypt GH_TOKEN="..your..token.."
 ```
