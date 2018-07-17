@@ -1,9 +1,9 @@
+// React
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import { withStyles } from '@material-ui/core/styles'
 import classNames from 'classnames'
-
+// Material UI
+import { withStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'

@@ -1,8 +1,9 @@
+// React
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import { withStyles } from '@material-ui/core/styles'
 import classNames from 'classnames'
+// Material UI
+import { withStyles } from '@material-ui/core/styles'
 
 require('prismjs/themes/prism-tomorrow.css')
 

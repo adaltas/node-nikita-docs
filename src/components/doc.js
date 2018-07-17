@@ -1,13 +1,12 @@
+// React
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-
-import 'typeface-roboto'
-
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
 import Hidden from '@material-ui/core/Hidden'
+import 'typeface-roboto'
 // Gatsby
 import { StaticQuery, graphql } from "gatsby"
 // Local
