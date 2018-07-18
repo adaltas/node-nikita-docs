@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `/node-nikita-docs`,
   siteMetadata: {
     title: 'Nikita',
     github: {
