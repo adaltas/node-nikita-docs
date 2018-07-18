@@ -6,10 +6,10 @@ deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GH_TOKEN
-  keep-history: true
-  repo: public
+  keep-history: false
+  local-dir: public
   on:
-    branch: gh-pages
+    branch: master
 env:
   global:
   - secure: "p7M4mkBGtFevoxjTUTraG/A+AmuiortJLtGelmhBCayjDPyhYs6YKAsk6tiJDq1ECCO2KlbsdFEfzU2xv2rZ3Wh5gXyui7lMYXCMAM4WyHdF8LfNL3GipCucq/OZ/IRwLVtcxgD3J6sIBNwhNvlfM6YiR9EB/kwvKN1YOcfmnZ9CgIkRjZuWETez6ozYjwRZbGmOoUXIRMG0DImRMqcqeK0Hdc/1QY1B0WCdSywKZYL2opzXz1blKKPL6k1MmO9RMCSAlsZmzRgFOkNDLru/rmdhPsC5xiGZ2vzrG6SQ1mM92e9Gthl6ukZXX6Q5aurO2OrZ8xA6SO9LrDCmC1NH5j8B10BnQ7bYGaePNGMNa9EnjY04nTkKKlhM5QX4J1pzuxTAvD26CbpF2qXHnv9TaSWv2jFT7j9xDrEIRJcxR8XG2LsdbR7d2YNjTLFZ5By38z/jVtQEZpfDgSYNQ18+WlGod5A0mt1seSIYu4ry2hfku7N/pW0JHY8Zrpv+eGD+oyCI9MlCKRn0yKlqUQIBFNG6rPNFNl5gaBwAZp9zNRz0mjE9q52FcUArXqOqYjLx+AiOm1yXJw8CWECa9Ljfr9hZxJv16O+sEG2VzIExJkzaDQYqYEgmSAV6EDy9TlVKAoOVLkRlv6EoiGNpVKho2Mi0YbGitsO/NkFKx3GrGXw="
