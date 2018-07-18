@@ -4,7 +4,7 @@ title: Option "header"
 
 # Option "header"
 
-The "header" option is mostly used by reporting mechanism to provide a title to a group of action. It leverages the parent-child nature of Nikita to provided a notion of hierarchical header. In term of semantic, think about Nikita header like you would do with HTML header (`H1`, `H2`, `H3`, ...).
+The "header" option is mostly used as a reporting mechanism and provides a title to a group of actions. It leverages the parent-child nature of Nikita to provided a notion of hierarchical header. In term of semantic, think about Nikita header like you would do with HTML header (`H1`, `H2`, `H3`, ...).
 
 ## Usage
 
