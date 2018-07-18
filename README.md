@@ -1,6 +1,6 @@
 # Nikita Website
 
-The official Nikita website based on Gatsby and Material-UI.
+The official website of the [Nikita project](https://github.com/adaltas/node-nikita). It is written with Gatsby and Material-UI.
 
 To install and run the server:
 
@@ -13,11 +13,8 @@ npm install
 
 ## TODO
 
-* Improve inline code, currently padding is different between left and right
-* Menu generation must be generic like in GitBook, using README.md for section
-* Create homepage from the template
-* Apply footer already design in the template
 * Automatic conversion between CoffeeScript and JavaScript source code
+* Import Nikita source code written in CoffeeScript Literate.
 
 ## Request
 
