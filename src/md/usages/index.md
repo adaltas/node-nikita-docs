@@ -24,7 +24,7 @@ The topics of this section are organized by relevance, the first ones being cons
 * [Status](/usages/status/)   
   The status is an information indicating whether an action had any impact or not. It's meaning may differ from one action to another, for example: touching a file, modification of a configuration file, checking if a port is open, ...
 * [Local and remote (SSH) execution](/usages/local_remote/)   
-  Nikita is designed to run transparently either locally or remotely through SSH. The tests are themselves written to run in both modes.
+  Actions are designed to run transparently either locally or remotely through SSH. The tests are themselves written to run in both modes.
 * [Conditions and assertions](/usages/conditions_assertions/)   
   Conditions and assertions are a set of options available to every handlers to control and guaranty their execution.
 * [Debugging and Logging](/usages/logging_debugging/)   

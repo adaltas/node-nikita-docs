@@ -18,10 +18,11 @@ npm install
 
 ## Request
 
-Encrypt the token:
+Encrypt the token for Travis:
 
 ```
-docker run --rm -v $PWD:/repo -v ~/.travis:/travis \
+docker run \
+  --rm -v $PWD:/repo -v ~/.travis:/travis \
   andredumas/travis-ci-cli \
   encrypt GH_TOKEN="..your..token.."
 ```
