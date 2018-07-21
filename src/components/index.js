@@ -61,8 +61,8 @@ class Layout extends React.Component {
         <Helmet
           title={site.title}
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            { name: 'description', content: site.description },
+            { name: 'keywords', content: site.keywords },
           ]}
         />
         <Hidden mdUp>

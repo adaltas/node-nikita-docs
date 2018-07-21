@@ -2,6 +2,8 @@ module.exports = {
   pathPrefix: `/node-nikita-docs`,
   siteMetadata: {
     title: 'Nikita',
+    description: 'Automation of system deployments for applications and infrastructures.',
+    keywords: 'automation, deployment, node.js, devops, systems, applications, infrastructures',
     github: {
       url: 'https://github.com/adaltas/node-nikita',
       title: 'Nikita GitHub Repository'
