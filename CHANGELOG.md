@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* plugins: add google analytics tracking code
 * gatsby v2 migration
 * all: reflect changes in callback 2nd argument
 * menu: order by sort then slug 
