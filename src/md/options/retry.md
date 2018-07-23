@@ -15,7 +15,7 @@ The value must be an integer superior or egal to `1`. For exemple, the value 3 m
 ```js
 count = 0
 require('nikita')
-.call({ attemp: 3 }, function(){
+.call({ attempt: 3 }, function(){
   count++
 })
 .next(function(){
