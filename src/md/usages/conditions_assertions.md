@@ -257,7 +257,7 @@ var isItTrue = null
 require('nikita')
 .system.execute({
   cmd: 'echo -n isItTrue'
-}, function(err, executed, stdout, stderr){
+}, function(err, {stdout}){
   if(err) throw err
   isItTrue = (stdout === "itistrue")
 })
@@ -276,15 +276,15 @@ var isItTrue = null
 require('nikita')
 .system.execute({
   cmd: 'echo -n isItTrue'
-}, function(err, executed, stdout, stderr){
+}, function(err, {stdout}){
   if(err) throw err
   isItTrue = (stdout === "itistrue")
 })
 .file({
   source: '/tmp/file',
   content: 'hello',
-  if: function(){return isItTrue}
-}, function(err, {status}){
+  if: function(){ return isItTrue }
+}, function(err){
   console.log(err || "File written")
 })
 ```

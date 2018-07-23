@@ -74,7 +74,7 @@ require('nikita')
 })
 .system.execute('rm /tmp/hello-*')
 .next(function(err, {status}){
-  console.info(status === true)
+  assert(status, true)
 })
 ```
 
@@ -90,10 +90,10 @@ require('nikita')
   })
   .system.execute('rm /tmp/hello-*')
   .next(function(err, {status}){
-    console.info(status === true)
+    asset(status, true)
   })
 })
-.next(function(err, {status}){
+.next(function(err){
   console.info('We are done')
 })
 ```
