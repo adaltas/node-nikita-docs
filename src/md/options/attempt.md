@@ -18,7 +18,7 @@ require('nikita')
   retry: 2
 }, function(options, callback){
   throw Error 'Oups' unless options.attempt is 0
-  callbac(null, true)
+  callback(null, true)
 }, function(err, {status}){
   // The first attempt failed with an error
   assert(err, undefined)
