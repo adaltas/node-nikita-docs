@@ -5,14 +5,14 @@ sort: 3
 
 # Tutorial
 
-This tutorial covers the basics to get started and to use Nikita. It is organized in 3 phases:
+This tutorial covers the basics to get started and to use Nikita. It is organized in 4 sections:
 
 - What is nikita ?
 - Installation instructions
 - Core concepts
 - Real life example
 
-Feel free to skip the first section if you are familiar with Node.js and its ecosystem.
+Feel free to skip the second section if you are familiar with Node.js and its ecosystem.
 
 For detailed information, navigate the documentation or submit an issue if you don't find the answers to your questions. Also, if you are looking for examples, the source code is well documented and its test coverage quite complete. We highly encourage you to navigate the tests. Tests are self contained and very easy to understand. They also provide you the guaranty of reading a working code.
 
