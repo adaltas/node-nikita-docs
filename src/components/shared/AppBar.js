@@ -8,7 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import MenuIcon from '@material-ui/icons/Menu'
-import LightbulbOutline from '@material-ui/icons/LightbulbOutline'
+import BugReportOutlined from '@material-ui/icons/BugReportOutlined'
 import Github from '@material-ui/docs/svgIcons/GitHub'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -107,7 +107,7 @@ class MyAppBar extends Component {
               href={site.issues.url}
               aria-labelledby="appbar-theme"
             >
-              <LightbulbOutline />
+              <BugReportOutlined />
             </IconButton>
           </Tooltip>
           <Tooltip
