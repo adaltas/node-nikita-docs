@@ -24,11 +24,18 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   if (node.internal.type === `MarkdownRemark`) {
     node.frontmatter.disabled = !!node.frontmatter.disabled
     slug = createFilePath({ node, getNode, basePath: `pages` })
+    edit_url = 'https://github.com/adaltas/node-nikita-docs/edit/master/src/md' + createFilePath({ node, getNode, basePath: `pages`, trailingSlash: false }) + '.md'
     createNodeField({
       node,
       name: `slug`,
       value: slug
     })
+    createNodeField({
+      node,
+      name: `edit_url`,
+      value: edit_url
+    })
+
   }
 };
 
