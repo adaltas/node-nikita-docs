@@ -91,7 +91,7 @@ class Intro extends React.Component {
             <p>{'Built for Node.js'}</p>
             <p>{'Deploy apps and infrastructures'}</p>
           </div>
-          <Link to="/">
+          <Link to="/usages/tutorial">
             <Button
               size="large"
               variant="outlined"
@@ -101,14 +101,14 @@ class Intro extends React.Component {
               {'Get started'}
             </Button>
           </Link>
-          <Link to="/">
+          <Link to="/usages/changelog">
             <Button
               size="large"
               variant="outlined"
               className={classes.button}
               classes={{ outlined: classes.outlined }}
             >
-              {'New in 0.x.x'}
+              {'Changelog'}
             </Button>
           </Link>
         </span>
