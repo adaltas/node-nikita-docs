@@ -61,6 +61,19 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              offsetY: '60'
+            }
+          },{
+            resolve: 'gatsby-remark-toc-patched',
+            options: {
+              header: 'Table of Contents', // the custom header text
+              include: [
+                '**/*.md' // an include glob to match against
+              ]
+            }
+          },{
             resolve: `gatsby-remark-prismjs`,
             options: {
               // Class prefix for <pre> tags containing syntax highlighting;

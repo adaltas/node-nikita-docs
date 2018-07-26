@@ -4,7 +4,9 @@ title: Option "sleep"
 
 # Option "sleep"
 
-The "sleep" option indicates the time lapse when an action is rescheduled. It only has effect if the "attempt" option is set to a value greater than 1 and when the action failed and is rescheduled.
+## Description
+
+The "sleep" option indicates the time lapse when a failed action is rescheduled. It only has effect if the "attempt" option is set to a value greater than 1 and when the action failed and is rescheduled.
 
 ## Usage
 
@@ -20,3 +22,26 @@ require('nikita')
 ```
 
 Any value not superior or equal to zero will generate an error.
+
+## Default value
+
+While you can set this option on selected actions, it is safe to declare it at the session level. In such case, it will act as the default value and can still be overwritten on a per action basis.
+
+```js
+require(nikita)({
+  sleep: 5000
+})
+// Wait 5 seconds between retries
+.call({
+  retry: 3,
+}, function(options){
+  if( options.attempt < 3 ) throw Error 'Action Failure'
+})
+// Wait 1 second between retries
+.call({
+  retry: 3,
+  sleep: 1000
+}, function(options){
+  if( options.attempt < 3 ) throw Error 'Action Failure'
+})
+```

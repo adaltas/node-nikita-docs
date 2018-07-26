@@ -1,10 +1,7 @@
 // React
-import React from 'react'
+import React, {Component} from 'react'
 import Helmet from 'react-helmet'
 // Material UI
-import IconButton from '@material-ui/core/IconButton'
-import Tooltip from '@material-ui/core/Tooltip'
-import EditIcon from '@material-ui/icons/EditOutlined'
 import { withStyles } from '@material-ui/core/styles'
 // Gatsby
 import { graphql } from "gatsby"
@@ -12,47 +9,27 @@ import { graphql } from "gatsby"
 import Layout from '../components/doc'
 
 const styles = theme => ({
-  icons: {
-    float: 'right',
-  },
 })
 
-function Template({
-  data, classes,
-}) {
-  const { page } = data // data.markdownRemark holds our post data
-  const { frontmatter, html } = page
-  return (
-    <Layout>
-      <div>
-        <Helmet
-          title={'NIKITA - ' + frontmatter.title}
-          meta={[
-            { name: 'description', content: frontmatter.description },
-            { name: 'keywords', content: frontmatter.keywords },
-          ]}
-        />
-        <Tooltip
-          id="content-edit"
-          title="Edit on GitHub"
-          enterDelay={300}
-        >
-          <IconButton
-            color="inherit"
-            href={page.fields.edit_url}
-            target="_blank"
-            aria-labelledby="content-edit"
-            className={classes.icons}
-          >
-            <EditIcon />
-          </IconButton>
-        </Tooltip>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      </div>
-    </Layout>
-  )
+class Template extends Component {
+  render (){
+    const { data, classes } = this.props
+    const { page } = data // data.markdownRemark holds our post data
+    const { frontmatter, html } = page
+    return (
+      <Layout page={page}>
+          <Helmet
+            title={'NIKITA - ' + frontmatter.title}
+            meta={[
+              { name: 'description', content: frontmatter.description },
+              { name: 'keywords', content: frontmatter.keywords },
+            ]}
+          />
+          <div ref='content' dangerouslySetInnerHTML={{ __html: html }} />
+      </Layout>
+    )
+  }
 }
-
 export default withStyles(styles, { withTheme: true })(Template)
 
 export const pageQuery = graphql`

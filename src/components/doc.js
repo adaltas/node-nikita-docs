@@ -35,6 +35,7 @@ class Layout extends React.Component {
   }
   render() {
     const { children, classes, data } = this.props
+    const page = data.page
     const site = data.site.siteMetadata
     const onToggle = () => {
       this.setState({ drawerOpen: !this.state.drawerOpen })
@@ -110,7 +111,7 @@ class Layout extends React.Component {
           </Drawer>
         </Hidden>
         <div className={classes.content}>
-          <Content>{children}</Content>
+          <Content page={this.props.page}>{children}</Content>
           <Footer site={site} />
         </div>
       </div>
