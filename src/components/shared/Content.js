@@ -147,7 +147,7 @@ class Content extends Component {
         { page && 
           <Tooltip
             id="content-toc"
-            title="Togle table of content"
+            title="Toggle table of content"
             enterDelay={300}
           >
             <IconButton
