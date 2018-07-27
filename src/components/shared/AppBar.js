@@ -50,9 +50,6 @@ const styles = theme => ({
 })
 
 class MyAppBar extends Component {
-  state = {
-    toto: 50,
-  }
   static defaultProps = {
     opacity: 1,
   }

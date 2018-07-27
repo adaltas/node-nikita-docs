@@ -4,10 +4,18 @@ import Layout from '../components/index'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import { graphql } from 'gatsby'
+// Syntax
+import SyntaxHighlighter, {registerLanguage} from 'react-syntax-highlighter/prism-light'
+import javascript from 'react-syntax-highlighter/languages/prism/javascript'
+import { tomorrow } from 'react-syntax-highlighter/styles/prism'
+registerLanguage('javascript', javascript);
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    '& h2': {
+      textAlign: 'center',
+    }
   },
   paper: {
     //   height: 140,
@@ -21,10 +29,57 @@ const styles = theme => ({
 class IndexPage extends React.Component {
   render() {
     const { classes } = this.props
+    const codeString = `
+    const config = {
+      // bind: '127.0.0.1',
+      // port: 6379
+      // ...
+    }
+    require('nikita')
+    .call(config, function(options){
+      // Default options
+      if(!options.url){ options.url = 'http://download.redis.io/redis-stable.tar.gz' }
+      if(!options.config){ options.config = {} }
+      if(!options.config['bind']){ options.config['bind'] = '127.0.0.1' }
+      if(!options.config['protected-mode']){ options.config['protected-mode'] = 'yes' }
+      if(!options.config['port']){ options.config['port'] = 6379 }
+      // Do the job
+      this
+      .file.download({
+        header: 'Download',
+        source: options.url,
+        target: 'cache/redis-stable.tar.gz'
+      })
+      .system.execute({
+        header: 'Compilation',
+        unless_exists: 'redis-stable/src/redis-server',
+        cmd: \`
+        tar xzf cache/redis-stable.tar.gz
+        cd redis-stable
+        make
+        \`
+      })
+      .file.properties({
+        header: 'Configuration',
+        target: 'conf/redis.conf',
+        separator: ' ',
+        content: options.config
+      })
+      .system.execute({
+        header: 'Startup',
+        code_skipped: 3,
+        cmd: \`
+        ./src/redis-cli ping && exit 3
+        nohup ./redis-stable/src/redis-server conf/redis.conf &
+        \`
+      })
+    })
+    `
     return (
       <Layout>
-        <div>
-          <Grid container className={classes.root} spacing={24}>
+        <div className={classes.root}>
+          <h2>Main library features</h2>
+          <Grid container spacing={24}>
             <Grid item xs={12} sm={6}>
               <h3>{'Consistent Usage'}</h3>
               <p>
@@ -90,6 +145,10 @@ class IndexPage extends React.Component {
               </p>
             </Grid>
           </Grid>
+        </div>
+        <div className={classes.root}>
+          <h2>Example installation of Redis</h2>
+          <SyntaxHighlighter language='javascript' style={tomorrow}>{codeString}</SyntaxHighlighter>
         </div>
       </Layout>
     )
