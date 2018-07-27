@@ -39,7 +39,7 @@ class IndexPage extends React.Component {
       // }
     }
     require('nikita')
-    .call(options, function(options){
+    .call(options, header: 'Redis', function(options){
       // Default options
       if(!options.url){ options.url = 'http://download.redis.io/redis-stable.tar.gz' }
       if(!options.config){ options.config = {} }
