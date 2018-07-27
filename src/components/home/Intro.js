@@ -88,7 +88,7 @@ class Intro extends React.Component {
           <h1>Nikita</h1>
           <div className={classes.headlines}>
             <p>{'Automation and deployment solution '}</p>
-            <p>{'Built for Node.js'}</p>
+            <p>{'Built for Node.js, MIT License'}</p>
             <p>{'Deploy apps and infrastructures'}</p>
           </div>
           <Link to="/about/tutorial">
