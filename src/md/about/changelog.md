@@ -5,6 +5,97 @@ sort: 4
 
 # Changelog
 
+## Version 0.7.0
+
+Backward incompatibilities:
+
+* session: renamed from context
+* actions: 2nd arg in callback is now an object
+* file.types.etc_group.read: rename output params user_list ot users
+* file.render: remove eco dependency
+
+New features:
+
+* system.info.disk: new action
+* system.info.system: new action
+
+Fixes:
+
+* ssh: fix conflict with session options
+* db: honors the port property
+
+Cleanup and minor enhancements:
+
+* ssh: test arguments
+* cascade: test array when defined in action
+* mysql: isolate tests into their container
+* mariadb: isolate tests into their container
+* krb5: isolate tests into their own container
+* mysql: freeze version 5.7 to avoid authentication issues
+
+Management:
+
+* package: push to current branch
+* package: use https url for issues
+* misc.doc: remove unused module
+* package: remove fs.realpath dependency
+* wrap: remove ssh2-connect dependency
+* package: remove backmeup, ftp and jsftp dependencies
+* package: re-activate lock file
+* package: latest dependencies
+
+## Version 0.6.8
+
+Backward incompatibilities:
+
+* wrap: remove connection
+* log: move options.log to nikita.log 
+* option depth: renaming, was total_depth
+* option log: remove depth and header_depth
+* option action: rename option, was type
+* option debug: print to stderr
+* log.cli: escape new line from color
+* log.cli: print to stderr
+
+New features:
+
+* ssh.open: accept connection
+* options headers: inject parent headers
+* option parent: inject parent options
+* option depth: pass depth to actions
+* option get: ensure options are cloned
+* log: new action
+* option cascade: defined as a cascaded option
+* option debug: accept stdout value
+* array.flatten: depth limit as 2nd argument
+* cwd: marked as propagated
+
+Fixes:
+
+* context: fix default param handler value 
+* ssh: no longer reference ssh2
+* cascade: honored by get actions
+* cascade: global, session and action merge
+
+Cleanup and minor enhancements:
+
+* option cascade: test false value in action
+* attempt: new test
+* event end: new test
+* event handled: write tests
+* file.assert: isolate tests and fix buffer usage
+* context: refactor arguments conversion to actions
+* context: simplify options cloning
+* context: remove deprecation about destination and local_source
+* fs.createWriteStream: normalize error with missing parent directory
+* src: ensure target paths are absolute over SSH
+
+Management:
+
+* travis: test against Node.js versions 8 and 10
+* changelog: organize messages by group
+* package: latest dependencies
+
 ## Version 0.6.7
 
 * fs.createWriteStream: new implementation
@@ -279,3 +370,5 @@ sort: 4
 * disable: Introduce new option "disable" #26
 
 ## Version 0.6.0
+
+Not yet imported!
