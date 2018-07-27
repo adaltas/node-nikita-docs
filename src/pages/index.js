@@ -30,6 +30,7 @@ class IndexPage extends React.Component {
   render() {
     const { classes } = this.props
     const codeString = `
+    // User configuration
     const options = {
       // url: 'http://download.redis.io/redis-stable.tar.gz',
       // config: {
@@ -38,7 +39,11 @@ class IndexPage extends React.Component {
       //   ...
       // }
     }
+    // Nikita instantiation
     require('nikita')
+    // Activate CLI reporting
+    .log.cli()
+    // Execute the Redis action
     .call(options, header: 'Redis', function(options){
       // Default options
       if(!options.url){ options.url = 'http://download.redis.io/redis-stable.tar.gz' }
