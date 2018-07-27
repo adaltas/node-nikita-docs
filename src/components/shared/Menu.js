@@ -13,7 +13,7 @@ import { withStyles } from '@material-ui/core/styles'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 // Gatsby
-import { Link, navigateTo } from 'gatsby'
+import { Link, push } from 'gatsby'
 
 const styles = theme => ({
   leaf: {
@@ -47,7 +47,7 @@ class Menu extends React.Component {
   }
   navigate = to => {
     const { menu } = this.props
-    navigateTo({
+    push({
       pathname: menu.data.slug,
       state: {
         // showPage: true,
@@ -73,7 +73,7 @@ class Menu extends React.Component {
     return (
       <div>
         <MenuList component="nav">
-          <MenuItem component={Link} to={menu.data.slug}>
+          <MenuItem component={Link} to={menu.data.slug} activeClassName={classes.active}>
             <ListItemText primary={menu.data.title} onClick={this.navigate} />
             <ListItemSecondaryAction>
               <IconButton onClick={this.handleClick}>
