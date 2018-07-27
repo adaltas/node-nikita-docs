@@ -79,6 +79,7 @@ const styles = theme => ({
       borderTop: '1px solid #E5E7EA',
       borderBottom: '1px solid #E5E7EA',
       padding: '5px 0',
+      display: 'none',
       // background: '#E5E7EA',
       // borderRadius: 5,
       // padding: '20px 20px',
@@ -111,19 +112,24 @@ const styles = theme => ({
 })
 
 class Content extends Component {
-  componentDidMount(){
-    if(!this.props.page) return;
-    const contentNode = ReactDom.findDOMNode(this.refs.content)
-    const tocNode = contentNode.querySelector('.toc')
-    tocNode.style.display = 'none'
-  }
+  // componentDidMount(){
+  //   console.log('!!!!!!!!!!!content.componentDidMount!!!!!!!!!!!!!!!')
+  //   if(!this.props.page) return;
+  //   const contentNode = ReactDom.findDOMNode(this.refs.content)
+  //   const tocNode = contentNode.querySelector('.toc')
+  //   if( !tocNode ) return
+  //   const display = window.getComputedStyle(tocNode).display
+  //   tocNode.style.display = display === 'none' ? '' : 'none'
+  // }
   render (){
     const {classes, children, theme, page} = this.props
     const toggleToc = () => {
       if(!this.props.page) return;
       const contentNode = ReactDom.findDOMNode(this.refs.content)
       const tocNode = contentNode.querySelector('.toc')
-      tocNode.style.display = tocNode.style.display === '' ? 'none' : ''
+      if( !tocNode ) return
+      const display = window.getComputedStyle(tocNode).display
+      tocNode.style.display = display === 'none' ? 'block' : 'none'
     }
     return (
       <main ref="content" className={classNames(classes.content)}>

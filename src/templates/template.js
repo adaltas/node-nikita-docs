@@ -18,14 +18,14 @@ class Template extends Component {
     const { frontmatter, html } = page
     return (
       <Layout page={page}>
-          <Helmet
-            title={'NIKITA - ' + frontmatter.title}
-            meta={[
-              { name: 'description', content: frontmatter.description },
-              { name: 'keywords', content: frontmatter.keywords },
-            ]}
-          />
-          <div ref='content' dangerouslySetInnerHTML={{ __html: html }} />
+        <Helmet
+          title={'NIKITA - ' + frontmatter.title}
+          meta={[
+            { name: 'description', content: frontmatter.description },
+            { name: 'keywords', content: frontmatter.keywords },
+          ]}
+        />
+        <div ref='content' dangerouslySetInnerHTML={{ __html: html }} />
       </Layout>
     )
   }
