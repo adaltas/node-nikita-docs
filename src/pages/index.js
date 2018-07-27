@@ -30,13 +30,16 @@ class IndexPage extends React.Component {
   render() {
     const { classes } = this.props
     const codeString = `
-    const config = {
-      // bind: '127.0.0.1',
-      // port: 6379
-      // ...
+    const options = {
+      // url: 'http://download.redis.io/redis-stable.tar.gz',
+      // config: {
+      //   bind: '127.0.0.1',
+      //   port: 6379,
+      //   ...
+      // }
     }
     require('nikita')
-    .call(config, function(options){
+    .call(options, function(options){
       // Default options
       if(!options.url){ options.url = 'http://download.redis.io/redis-stable.tar.gz' }
       if(!options.config){ options.config = {} }
