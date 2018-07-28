@@ -91,26 +91,26 @@ class Intro extends React.Component {
             <p>{'Built for Node.js, MIT License'}</p>
             <p>{'Deploy apps and infrastructures'}</p>
           </div>
-          <Link to="/about/tutorial">
-            <Button
-              size="large"
-              variant="outlined"
-              className={classes.button}
-              classes={{ outlined: classes.outlined }}
-            >
-              {'Get started'}
-            </Button>
-          </Link>
-          <Link to="/about/changelog/">
-            <Button
-              size="large"
-              variant="outlined"
-              className={classes.button}
-              classes={{ outlined: classes.outlined }}
-            >
-              {'Changelog'}
-            </Button>
-          </Link>
+          <Button
+            component={Link}
+            to="/about/tutorial"
+            size="large"
+            variant="outlined"
+            className={classes.button}
+            classes={{ outlined: classes.outlined }}
+          >
+            {'Get started'}
+          </Button>
+          <Button
+            component={Link}
+            to="/about/changelog"
+            size="large"
+            variant="outlined"
+            className={classes.button}
+            classes={{ outlined: classes.outlined }}
+          >
+            {'Changelog'}
+          </Button>
         </span>
       </div>
     )
