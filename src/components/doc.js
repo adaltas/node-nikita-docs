@@ -151,6 +151,8 @@ const WrappedLayout = (props) => (
                 label
                 url
               }
+              xs
+              sm
             }
           }
         }

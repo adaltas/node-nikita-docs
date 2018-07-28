@@ -86,7 +86,7 @@ class Footer extends Component {
         />
       )
       return (
-        <Grid key={'footer' + i} item xs={4}>
+        <Grid key={'footer' + i} item xs={footer.xs || 4} sm={footer.sm || 4}>
           <div className={classes.paper}>
             <Typography variant="subheading" className={classes.subheading}>
               {footer.title}

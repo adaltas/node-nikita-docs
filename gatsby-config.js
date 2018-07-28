@@ -23,7 +23,9 @@ module.exports = {
       }, {
         label: 'Options',
         url: '/options/',
-      }]
+      }],
+      xs: 6,
+      sm: 3,
     },{
       title: 'Contribute',
       links: [{
@@ -35,10 +37,14 @@ module.exports = {
       }, {
         label: 'License',
         url: '/about/license',
-      }]
+      }],
+      xs: 6,
+      sm: 3,
     },{
       title: 'About',
-      content: 'Nikita is an open source product hosted on <a href="https://www.github.com">GitHub</a> and developed by <a href="http://www.adaltas.com">Adaltas</a>.'
+      content: 'Nikita is an open source product hosted on <a href="https://www.github.com">GitHub</a> and developed by <a href="http://www.adaltas.com">Adaltas</a>.',
+      xs: 12,
+      sm: 6,
     }]
   },
   plugins: [
