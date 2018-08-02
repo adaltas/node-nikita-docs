@@ -106,7 +106,7 @@ export default {
     },
     move: {
       enable: true,
-      speed: 1,
+      speed: 10,
       direction: 'none',
       random: false,
       straight: false,
@@ -159,4 +159,5 @@ export default {
     },
   },
   retina_detect: true,
+  // fps_limit: 100,
 }
