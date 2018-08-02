@@ -78,7 +78,7 @@ class AppDrawer extends React.Component {
         </div>
         {children}
         <Typography className={classes.footer} variant="caption">
-          Help us <a href="https://github.com/adaltas/node-nikita-docs/issues" target="_blank"_blank rel="noopener">improve the docs</a> by
+          Help us <a href="https://github.com/adaltas/node-nikita-docs/issues" target="_blank" rel="noopener">improve the docs</a> by
           fixing typos and proposing enhancements.
         </Typography>
       </Drawer>

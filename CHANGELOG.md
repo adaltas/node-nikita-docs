@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* appBar: add icon and mouse over background
 * intro: text size on mobile landscape
 * home: tune homepage intro background
 * plugins: add google analytics tracking code
