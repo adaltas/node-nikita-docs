@@ -4,7 +4,6 @@ import Helmet from 'react-helmet'
 import classnames from 'classnames'
 // Material UI
 import Button from '@material-ui/core/Button'
-import withWidth, { isWidthDown, isWidthUp } from '@material-ui/core/withWidth'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 // Gatsby
@@ -12,14 +11,16 @@ import {Link} from 'gatsby'
 // Particles
 import Particles from 'react-particles-js'
 import particles from './particles'
-import mw from './milky-way-dark.jpg'
+import mw_low from './milky-way-low.jpg'
+import mw_high from './milky-way-high.jpg'
 
 const styles = theme => ({
   root: {
     // backgroundColor: '#42456C !important',
-    background: `no-repeat url(${mw})`,
+    background: `no-repeat url(${mw_low})`,
     backgroundSize: `cover`,
     position: 'relative',
+    height: '100vh',
     '& h1': {
       fontSize: '6rem',
       margin: '0 0 1rem',
@@ -28,15 +29,20 @@ const styles = theme => ({
       fontSize: '2rem',
       margin: '0 0 .5rem',
     },
+    '@media (max-width: 600px)': {
+      '& h1': {
+        fontSize: '3rem !important',
+      },
+      '& p': {
+        fontSize: '1rem !important',
+        margin: '0 0 .5rem !important',
+      },
+    }
   },
-  mobile: {
-    '& h1': {
-      fontSize: '3rem !important',
-    },
-    '& p': {
-      fontSize: '1rem !important',
-      margin: '0 0 .5rem !important',
-    },
+  bck: {
+    background: `no-repeat url(${mw_high})`,
+    backgroundSize: `cover`,
+    height: '100%'
   },
   content: {
     ...theme.typography,
@@ -64,26 +70,15 @@ const styles = theme => ({
 })
 
 class Intro extends React.Component {
-  state = {
-    particlesHeight: 0,
-  }
-  componentDidMount() {
-    this.setState({ particlesHeight: window.innerHeight })
-  }
   render() {
-    const { classes, width, theme } = this.props
-    const { particlesHeight } = this.state
-    const isMobile = isWidthDown('sm', width)
+    const { classes } = this.props
     return (
-      <div className={classnames(classes.root, isMobile && classes.mobile)}>
-        {particlesHeight && (
-          <Particles
-            ref="particles"
-            params={particles}
-            styles={classes.particles_canvas}
-            height={particlesHeight}
-          />
-        )}
+      <div className={classnames(classes.root)}>
+        <Particles
+          ref="particles"
+          params={particles}
+          className={classes.bck}
+        />
         <span className={classes.content}>
           <h1>Nikita</h1>
           <div className={classes.headlines}>
@@ -118,4 +113,4 @@ class Intro extends React.Component {
 }
 
 // export default withStyles(styles, { withTheme: true })(Intro)
-export default withWidth()(withStyles(styles, { withTheme: true })(Intro))
+export default withStyles(styles, { withTheme: true })(Intro)
