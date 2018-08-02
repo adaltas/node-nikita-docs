@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* lighthouse: activate manifest and offline plugins
 * appBar: add icon and mouse over background
 * intro: text size on mobile landscape
 * home: tune homepage intro background
