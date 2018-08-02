@@ -4,6 +4,8 @@ import Helmet from 'react-helmet'
 import classnames from 'classnames'
 // Material UI
 import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import SvgIcon from '@material-ui/core/SvgIcon'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 // Gatsby
@@ -13,6 +15,8 @@ import Particles from 'react-particles-js'
 import particles from './particles'
 import mw_low from './milky-way-low.jpg'
 import mw_high from './milky-way-high.jpg'
+// Scroll
+import {animateScroll as scroll, scroller} from 'react-scroll'
 
 const styles = theme => ({
   root: {
@@ -46,7 +50,7 @@ const styles = theme => ({
   },
   content: {
     ...theme.typography,
-    bottom: '6%',
+    bottom: '0%',
     width: '100%',
     position: 'absolute',
     textAlign: 'center',
@@ -67,11 +71,29 @@ const styles = theme => ({
       backgroundColor: 'rgba(255, 255, 255, 0.2)',
     },
   },
+  scrollDown: {
+    color: 'rgba(255, 255, 255, 0.6)',
+    fontSize: 32,
+    // display: 'block',
+    textAlign: 'center',
+    '&:hover': {
+      color: 'rgba(255, 255, 255, 1)',
+      // backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    }
+  }
 })
 
 class Intro extends React.Component {
   render() {
-    const { classes } = this.props
+    const { classes, theme } = this.props
+    const scrollDown = e => {
+      const offset = window.innerHeight - (window.innerWidth < 600 ? 48 : 64)
+      scroll.scrollTo(offset, {
+        duration: 400,
+        delay: 0,
+        smooth: 'easeInOutQuart'
+      })
+    }
     return (
       <div className={classnames(classes.root)}>
         <Particles
@@ -79,10 +101,10 @@ class Intro extends React.Component {
           params={particles}
           className={classes.bck}
         />
-        <span className={classes.content}>
+        <div className={classes.content}>
           <h1>Nikita</h1>
           <div className={classes.headlines}>
-            <p>{'Automation and deployment solution '}</p>
+            <p>{'Automation and deployment solution'}</p>
             <p>{'Built for Node.js, MIT License'}</p>
             <p>{'Deploy apps and infrastructures'}</p>
           </div>
@@ -106,11 +128,20 @@ class Intro extends React.Component {
           >
             {'Changelog'}
           </Button>
-        </span>
+          <div>
+            <IconButton aria-label="Learn more" className={classes.scrollDown} onClick={scrollDown}>
+              <SvgIcon>
+                <g>
+                  <g><path d=" M 1.649 1.861 C 1.271 1.488 0.66 1.488 0.283 1.861 C -0.094 2.234 -0.095 2.84 0.283 3.213 L 11.317 14.139 C 11.694 14.512 12.306 14.512 12.683 14.139 L 23.717 3.213 C 24.094 2.84 24.094 2.235 23.717 1.861 C 23.34 1.488 22.729 1.488 22.351 1.861 L 12 11.825 L 1.649 1.861 Z " /></g>
+                  <g><path d=" M 1.649 9.861 C 1.271 9.488 0.66 9.488 0.283 9.861 C -0.094 10.234 -0.095 10.84 0.283 11.213 L 11.317 22.139 C 11.694 22.512 12.306 22.512 12.683 22.139 L 23.717 11.213 C 24.094 10.84 24.094 10.235 23.717 9.861 C 23.34 9.488 22.729 9.488 22.351 9.861 L 12 19.825 L 1.649 9.861 Z " /></g>
+                </g>
+              </SvgIcon>
+            </IconButton>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-// export default withStyles(styles, { withTheme: true })(Intro)
 export default withStyles(styles, { withTheme: true })(Intro)

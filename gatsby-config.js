@@ -69,7 +69,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
-              offsetY: '60'
+              offsetY: '64' // <600: 48; >600:64 
             }
           },{
             resolve: 'gatsby-remark-toc-patched',
