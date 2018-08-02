@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* intro: text size on mobile landscape
 * home: tune homepage intro background
 * plugins: add google analytics tracking code
 * gatsby v2 migration

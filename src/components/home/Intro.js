@@ -33,7 +33,18 @@ const styles = theme => ({
       fontSize: '2rem',
       margin: '0 0 .5rem',
     },
+    // Mobile portrait
     '@media (max-width: 600px)': {
+      '& h1': {
+        fontSize: '3rem !important',
+      },
+      '& p': {
+        fontSize: '1rem !important',
+        margin: '0 0 .5rem !important',
+      },
+    },
+    // Mobile landscape
+    '@media (max-height: 400px)': {
       '& h1': {
         fontSize: '3rem !important',
       },
@@ -55,6 +66,9 @@ const styles = theme => ({
     position: 'absolute',
     textAlign: 'center',
     color: '#ffffff',
+    '@media (max-width: 600px)': {
+      bottom: '20%',
+    }
   },
   button: {
     margin: theme.spacing.unit,
@@ -87,7 +101,7 @@ class Intro extends React.Component {
   render() {
     const { classes, theme } = this.props
     const scrollDown = e => {
-      const offset = window.innerHeight - (window.innerWidth < 600 ? 48 : 64)
+      const offset = window.innerHeight - (window.innerHeight < 600 ? 48 : 64)
       scroll.scrollTo(offset, {
         duration: 400,
         delay: 0,
