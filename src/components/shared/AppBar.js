@@ -102,6 +102,8 @@ class MyAppBar extends Component {
             <IconButton
               color="inherit"
               href={site.issues.url}
+              target="_blank"
+              rel="noopener"
               aria-labelledby="appbar-theme"
             >
               <BugReportOutlined />
@@ -115,6 +117,8 @@ class MyAppBar extends Component {
             <IconButton
               color="inherit"
               href={site.github.url}
+              target="_blank"
+              rel="noopener"
               aria-labelledby="appbar-github"
             >
               <Github />

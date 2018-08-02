@@ -204,7 +204,7 @@ class IndexPage extends React.Component {
                 {'Suppport'}
               </h3>
               <p>
-                {'The package is open sourced with one of the least restrictive license. Involve yourself and contributes to open source development by sending push requests or requesting commercial support offered by '} <a href="http://www.adaltas.com" target="_blank">Adaltas</a> {'.'}
+                {'The package is open sourced with one of the least restrictive license. Involve yourself and contributes to open source development by sending push requests or requesting commercial support offered by '} <a href="http://www.adaltas.com" target="_blank" rel="noopener">Adaltas</a> {'.'}
               </p>
             </Grid>
           </Grid>

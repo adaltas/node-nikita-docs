@@ -143,6 +143,7 @@ class Content extends Component {
               color="inherit"
               href={page.fields.edit_url}
               target="_blank"
+              rel="noopener"
               aria-labelledby="content-edit"
               className={classes.icons}
             >
