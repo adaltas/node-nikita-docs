@@ -19,6 +19,7 @@ const styles = theme => ({
     flex: '1 1 100%',
     maxWidth: '100%',
     margin: '0 auto 3rem',
+    fontSize: '1.2rem',
     '& a': {
       textDecoration: 'none',
       '&:link,&:visited': {
@@ -72,11 +73,14 @@ const styles = theme => ({
       color: '#2D2D2D',
       textAlign: 'justify',
     },
+    '& pre > code[class*="language-"]': {
+      fontSize: '1rem'
+    },
     '& :not(pre) > code[class*="language-"]': {
       padding: '.2em .3em 0 .3em',
       background: '#E6E6E6',
       color: '#000',
-      fontSize: '1rem'
+      fontSize: '1.1rem'
     },
     '& .toc': {
       borderTop: '1px solid #E5E7EA',
