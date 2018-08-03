@@ -5,6 +5,8 @@ sort: 6
 
 # Events API
 
+## Introduction
+
 A Nikita session extends the [native Node.js Events API](https://nodejs.org/api/events.html). It provides a facility to listen to internal notification and know the current state of the program.
 
 ## Usage

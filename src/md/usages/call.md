@@ -6,6 +6,8 @@ state: review
 
 # Call and user defined handlers
 
+## Introduction
+
 Nikita gives you the choice between calling your own function, which we call handlers, or calling an [registered function][registered] by its name.
 
 ## Calling a function

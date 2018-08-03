@@ -5,6 +5,8 @@ sort: 7
 
 # Control Flow
 
+## Introduction
+
 Nikita run every actions sequentially. This behavior ensures there are no conflict between two commands executed simultaneously. Moreover, this sequential nature is aligned with SSH which execute one command at a time over a given connection.
 
 ## Sequential execution

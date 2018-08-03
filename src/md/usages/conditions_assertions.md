@@ -6,6 +6,8 @@ state: review
 
 # Conditions and assertions
 
+## Introduction
+
 Conditions and assertions are a set of options available to every handlers to control and guaranty their execution.
 
 Conditions are executed before a handler and all conditions must pass for the handler to be

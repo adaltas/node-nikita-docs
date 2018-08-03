@@ -5,6 +5,8 @@ sort: 3
 
 # Tutorial
 
+## Introduction
+
 This tutorial covers the basics to get started and to use Nikita. It is organized in 4 sections:
 
 - What is nikita ?

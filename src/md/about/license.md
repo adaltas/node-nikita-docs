@@ -6,6 +6,8 @@ community: true
 
 # Software License Agreement - MIT License (MIT)
 
+## Content
+
 Copyright (c) 2012 SARL Adaltas
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

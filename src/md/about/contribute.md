@@ -5,6 +5,8 @@ sort: 5
 
 # Contributing
 
+## Introduction
+
 Nikita is an open source project hosted on [GitHub](https://github.com/adaltas/node-nikita) originally written by [Adaltas](http://www.adaltas.com).
 
 Contributions go far beyond pull requests and commits. we are thrilled to receive a variety of other contributions including the following:
