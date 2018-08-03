@@ -1,6 +1,6 @@
 ---
 title: License (MIT)
-sort: 4
+sort: 6
 community: true
 ---
 

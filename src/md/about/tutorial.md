@@ -1,6 +1,6 @@
 ---
 title: Tutorial
-sort: 3
+sort: 2
 ---
 
 # Tutorial

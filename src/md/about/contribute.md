@@ -1,6 +1,6 @@
 ---
 title: Contribute
-sort: 5
+sort: 4
 ---
 
 # Contributing
@@ -76,55 +76,3 @@ The best way to get your bug fixed is to provide a reduced test case. You can ge
 ### Security Bugs
 
 Facebook has a bounty program for the safe disclosure of security bugs. With that in mind, please do not file public issues; go through the process outlined on that page.
-
-## Running the tests
-
-Nikita target Unix-like system including Linux and macOS.
-
-Windows is not supported as a targeting node where to execute actions. It is however know to host Nikita. This mean you can run Nikita from a Windows host as long as you are targeting Linux nodes over SSH.
-
-### Test configuration
-
-To filter and configure your tests, you can either create a "test.coffee" at the root of this project or point the "MECANO_TEST" environment variable to such a file. You can use the file "test.coffee.sample" as a starting point.
-
-### Running tests locally
-
-The majority of the tests run locally on any supported OS. The full test suite is launch with the `npm test` command. If you wish to execute a subset of the source case, use `./node_modules/.bin/mocha test/${file_or_glob_expression}`. For example, here is how to execute the file tests:
-
-```bash
-# Download the source code
-git clone https://github.com/adaltas/node-nikita.git nikita
-cd nikita
-# Install dependencies with NPM or Yarn
-npm install
-# Run some tests
-./node_modules/.bin/mocha test/file/*.coffee
-```
-
-### Running tests in containers
-
-Some tests require a dedicated environment. For example, the `service` actions pilote service life cycle with "init" on CentOS 6 and "systemd" on CentOS 7. Another example are the Kerberos actions which require a Kerberos server.
-
-Those tests require a specific environment provided by Docker. Inside the [docker folder](https://github.com/adaltas/node-nikita/tree/master/docker) are sub-folders listing systems or functionalities which are currently supported for testing. Inside each sub-folder are:
-
-- a [docker-compose file](https://docs.docker.com/compose/) describing the Nikita container with its test environment as well as the service dependencies such as databases services.
-- a [Dockerfile](https://docs.docker.com/engine/reference/builder/) which build the Nikita container
-- a test.coffee file which configure which tests are configured ans activated for execution
-
-Here's an example to run tests on CentOS &:
-
-```bash
-# Download the source code
-git clone https://github.com/adaltas/node-nikita.git nikita
-cd nikita
-# Install dependencies with NPM or Yarn
-npm install
-# Move to your targeted environment
-cd docker/centos7
-# Run all tests
-docker-compose up --abort-on-container-exit
-# Enter bash console
-docker-compose run --rm nodejs
-# Run a subset of the tests
-docker-compose run --rm nodejs test/core
-```
