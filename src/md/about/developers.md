@@ -45,13 +45,13 @@ For the tests to execute successfully, you must:
 *   be online (attempt to fetch an ftp file)
 *   be able to ssh yourself (eg `ssh $(whoami)@localhost`) without a password
 
-`npm test` execute the full test suite while `./node_modules/.bin/mocha test/{some_globbing_expression}` execute a subset of the test suite.
+`npm test` execute the full test suite while `./node_modules/.bin/mocha test/${glob}` execute a subset of the test suite.
 
 For example, to only test the `nikita.file.ini` actions, run `./node_modules/.bin/mocha test/file.ini/*.coffee`
 
 ### SSH or locally
 
-Why even choose ? All tests when it makes sense are executed twice. Once without an SSH connection and once with an SSH connection pointing to localhost. To achieve this behavior, we extended [Mocha](https://mochajs.org/) by providing an alternative to the `it` function in the name of `they`. You can find it in the [ssh2-they package](https://github.com/adaltas/node-ssh2-they).
+Why even choose? All tests when it makes sense are executed twice. Once without an SSH connection and once with an SSH connection pointing to localhost. To achieve this behavior, we extended [Mocha](https://mochajs.org/) by providing an alternative to the `it` function in the name of `they`. You can find it in the [ssh2-they package](https://github.com/adaltas/node-ssh2-they).
 
 For example, this test will only be executed locally:
 
