@@ -1,6 +1,6 @@
 ---
 title: Action Registration
-description: Registration API: register and access actions by names
+description: Registration API - register and access actions by names
 keywords: registry, API, actions
 sort: 3
 ---
