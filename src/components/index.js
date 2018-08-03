@@ -129,6 +129,7 @@ const WrappedLayout = (props) => (
         site: site {
           siteMetadata {
             title
+            description
             github {
               url
               title
