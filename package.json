@@ -9,6 +9,7 @@
     "@material-ui/icons": "^2.0.0",
     "gatsby": "next",
     "gatsby-image": "next",
+    "gatsby-plugin-catch-links": "^1.0.24",
     "gatsby-plugin-google-analytics": "^1.0.31",
     "gatsby-plugin-manifest": "^1.0.27",
     "gatsby-plugin-material-ui": "0.1.3",
