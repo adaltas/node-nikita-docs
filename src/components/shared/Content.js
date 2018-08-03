@@ -44,9 +44,9 @@ const styles = theme => ({
       fontWeight: 'normal',
       marginTop: '2.5rem',
     },
-    '& em': {
-      color: '#2D2D2D',
-    },
+    // '& em': {
+    //   color: '#2D2D2D',
+    // },
     '& blockquote': {
       borderLeft: '3px solid #777777',
       margin: 0,
@@ -59,7 +59,7 @@ const styles = theme => ({
       color: '#646464',
     },
     '& p': {
-      color: '#2D2D2D',
+      color: '#000',
       textAlign: 'justify',
     },
     '& ul p': {
@@ -70,7 +70,7 @@ const styles = theme => ({
       // listStylePosition: 'inside',
     },
     '& li': {
-      color: '#2D2D2D',
+      // color: '#2D2D2D',
       textAlign: 'justify',
     },
     '& pre > code[class*="language-"]': {
@@ -80,7 +80,7 @@ const styles = theme => ({
       padding: '.2em .3em 0 .3em',
       background: '#E6E6E6',
       color: '#000',
-      fontSize: '1.1rem'
+      // fontSize: '1em',
     },
     '& .toc': {
       borderTop: '1px solid #E5E7EA',
