@@ -11,7 +11,7 @@ The Nikita API is simple and concise. It also powerful and comes with a lot of f
 
 ## Recommendation
 
-Before going through the documentation, you must be familiar with the core concept of Nikita described in the [tutorial](/about/tutorial).
+Before going through the documentation, you must be familiar with the core concept of Nikita described in the [tutorial](/about/tutorial/).
 
 ## Content
 

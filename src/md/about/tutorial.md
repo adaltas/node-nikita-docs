@@ -464,7 +464,7 @@ require('nikita')
 })
 ```
 
-Under the hood, both the `nikita.log.cli` and the `nikita.log.md` actions leverage the native Node.js [event API](https://Node.js.org/api/events.html). You can get more detailed information by visiting the [Logging and Debugging](/usages/logging_debugging) documentation.
+Under the hood, both the `nikita.log.cli` and the `nikita.log.md` actions leverage the native Node.js [event API](https://Node.js.org/api/events.html). You can get more detailed information by visiting the [Logging and Debugging](/usages/logging_debugging/) documentation.
 
 ### Get the server up and running
 

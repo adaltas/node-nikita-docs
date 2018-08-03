@@ -52,7 +52,7 @@ require('nikita')
 
 ## Status function
 
-The [status function](/usages/status) is not affected by the shy option. We could now rewrite the previous example above to start Redis. Instead of relying on a specific exit code to infor our `nikita.system.execute` action that Redis is started, we could split the code in 2 actions. The first one test if redis is started and doesn't activate the status if it is. The second one start Redis only if the status of the previous action is active.
+The [status function](/usages/status/) is not affected by the shy option. We could now rewrite the previous example above to start Redis. Instead of relying on a specific exit code to infor our `nikita.system.execute` action that Redis is started, we could split the code in 2 actions. The first one test if redis is started and doesn't activate the status if it is. The second one start Redis only if the status of the previous action is active.
 
 ```js
 require('nikita')

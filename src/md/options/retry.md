@@ -6,7 +6,7 @@ title: Option "retry"
 
 Setting the "retry" option provides control over how many time an action is reexecuted on error before it is finally treated as a failure.
 
-It is expected to be used conjointly with the ["attempt" option](/options/attempt) which provide an indicator over how many times an action was rescheduled.
+It is expected to be used conjointly with the ["attempt" option](/options/attempt/) which provide an indicator over how many times an action was rescheduled.
 
 ## Usage
 

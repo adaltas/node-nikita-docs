@@ -124,7 +124,7 @@ class Intro extends React.Component {
           </div>
           <Button
             component={Link}
-            to="/about/tutorial"
+            to="/about/tutorial/"
             size="large"
             variant="outlined"
             className={classes.button}
@@ -134,7 +134,7 @@ class Intro extends React.Component {
           </Button>
           <Button
             component={Link}
-            to="/about/changelog"
+            to="/about/changelog/"
             size="large"
             variant="outlined"
             className={classes.button}

@@ -149,8 +149,8 @@ function(err, {stdout}){
 
 ## Condition and status
 
-One way of controlling your flow is to mix [conditions](/usages/conditions) and [status](/usages/status).
-Nikita expose the [status](/usages/status) function
+One way of controlling your flow is to mix [conditions](/usages/conditions/) and [status](/usages/status/).
+Nikita expose the [status](/usages/status/) function
 
 When called without any parameter, it returns the status of all the previous sibling actions:
 
@@ -188,4 +188,4 @@ require('nikita')
 })
 ```
 
-Note: As mentioned in [conditions](/usages/conditions), the status function in the examples above is wrapped in a function because the status is evaluated at runtime.
+Note: As mentioned in [conditions](/usages/conditions/), the status function in the examples above is wrapped in a function because the status is evaluated at runtime.

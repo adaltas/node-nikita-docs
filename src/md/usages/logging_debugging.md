@@ -11,7 +11,7 @@ Nikita provides multiple mechanisms to report, dive into the logs and intercept 
 
 ## Quick debugging
 
-While developing, you can use the ["debug" options](/options/debug) to get visual and detailed information. This option is ["cascade" option](/options/cascade) and, as such, will be passed to every child actions.
+While developing, you can use the ["debug" options](/options/debug/) to get visual and detailed information. This option is ["cascade" option](/options/cascade/) and, as such, will be passed to every child actions.
 
 The option can be provided directly to the action in trouble:
 
@@ -67,7 +67,7 @@ Nikita provide a flexible architecture to intercept information. Users can write
 
 ### Listening to events
 
-At the heart of this architecture is the [Nikita Events API](/usages/events). A Nikita session extends the [native Node.js Events API](https://nodejs.org/api/events.html). All other mechanisms presented below rely on the events emitted inside the Nikita session. You may use the `on(event, handler)` function to catch event but extending the `nikita.log.stream` action is probably a bit easier, expecting a string writer and a serializer function.
+At the heart of this architecture is the [Nikita Events API](/usages/events/). A Nikita session extends the [native Node.js Events API](https://nodejs.org/api/events.html). All other mechanisms presented below rely on the events emitted inside the Nikita session. You may use the `on(event, handler)` function to catch event but extending the `nikita.log.stream` action is probably a bit easier, expecting a string writer and a serializer function.
 
 ### Extending `nikita.log.stream`
 
