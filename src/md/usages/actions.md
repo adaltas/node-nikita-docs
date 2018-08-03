@@ -17,7 +17,7 @@ Remember, in the end, an action is an JavaScript object with the mandatory prope
 
 ## Options
 
-Options are use to contextualize the handler function. The are usually an object but can be of any types. For example, the `execute` handler can receive on object with a "cmd" option or directly the command as a string:
+Options are used to contextualize the handler function. The are usually an object but can be of any types. For example, the `execute` handler can receive on object with a "cmd" option or directly the command as a string:
 
 ```js
 nikita
