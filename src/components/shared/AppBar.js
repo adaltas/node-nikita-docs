@@ -37,10 +37,8 @@ const styles = theme => ({
     }),
   },
   logo: {
-    fontSize: '1.8214285714285712rem',
+    fontSize: '1.6rem',
     marginLeft: '.5rem',
-    // display: 'inline-flex',
-    // verticalAlign: 'middle',
   },
   title: {
     color: 'rgba(255,255,255,1)',
@@ -48,7 +46,6 @@ const styles = theme => ({
     fontSize: '2rem',
     fontWeight: 'bold',
     letterSpacing: '.3rem',
-    // textShadow: '0 0 0.4rem rgba(255,255,255, 0.15)',
     paddingLeft: '1rem',
     paddingRight: '1rem',
     borderRadius: '5px',
