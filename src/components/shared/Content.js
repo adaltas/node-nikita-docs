@@ -36,10 +36,12 @@ const styles = theme => ({
     '& h2': {
       color: '#777777',
       fontWeight: 'normal',
+      marginTop: '3.5rem',
     },
     '& h3': {
       color: '#777777',
       fontWeight: 'normal',
+      marginTop: '2.5rem',
     },
     '& em': {
       color: '#2D2D2D',
@@ -74,6 +76,7 @@ const styles = theme => ({
       padding: '.2em .3em 0 .3em',
       background: '#E6E6E6',
       color: '#000',
+      fontSize: '1rem'
     },
     '& .toc': {
       borderTop: '1px solid #E5E7EA',
