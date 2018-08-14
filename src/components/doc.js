@@ -8,7 +8,7 @@ import withRoot from './mui/withRoot'
 import Hidden from '@material-ui/core/Hidden'
 import 'typeface-roboto'
 // Gatsby
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from 'gatsby'
 // Local
 import AppBar from './shared/AppBar'
 import Content from './shared/Content'
@@ -129,7 +129,7 @@ Layout.propTypes = {
   }).isRequired,
 }
 
-const WrappedLayout = (props) => (
+const WrappedLayout = props => (
   <StaticQuery
     query={graphql`
       query DocQuery {

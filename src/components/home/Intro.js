@@ -9,14 +9,14 @@ import SvgIcon from '@material-ui/core/SvgIcon'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 // Gatsby
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 // Particles
 import Particles from 'react-particles-js'
 import particles from './particles'
 import mw_low from './milky-way-low.jpg'
 import mw_high from './milky-way-high.jpg'
 // Scroll
-import {animateScroll as scroll, scroller} from 'react-scroll'
+import { animateScroll as scroll, scroller } from 'react-scroll'
 
 const styles = theme => ({
   root: {
@@ -52,12 +52,12 @@ const styles = theme => ({
         fontSize: '1rem !important',
         margin: '0 0 .5rem !important',
       },
-    }
+    },
   },
   bck: {
     background: `no-repeat url(${mw_high})`,
     backgroundSize: `cover`,
-    height: '100%'
+    height: '100%',
   },
   content: {
     ...theme.typography,
@@ -68,7 +68,7 @@ const styles = theme => ({
     color: '#ffffff',
     '@media (max-width: 600px)': {
       bottom: '20%',
-    }
+    },
   },
   button: {
     margin: theme.spacing.unit,
@@ -93,8 +93,8 @@ const styles = theme => ({
     '&:hover': {
       color: 'rgba(255, 255, 255, 1)',
       // backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    }
-  }
+    },
+  },
 })
 
 class Intro extends React.Component {
@@ -105,16 +105,12 @@ class Intro extends React.Component {
       scroll.scrollTo(offset, {
         duration: 400,
         delay: 0,
-        smooth: 'easeInOutQuart'
+        smooth: 'easeInOutQuart',
       })
     }
     return (
       <div className={classnames(classes.root)}>
-        <Particles
-          ref="particles"
-          params={particles}
-          className={classes.bck}
-        />
+        <Particles ref="particles" params={particles} className={classes.bck} />
         <div className={classes.content}>
           <h1>Nikita</h1>
           <div className={classes.headlines}>
@@ -143,11 +139,19 @@ class Intro extends React.Component {
             {'Changelog'}
           </Button>
           <div>
-            <IconButton aria-label="Learn more" className={classes.scrollDown} onClick={scrollDown}>
+            <IconButton
+              aria-label="Learn more"
+              className={classes.scrollDown}
+              onClick={scrollDown}
+            >
               <SvgIcon>
                 <g>
-                  <g><path d=" M 1.649 1.861 C 1.271 1.488 0.66 1.488 0.283 1.861 C -0.094 2.234 -0.095 2.84 0.283 3.213 L 11.317 14.139 C 11.694 14.512 12.306 14.512 12.683 14.139 L 23.717 3.213 C 24.094 2.84 24.094 2.235 23.717 1.861 C 23.34 1.488 22.729 1.488 22.351 1.861 L 12 11.825 L 1.649 1.861 Z " /></g>
-                  <g><path d=" M 1.649 9.861 C 1.271 9.488 0.66 9.488 0.283 9.861 C -0.094 10.234 -0.095 10.84 0.283 11.213 L 11.317 22.139 C 11.694 22.512 12.306 22.512 12.683 22.139 L 23.717 11.213 C 24.094 10.84 24.094 10.235 23.717 9.861 C 23.34 9.488 22.729 9.488 22.351 9.861 L 12 19.825 L 1.649 9.861 Z " /></g>
+                  <g>
+                    <path d=" M 1.649 1.861 C 1.271 1.488 0.66 1.488 0.283 1.861 C -0.094 2.234 -0.095 2.84 0.283 3.213 L 11.317 14.139 C 11.694 14.512 12.306 14.512 12.683 14.139 L 23.717 3.213 C 24.094 2.84 24.094 2.235 23.717 1.861 C 23.34 1.488 22.729 1.488 22.351 1.861 L 12 11.825 L 1.649 1.861 Z " />
+                  </g>
+                  <g>
+                    <path d=" M 1.649 9.861 C 1.271 9.488 0.66 9.488 0.283 9.861 C -0.094 10.234 -0.095 10.84 0.283 11.213 L 11.317 22.139 C 11.694 22.512 12.306 22.512 12.683 22.139 L 23.717 11.213 C 24.094 10.84 24.094 10.235 23.717 9.861 C 23.34 9.488 22.729 9.488 22.351 9.861 L 12 19.825 L 1.649 9.861 Z " />
+                  </g>
                 </g>
               </SvgIcon>
             </IconButton>

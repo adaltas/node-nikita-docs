@@ -8,7 +8,7 @@ import withRoot from './mui/withRoot'
 import Hidden from '@material-ui/core/Hidden'
 import 'typeface-roboto'
 // Gatsby
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from 'gatsby'
 // Local
 import AppBar from './shared/AppBar'
 import Content from './shared/Content'
@@ -122,7 +122,7 @@ class Layout extends React.Component {
   }
 }
 
-const WrappedLayout = (props) => (
+const WrappedLayout = props => (
   <StaticQuery
     query={graphql`
       query IndexQuery {
@@ -178,7 +178,7 @@ const WrappedLayout = (props) => (
 )
 
 export default withRoot(withStyles(styles, { withTheme: true })(WrappedLayout))
-// 
+//
 // export const query = graphql`
 //   query IndexQuery {
 //     site: site {

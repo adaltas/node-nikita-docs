@@ -1,18 +1,17 @@
 // React
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
 // Gatsby
-import { graphql } from "gatsby"
+import { graphql } from 'gatsby'
 // Local
 import Layout from '../components/doc'
 
-const styles = theme => ({
-})
+const styles = theme => ({})
 
 class Template extends Component {
-  render (){
+  render() {
     const { data, classes } = this.props
     const { page } = data // data.markdownRemark holds our post data
     const { frontmatter, html } = page
@@ -25,7 +24,7 @@ class Template extends Component {
             { name: 'keywords', content: frontmatter.keywords },
           ]}
         />
-        <div ref='content' dangerouslySetInnerHTML={{ __html: html }} />
+        <div ref="content" dangerouslySetInnerHTML={{ __html: html }} />
       </Layout>
     )
   }

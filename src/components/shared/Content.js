@@ -1,5 +1,5 @@
 // React
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import ReactDom from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -74,7 +74,7 @@ const styles = theme => ({
       textAlign: 'justify',
     },
     '& pre > code[class*="language-"]': {
-      fontSize: '1rem'
+      fontSize: '1rem',
     },
     '& :not(pre) > code[class*="language-"]': {
       padding: '.2em .3em 0 .3em',
@@ -97,8 +97,8 @@ const styles = theme => ({
       '& ul': {
         marginTop: 0,
         marginBottom: 0,
-      }
-    }
+      },
+    },
   }),
   [theme.breakpoints.up(900 + theme.spacing.unit * 6)]: {
     content: {
@@ -113,7 +113,7 @@ const styles = theme => ({
     },
     '&:hover': {
       textDecoration: 'none',
-      color: theme.link.normal+' !important',
+      color: theme.link.normal + ' !important',
     },
   },
 })
@@ -128,24 +128,20 @@ class Content extends Component {
   //   const display = window.getComputedStyle(tocNode).display
   //   tocNode.style.display = display === 'none' ? '' : 'none'
   // }
-  render (){
-    const {classes, children, theme, page} = this.props
+  render() {
+    const { classes, children, theme, page } = this.props
     const toggleToc = () => {
-      if(!this.props.page) return;
+      if (!this.props.page) return
       const contentNode = ReactDom.findDOMNode(this.refs.content)
       const tocNode = contentNode.querySelector('.toc')
-      if( !tocNode ) return
+      if (!tocNode) return
       const display = window.getComputedStyle(tocNode).display
       tocNode.style.display = display === 'none' ? 'block' : 'none'
     }
     return (
       <main ref="content" className={classNames(classes.content)}>
-        { page &&
-          <Tooltip
-            id="content-edit"
-            title="Edit on GitHub"
-            enterDelay={300}
-          >
+        {page && (
+          <Tooltip id="content-edit" title="Edit on GitHub" enterDelay={300}>
             <IconButton
               color="inherit"
               href={page.fields.edit_url}
@@ -157,8 +153,8 @@ class Content extends Component {
               <EditIcon />
             </IconButton>
           </Tooltip>
-        }
-        { page && 
+        )}
+        {page && (
           <Tooltip
             id="content-toc"
             title="Toggle table of content"
@@ -173,7 +169,7 @@ class Content extends Component {
               <ListIcon />
             </IconButton>
           </Tooltip>
-        }
+        )}
         {children}
       </main>
     )

@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
 // Gatsby
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 
 const styles = theme => ({
   toolbar: {
@@ -48,7 +48,7 @@ const styles = theme => ({
       textDecoration: 'none',
       color: theme.typography.title.color,
     },
-  }
+  },
 })
 
 class AppDrawer extends React.Component {
@@ -78,8 +78,15 @@ class AppDrawer extends React.Component {
         </div>
         {children}
         <Typography className={classes.footer} variant="caption">
-          Help us <a href="https://github.com/adaltas/node-nikita-docs/issues" target="_blank" rel="noopener">improve the docs</a> by
-          fixing typos and proposing enhancements.
+          Help us{' '}
+          <a
+            href="https://github.com/adaltas/node-nikita-docs/issues"
+            target="_blank"
+            rel="noopener"
+          >
+            improve the docs
+          </a>{' '}
+          by fixing typos and proposing enhancements.
         </Typography>
       </Drawer>
     )

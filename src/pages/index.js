@@ -5,12 +5,14 @@ import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import { graphql } from 'gatsby'
 // Material UI
-import SvgIcon from '@material-ui/core/SvgIcon';
+import SvgIcon from '@material-ui/core/SvgIcon'
 // Syntax
-import SyntaxHighlighter, {registerLanguage} from 'react-syntax-highlighter/prism-light'
+import SyntaxHighlighter, {
+  registerLanguage,
+} from 'react-syntax-highlighter/prism-light'
 import javascript from 'react-syntax-highlighter/languages/prism/javascript'
 import { tomorrow } from 'react-syntax-highlighter/styles/prism'
-registerLanguage('javascript', javascript);
+registerLanguage('javascript', javascript)
 const codeString = `
 // User configuration
 const options = {
@@ -71,7 +73,7 @@ const styles = theme => ({
     flexGrow: 1,
     '& h2': {
       textAlign: 'center',
-    }
+    },
   },
   icon: {
     // float: 'left',
@@ -105,29 +107,35 @@ class IndexPage extends React.Component {
                 {'Consistent Usage'}
               </h3>
               <p>
-                {'All the functions share the same API, accepting options and a user callback in a flexible manner. Once you learn the core usage, you only learn the options of the actions you wish to execute.'}
+                {
+                  'All the functions share the same API, accepting options and a user callback in a flexible manner. Once you learn the core usage, you only learn the options of the actions you wish to execute.'
+                }
               </p>
             </Grid>
             <Grid item xs={12} sm={6}>
               <h3>
                 <SvgIcon className={classes.icon}>
-                  <path d=" M 21 5.716 L 21 6 L 15 6 L 15 0 L 15.284 0 C 15.582 0 15.869 0.119 16.08 0.329 L 20.671 4.92 C 20.881 5.131 21 5.418 21 5.716 Z  M 14.625 7.5 C 14.006 7.5 13.5 6.994 13.5 6.375 L 13.5 0 L 4.125 0 C 3.504 0 3 0.504 3 1.125 L 3 22.875 C 3 23.496 3.504 24 4.125 24 L 19.875 24 C 20.496 24 21 23.496 21 22.875 L 21 7.5 L 14.625 7.5 Z  M 8.775 18.774 C 8.729 18.823 8.666 18.851 8.599 18.854 C 8.532 18.856 8.466 18.831 8.417 18.785 L 5.377 15.935 C 5.326 15.887 5.297 15.82 5.297 15.75 C 5.297 15.68 5.326 15.613 5.377 15.565 L 8.417 12.715 C 8.466 12.669 8.532 12.644 8.599 12.646 C 8.666 12.649 8.729 12.677 8.775 12.726 L 9.693 13.705 C 9.74 13.755 9.765 13.822 9.761 13.891 C 9.758 13.959 9.727 14.023 9.676 14.068 L 7.765 15.75 L 9.676 17.432 C 9.727 17.477 9.758 17.541 9.761 17.609 C 9.765 17.678 9.74 17.745 9.693 17.795 L 8.775 18.774 L 8.775 18.774 Z  M 11.18 21.14 L 9.893 20.766 C 9.759 20.727 9.681 20.587 9.72 20.453 L 12.6 10.533 C 12.639 10.398 12.78 10.321 12.914 10.36 L 14.201 10.734 C 14.265 10.752 14.32 10.796 14.352 10.855 C 14.384 10.914 14.392 10.983 14.373 11.047 L 11.493 20.967 C 11.475 21.032 11.431 21.086 11.372 21.119 C 11.313 21.151 11.244 21.159 11.18 21.14 L 11.18 21.14 Z  M 18.717 15.935 L 15.676 18.785 C 15.627 18.831 15.562 18.856 15.495 18.854 C 15.428 18.851 15.364 18.823 15.318 18.774 L 14.401 17.795 C 14.354 17.745 14.329 17.678 14.332 17.609 C 14.336 17.541 14.367 17.477 14.418 17.432 L 16.329 15.75 L 14.418 14.068 C 14.367 14.023 14.336 13.959 14.333 13.891 C 14.329 13.822 14.354 13.755 14.401 13.705 L 15.319 12.726 C 15.364 12.677 15.428 12.649 15.495 12.646 C 15.562 12.644 15.627 12.669 15.676 12.715 L 18.717 15.565 C 18.768 15.613 18.797 15.68 18.797 15.75 C 18.797 15.82 18.768 15.887 18.717 15.935 L 18.717 15.935 Z "/>
+                  <path d=" M 21 5.716 L 21 6 L 15 6 L 15 0 L 15.284 0 C 15.582 0 15.869 0.119 16.08 0.329 L 20.671 4.92 C 20.881 5.131 21 5.418 21 5.716 Z  M 14.625 7.5 C 14.006 7.5 13.5 6.994 13.5 6.375 L 13.5 0 L 4.125 0 C 3.504 0 3 0.504 3 1.125 L 3 22.875 C 3 23.496 3.504 24 4.125 24 L 19.875 24 C 20.496 24 21 23.496 21 22.875 L 21 7.5 L 14.625 7.5 Z  M 8.775 18.774 C 8.729 18.823 8.666 18.851 8.599 18.854 C 8.532 18.856 8.466 18.831 8.417 18.785 L 5.377 15.935 C 5.326 15.887 5.297 15.82 5.297 15.75 C 5.297 15.68 5.326 15.613 5.377 15.565 L 8.417 12.715 C 8.466 12.669 8.532 12.644 8.599 12.646 C 8.666 12.649 8.729 12.677 8.775 12.726 L 9.693 13.705 C 9.74 13.755 9.765 13.822 9.761 13.891 C 9.758 13.959 9.727 14.023 9.676 14.068 L 7.765 15.75 L 9.676 17.432 C 9.727 17.477 9.758 17.541 9.761 17.609 C 9.765 17.678 9.74 17.745 9.693 17.795 L 8.775 18.774 L 8.775 18.774 Z  M 11.18 21.14 L 9.893 20.766 C 9.759 20.727 9.681 20.587 9.72 20.453 L 12.6 10.533 C 12.639 10.398 12.78 10.321 12.914 10.36 L 14.201 10.734 C 14.265 10.752 14.32 10.796 14.352 10.855 C 14.384 10.914 14.392 10.983 14.373 11.047 L 11.493 20.967 C 11.475 21.032 11.431 21.086 11.372 21.119 C 11.313 21.151 11.244 21.159 11.18 21.14 L 11.18 21.14 Z  M 18.717 15.935 L 15.676 18.785 C 15.627 18.831 15.562 18.856 15.495 18.854 C 15.428 18.851 15.364 18.823 15.318 18.774 L 14.401 17.795 C 14.354 17.745 14.329 17.678 14.332 17.609 C 14.336 17.541 14.367 17.477 14.418 17.432 L 16.329 15.75 L 14.418 14.068 C 14.367 14.023 14.336 13.959 14.333 13.891 C 14.329 13.822 14.354 13.755 14.401 13.705 L 15.319 12.726 C 15.364 12.677 15.428 12.649 15.495 12.646 C 15.562 12.644 15.627 12.669 15.676 12.715 L 18.717 15.565 C 18.768 15.613 18.797 15.68 18.797 15.75 C 18.797 15.82 18.768 15.887 18.717 15.935 L 18.717 15.935 Z " />
                 </SvgIcon>
                 {'Everything is a file'}
               </h3>
               <p>
-                {'No agent to install, no database to depends on. Your project is just another Node.js package easily versionned in Git and any SCM, easily integrated with your CI and CD DevOps tools.'}
+                {
+                  'No agent to install, no database to depends on. Your project is just another Node.js package easily versionned in Git and any SCM, easily integrated with your CI and CD DevOps tools.'
+                }
               </p>
             </Grid>
             <Grid item xs={12} sm={6}>
               <h3>
                 <SvgIcon className={classes.icon}>
-                 <path d="M12,5V1L7,6L12,11V7A6,6 0 0,1 18,13A6,6 0 0,1 12,19A6,6 0 0,1 6,13H4A8,8 0 0,0 12,21A8,8 0 0,0 20,13A8,8 0 0,0 12,5Z" />
+                  <path d="M12,5V1L7,6L12,11V7A6,6 0 0,1 18,13A6,6 0 0,1 12,19A6,6 0 0,1 6,13H4A8,8 0 0,0 12,21A8,8 0 0,0 20,13A8,8 0 0,0 12,5Z" />
                 </SvgIcon>
                 {'Idempotence'}
               </h3>
               <p>
-                {'Call a function multiple times and expect the same result. You’ll be informed of any modifications and can retrieve defailed information.'}
+                {
+                  'Call a function multiple times and expect the same result. You’ll be informed of any modifications and can retrieve defailed information.'
+                }
               </p>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -138,7 +146,9 @@ class IndexPage extends React.Component {
                 {'Documentation'}
               </h3>
               <p>
-                {'Learn fast. Source code is self-documented with the most commons usages enriched by many examples. Don’t forget to look at the tests as well.'}
+                {
+                  'Learn fast. Source code is self-documented with the most commons usages enriched by many examples. Don’t forget to look at the tests as well.'
+                }
               </p>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -149,18 +159,22 @@ class IndexPage extends React.Component {
                 {'Flexibility'}
               </h3>
               <p>
-                {'Deliberatly sacrifying speed for a maximum of strength, ease of use and flexibility. The simple API allows us to constantly add new functionnality without affecting the API.'}
+                {
+                  'Deliberatly sacrifying speed for a maximum of strength, ease of use and flexibility. The simple API allows us to constantly add new functionnality without affecting the API.'
+                }
               </p>
             </Grid>
             <Grid item xs={12} sm={6}>
               <h3>
                 <SvgIcon className={classes.icon}>
-                  <path d=" M 19.206 9.59 L 18.898 10.127 C 18.786 10.325 18.546 10.408 18.332 10.329 C 17.889 10.164 17.484 9.928 17.128 9.632 C 16.956 9.489 16.91 9.238 17.023 9.043 L 17.331 8.507 C 17.072 8.207 16.869 7.858 16.734 7.479 L 16.115 7.479 C 15.89 7.479 15.695 7.318 15.658 7.093 C 15.583 6.643 15.579 6.17 15.658 5.701 C 15.695 5.476 15.89 5.311 16.115 5.311 L 16.734 5.311 C 16.869 4.933 17.072 4.584 17.331 4.284 L 17.023 3.747 C 16.91 3.552 16.952 3.301 17.128 3.159 C 17.484 2.862 17.893 2.626 18.332 2.461 C 18.546 2.382 18.786 2.465 18.898 2.664 L 19.206 3.2 C 19.599 3.129 20.001 3.129 20.395 3.2 L 20.702 2.664 C 20.815 2.465 21.055 2.382 21.268 2.461 C 21.711 2.626 22.116 2.862 22.472 3.159 C 22.645 3.301 22.69 3.552 22.577 3.747 L 22.27 4.284 C 22.528 4.584 22.731 4.933 22.866 5.311 L 23.485 5.311 C 23.71 5.311 23.905 5.473 23.942 5.698 C 24.017 6.148 24.021 6.62 23.942 7.089 C 23.905 7.314 23.71 7.479 23.485 7.479 L 22.866 7.479 C 22.731 7.858 22.528 8.207 22.27 8.507 L 22.577 9.043 C 22.69 9.238 22.648 9.489 22.472 9.632 C 22.116 9.928 21.707 10.164 21.268 10.329 C 21.055 10.408 20.815 10.325 20.702 10.127 L 20.395 9.59 C 20.005 9.662 19.599 9.662 19.206 9.59 L 19.206 9.59 Z  M 18.812 7.385 C 20.256 8.495 21.902 6.849 20.792 5.405 C 19.348 4.291 17.702 5.941 18.812 7.385 L 18.812 7.385 Z  M 14.488 13.157 L 15.752 13.787 C 16.13 14.005 16.295 14.466 16.145 14.878 C 15.812 15.786 15.155 16.619 14.548 17.346 C 14.27 17.68 13.79 17.762 13.411 17.545 L 12.32 16.915 C 11.72 17.429 11.023 17.837 10.261 18.104 L 10.261 19.364 C 10.261 19.799 9.95 20.174 9.522 20.249 C 8.6 20.406 7.632 20.414 6.676 20.249 C 6.245 20.174 5.926 19.803 5.926 19.364 L 5.926 18.104 C 5.165 17.834 4.467 17.429 3.867 16.915 L 2.776 17.541 C 2.401 17.759 1.917 17.676 1.639 17.342 C 1.032 16.615 0.39 15.782 0.057 14.878 C -0.093 14.47 0.072 14.008 0.45 13.787 L 1.699 13.157 C 1.553 12.373 1.553 11.567 1.699 10.779 L 0.45 10.145 C 0.072 9.928 -0.097 9.467 0.057 9.058 C 0.39 8.15 1.032 7.318 1.639 6.59 C 1.917 6.256 2.397 6.174 2.776 6.391 L 3.867 7.021 C 4.467 6.508 5.165 6.099 5.926 5.833 L 5.926 4.569 C 5.926 4.137 6.233 3.762 6.661 3.687 C 7.583 3.53 8.555 3.522 9.511 3.684 C 9.942 3.759 10.261 4.13 10.261 4.569 L 10.261 5.829 C 11.023 6.099 11.72 6.504 12.32 7.018 L 13.411 6.388 C 13.786 6.17 14.27 6.253 14.548 6.586 C 15.155 7.314 15.793 8.147 16.127 9.054 C 16.277 9.463 16.13 9.924 15.752 10.145 L 14.488 10.776 C 14.634 11.563 14.634 12.369 14.488 13.157 L 14.488 13.157 Z  M 10.077 13.948 C 12.298 11.061 9.001 7.764 6.113 9.984 C 3.893 12.872 7.19 16.168 10.077 13.948 Z  M 19.206 20.8 L 18.898 21.336 C 18.786 21.535 18.546 21.618 18.332 21.539 C 17.889 21.374 17.484 21.138 17.128 20.841 C 16.956 20.699 16.91 20.448 17.023 20.253 L 17.331 19.716 C 17.072 19.416 16.869 19.067 16.734 18.689 L 16.115 18.689 C 15.89 18.689 15.695 18.527 15.658 18.302 C 15.583 17.852 15.579 17.38 15.658 16.911 C 15.695 16.686 15.89 16.521 16.115 16.521 L 16.734 16.521 C 16.869 16.142 17.072 15.793 17.331 15.493 L 17.023 14.957 C 16.91 14.762 16.952 14.511 17.128 14.368 C 17.484 14.072 17.893 13.836 18.332 13.671 C 18.546 13.592 18.786 13.675 18.898 13.873 L 19.206 14.41 C 19.599 14.338 20.001 14.338 20.395 14.41 L 20.702 13.873 C 20.815 13.675 21.055 13.592 21.268 13.671 C 21.711 13.836 22.116 14.072 22.472 14.368 C 22.645 14.511 22.69 14.762 22.577 14.957 L 22.27 15.493 C 22.528 15.793 22.731 16.142 22.866 16.521 L 23.485 16.521 C 23.71 16.521 23.905 16.682 23.942 16.907 C 24.017 17.357 24.021 17.83 23.942 18.299 C 23.905 18.524 23.71 18.689 23.485 18.689 L 22.866 18.689 C 22.731 19.067 22.528 19.416 22.27 19.716 L 22.577 20.253 C 22.69 20.448 22.648 20.699 22.472 20.841 C 22.116 21.138 21.707 21.374 21.268 21.539 C 21.055 21.618 20.815 21.535 20.702 21.336 L 20.395 20.8 C 20.005 20.871 19.599 20.871 19.206 20.8 Z  M 18.812 18.591 C 20.256 19.701 21.902 18.055 20.792 16.611 C 19.348 15.501 17.702 17.147 18.812 18.591 L 18.812 18.591 Z "/>
+                  <path d=" M 19.206 9.59 L 18.898 10.127 C 18.786 10.325 18.546 10.408 18.332 10.329 C 17.889 10.164 17.484 9.928 17.128 9.632 C 16.956 9.489 16.91 9.238 17.023 9.043 L 17.331 8.507 C 17.072 8.207 16.869 7.858 16.734 7.479 L 16.115 7.479 C 15.89 7.479 15.695 7.318 15.658 7.093 C 15.583 6.643 15.579 6.17 15.658 5.701 C 15.695 5.476 15.89 5.311 16.115 5.311 L 16.734 5.311 C 16.869 4.933 17.072 4.584 17.331 4.284 L 17.023 3.747 C 16.91 3.552 16.952 3.301 17.128 3.159 C 17.484 2.862 17.893 2.626 18.332 2.461 C 18.546 2.382 18.786 2.465 18.898 2.664 L 19.206 3.2 C 19.599 3.129 20.001 3.129 20.395 3.2 L 20.702 2.664 C 20.815 2.465 21.055 2.382 21.268 2.461 C 21.711 2.626 22.116 2.862 22.472 3.159 C 22.645 3.301 22.69 3.552 22.577 3.747 L 22.27 4.284 C 22.528 4.584 22.731 4.933 22.866 5.311 L 23.485 5.311 C 23.71 5.311 23.905 5.473 23.942 5.698 C 24.017 6.148 24.021 6.62 23.942 7.089 C 23.905 7.314 23.71 7.479 23.485 7.479 L 22.866 7.479 C 22.731 7.858 22.528 8.207 22.27 8.507 L 22.577 9.043 C 22.69 9.238 22.648 9.489 22.472 9.632 C 22.116 9.928 21.707 10.164 21.268 10.329 C 21.055 10.408 20.815 10.325 20.702 10.127 L 20.395 9.59 C 20.005 9.662 19.599 9.662 19.206 9.59 L 19.206 9.59 Z  M 18.812 7.385 C 20.256 8.495 21.902 6.849 20.792 5.405 C 19.348 4.291 17.702 5.941 18.812 7.385 L 18.812 7.385 Z  M 14.488 13.157 L 15.752 13.787 C 16.13 14.005 16.295 14.466 16.145 14.878 C 15.812 15.786 15.155 16.619 14.548 17.346 C 14.27 17.68 13.79 17.762 13.411 17.545 L 12.32 16.915 C 11.72 17.429 11.023 17.837 10.261 18.104 L 10.261 19.364 C 10.261 19.799 9.95 20.174 9.522 20.249 C 8.6 20.406 7.632 20.414 6.676 20.249 C 6.245 20.174 5.926 19.803 5.926 19.364 L 5.926 18.104 C 5.165 17.834 4.467 17.429 3.867 16.915 L 2.776 17.541 C 2.401 17.759 1.917 17.676 1.639 17.342 C 1.032 16.615 0.39 15.782 0.057 14.878 C -0.093 14.47 0.072 14.008 0.45 13.787 L 1.699 13.157 C 1.553 12.373 1.553 11.567 1.699 10.779 L 0.45 10.145 C 0.072 9.928 -0.097 9.467 0.057 9.058 C 0.39 8.15 1.032 7.318 1.639 6.59 C 1.917 6.256 2.397 6.174 2.776 6.391 L 3.867 7.021 C 4.467 6.508 5.165 6.099 5.926 5.833 L 5.926 4.569 C 5.926 4.137 6.233 3.762 6.661 3.687 C 7.583 3.53 8.555 3.522 9.511 3.684 C 9.942 3.759 10.261 4.13 10.261 4.569 L 10.261 5.829 C 11.023 6.099 11.72 6.504 12.32 7.018 L 13.411 6.388 C 13.786 6.17 14.27 6.253 14.548 6.586 C 15.155 7.314 15.793 8.147 16.127 9.054 C 16.277 9.463 16.13 9.924 15.752 10.145 L 14.488 10.776 C 14.634 11.563 14.634 12.369 14.488 13.157 L 14.488 13.157 Z  M 10.077 13.948 C 12.298 11.061 9.001 7.764 6.113 9.984 C 3.893 12.872 7.19 16.168 10.077 13.948 Z  M 19.206 20.8 L 18.898 21.336 C 18.786 21.535 18.546 21.618 18.332 21.539 C 17.889 21.374 17.484 21.138 17.128 20.841 C 16.956 20.699 16.91 20.448 17.023 20.253 L 17.331 19.716 C 17.072 19.416 16.869 19.067 16.734 18.689 L 16.115 18.689 C 15.89 18.689 15.695 18.527 15.658 18.302 C 15.583 17.852 15.579 17.38 15.658 16.911 C 15.695 16.686 15.89 16.521 16.115 16.521 L 16.734 16.521 C 16.869 16.142 17.072 15.793 17.331 15.493 L 17.023 14.957 C 16.91 14.762 16.952 14.511 17.128 14.368 C 17.484 14.072 17.893 13.836 18.332 13.671 C 18.546 13.592 18.786 13.675 18.898 13.873 L 19.206 14.41 C 19.599 14.338 20.001 14.338 20.395 14.41 L 20.702 13.873 C 20.815 13.675 21.055 13.592 21.268 13.671 C 21.711 13.836 22.116 14.072 22.472 14.368 C 22.645 14.511 22.69 14.762 22.577 14.957 L 22.27 15.493 C 22.528 15.793 22.731 16.142 22.866 16.521 L 23.485 16.521 C 23.71 16.521 23.905 16.682 23.942 16.907 C 24.017 17.357 24.021 17.83 23.942 18.299 C 23.905 18.524 23.71 18.689 23.485 18.689 L 22.866 18.689 C 22.731 19.067 22.528 19.416 22.27 19.716 L 22.577 20.253 C 22.69 20.448 22.648 20.699 22.472 20.841 C 22.116 21.138 21.707 21.374 21.268 21.539 C 21.055 21.618 20.815 21.535 20.702 21.336 L 20.395 20.8 C 20.005 20.871 19.599 20.871 19.206 20.8 Z  M 18.812 18.591 C 20.256 19.701 21.902 18.055 20.792 16.611 C 19.348 15.501 17.702 17.147 18.812 18.591 L 18.812 18.591 Z " />
                 </SvgIcon>
                 {'Composition'}
               </h3>
               <p>
-                {'Built from small and reusable actions imbracated into complex system. It follows the Unix philosophie of building small small single-building blocks with a clear API.'}
+                {
+                  'Built from small and reusable actions imbracated into complex system. It follows the Unix philosophie of building small small single-building blocks with a clear API.'
+                }
               </p>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -171,7 +185,9 @@ class IndexPage extends React.Component {
                 {'SSH support'}
               </h3>
               <p>
-                {'All the functions run transparently over SSH. Look at the tests, they are all executed both locally and remotely.'}
+                {
+                  'All the functions run transparently over SSH. Look at the tests, they are all executed both locally and remotely.'
+                }
               </p>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -182,7 +198,9 @@ class IndexPage extends React.Component {
                 {'Reporting'}
               </h3>
               <p>
-                {'Advanced reports can be optained by providing a log function, listening to stdout and stderr streams, generating diffs and backups.'}
+                {
+                  'Advanced reports can be optained by providing a log function, listening to stdout and stderr streams, generating diffs and backups.'
+                }
               </p>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -193,7 +211,9 @@ class IndexPage extends React.Component {
                 {'Reliability'}
               </h3>
               <p>
-                {'Feel confident. The modules are used in production for years and the code is enforced by an extensive test coverage.'}
+                {
+                  'Feel confident. The modules are used in production for years and the code is enforced by an extensive test coverage.'
+                }
               </p>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -204,14 +224,22 @@ class IndexPage extends React.Component {
                 {'Suppport'}
               </h3>
               <p>
-                {'The package is open sourced with one of the least restrictive license. Involve yourself and contributes to open source development by sending push requests or requesting commercial support offered by '} <a href="http://www.adaltas.com" target="_blank" rel="noopener">Adaltas</a> {'.'}
+                {
+                  'The package is open sourced with one of the least restrictive license. Involve yourself and contributes to open source development by sending push requests or requesting commercial support offered by '
+                }{' '}
+                <a href="http://www.adaltas.com" target="_blank" rel="noopener">
+                  Adaltas
+                </a>{' '}
+                {'.'}
               </p>
             </Grid>
           </Grid>
         </div>
         <div className={classes.root}>
           <h2>Example installation of Redis</h2>
-          <SyntaxHighlighter language='javascript' style={tomorrow}>{codeString}</SyntaxHighlighter>
+          <SyntaxHighlighter language="javascript" style={tomorrow}>
+            {codeString}
+          </SyntaxHighlighter>
         </div>
       </Layout>
     )

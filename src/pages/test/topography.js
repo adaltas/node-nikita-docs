@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 
 import Typography from '@material-ui/core/Typography'
 
-const IndexPage = (data) => (
+const IndexPage = data => (
   <Layout>
     <div>
       <Typography variant="display4">display4</Typography>

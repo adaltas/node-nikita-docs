@@ -73,7 +73,11 @@ class Menu extends React.Component {
     return (
       <div>
         <MenuList component="nav">
-          <MenuItem component={Link} to={menu.data.slug} activeClassName={classes.active}>
+          <MenuItem
+            component={Link}
+            to={menu.data.slug}
+            activeClassName={classes.active}
+          >
             <ListItemText primary={menu.data.title} onClick={this.navigate} />
             <ListItemSecondaryAction>
               <IconButton onClick={this.handleClick}>

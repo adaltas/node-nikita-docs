@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 // Gatsby
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 
 const styles = theme => ({
   root: {
@@ -71,7 +71,9 @@ class Footer extends Component {
           {footer.links.map((link, j) => (
             <li key={'footer' + i + '-' + j}>
               {/^http/.test(link.url) ? (
-                <a href={link.url} target="_blank" rel="noopener">{link.label}</a>
+                <a href={link.url} target="_blank" rel="noopener">
+                  {link.label}
+                </a>
               ) : (
                 <Link to={link.url}>{link.label}</Link>
               )}

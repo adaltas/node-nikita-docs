@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../components/doc'
 import { graphql } from 'gatsby'
 
-const NotFoundPage = ({data}) => (
+const NotFoundPage = ({ data }) => (
   <Layout>
     <div>
       <h1>NOT FOUND</h1>
