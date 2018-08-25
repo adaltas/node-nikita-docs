@@ -64,7 +64,9 @@ class Layout extends React.Component {
             { name: 'description', content: site.description },
             { name: 'keywords', content: site.keywords },
           ]}
-        />
+        >
+          <html lang="en" />
+        </Helmet>
         <Hidden mdUp>
           <AppBar
             open={!this.state.drawerOpen}
@@ -112,7 +114,7 @@ class Layout extends React.Component {
               ))}
           </Drawer>
         </Hidden>
-        <div ref="content" className={classes.content}>
+        <div className={classes.content}>
           <Intro />
           <Content>{children}</Content>
           <Footer site={site} />

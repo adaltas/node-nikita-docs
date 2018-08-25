@@ -23,7 +23,9 @@ class Template extends Component {
             { name: 'description', content: frontmatter.description },
             { name: 'keywords', content: frontmatter.keywords },
           ]}
-        />
+        >
+          <html lang="en" />
+        </Helmet>
         <div ref="content" dangerouslySetInnerHTML={{ __html: html }} />
       </Layout>
     )

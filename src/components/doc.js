@@ -1,7 +1,6 @@
 // React
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
@@ -58,13 +57,6 @@ class Layout extends React.Component {
     })
     return (
       <div className={classes.root}>
-        <Helmet
-          title={site.title}
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-          ]}
-        />
         <Hidden mdUp>
           <AppBar
             open={!this.state.drawerOpen}
