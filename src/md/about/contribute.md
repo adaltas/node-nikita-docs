@@ -21,7 +21,7 @@ Contributions go far beyond pull requests and commits. we are thrilled to receiv
 
 ## Open Development
 
-All work on Nikita happens directly on GitHub. Both core team members and external contributors send pull requests which go through the same review process.
+All work on Nikita happens directly on GitHub. We currently commit directly on the master branch. In the future, both core team members and external contributors could send pull requests which go through the same review process.
 
 ## Branch Organization
 
@@ -72,7 +72,3 @@ We are using GitHub Issues for our public bugs. We keep a close eye on this and 
 ### Reporting New Issues
 
 The best way to get your bug fixed is to provide a reduced test case. You can get inspiration from our current [test suite](https://github.com/adaltas/node-nikita/tree/master/test). Some test require a specific environment which is provided through [docker environments](https://github.com/adaltas/node-nikita/tree/master/docker).
-
-### Security Bugs
-
-Facebook has a bounty program for the safe disclosure of security bugs. With that in mind, please do not file public issues; go through the process outlined on that page.
