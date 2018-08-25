@@ -8,7 +8,6 @@ function withRoot(Component) {
   class WithRoot extends React.Component {
     constructor(props, context) {
       super(props, context)
-
       this.pageContext = this.props.pageContext || getPageContext()
     }
 

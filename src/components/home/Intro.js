@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import classnames from 'classnames'
 // Material UI
 import Button from '@material-ui/core/Button'
@@ -110,7 +109,7 @@ class Intro extends React.Component {
     }
     return (
       <div className={classnames(classes.root)}>
-        <Particles ref="particles" params={particles} className={classes.bck} />
+        <Particles params={particles} className={classes.bck} />
         <div className={classes.content}>
           <h1>Nikita</h1>
           <div className={classes.headlines}>
