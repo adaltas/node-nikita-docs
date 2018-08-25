@@ -18,17 +18,8 @@ require('nikita')
 })
 ```
 
-When multiple options are passed, they will be merged with the last keys taking precedence over previously defined keys:
-
-```js
-require('nikita')
-.call({key: 'old value'}, {key: 'new value'}, function(options){
-  assert(options.key, 'mew value')
-})
-```
-
 ## Available actions
 
-Each actions in Nikita expect specific options. You must consult the documentation of each individual actions to know in detail which actions are available.
+Each actions in Nikita expect specific options. You must consult the documentation of each individual actions to know in detail which options are available.
 
-Some actions are defined and managed by Nikita itself and are available to every action. You can consult the documentation of each option to obtain detailed information about its usage and behavior.
+Some actions are globally available to every actions. They are defined and managed by Nikita itself. You can consult the documentation of each option to obtain detailed information about its usage and behavior.
