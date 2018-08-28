@@ -26,7 +26,7 @@ class Template extends Component {
         >
           <html lang="en" />
         </Helmet>
-        <div ref="content" dangerouslySetInnerHTML={{ __html: html }} />
+        <div dangerouslySetInnerHTML={{ __html: html }} />
       </Layout>
     )
   }
