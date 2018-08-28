@@ -28,7 +28,7 @@ require('nikita')
 // Activate CLI reporting
 .log.cli()
 // Define and execute a custom Redis action
-.call(options, header: 'Redis', function(options){
+.call({header: 'Redis'}, options, function({options}){
   // Default optionsr
   if(!options.url){ options.url = 'http://download.redis.io/redis-stable.tar.gz' }
   if(!options.config){ options.config = {} }

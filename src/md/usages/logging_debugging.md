@@ -94,7 +94,7 @@ The `nikita.log.fs` action provide an easy and quick way to write your own loggi
 For example, below is a lightly modify version of the `nikita.log.csv` action:
 
 ```js
-module.exports = { ssh: false, handler: function(options){
+module.exports = { ssh: false, handler: function({options}){
   this.log.fs({ serializer: {
     diff: function(log){
       return "${log.type},${log.level},${JSON.stringify log.message},\n"

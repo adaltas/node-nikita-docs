@@ -16,7 +16,7 @@ In its simplest form, user defined handler is just a function passed to "call". 
 
 ```js
 nikita
-.call(function(options, callback){
+.call(function({options}, callback){
   fs.touch(options.file, callback);
 });
 ```
@@ -26,7 +26,7 @@ This is internally converted to:
 ```js
 nikita
 .call({
-  handler: function(options, callback){
+  handler: function({options}, callback){
     fs.touch(options.file, callback);
   }
 });
@@ -38,7 +38,7 @@ Use the expanded object syntax to pass additional information. For example, we c
 nikita
 .call({
   retry: 2,
-  handler: function(options, callback){
+  handler: function({options}, callback){
     fs.touch(options.file, callback);
   }
 });
@@ -50,7 +50,7 @@ Note, the above code could be arguably simplified using 2 arguments:
 nikita
 .call({
   retry: 2,
-}, function(options, callback){
+}, function({options}, callback){
   fs.touch(options.file, callback);
 });
 ```

@@ -27,7 +27,7 @@ Asynchronous handlers receive a callback. Once completed, the callback may be ca
 ```javascript
 require('nikita')
 // Parent action
-.call(function(options, callback){
+.call(function({options}, callback){
   // Do something
   setImmediate(function(){
     // Set the status to "true", default is "false"
@@ -52,7 +52,7 @@ require('nikita')
 // Parent action
 .call(function(){
   // Child action
-  this.call(function(options, callback){
+  this.call(function({options}, callback){
     // Set the status to "true"
     callback(null, true)
   })
@@ -69,10 +69,10 @@ The `next` function is called once a list of actions has terminated or if any er
 ```js
 require('nikita')
 // All actions are false
-.call(function(options, callback){
+.call(function({options}, callback){
   callback(null, false)
 })
-.call(function(options, callback){
+.call(function({options}, callback){
   callback(null, false)
 })
 // Then status is false
@@ -80,13 +80,13 @@ require('nikita')
   assert(status, false)
 })
 // One actions is true
-.call(function(options, callback){
+.call(function({options}, callback){
   callback(null, false)
 })
-.call(function(options, callback){
+.call(function({options}, callback){
   callback(null, true)
 })
-.call(function(options, callback){
+.call(function({options}, callback){
   callback(null, false)
 })
 // Then status is true

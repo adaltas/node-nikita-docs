@@ -34,7 +34,7 @@ For example, the above example could be registered and accessed by the name `nik
 
 ```js
 require('nikita')
-.register(['redis', 'install'], function(options){
+.register(['redis', 'install'], function({options}){
   if( !options.conf_file ){
     options.conf_file = '/etc/redis.conf'
   }
@@ -74,7 +74,7 @@ For example, our Redis example could be re-written :
 ```js
 moodule.exorts = function(nikita){
   nikita
-  .register(['redis', 'install'], function(options){
+  .register(['redis', 'install'], function({options}){
      if( !options.conf_file ){
        options.conf_file = '/etc/redis.conf'
      }
@@ -154,7 +154,7 @@ With an action object:
 ```javascript
 nikita.register('third_action', {
   relax: true,
-  handler: function(options){ console.info(options.relax) }
+  handler: function({options}){ console.info(options.relax) }
 })
 nikita.third_action(options);
 ```
@@ -164,7 +164,7 @@ With a namespace and an action object:
 ```javascript
 nikita.register(['fourth', 'action'], {
   relax: true,
-  handler: function(options){ console.info(options.relax) }
+  handler: function({options}){ console.info(options.relax) }
 })
 nikita.fourth.action(options);
 ```

@@ -16,7 +16,7 @@ Synchronous handlers expect one arguments, the options passed to the action:
 require('nikita')
 .call({
   key: 'value',
-  handler: function(options){
+  handler: function({options}){
     // do something
     assert(options.key, 'value')
   }
@@ -31,7 +31,7 @@ asynchronous handlers expect two arguments, the options and a callback function 
 require('nikita')
 .call({
   key: 'value',
-  handler: function(options, callback){
+  handler: function({options}, callback){
     setImmediate(function(){
       // do something
       assert(options.key, 'value')
@@ -48,7 +48,7 @@ You will probably never see an handler function being defined by the "handler" o
 require('nikita')
 .call({
   key: 'value'
-}, function(options, callback){
+}, function({options}, callback){
   setImmediate(function(){
     // do something
     assert(options.key, 'value')
@@ -64,15 +64,15 @@ Synchronous functions may call child action which are executed asynchronously. T
 
 ```js
 require('nikita')
-.call(function(options){
+.call(function({options}){
   console.log('1')
-  this.call(function(options, callback){
+  this.call(function({options}, callback){
     setImmediate(function(){
       console.log('2')
     })
   })
 })
-.call(function(options){
+.call(function({options}){
   console.log('3')
 })
 ```

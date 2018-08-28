@@ -21,7 +21,7 @@ require('nikita')
     a_cascaded_option: true
   }
 }, function(){
-  this.call(function(options){
+  this.call(function({options}){
     assert(options.a_cascaded_option, 'a cascaded value')
     assert(options.a_regular_option, undefined)
   })
@@ -37,7 +37,7 @@ require('nikita')
   a_regular_option: 'another value',
   cascade: ['a_cascaded_option']
 }, function(){
-  this.call(function(options){
+  this.call(function({options}){
     assert(options.a_cascaded_option, 'a cascaded value')
     assert(options.a_regular_option, undefined)
   })
@@ -55,7 +55,7 @@ require('nikita')
   cascade: {
     invisible_option: false
   }
-}, function(options){
+}, function({options}){
   assert(options.invisible_option, undefined)
 })
 ```
@@ -89,7 +89,7 @@ require('nikita')({
 })
 .call({my_cascaded_option: 'a value'}, function(){
   // Option my_cascaded_option will be passed to child actions
-  this.call(function(options){
+  this.call(function({options}){
     assert(my_cascaded_option, 'a value')
   })
 })

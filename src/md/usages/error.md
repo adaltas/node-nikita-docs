@@ -16,7 +16,7 @@ Synchronous handlers may throw an error:
 ```js
 require('nikita')
 // Synchronous function
-.call(function(options){
+.call(function({options}){
   // Throw the error
   throw Error 'Catch me'
 })
@@ -31,7 +31,7 @@ Asynchronous handlers must pass the error as the first argument of the callback.
 ```js
 require('nikita')
 // Synchronous function
-.call(function(options, callback){
+.call(function({options}, callback){
   setImmediate(function(){
     // Throw the error
     callback(Error 'Catch me')
@@ -53,7 +53,7 @@ The behavior can be altered to treat error as non destructive. Using the `relax`
 require('should')
 require('nikita')
 // Pass the relax option
-.call({relax: true}, function(options){
+.call({relax: true}, function({options}){
   // Throw the error
   throw Error 'Catch me'
 }, function(err){
@@ -61,7 +61,7 @@ require('nikita')
   err.message.should.eql 'Catch me'
 })
 // Keep working
-.call(function(options, callback){
+.call(function({options}, callback){
   setImmediate(function(){
     callback(null, true)
   })

@@ -28,11 +28,11 @@ When using the [`call` action](/usages/call/), [handler functions](/options/hand
 ```js
 require('nikita')
 // Synchronous call
-.call({file: '/tmp/sync_file'}, function(options){
+.call({file: '/tmp/sync_file'}, function({options}){
   fs.touchSync(options.file);
 })
 // Asynchronous call
-.call file: '/tmp/async_file', function(options, callback){
+.call file: '/tmp/async_file', function({options}, callback){
   fs.touch(options.file, callback;
 )};
 ```
@@ -48,7 +48,7 @@ require('nikita')
 .call(function(){
   console.info('a first sync user function');
 });
-.call({type: 'sync'}, function(options){
+.call({type: 'sync'}, function({options}){
   console.info('a second ' + options.type + ' user function');
 });
 ```
@@ -74,10 +74,10 @@ Status of the synchronous parent handler is bubbled up from asynchronous child h
 ```js
 nikita
 .call(function(){
-  this.call(function(options, callback){
+  this.call(function({options}, callback){
     callback(null, false);
   });
-  this.call(function(options, callback){
+  this.call(function({options}, callback){
     callback(null, true);
   });
 }, function(err, {status}){
@@ -88,19 +88,19 @@ nikita
 
 ### Asynchronous execution
 
-Asynchronous handlers take 2 arguments. The function signature is `handler(options, callback)`.
+Asynchronous handlers take 2 arguments. The function signature is `handler({options}, callback)`.
 
 If any, errors are passed to the callback as its first argument. Otherwise, a value of "null" or "undefined" indicates a success. The second value is the status passed as boolean. Set it to "true" to indicate a change in state. Additional arguments will be transmitted to the callback function.
 
 ```js
 require('nikita')
-.call(function(options, callback){
+.call(function({options}, callback){
   setImmediate(function(){
     console.info('An async user function indicating a change in state');
     callback(null, true);
   });
 })
-.call(function(options, callback){
+.call(function({options}, callback){
   setImmediate(function(){
     console.info('An async user function passing an error');
     callback(Error('CatchMe'));
@@ -118,11 +118,11 @@ require('nikita')
   // Entering the callback
   if(err){ return throw err };
   // Synchronous call
-  this.call({file: '/tmp/sync_file'}, function(options){
+  this.call({file: '/tmp/sync_file'}, function({options}){
     fs.touchSync(options.file);
   })
   // Asynchronous call
-  this.call file: '/tmp/async_file', function(options, callback){
+  this.call file: '/tmp/async_file', function({options}, callback){
     fs.touch(options.file, callback;
   )};
 })

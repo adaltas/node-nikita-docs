@@ -13,7 +13,7 @@ Creating an option is as easy as passing one or multiple objects when calling an
 
 ```js
 require('nikita')
-.call({my_key: 'with a value'}, function(options){
+.call({my_key: 'with a value'}, function({options}){
   assert(options.my_key, 'with a value')
 })
 ```

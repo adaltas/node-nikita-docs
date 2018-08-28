@@ -34,14 +34,14 @@ require(nikita)({
 // Wait 5 seconds between retries
 .call({
   retry: 3,
-}, function(options){
+}, function({options}){
   if( options.attempt < 3 ) throw Error 'Action Failure'
 })
 // Wait 1 second between retries
 .call({
   retry: 3,
   sleep: 1000
-}, function(options){
+}, function({options}){
   if( options.attempt < 3 ) throw Error 'Action Failure'
 })
 ```

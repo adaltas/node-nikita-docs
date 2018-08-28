@@ -33,7 +33,7 @@ The string options is here for conveniency. Internally, the execute handler rece
 
 ```js
 nikita
-.register('execute', function(options, callback){
+.register('execute', function({options}, callback){
   options.cmd = options.argument if typeof options.argument is 'string'
   // More code goes here
 });
@@ -46,7 +46,7 @@ When multiple options are passed, they will be merged with the last keys taking 
 
 ```js
 require('nikita')
-.call({key: 'old value'}, {key: 'new value'}, function(options){
+.call({key: 'old value'}, {key: 'new value'}, function({options}){
   assert(options.key, 'mew value')
 })
 ```
@@ -55,7 +55,7 @@ Values set as `undefined` are passed but they will not overwrite previously defi
 
 ```js
 require('nikita')
-.call({key: 'value'}, {key: undefined}, function(options){
+.call({key: 'value'}, {key: undefined}, function({options}){
   assert(options.key, 'value')
 })
 ```
@@ -76,7 +76,7 @@ config = {
 // Initialize a new session
 nikita
 // Call an action
-.call(config, function(options){
+.call(config, function({options}){
   assert(options.username, 'whoami')
 })
 ```
@@ -85,7 +85,7 @@ An action can also rely on some common options such as the "retry" and "attemp" 
 
 ```js
 nikita
-.call({retry: 3}, function(options){
+.call({retry: 3}, function({options}){
   if(options.attempt < 3) throw Error('Please retry')
 })
 ```
@@ -94,7 +94,7 @@ Options passed to the Nikita session on instantiation are available globally to 
 
 ```js
 nikita({my_option: 'my value'})
-.call(function(options){
+.call(function({options}){
   console.info('Value of "my_option" is ' + options.my_option);
 });
 ```

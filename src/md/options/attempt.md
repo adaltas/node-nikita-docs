@@ -16,7 +16,7 @@ The associated value is incremented after each retry starting with the value "0"
 require('nikita')
 .call({
   retry: 2
-}, function(options, callback){
+}, function({options}, callback){
   throw Error 'Oups' unless options.attempt is 0
   callback(null, true)
 }, function(err, {status}){
@@ -35,7 +35,7 @@ require('nikita')
 .call({
   retry: 2,
   relax: true
-}, function(options, callback){
+}, function({options}, callback){
   // Will fail two times
   throw Error 'Oups'
 }

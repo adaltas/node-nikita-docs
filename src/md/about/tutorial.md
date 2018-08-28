@@ -143,7 +143,7 @@ An action is the basic building block in Nikita. It is basically a function, cal
 ```js
 {
   retry: 2,
-  handler: function(options){
+  handler: function({options}){
     console.info(options.retry)
   }
 }
@@ -154,7 +154,7 @@ As you can see, options are made available as the first argument of the handler.
 ```js
 {
   retry: 2,
-  handler: function(options, callback){
+  handler: function({options}, callback){
     setImmediate(function(){
       console.info(options.retry)
     })
@@ -170,7 +170,7 @@ To execute an action, you must create a Nikita session and execute the `call` fu
 nikita = require('nikita')
 nikita.call({
   retry: 2,
-  handler: function(options){
+  handler: function({options}){
     console.info(options.retry)
   }
 })
@@ -182,7 +182,7 @@ The function `nikita.call` is very flexible in how arguments are passed. It rece
 nikita = require('nikita')
 nikita.call({
   retry: 2
-}, function(options){
+}, function({options}){
     console.info(options.retry)
   }
 )
@@ -198,7 +198,7 @@ The action callback is called with two arguments, an error if any and an object 
 nikita = require('nikita')
 nikita.call(
   // Handler
-  function(options){
+  function({options}){
     console.info(options.retry)
   },
   // Callback
@@ -222,7 +222,7 @@ assert = require('assert')
 fs = require('fs')
 nikita = require('nikita')
 // Touch implementation
-touch = function(options, callback){
+touch = function({options}, callback){
   fs.stat('/tmp/a_file', function(err, stat){
     if(err && err.code !== 'ENOENT') return callback(err)
     if(!err) return callback(null, false)
@@ -255,7 +255,7 @@ File "./lib/touch.js":
 // Dependencies
 fs = require('fs')
 // Touch implementation
-module.exports = function(options, callback){
+module.exports = function({options}, callback){
   fs.stat('/tmp/a_file', function(err, stat){
     if(err && err.code !== 'ENOENT') return callback(err)
     if(!err) return callback(null, false)
@@ -305,7 +305,7 @@ File "./lib/touch.js":
 // Dependencies
 fs = require('fs')
 // Touch implementation
-module.exports = function(options, callback){
+module.exports = function({options}, callback){
   fs.stat(options.target, function(err, stat){
     if(err && err.code !== 'ENOENT') return callback(err)
     if(!err) return callback(null, false)
@@ -644,7 +644,7 @@ require('nikita')
 File "./lib/install.js"
 
 ```js
-module.exports = function(options){
+module.exports = function({options}){
   // Default options
   if(!options.url){ options.url = 'http://download.redis.io/redis-stable.tar.gz' }
   if(!options.config){ options.config = {} }

@@ -10,12 +10,13 @@ state: review
 
 Conditions and assertions are a set of options available to every handlers to control and guaranty their execution.
 
-Conditions are executed before a handler and all conditions must pass for the handler to be
-executed. The name of the options are prefixed with "if\_" and "unless\_".
+Conditions are executed before a handler and all conditions must pass for the handler to be executed. The name of the options are prefixed with "if\_" and "unless\_" for their negation.
 
-Assertions are executed after a handler and an error is thrown if the assertion doesn't validate. The name of hte options are prefixed with "should\_" and "should\_not\_".
+Assertions are executed after a handler and an error is thrown if the assertion doesn't validate. The name of the options are prefixed with "should\_" and "should\_not\_" for their negation.
 
-<!-- toc -->
+## Usage
+
+
 
 ## Example
 
@@ -27,7 +28,7 @@ require('nikita')
   source:'/tmp/file',
   content: 'hello',
   if_exists: true,
-  if: function(options, callback){
+  if: function({options}, callback){
     fs.stat(options.source, function(err, stat){
       // Render the file if we own it
       callback(err, stat.uid === process.getuid())
@@ -40,15 +41,16 @@ require('nikita')
 
 ## Option `if`
 
-Run an action for a user defined condition.
+Condition the execution of an action to a user defined condition interpreted as
+`true`. It is available as the `unless` of `options`.
 
 When `if` is a boolean, a string, a number or null, its value determines the
 output.
 
 If it's a function, the arguments vary depending on the callback signature. With
-1 argument, the argument is an options object and the handler is run
-synchronously. With 2 arguments, the arguments are an options object plus a
-callback and the handler is run asynchronously.
+1 argument, the argument is an context object including the `options` object and
+the handler is run synchronously. With 2 arguments, the arguments are an options
+object plus a callback and the handler is run asynchronously.
 
 If it's an array, all its element must positively resolve for the condition to
 pass.
@@ -65,8 +67,8 @@ require('nikita')
     'ok',
     1,
     true,
-    function(options){ return true },
-    function(options, callback){ callback(null, true) }
+    function({options}){ return true },
+    function({options}, callback){ callback(null, true) }
   ]
 }, function(err, {status}){
   console.info(err || "File written")
@@ -75,15 +77,16 @@ require('nikita')
 
 ## Option `unless`
 
-Run an action if false.
+Condition the execution of an action to a user defined condition interpreted as
+`false`. It is available as the `unless` of `options`.
 
 When `if` is a boolean, a string, a number or null, its value determine the
 output.
 
 If it's a function, the arguments vary depending on the callback signature. With
-1 argument, the argument is an options object and the handler is run
-synchronously. With 2 arguments, the arguments are an options object plus a
-callback and the handler is run asynchronously.
+1 argument, the argument is an context object including the `options` object and
+the handler is run synchronously. With 2 arguments, the arguments are an options
+object plus a callback and the handler is run asynchronously.
 
 If it's an array, all its element must negatively resolve for the condition to
 pass.
@@ -101,8 +104,8 @@ require('nikita')
     0,
     false,
     null,
-    function(options){ return false },
-    function(options, callback){ callback(null, false) }
+    function({options}){ return false },
+    function({options}, callback){ callback(null, false) }
   ]
 }, function(err, {status}){
   console.info(err || "File written")
