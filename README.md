@@ -1,14 +1,15 @@
+
 # Nikita Website
 
-The official website of the [Nikita project](https://github.com/adaltas/node-nikita). It is written with Gatsby and Material-UI.
+The official website of the [Nikita project](https://github.com/adaltas/node-nikita). It is written with [Gatsby.js](https://www.gatsbyjs.org/) and [Material-UI](https://material-ui.com/).
 
 To install and run the server:
 
 ```
 git clone https://github.com/adaltas/node-nikita-docs.git nikita-docs
 cd nikita-docs
-npm install
-./node_modules/.bin/gatsby develop
+yarn install
+npm run develop
 ```
 
 ## TODO
