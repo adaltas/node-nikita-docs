@@ -134,13 +134,13 @@ class MyAppBar extends Component {
             </Typography>
           </Link>
           <div className={classes.grow} />
-          <Tooltip id="appbar-theme" title={site.issues.title} enterDelay={300}>
+          <Tooltip id="appbar-bug" title={site.issues.title} enterDelay={300}>
             <IconButton
               color="inherit"
               href={site.issues.url}
               target="_blank"
               rel="noopener"
-              aria-labelledby="appbar-theme"
+              aria-labelledby="appbar-bug"
               className={classes.icon}
             >
               <BugReportOutlined />
