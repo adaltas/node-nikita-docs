@@ -5,6 +5,54 @@ sort: 5
 
 # Changelog
 
+## Version 0.8.0
+
+Backward incompatibilities:
+
+* misc.file: deprecate usage of hash and compare
+* misc.glob: deprecated in favor of file.glob
+* context: 1st arg of handlers with the options key
+* service: option action renamed state
+* service: values start, stop, restart renamed started, stopped and restarted
+
+New features:
+
+* options.depth: definable by user
+* file.glob: new action
+* file.hash: new action
+* system.chown: use getent
+* session: dont overwrite options when undefined
+* service.install: new options pacman_flags and yaourt_flags
+
+Fixes:
+
+* session: remove unused condition while unstacking
+* file.upload: refactor and use file.hash
+* cascade: overwrite default values set in session
+* options status: dont return undefined when false
+* fs: disable log
+* system.mkdir: removed zombie call to uid_gid
+* options.log: true enabling/forcing logs
+* file.types.etc_passwd.read: reduce log verbosity
+* file.types.etc_group.read: reduce log verbosity
+* misc.ini.stringify: handle boolean values
+* misc.ini.stringify: fix eol for array values
+* service: 2nd argument is not a callback
+* ldap: 2nd argument is not a callback
+* tools.iptables: 2nd arg is not a callback
+
+Cleanup:
+
+* package: update license field to reflect MIT
+* log: remove log from cascade and parent usage 
+* fs.createWriteStream: code simplification
+* env: emulate systemctl
+* env: rename MECANO_TEST to NIKITA_TEST_MODULE
+* misc.ini: isolate misc ini into its own module
+* misc.ini: reorganize tests
+* file.ini: isolate tests
+* register: isolate registration into its own module
+
 ## Version 0.7.0
 
 Backward incompatibilities:
