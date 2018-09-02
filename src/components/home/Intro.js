@@ -64,7 +64,7 @@ const styles = theme => ({
     textAlign: 'center',
     color: '#ffffff',
     '@media (max-width: 600px)': {
-      bottom: '5%',
+      bottom: '10%',
     },
   },
   button: {
