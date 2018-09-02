@@ -19,13 +19,8 @@ import Intro from './home/Intro'
 
 const styles = theme => ({
   root: {
-    // display: 'flex',
-    // alignItems: 'stretch',
-    // minHeight: '100vh',
-    // width: '100%',
   },
   content: {
-    // width: '100%',
     marginLeft: 0,
   },
 })
@@ -73,32 +68,24 @@ class Layout extends React.Component {
         >
           <html lang="en" />
         </Helmet>
-        <Hidden mdUp>
-          <AppBar
-            open={this.state.open}
-            onMenuClick={onToggle}
-            site={site}
-            opacity={0.3}
-          />
-        </Hidden>
-        <Hidden smDown implementation="css">
-          <AppBar
-            open={this.state.open}
-            onMenuClick={onToggle}
-            site={site}
-            opacity={0.3}
-          />
-        </Hidden>
         <Drawer
           breakpoint={this.state.breakpoint}
           open={this.state.open}
           onClickModal={onToggle}
           main={
-            <div className={classes.content}>
-              <Intro />
-              <Content>{children}</Content>
-              <Footer site={site} />
-            </div>
+            <>
+              <AppBar
+                open={this.state.open}
+                onMenuClick={onToggle}
+                site={site}
+                opacity={0.3}
+              />
+              <div className={classes.content}>
+                <Intro />
+                <Content>{children}</Content>
+                <Footer site={site} />
+              </div>
+            </>
           }
           drawer={
             <Menu>

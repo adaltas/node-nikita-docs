@@ -18,13 +18,8 @@ import Nav from './shared/Nav'
 
 const styles = theme => ({
   root: {
-    // display: 'flex',
-    // alignItems: 'stretch',
-    // minHeight: '100vh',
-    // width: '100%',
   },
   content: {
-    // width: '100%',
     paddingTop: 60,
   },
 })
@@ -70,29 +65,22 @@ class Layout extends React.Component {
     })
     return (
       <div className={classes.root}>
-        <Hidden mdUp>
-          <AppBar
-            open={this.state.open}
-            onMenuClick={onToggle}
-            site={site}
-          />
-        </Hidden>
-        <Hidden smDown implementation="css">
-          <AppBar
-            open={this.state.open}
-            onMenuClick={onToggle}
-            site={site}
-          />
-        </Hidden>
         <Drawer
           breakpoint={this.state.breakpoint}
           open={this.state.open}
           onClickModal={onToggle}
           main={
-            <div className={classes.content}>
-              <Content page={this.props.page}>{children}</Content>
-              <Footer site={site} />
-            </div>
+            <>
+              <AppBar
+                onMenuClick={onToggle}
+                site={site}
+                open={this.state.open}
+              />
+              <div className={classes.content}>
+                <Content page={this.props.page}>{children}</Content>
+                <Footer site={site} />
+              </div>
+            </>
           }
           drawer={
             <Menu>
