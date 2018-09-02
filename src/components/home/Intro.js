@@ -22,6 +22,8 @@ const styles = theme => ({
     backgroundSize: `cover`,
     position: 'relative',
     height: '100vh',
+    // A test to fix mobile viewport, can be removed if not working
+    minHeight: 'calc(100% - 0)',
     '& h1': {
       fontSize: '6rem',
       margin: '0 0 1rem',
