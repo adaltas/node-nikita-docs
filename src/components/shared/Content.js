@@ -120,7 +120,6 @@ const styles = theme => ({
 
 class Content extends Component {
   // componentDidMount(){
-  //   console.log('!!!!!!!!!!!content.componentDidMount!!!!!!!!!!!!!!!')
   //   if(!this.props.page) return;
   //   const contentNode = ReactDom.findDOMNode(this.refs.content)
   //   const tocNode = contentNode.querySelector('.toc')

@@ -31,12 +31,10 @@ class Layout extends React.Component {
   }
   componentDidMount() {
     if (window.innerWidth < this.state.breakpoint) {
-      console.log('!!!!ah', this.state.open)
       this.setState({ open: false })
     }
   }
   render() {
-    console.log('!!!!oh', this.state.open)
     const { children, classes, data } = this.props
     const site = data.site.siteMetadata
     const onToggle = () => {
