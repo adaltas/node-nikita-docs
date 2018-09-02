@@ -19,7 +19,8 @@ const styles = theme => ({
     flex: '1 1 100%',
     maxWidth: '100%',
     margin: '0 auto 3rem',
-    fontSize: '1.2rem',
+    fontSize: '1rem',
+    lineHeight: '1.6rem',
     '& a': {
       textDecoration: 'none',
       '&:link,&:visited': {
@@ -80,7 +81,6 @@ const styles = theme => ({
       padding: '.2em .3em 0 .3em',
       background: '#E6E6E6',
       color: '#000',
-      // fontSize: '1em',
     },
     '& .toc': {
       borderTop: '1px solid #E5E7EA',
