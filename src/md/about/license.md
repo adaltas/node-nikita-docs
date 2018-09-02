@@ -1,5 +1,6 @@
 ---
 title: License (MIT)
+description: Content of the MIT license
 sort: 6
 community: true
 ---

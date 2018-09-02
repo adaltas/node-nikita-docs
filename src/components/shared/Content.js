@@ -129,7 +129,7 @@ class Content extends Component {
   //   tocNode.style.display = display === 'none' ? '' : 'none'
   // }
   render() {
-    const { classes, children, theme, page } = this.props
+    const { classes, children, page } = this.props
     const toggleToc = () => {
       if (!this.props.page) return
       const contentNode = ReactDom.findDOMNode(this.refs.content)

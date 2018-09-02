@@ -3,7 +3,6 @@ import Layout from '../components/index'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import { graphql } from 'gatsby'
 // Material UI
 import SvgIcon from '@material-ui/core/SvgIcon'
 // Syntax

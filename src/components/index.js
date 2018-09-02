@@ -1,6 +1,5 @@
 // React
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -13,32 +12,39 @@ import { StaticQuery, graphql } from 'gatsby'
 import AppBar from './shared/AppBar'
 import Content from './shared/Content'
 import Drawer from './shared/Drawer'
+import Nav from './shared/Nav'
 import Footer from './shared/Footer'
 import Menu from './shared/Menu'
 import Intro from './home/Intro'
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    alignItems: 'stretch',
-    minHeight: '100vh',
-    width: '100%',
+    // display: 'flex',
+    // alignItems: 'stretch',
+    // minHeight: '100vh',
+    // width: '100%',
   },
   content: {
-    width: '100%',
+    // width: '100%',
     marginLeft: 0,
   },
 })
 
 class Layout extends React.Component {
   state = {
-    drawerOpen: true,
+    open: false,
+    breakpoint: 960,
   }
   render() {
     const { children, classes, data } = this.props
     const site = data.site.siteMetadata
     const onToggle = () => {
-      this.setState({ drawerOpen: !this.state.drawerOpen })
+      this.setState({ open: !this.state.open })
+    }
+    const handleClickLink = () => {
+      if(window.innerWidth < this.state.breakpoint){
+        this.setState({ open: false })
+      }
     }
     const menu = { children: {} }
     data.menu.edges.map(edge => {
@@ -69,7 +75,7 @@ class Layout extends React.Component {
         </Helmet>
         <Hidden mdUp>
           <AppBar
-            open={!this.state.drawerOpen}
+            open={this.state.open}
             onMenuClick={onToggle}
             site={site}
             opacity={0.3}
@@ -77,48 +83,38 @@ class Layout extends React.Component {
         </Hidden>
         <Hidden smDown implementation="css">
           <AppBar
-            open={!this.state.drawerOpen}
+            open={this.state.open}
             onMenuClick={onToggle}
             site={site}
             opacity={0.3}
           />
         </Hidden>
-        <Hidden mdUp>
-          <Drawer
-            open={!this.state.drawerOpen}
-            onClickShadow={onToggle}
-            variant="temporary"
-          >
-            {Object.values(menu.children)
+        <Drawer
+          breakpoint={this.state.breakpoint}
+          open={this.state.open}
+          onClickModal={onToggle}
+          main={
+            <div className={classes.content}>
+              <Intro />
+              <Content>{children}</Content>
+              <Footer site={site} />
+            </div>
+          }
+          drawer={
+            <Menu>
+              {Object.values(menu.children)
               .sort((p1, p2) => p1.data.sort > p2.data.sort)
               .map(page => (
-                <Menu
+                <Nav
                   key={page.data.slug}
                   menu={page}
                   path={this.state.path}
-                  onClickLink={onToggle}
+                  onClickLink={handleClickLink}
                 />
               ))}
-          </Drawer>
-        </Hidden>
-        <Hidden smDown implementation="css">
-          <Drawer
-            open={!this.state.drawerOpen}
-            onClickShadow={onToggle}
-            variant="persistent"
-          >
-            {Object.values(menu.children)
-              .sort((p1, p2) => p1.data.sort > p2.data.sort)
-              .map(page => (
-                <Menu key={page.data.slug} menu={page} path={this.state.path} />
-              ))}
-          </Drawer>
-        </Hidden>
-        <div className={classes.content}>
-          <Intro />
-          <Content>{children}</Content>
-          <Footer site={site} />
-        </div>
+            </Menu>
+          }
+        />
       </div>
     )
   }
@@ -180,50 +176,3 @@ const WrappedLayout = props => (
 )
 
 export default withRoot(withStyles(styles, { withTheme: true })(WrappedLayout))
-//
-// export const query = graphql`
-//   query IndexQuery {
-//     site: site {
-//       siteMetadata {
-//         title
-//         github {
-//           url
-//           title
-//         }
-//         issues {
-//           url
-//           title
-//         }
-//         footer {
-//           title
-//           content
-//           links {
-//             label
-//             url
-//           }
-//         }
-//       }
-//     }
-//     menu: allMarkdownRemark(
-//       filter: {
-//         frontmatter: { disabled: { eq: false } }
-//         fields: { slug: { regex: "/^/.+/" } }
-//       }
-//       sort: { order: ASC, fields: [frontmatter___sort, fields___slug] }
-//     ) {
-//       edges {
-//         node {
-//           id
-//           excerpt(pruneLength: 250)
-//           frontmatter {
-//             title
-//             sort
-//           }
-//           fields {
-//             slug
-//           }
-//         }
-//       }
-//     }
-//   }
-// `

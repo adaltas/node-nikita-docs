@@ -1,100 +1,131 @@
-// React
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-// Material UI
-import { withStyles } from '@material-ui/core/styles'
-import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
-import Typography from '@material-ui/core/Typography'
-// Gatsby
-import { Link } from 'gatsby'
+import React, { Component } from 'react'
+import Modal from 'react-modal'
+import { css } from 'glamor'
 
-const styles = theme => ({
-  toolbar: {
-    ...theme.mixins.toolbar,
-    paddingLeft: theme.spacing.unit * 2,
-    display: 'flex',
-    flexGrow: 1,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    '& a': {
-      textDecoration: 'none',
-      color: theme.typography.title.color,
+class Drawer extends Component {
+  styles = {
+    body: {
+      width: '100%',
+      overflowY: 'hidden',
     },
-  },
-  drawer: {
-    width: 0,
-  },
-  drawerShift: {
-    width: 250,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  paper: {
-    width: 250,
-  },
-  footer: {
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    borderTop: '1px solid rgb(200, 200, 200)',
-    marginTop: '20px',
-    padding: '20px 0',
-    backgroundColor: 'rgb(245, 245, 245)',
-    textAlign: 'justify',
-    '& a': {
-      textDecoration: 'none',
-      color: theme.typography.title.color,
+    main: {
+      position: 'relative',
+      margin: 0,
+      paddingLeft: 250,
+      backgroundColor: '#F2F2F2',
+      '@media (max-width: 960px)': {
+        paddingLeft: 0,
+      },
     },
-  },
-})
-
-class AppDrawer extends React.Component {
+    mainClose: {
+      paddingLeft: 0,
+      left: 0,
+    },
+    mainOpen: {
+      '@media (min-width: 960px)': {
+        paddingLeft: '250px',
+        transition: 'padding-left 225ms cubic-bezier(0.0, 0, 0.2, 1)',
+      },
+      '@media (max-width: 960px)': {
+        left: '250px',
+        transition: 'left 225ms cubic-bezier(0.0, 0, 0.2, 1)',
+      },
+    },
+    drawer: {
+      position: 'fixed',
+      top: 0,
+      height: '100vh',
+      left: 0,
+      width: '250px',
+      overflow: 'auto',
+      '> *': {
+        overflow: 'auto',
+      },
+      '@media (max-width: 960px)': {
+        left: '-250px',
+      },
+    },
+    drawerClose: {
+      left: '-250px',
+    },
+    drawerOpen: {
+      left: 0,
+      transition: 'left 225ms cubic-bezier(0.0, 0, 0.2, 1)',
+      '.ReactModal__Content--after-open': {
+        left: 0,
+        transition: 'left 225ms cubic-bezier(0.0, 0, 0.2, 1)',
+      },
+    },
+    drawerOpenModal: {},
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, .6)',
+    },
+  }
+  constructor(props) {
+    super(props)
+    this.state = { isMobile: false }
+    this.main = React.createRef()
+  }
+  componentDidMount() {
+    if (window.innerWidth < this.props.breakpoint) {
+      this.setState({ isMobile: true })
+    }
+  }
   render() {
-    const { classes, open, children, onClickShadow, variant } = this.props
+    const { drawer, main, open } = this.props
+    const {styles} = this
+    const { isMobile } = this.state
+    const isWindow = typeof window !== `undefined`
     return (
-      <Drawer
-        className={classNames(classes.drawer, { [classes.drawerShift]: open })}
-        classes={{
-          paper: classNames(classes.paper),
-        }}
-        variant={variant}
-        anchor="left"
-        open={open}
-        onClose={onClickShadow}
-      >
-        <div className={classes.nav}>
-          <div className={classes.toolbar}>
-            <Link to="/">
-              <Typography variant="title" color="inherit">
-                Documentation
-              </Typography>
-            </Link>
-            <Typography variant="caption">{'version 0.8'}</Typography>
-          </div>
-          <Divider />
+      <>
+        <div
+          ref={this.main}
+          className={css([
+            styles.main,
+            isWindow && open && styles.mainOpen,
+            isWindow && !open && styles.mainClose,
+          ]).toString()}
+        >
+          {main}
         </div>
-        {children}
-        <Typography className={classes.footer} variant="caption">
-          Help us{' '}
-          <a
-            href="https://github.com/adaltas/node-nikita-docs/issues"
-            target="_blank"
-            rel="noopener"
+        {isWindow && isMobile ? (
+          <Modal
+            isOpen={open}
+            onRequestClose={this.props.onClickModal}
+            aria={{
+              labelledby: 'Menu',
+              describedby: 'Navigate through the site',
+            }}
+            appElement={this.main.current}
+            className={css([
+              styles.drawer,
+              isWindow && open && styles.drawerOpen,
+              isWindow && !open && styles.drawerClose,
+            ]).toString()}
+            overlayClassName={css(styles.overlay).toString()}
+            bodyOpenClassName={css(styles.body).toString()}
           >
-            improve the docs
-          </a>{' '}
-          by fixing typos and proposing enhancements.
-        </Typography>
-      </Drawer>
+            {drawer}
+          </Modal>
+        ) : (
+          <aside
+            className={css([
+              styles.drawer,
+              isWindow && open && styles.drawerOpen,
+              isWindow && !open && styles.drawerClose,
+            ]).toString()}
+          >
+            {drawer}
+          </aside>
+        )}
+      </>
     )
   }
 }
-AppDrawer.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-}
 
-export default withStyles(styles, { withTheme: true })(AppDrawer)
+export default Drawer

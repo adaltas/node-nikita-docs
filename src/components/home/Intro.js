@@ -1,12 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import classnames from 'classnames'
 // Material UI
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import SvgIcon from '@material-ui/core/SvgIcon'
 import { withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
 // Gatsby
 import { Link } from 'gatsby'
 // Particles
@@ -15,7 +13,7 @@ import particles from './particles'
 import mw_low from './milky-way-low.jpg'
 import mw_high from './milky-way-high.jpg'
 // Scroll
-import { animateScroll as scroll, scroller } from 'react-scroll'
+import { animateScroll as scroll } from 'react-scroll'
 
 const styles = theme => ({
   root: {
@@ -98,7 +96,7 @@ const styles = theme => ({
 
 class Intro extends React.Component {
   render() {
-    const { classes, theme } = this.props
+    const { classes } = this.props
     const scrollDown = e => {
       const offset = window.innerHeight - (window.innerHeight < 600 ? 48 : 64)
       scroll.scrollTo(offset, {

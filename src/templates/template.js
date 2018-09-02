@@ -12,7 +12,7 @@ const styles = theme => ({})
 
 class Template extends Component {
   render() {
-    const { data, classes } = this.props
+    const { data } = this.props
     const { page } = data // data.markdownRemark holds our post data
     const { frontmatter, html } = page
     return (

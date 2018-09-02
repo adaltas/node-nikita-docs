@@ -1,5 +1,6 @@
 ---
 title: Tutorial
+description: Instructions on how to get up and running
 sort: 2
 ---
 

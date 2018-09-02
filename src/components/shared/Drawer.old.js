@@ -1,18 +1,16 @@
 // React
 import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
+import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
 // Gatsby
-import { Link, push } from 'gatsby'
+import { Link } from 'gatsby'
 
 const styles = theme => ({
-  root: {
-    position: 'relative',
-    backgroundColor: 'rgb(245, 245, 245)',
-    height: '100%',
-  },
   toolbar: {
     ...theme.mixins.toolbar,
     paddingLeft: theme.spacing.unit * 2,
@@ -25,10 +23,24 @@ const styles = theme => ({
       color: theme.typography.title.color,
     },
   },
+  drawer: {
+    width: 0,
+  },
+  drawerShift: {
+    width: 250,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  paper: {
+    width: 250,
+  },
   footer: {
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
     borderTop: '1px solid rgb(200, 200, 200)',
+    marginTop: '20px',
     padding: '20px 0',
     backgroundColor: 'rgb(245, 245, 245)',
     textAlign: 'justify',
@@ -39,26 +51,21 @@ const styles = theme => ({
   },
 })
 
-class Menu extends React.Component {
-  state = { open: true }
-  handleClick = e => {
-    // e.stopPropagation()
-    this.setState({ open: !this.state.open })
-  }
-  navigate = to => {
-    const { menu } = this.props
-    push({
-      pathname: menu.data.slug,
-      state: {
-        // showPage: true,
-      },
-    })
-  }
+class AppDrawer extends React.Component {
   render() {
-    const { classes, children } = this.props
+    const { classes, open, children, onClickShadow, variant } = this.props
     return (
-      <div className={classes.root}>
-        <div>
+      <Drawer
+        className={classNames(classes.drawer, { [classes.drawerShift]: open })}
+        classes={{
+          paper: classNames(classes.paper),
+        }}
+        variant={variant}
+        anchor="left"
+        open={open}
+        onClose={onClickShadow}
+      >
+        <div className={classes.nav}>
           <div className={classes.toolbar}>
             <Link to="/">
               <Typography variant="title" color="inherit">
@@ -81,9 +88,13 @@ class Menu extends React.Component {
           </a>{' '}
           by fixing typos and proposing enhancements.
         </Typography>
-      </div>
+      </Drawer>
     )
   }
 }
+AppDrawer.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+}
 
-export default withStyles(styles, { withTheme: true })(Menu)
+export default withStyles(styles, { withTheme: true })(AppDrawer)
