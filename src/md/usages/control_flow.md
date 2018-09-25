@@ -166,7 +166,7 @@ require('nikita')
 .call({
   if: function(){ this.status() }
 }, function(){
-  console.log('The condition passed because the second sibling action activate the status')
+  console.info('The condition passed because the second sibling action activate the status')
 })
 ```
   
@@ -184,7 +184,7 @@ require('nikita')
 .call({
   if: function{ this.status(-1) }
 }, function(){
-  console.log('The condition passed because it references a sibling action which activates the status')
+  console.info('The condition passed because it references a sibling action which activates the status')
 })
 ```
 

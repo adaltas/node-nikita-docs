@@ -16,7 +16,7 @@ A Nikita session is run asynchronously. Thus, any function declared after Nikita
 ```js
 require('nikita')
 .next(function(){
-  console.log('This is executed after');
+  console.info('This is executed after');
 });
 console.info('This is executed before');
 ```
@@ -63,7 +63,7 @@ require('nikita')
   });
 })
 .next(function(){
-  console.log('done');
+  console.info('done');
 });
 ```
 

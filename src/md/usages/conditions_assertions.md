@@ -270,7 +270,7 @@ require('nikita')
   source: '/tmp/file',
   if: isItTrue
 }, function(err, {status}){
-  console.log(err || "Is file touched:" + status)
+  console.info(err || "Is file touched:" + status)
 })
 ```
 
@@ -290,6 +290,6 @@ require('nikita')
   content: 'hello',
   if: function(){ return isItTrue }
 }, function(err){
-  console.log(err || "File written")
+  console.info(err || "File written")
 })
 ```

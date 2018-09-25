@@ -65,14 +65,14 @@ Synchronous functions may call child action which are executed asynchronously. T
 ```js
 require('nikita')
 .call(function({options}){
-  console.log('1')
+  console.info('1')
   this.call(function({options}, callback){
     setImmediate(function(){
-      console.log('2')
+      console.info('2')
     })
   })
 })
 .call(function({options}){
-  console.log('3')
+  console.info('3')
 })
 ```
