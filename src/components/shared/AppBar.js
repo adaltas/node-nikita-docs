@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import MenuIcon from '@material-ui/icons/Menu'
 import BugReportOutlined from '@material-ui/icons/BugReportOutlined'
-import Github from '@material-ui/docs/svgIcons/GitHub'
+import { FaGithub } from 'react-icons/fa';
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import SvgIcon from '@material-ui/core/SvgIcon'
@@ -22,6 +22,7 @@ const styles = theme => ({
   appBar: {
     left: 0,
     right: 0,
+    paddingTop: '5px',
     '@media print': {
       position: 'absolute',
     },
@@ -159,7 +160,7 @@ class MyAppBar extends Component {
               aria-labelledby="appbar-github"
               className={classes.icon}
             >
-              <Github />
+              <FaGithub />
             </IconButton>
           </Tooltip>
         </Toolbar>

@@ -138,7 +138,7 @@ class Content extends Component {
       tocNode.style.display = display === 'none' ? 'block' : 'none'
     }
     return (
-      <main ref="content" className={classNames(classes.content)}>
+      <main ref="content" className={classes.content}>
         {page && (
           <Tooltip id="content-edit" title="Edit on GitHub" enterDelay={300}>
             <IconButton

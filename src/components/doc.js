@@ -4,14 +4,13 @@ import PropTypes from 'prop-types'
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
-import Hidden from '@material-ui/core/Hidden'
 import 'typeface-roboto'
 // Gatsby
 import { StaticQuery, graphql } from 'gatsby'
 // Local
 import AppBar from './shared/AppBar'
 import Content from './shared/Content'
-import Drawer from './shared/Drawer'
+import Drawer from './Drawer'
 import Footer from './shared/Footer'
 import Menu from './shared/Menu'
 import Nav from './shared/Nav'
@@ -20,6 +19,7 @@ const styles = theme => ({
   root: {
   },
   content: {
+    backgroundColor: 'rgb(242,242,242)',
     paddingTop: 60,
   },
 })
@@ -46,10 +46,10 @@ class Layout extends React.Component {
       }
     }
     const menu = { children: {} }
-    data.menu.edges.map(edge => {
+    data.menu.edges.forEach(edge => {
       const slugs = edge.node.fields.slug.split('/').filter(part => part)
       let parentMenu = menu
-      slugs.map(slug => {
+      slugs.forEach(slug => {
         if (!parentMenu.children[slug])
           parentMenu.children[slug] = { data: {}, children: {} }
         parentMenu = parentMenu.children[slug]

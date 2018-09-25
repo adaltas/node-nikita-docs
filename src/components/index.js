@@ -4,14 +4,13 @@ import Helmet from 'react-helmet'
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
-import Hidden from '@material-ui/core/Hidden'
 import 'typeface-roboto'
 // Gatsby
 import { StaticQuery, graphql } from 'gatsby'
 // Local
 import AppBar from './shared/AppBar'
 import Content from './shared/Content'
-import Drawer from './shared/Drawer'
+import Drawer from './Drawer'
 import Nav from './shared/Nav'
 import Footer from './shared/Footer'
 import Menu from './shared/Menu'
@@ -21,6 +20,7 @@ const styles = theme => ({
   root: {
   },
   content: {
+    backgroundColor: 'rgb(242,242,242)',
     marginLeft: 0,
   },
 })
@@ -42,10 +42,10 @@ class Layout extends React.Component {
       }
     }
     const menu = { children: {} }
-    data.menu.edges.map(edge => {
+    data.menu.edges.forEach(edge => {
       const slugs = edge.node.fields.slug.split('/').filter(part => part)
       let parentMenu = menu
-      slugs.map(slug => {
+      slugs.forEach(slug => {
         if (!parentMenu.children[slug])
           parentMenu.children[slug] = { data: {}, children: {} }
         parentMenu = parentMenu.children[slug]

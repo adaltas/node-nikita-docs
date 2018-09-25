@@ -9,9 +9,9 @@ import { Link, push } from 'gatsby'
 
 const styles = theme => ({
   root: {
-    position: 'relative',
+    // position: 'relative',
     backgroundColor: 'rgb(245, 245, 245)',
-    height: '100%',
+    // height: '100%',
   },
   toolbar: {
     ...theme.mixins.toolbar,
