@@ -94,7 +94,8 @@ class IndexPage extends React.Component {
   render() {
     const { classes } = this.props
     return (
-      <Layout>
+      <Layout page={{}}
+      >
         <div className={classes.root}>
           <h2>Main library features</h2>
           <Grid container spacing={24}>

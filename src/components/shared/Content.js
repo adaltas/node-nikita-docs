@@ -143,7 +143,7 @@ class Content extends Component {
           <Tooltip id="content-edit" title="Edit on GitHub" enterDelay={300}>
             <IconButton
               color="inherit"
-              href={page.fields.edit_url}
+              href={page.edit_url}
               target="_blank"
               rel="noopener"
               aria-labelledby="content-edit"

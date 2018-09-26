@@ -22,7 +22,6 @@ const styles = theme => ({
   appBar: {
     left: 0,
     right: 0,
-    paddingTop: '5px',
     '@media print': {
       position: 'absolute',
     },
@@ -49,6 +48,7 @@ const styles = theme => ({
     letterSpacing: '.3rem',
     paddingLeft: '1rem',
     paddingRight: '1rem',
+    marginTop: '.5rem',
     borderRadius: '5px',
     textTransform: 'uppercase',
     transition: theme.transitions.create('background-color', {

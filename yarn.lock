@@ -4722,6 +4722,12 @@ gatsby-plugin-catch-links@^2.1.0-alpha.f98688ee:
   dependencies:
     "@babel/runtime" "^7.0.0-beta.38"
 
+gatsby-plugin-glamor@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-glamor/-/gatsby-plugin-glamor-2.0.5.tgz#584ab258cb2c4f44822984d157a70764eba0d88f"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 gatsby-plugin-google-analytics@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.0.6.tgz#b6bc37ce357125ae9969ee38edf8fd031c57723c"

@@ -8,12 +8,12 @@ import 'typeface-roboto'
 // Gatsby
 import { StaticQuery, graphql } from 'gatsby'
 // Local
+import Drawer from './Drawer'
 import AppBar from './shared/AppBar'
 import Content from './shared/Content'
-import Drawer from './Drawer'
-import Nav from './shared/Nav'
 import Footer from './shared/Footer'
 import Menu from './shared/Menu'
+import Nav from './shared/Nav'
 import Intro from './home/Intro'
 
 const styles = theme => ({
@@ -21,7 +21,7 @@ const styles = theme => ({
   },
   content: {
     backgroundColor: 'rgb(242,242,242)',
-    marginLeft: 0,
+    // marginLeft: 0,
   },
 })
 
@@ -31,7 +31,7 @@ class Layout extends React.Component {
     breakpoint: 960,
   }
   render() {
-    const { children, classes, data } = this.props
+    const { children, classes, data, page } = this.props
     const site = data.site.siteMetadata
     const onToggle = () => {
       this.setState({ open: !this.state.open })
@@ -60,10 +60,10 @@ class Layout extends React.Component {
     return (
       <div className={classes.root}>
         <Helmet
-          title={site.title}
+          title={'NIKITA - ' + page.title || site.title}
           meta={[
-            { name: 'description', content: site.description },
-            { name: 'keywords', content: site.keywords },
+            { name: 'description', content: page.description || site.description },
+            { name: 'keywords', content: page.keywords || site.keywords },
           ]}
         >
           <html lang="en" />

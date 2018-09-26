@@ -1,6 +1,6 @@
 // React
 import React from 'react'
-import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
 import withRoot from './mui/withRoot'
@@ -8,12 +8,13 @@ import 'typeface-roboto'
 // Gatsby
 import { StaticQuery, graphql } from 'gatsby'
 // Local
+import Drawer from './Drawer'
 import AppBar from './shared/AppBar'
 import Content from './shared/Content'
-import Drawer from './Drawer'
 import Footer from './shared/Footer'
 import Menu from './shared/Menu'
 import Nav from './shared/Nav'
+
 
 const styles = theme => ({
   root: {
@@ -35,7 +36,7 @@ class Layout extends React.Component {
     }
   }
   render() {
-    const { children, classes, data } = this.props
+    const { children, classes, data, page } = this.props
     const site = data.site.siteMetadata
     const onToggle = () => {
       this.setState({ open: !this.state.open })
@@ -63,6 +64,15 @@ class Layout extends React.Component {
     })
     return (
       <div className={classes.root}>
+        <Helmet
+          title={'NIKITA - ' + page.title}
+          meta={[
+            { name: 'description', content: page.description },
+            { name: 'keywords', content: page.keywords },
+          ]}
+        >
+          <html lang="en" />
+        </Helmet>
         <Drawer
           breakpoint={this.state.breakpoint}
           open={this.state.open}
@@ -75,7 +85,7 @@ class Layout extends React.Component {
                 open={this.state.open}
               />
               <div className={classes.content}>
-                <Content page={this.props.page}>{children}</Content>
+                <Content page={page}>{children}</Content>
                 <Footer site={site} />
               </div>
             </>
@@ -98,16 +108,6 @@ class Layout extends React.Component {
       </div>
     )
   }
-}
-
-Layout.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
-  }).isRequired,
 }
 
 const WrappedLayout = props => (

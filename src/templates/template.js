@@ -14,19 +14,9 @@ class Template extends Component {
   render() {
     const { data } = this.props
     const { page } = data // data.markdownRemark holds our post data
-    const { frontmatter, html } = page
     return (
-      <Layout page={page}>
-        <Helmet
-          title={'NIKITA - ' + frontmatter.title}
-          meta={[
-            { name: 'description', content: frontmatter.description },
-            { name: 'keywords', content: frontmatter.keywords },
-          ]}
-        >
-          <html lang="en" />
-        </Helmet>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+      <Layout page={{...page.fields, ...page.frontmatter}}>
+        <div dangerouslySetInnerHTML={{ __html: page.html }} />
       </Layout>
     )
   }
