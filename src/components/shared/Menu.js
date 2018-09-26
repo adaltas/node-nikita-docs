@@ -20,6 +20,7 @@ const styles = theme => ({
     flexGrow: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
+    justifyContent: 'center',
     '& a': {
       textDecoration: 'none',
       color: theme.typography.title.color,
