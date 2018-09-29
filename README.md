@@ -19,7 +19,7 @@ npm run develop
 
 ## Request
 
-Encrypt the token for Travis:
+Create a GitHub personal access token with the "public_repo - Access public repositories" access. Encrypt the token for Travis:
 
 ```
 docker run \
