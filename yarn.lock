@@ -9083,11 +9083,9 @@ react-modal@^3.5.1:
     react-lifecycles-compat "^3.0.0"
     warning "^3.0.0"
 
-react-particles-js@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/react-particles-js/-/react-particles-js-2.3.0.tgz#2670181eff14f97479b4ae75601f51d9d6c082d7"
-  dependencies:
-    lodash.clonedeep "^4.5.0"
+react-particles-js@2.4.0-beta.10:
+  version "2.4.0-beta.10"
+  resolved "https://registry.yarnpkg.com/react-particles-js/-/react-particles-js-2.4.0-beta.10.tgz#0dc06025a495fd2628996d0f86352f914024c233"
 
 react-popper@^0.10.0:
   version "0.10.4"
