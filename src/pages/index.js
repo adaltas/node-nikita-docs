@@ -94,7 +94,12 @@ class IndexPage extends React.Component {
   render() {
     const { classes } = this.props
     return (
-      <Layout page={{}}
+      <Layout
+        page={{
+          title: 'Automation and deployment solution for Node.js',
+          description: 'Automation and deployment solution of applications and infrastructures for Node.js.',
+          keywords: 'node.js, automation, deployment, system, infrastructure, applications'
+        }}
       >
         <div className={classes.root}>
           <h2>Main library features</h2>
