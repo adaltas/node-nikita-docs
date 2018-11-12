@@ -46,7 +46,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions
-  const blogPostTemplate = path.resolve(`src/templates/template.js`)
+  const template = path.resolve(`src/templates/template.js`)
   return graphql(`
     {
       allMarkdownRemark(
@@ -76,7 +76,7 @@ exports.createPages = ({ actions, graphql }) => {
       if (node.frontmatter.disabled) return
       createPage({
         path: node.fields.slug,
-        component: blogPostTemplate,
+        component: template,
         layout: node.frontmatter.layout || 'doc',
         context: {}, // additional data can be passed via context
       })
