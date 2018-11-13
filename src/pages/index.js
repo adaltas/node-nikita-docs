@@ -28,7 +28,7 @@ require('nikita')
 .log.cli()
 // Define and execute a custom Redis action
 .call({header: 'Redis'}, options, function({options}){
-  // Default optionsr
+  // Default options
   if(!options.url){ options.url = 'http://download.redis.io/redis-stable.tar.gz' }
   if(!options.config){ options.config = {} }
   if(!options.config['bind']){ options.config['bind'] = '127.0.0.1' }
