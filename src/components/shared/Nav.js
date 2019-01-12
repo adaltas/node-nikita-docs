@@ -32,9 +32,6 @@ const styles = theme => ({
     '&:active': {
       color: theme.link.normal,
     },
-    // '& $primary, & $icon': {
-    //   color: theme.link.normal,
-    // },
   },
   active: {
     color: theme.link.normal,
