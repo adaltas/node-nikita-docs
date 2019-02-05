@@ -21,7 +21,7 @@ To create the connection, we use the [ssh2-connect]. The package simplifies the 
 
 If the ssh property is a configuration object, the options used to initialize the SSH connection are the one of the [ssh2] package as well as the one of the [ssh2-connect] package.
 
-Note that the [ssh2-connect] package will also camelize on property pass in underscore form.
+Note that the [ssh2-connect] package will automatically convert the properties from snake case to camel case.
 
 The [ssh2] options:
 
@@ -84,13 +84,16 @@ The [ssh2-connect] options:
 ```js
 var connect = require('ssh2-connect');
 var nikita = require('nikita');
+// Create an SSH connection
 connect({
   host: 'localhost',
   username: 'root',
   private_key_path: '~/.ssh/id_rsa'
 }, function(err, ssh){
   if(err) return process.exit(1);
-  nikita.touch({
+  // Pass the connection to the `touch` action
+  nikita
+  .file.touch({
     ssh: ssh
     target: '/tmp/a_file'
   }, function(err, {status}){
@@ -104,8 +107,10 @@ connect({
 ## Passing an SSH configuation
 
 ```js
-var mecano = require('mecano');
-mecano.touch({
+var nikita = require('nikita');
+// Pass the connection properties to the `ssh` option
+nikita
+.file.touch({
   ssh: {
     host: 'localhost',
     username: 'root',
