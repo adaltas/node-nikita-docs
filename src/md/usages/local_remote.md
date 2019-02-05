@@ -128,6 +128,28 @@ nikita
 
 If root privileges are required and root access is not available because no authorised key has been set, it is possible to let Nikita deploy the public key or execute Nikita with [`sudo`](/options/sudo/).
 
+The `root` option instruct the `ssh.open` action to enable root access through another user. This user must have passwordless sudo enabled.
+
+```js
+const nikita = require('nikita');
+// Global activation
+nikita
+.ssh.open({
+  host: 'localhost',
+  username: 'root',
+  // The private key of the targeted user
+  private_key_path: './root_id_rsa',
+  root: {
+    username: 'vagrant',
+    // The private key of the sudoer user used to bootstrap the connection
+    private_key_path: require('os').homedir()+'/.vagrant.d/insecure_private_key',
+    // The public key to deploy
+    public_key_path: 'root_id_rsa.pub'
+  }
+})
+.ssh.close()
+```
+
 To enable `sudo`, just enable sudo as a global option or for any action. The option will be propagated to its children.
 
 ```js
@@ -135,18 +157,18 @@ const nikita = require('nikita');
 // Global activation
 nikita({
   sudo: true
-  ssh: {
-    host: 'localhost',
-    username: process.env['USER'],
-    private_key_path: '~/.ssh/id_rsa'
-  }
+})
+.ssh.open({
+  host: 'localhost',
+  username: process.env['USER'],
+  private_key_path: '~/.ssh/id_rsa'
 })
 .system.execute({
   cmd: 'whoami'
 }, function(err, {stdout}){
   assert('whoami' === 'root')
 })
-
+.ssh.close()
 ```
 
 [ssh2-connect]: https://github.com/wdavidw/ssh2-connect
