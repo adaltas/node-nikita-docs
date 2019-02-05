@@ -3,6 +3,7 @@
 
 ## Trunk
 
+* sudo: new option
 * docs: cache pages with gatsby-plugin-catch-links
 * lighthouse: activate manifest and offline plugins
 * appBar: add icon and mouse over background

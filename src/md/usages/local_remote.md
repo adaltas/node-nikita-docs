@@ -82,8 +82,8 @@ The [ssh2-connect] options:
 ## Passing an existing SSH connection
 
 ```js
-var connect = require('ssh2-connect');
-var nikita = require('nikita');
+const connect = require('ssh2-connect');
+const nikita = require('nikita');
 // Create an SSH connection
 connect({
   host: 'localhost',
@@ -107,7 +107,7 @@ connect({
 ## Passing an SSH configuation
 
 ```js
-var nikita = require('nikita');
+const nikita = require('nikita');
 // Pass the connection properties to the `ssh` option
 nikita
 .file.touch({
@@ -122,6 +122,31 @@ nikita
   console.info('File written: ' + status);
   ssh.end();
 });
+```
+
+## Root access
+
+If root privileges are required and root access is not available because no authorised key has been set, it is possible to let Nikita deploy the public key or execute Nikita with [`sudo`](/options/sudo/).
+
+To enable `sudo`, just enable sudo as a global option or for any action. The option will be propagated to its children.
+
+```js
+const nikita = require('nikita');
+// Global activation
+nikita({
+  sudo: true
+  ssh: {
+    host: 'localhost',
+    username: process.env['USER'],
+    private_key_path: '~/.ssh/id_rsa'
+  }
+})
+.system.execute({
+  cmd: 'whoami'
+}, function(err, {stdout}){
+  assert('whoami' === 'root')
+})
+
 ```
 
 [ssh2-connect]: https://github.com/wdavidw/ssh2-connect
