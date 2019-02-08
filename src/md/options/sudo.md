@@ -2,7 +2,9 @@
 title: Option "sudo"
 ---
 
-# Option "sudo"
+# Option "sudo" (boolean, optional, false)
+
+## Introduction
 
 The "sudo" option escalates the right of the current user with `root` privileges. Passwordless sudo for the user must be enabled. The "sudo" option is cascaded to all its children.
 

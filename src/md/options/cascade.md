@@ -2,7 +2,7 @@
 title: Option "cascade"
 ---
 
-# Option "cascade"
+# Option "cascade" (object|array, optional)
 
 Options may be propagated to every child actions. This is not the default behavior, options are not passed to child actions unless they are declared by the "cascade" option.
 

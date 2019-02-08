@@ -2,7 +2,7 @@
 title: Option "debug"
 ---
 
-# Option "debug"
+# Option "debug" (boolean, optional, false)
 
 The "debug" option print detailed logs to the standard error output (`stderr`). It provides a quick and convenient solution to understand the various actions called, what they do and in which order.
 

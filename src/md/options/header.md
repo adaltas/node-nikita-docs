@@ -2,7 +2,7 @@
 title: Option "header"
 ---
 
-# Option "header"
+# Option "header" (string, optional)
 
 The "header" option is mostly used as a reporting mechanism and provides a title to a group of actions. It leverages the parent-child nature of Nikita to provided a notion of hierarchical header. In term of semantic, think about Nikita header like you would do with HTML header (`H1`, `H2`, `H3`, ...).
 

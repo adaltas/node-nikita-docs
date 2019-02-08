@@ -2,9 +2,11 @@
 title: Option "attempt"
 ---
 
-# Option "attempt"
+# Option "attempt" (number, readonly, 0)
 
-The "attempt" option is an indicator of the number of times an action has been rescheduled for execution when an error occurred. 
+## Introduction
+
+The "attempt" option is an indicator of the number of times an action has been rescheduled for execution when an error occurred.
 
 The "attempt" option is only readable from inside an handler function. An attempt to pass this option when calling an action will have no incidence. It is expected to be used conjointly with the ["retry" option](/options/retry/).
 

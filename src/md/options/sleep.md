@@ -2,7 +2,7 @@
 title: Option "sleep"
 ---
 
-# Option "sleep"
+# Option "sleep" (number, optional, 3000)
 
 ## Description
 

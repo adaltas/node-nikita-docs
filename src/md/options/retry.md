@@ -2,7 +2,7 @@
 title: Option "retry"
 ---
 
-# Option "retry"
+# Option "retry" (number|boolean, optional, 1)
 
 Setting the "retry" option provides control over how many time an action is re-scheduled on error before it is finally treated as a failure.
 

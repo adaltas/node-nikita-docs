@@ -2,7 +2,9 @@
 title: Option "shy"
 ---
 
-The "shy" option disable the modification of the session status.
+# Option "shy" (boolean, optional, false)
+
+The "shy" option disables the modification of the session status.
 
 Sometimes, some actions are not relevant to indicate of change of status. There are multiple reasons for this. For example, the nature of the action itself is meaningless, like checking prerequisites, or the change of status is assumed by another sibling action.
 
