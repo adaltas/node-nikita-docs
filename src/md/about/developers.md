@@ -11,7 +11,9 @@ You are encouraged to [contribute](/about/contribute/) to Nikita. There are mult
 
 ## Project layout
 
-Nikita is organized as one monolithic GIT repository. It includes the core engine, user actions as well as some utils functions.
+Nikita is organized as one monolithic [GIT](https://github.com/adaltas/node-nikita) repository, for the sake of clarity. It includes the core engine, user actions and utils functions ; all of them associated with their unit tests. 
+
+[Lerna](https://github.com/lerna/lerna) is used in independant mode. It optimizes the time and space requirements, allowing massive refactoring, updating and feature enrichment without any concern. 
 
 ### Core engine
 
@@ -24,19 +26,21 @@ Core engine modules are at the root of the "./lib" directory.
 * "registry"   
   Management facility to register and unregister actions.
 * "session"   
-  The Nikita session where most of the logic is wired.
+  The Nikita session where most of the logic is wired. 
 
 ### Actions
 
-Actions modules are all the modules in the "./lib" directory which are neither at the root of the directory nor inside the "./lib/misc" directory.
+Actions modules are splitted across directories, either at the root of each “./lib” folders or inside “./lib/misc”. Each of those had been tested to be used in production, take a look at the below section. 
+
 
 ### Utils function
 
 Utils function exports simple JavaScript functions and are located inside the "./lib/misc" directory. 
 
+
 ## Tests execution
 
-Nikita target Unix-like system including Linux and macOS. Windows is not supported as a targeting node where to execute actions. It is however know to host Nikita. This mean you can run Nikita from a Windows host as long as you are targeting Linux nodes over SSH.
+Nikita target Unix-like system including Linux and macOS. Windows is not supported as a targeting node where to execute actions. It is however know to host Nikita. This mean you can run Nikita from a Windows host as long as you are targeting Linux nodes over SSH. 
 
 Tests are executed with [Mocha](https://mochajs.org/) and [Should.js](https://shouldjs.github.io/). They are all located inside the "./test" folder.
 
@@ -45,9 +49,30 @@ For the tests to execute successfully, you must:
 *   be online (attempt to fetch an ftp file)
 *   be able to ssh yourself (eg `ssh $(whoami)@localhost`) without a password
 
-`npm test` execute the full test suite while `./node_modules/.bin/mocha test/${glob}` execute a subset of the test suite.
+To use Lerna, install it globally, bootstrap the packages to avoid dependencies issues with the following : 
 
-For example, to only test the `nikita.file.ini` actions, run `./node_modules/.bin/mocha test/file.ini/*.coffee`
+```bash
+# Go to your node-nikita folder
+cd ~/node-nikita
+# Erase the previous node_module files
+rm -rf ll node_modules 
+# Install lerna globally
+npm install -g lerna
+# Equivalent to npm install && npm run prepublish && npm run prepare
+lerna bootstrap
+# Symlink together all dependent packages
+lerna link
+```
+
+`lerna run test` execute the full test suite while `npx mocha test/your_choice/*.coffee` execute a subset of the test suite. 
+
+To run all package tests from the project directory run : 
+`yarn workspace @nikitajs/core run test`
+
+To only test the `nikita.file.ini` actions, run the following :
+`cd packages/core && npx mocha test/file.ini/*.coffee`. 
+
+When testing a new action, do not forget to update the ‘register.coffee’ file with the concerned information in order to test it. Otherwise an error will be thrown. 
 
 ### SSH or locally
 
@@ -87,6 +112,7 @@ describe('Simple Test', function(){
 Tests will look by default for a configuration module located at "./test" file located inside "./test.coffee". If they do not find it, they will copy the default file "./test.sample.coffee" into "./test.coffee". Use the sample file as a starting point to configure your own environment.
 
 You can customize the path to the configuration module by setting the environmental variable named "NIKITA\_TEST\_MODULE".
+
 
 ### Environments
 
