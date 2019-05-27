@@ -23,14 +23,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     node.frontmatter.disabled = !!node.frontmatter.disabled
     slug = createFilePath({ node, getNode, basePath: `pages` })
     edit_url =
-      'https://github.com/adaltas/node-nikita-docs/edit/master/src/md' +
-      createFilePath({
-        node,
-        getNode,
-        basePath: `pages`,
-        trailingSlash: false,
-      }) +
-      '.md'
+      "https://github.com/adaltas/node-nikita-docs/edit/master/" +
+      path.relative(__dirname, node.fileAbsolutePath)
     createNodeField({
       node,
       name: `slug`,
