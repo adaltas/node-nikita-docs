@@ -20,12 +20,16 @@ const styles = theme => ({
   },
   leaf: {
     fontWeight: theme.typography.fontWeightLight,
-    paddingTop: theme.spacing.unit / 3,
-    paddingBottom: theme.spacing.unit / 3,
+    paddingTop: theme.spacing(.33),
+    paddingBottom: theme.spacing(.33),
   },
   link: {
     ...theme.typography.caption,
     textDecoration: 'none',
+    color: theme.palette.grey[600],
+    // paddingTop: 0,
+    // paddingBottom: 0,
+    minHeight: 'auto',
     '&:hover': {
       textDecoration: 'none',
     },

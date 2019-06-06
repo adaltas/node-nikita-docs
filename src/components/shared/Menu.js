@@ -15,27 +15,29 @@ const styles = theme => ({
   },
   toolbar: {
     ...theme.mixins.toolbar,
-    paddingLeft: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing(2),
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
+    color: theme.palette.grey[600],
     '& a': {
       textDecoration: 'none',
-      color: theme.typography.title.color,
+      color: theme.palette.text.primary,
     },
   },
   footer: {
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
     borderTop: '1px solid rgb(200, 200, 200)',
     padding: '20px 0',
     backgroundColor: 'rgb(245, 245, 245)',
-    textAlign: 'justify',
+    // textAlign: 'justify',
+    color: theme.palette.grey[600],
     '& a': {
       textDecoration: 'none',
-      color: theme.typography.title.color,
+      color: theme.palette.text.primary,
     },
   },
 })
@@ -62,26 +64,24 @@ class Menu extends React.Component {
         <div>
           <div className={classes.toolbar}>
             <Link to="/">
-              <Typography variant="title" color="inherit">
-                Documentation
-              </Typography>
+              Documentation
             </Link>
             <Typography variant="caption">{'version 0.8'}</Typography>
           </div>
           <Divider />
         </div>
         {children}
-        <Typography className={classes.footer} variant="caption">
-          Help us{' '}
-          <a
-            href="https://github.com/adaltas/node-nikita-docs/issues"
-            target="_blank"
-            rel="noopener"
-          >
-            improve the docs
-          </a>{' '}
-          by fixing typos and proposing enhancements.
-        </Typography>
+        <div className={classes.footer}>
+          <Typography variant="caption">
+            Help us{' '}
+            <a
+              href="https://github.com/adaltas/node-nikita-docs/issues"
+            >
+              improve the docs
+            </a>{' '}
+            by fixing typos and proposing enhancements.
+          </Typography>
+        </div>
       </div>
     )
   }

@@ -69,7 +69,7 @@ const styles = theme => ({
     },
   },
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(),
   },
   headlines: {
     margin: '0 0 2rem',

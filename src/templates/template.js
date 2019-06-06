@@ -1,6 +1,5 @@
 // React
 import React, { Component } from 'react'
-import Helmet from 'react-helmet'
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
 // Gatsby

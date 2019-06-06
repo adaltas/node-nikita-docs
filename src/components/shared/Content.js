@@ -99,7 +99,7 @@ const styles = theme => ({
       },
     },
   }),
-  [theme.breakpoints.up(900 + theme.spacing.unit * 6)]: {
+  [theme.breakpoints.up(900 + theme.spacing(6))]: {
     content: {
       maxWidth: 900,
     },
@@ -143,8 +143,6 @@ class Content extends Component {
             <IconButton
               color="inherit"
               href={page.edit_url}
-              target="_blank"
-              rel="noopener"
               aria-labelledby="content-edit"
               className={classes.icons}
             >

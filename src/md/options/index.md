@@ -29,6 +29,8 @@ Options is a plain JavaScript object used to contextualise the execution of an a
   Disables the modification of the session status.
 * [`sleep`](/options/sleep/) (number, optional, 3000)   
   Time lapse when a failed action is rescheduled.
+* [`tolerant`](/options/tolerant/) (boolean, optional, false)   
+  Guaranty the execution of any action wether there was an error or not in a previous actions.
 * [`sudo`](/options/sudo/) (boolean, optional, false)   
   Escalates the right of the current user with `root` privileges.
 

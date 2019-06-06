@@ -18,7 +18,7 @@ const styles = theme => ({
     maxWidth: '100%',
     margin: '0 auto',
   }),
-  [theme.breakpoints.up(900 + theme.spacing.unit * 6)]: {
+  [theme.breakpoints.up(900 + theme.spacing(6))]: {
     rootInner: {
       maxWidth: 900,
     },
@@ -27,7 +27,7 @@ const styles = theme => ({
     color: '#CCC8C7',
   },
   paper: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     textAlign: 'justify',
     color: '#CCC8C7',
   },
@@ -71,7 +71,7 @@ class Footer extends Component {
           {footer.links.map((link, j) => (
             <li key={'footer' + i + '-' + j}>
               {/^http/.test(link.url) ? (
-                <a href={link.url} target="_blank" rel="noopener">
+                <a href={link.url}>
                   {link.label}
                 </a>
               ) : (
@@ -90,7 +90,7 @@ class Footer extends Component {
       return (
         <Grid key={'footer' + i} item xs={footer.xs || 4} sm={footer.sm || 4}>
           <div className={classes.paper}>
-            <Typography variant="subheading" className={classes.subheading}>
+            <Typography variant="subtitle1" className={classes.subheading}>
               {footer.title}
             </Typography>
             {list}
