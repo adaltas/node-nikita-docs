@@ -7,7 +7,7 @@ sort: 3
 
 ## Introduction
 
-The status is an information indicating whether an action had any impact or not. It's meaning may differ from one action to another. Here are a few examples:
+The status is an information indicating whether an action had any impact or not. Its meaning may differ from one action to another. Here are a few examples:
 
 - touching a file   
   The status is "true" if the file was created or any metadata associated with the file has changed, such as the modification time or a change of ownership.
@@ -16,7 +16,7 @@ The status is an information indicating whether an action had any impact or not.
 - checking if a port is open
   The status is set to "true" if a server is listening on that port and "false" otherwise. This is arguably an alternative usage. In such case, it is often used conjointly with the "shy" option to ensure that parent actions don't get their status modified.
 
-Status is a central concept in Nikita implemented inside every action. Early on, it was decided that actions will be idempotent and indicate whether a change occurred or not. The latter is what we call the status. It is formalized as a simple boolean passed to the callback.
+Status is a central concept in Nikita implemented inside every action. Early on, it was decided that actions will be idempotent and indicate whether a change occurred or not. The latter is what we call the status. It is formalised as a simple boolean passed to the callback as the `status` property. It is also available to subsequent action through the `getStatus` function.
 
 When a handler is made of multiple child actions, the status will be `true` if at least one of the child action has a status of `true`.
 
@@ -33,9 +33,13 @@ require('nikita')
     // Set the status to "true", default is "false"
     callback(null, true)
   });
-}, function(err, status){
-  // Status is now "true"
-  assert(status, true)
+}, function(err, {status}){
+  // Status is now "true" in the callback
+  assert(status === true)
+})
+.call(function(){
+  // Status of the previous action is "true"
+  assert(getStatus(-1) === true)
 })
 ```
 
@@ -54,11 +58,11 @@ require('nikita')
   // Child action
   this.call(function({options}, callback){
     // Set the status to "true"
-    callback(null, true)
+    callback(null === true)
   })
 }, function(err, {status}){
   // Status is now "true"
-  assert(status, true)
+  assert(status === true)
 })
 ```
 
