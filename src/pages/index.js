@@ -8,9 +8,9 @@ import SvgIcon from '@material-ui/core/SvgIcon'
 // Syntax
 import SyntaxHighlighter, {
   registerLanguage,
-} from 'react-syntax-highlighter/prism-light'
-import javascript from 'react-syntax-highlighter/languages/prism/javascript'
-import { tomorrow } from 'react-syntax-highlighter/styles/prism'
+} from 'react-syntax-highlighter/dist/prism-light'
+import javascript from 'react-syntax-highlighter/dist/esm/languages/prism/javascript'
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
 registerLanguage('javascript', javascript)
 const codeString = `
 // User configuration

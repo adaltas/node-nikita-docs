@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 // Material UI
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
@@ -108,7 +107,7 @@ class Intro extends React.Component {
       })
     }
     return (
-      <div className={classnames(classes.root)}>
+      <div className={classes.root}>
         <Particles params={particles} className={classes.bck} />
         <div className={classes.content}>
           <h1>Nikita</h1>

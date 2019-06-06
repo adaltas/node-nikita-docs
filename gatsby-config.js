@@ -63,6 +63,7 @@ module.exports = {
     ],
   },
   plugins: [
+    // `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-glamor`,
