@@ -64,6 +64,7 @@ class Layout extends React.Component {
           meta={[
             { name: 'description', content: page.description || site.description },
             { name: 'keywords', content: page.keywords || site.keywords },
+            { name: 'google-site-verification', content: 'ukvG8Ae6z6Ly-ABtoUMWzRAPMmn07QWlbRnot0AC5FA'}
           ]}
         >
           <html lang="en" />
