@@ -2,6 +2,7 @@ module.exports = {
   pathPrefix: `/node-nikita-docs`,
   siteMetadata: {
     title: 'Nikita',
+    siteUrl: `https://nikita.js.org`,
     description:
       'Nikita - Automation of system deployments for applications and infrastructures.',
     keywords:
@@ -133,6 +134,17 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-offline`,
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://nikita.js.org',
+        sitemap: 'https://nikita.js.org/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
     },
   ],
 }
