@@ -6,7 +6,7 @@ redirects:
 
 # Metadata "retry" (number|boolean, optional, 1)
 
-Setting the "retry" option provides control over how many time an action is re-scheduled on error before it is finally treated as a failure.
+Setting the "retry" property provides control over how many time an action is re-scheduled on error before it is finally treated as a failure.
 
 It is commonly used conjointly with the ["attempt" option](/metadata/attempt/) which provide an indicator over how many times an action was rescheduled.
 
@@ -28,3 +28,21 @@ require('nikita')
 ```
 
 Set the value as `true` for an unlimited number of retries. The value `false` is the same as `1`.
+
+## With the "relax" metadata
+
+When used with the ["relax"](/metadata/relax/) property, every attempt will be rescheduled. Said differently, marking an action as relax will not prevent the action to be re-executed on error.
+
+```js
+require('nikita')
+.call({
+  retry: 2,
+  relax: true
+}, function({options}, callback){
+  // Will fail two times
+  throw Error('Oups')
+}
+.call(function(){
+  // Will be executed because last action was not fatal
+}))
+```
