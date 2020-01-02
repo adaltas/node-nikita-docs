@@ -1,8 +1,10 @@
 ---
-title: Option "shy"
+title: Metadata "shy"
+redirects:
+- /options/shy/
 ---
 
-# Option "shy" (boolean, optional, false)
+# Metadata "shy" (boolean, optional, false)
 
 The "shy" option disables the modification of the session status.
 

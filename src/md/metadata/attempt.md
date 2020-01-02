@@ -1,14 +1,16 @@
 ---
-title: Option "attempt"
+title: Metadata "attempt"
+redirects:
+- /options/attempt/
 ---
 
-# Option "attempt" (number, readonly, 0)
+# Metadata "attempt" (number, readonly, 0)
 
 ## Introduction
 
 The "attempt" option is an indicator of the number of times an action has been rescheduled for execution when an error occurred.
 
-The "attempt" option is only readable from inside an handler function. An attempt to pass this option when calling an action will have no incidence. It is expected to be used conjointly with the ["retry" option](/options/retry/).
+The "attempt" option is only readable from inside an handler function. An attempt to pass this option when calling an action will have no incidence. It is expected to be used conjointly with the ["retry" option](/metadata/retry/).
 
 ## Usage
 
@@ -30,7 +32,7 @@ require('nikita')
 ```
 ## With "relax" option
 
-When used with the ["relax" option](/options/relax/), all the attempts will rescheduled. Said differently, marking an action as relax will not prevent to action to be re-executed on error.
+When used with the ["relax" option](/metadata/relax/), all the attempts will rescheduled. Said differently, marking an action as relax will not prevent to action to be re-executed on error.
 
 ```js
 require('nikita')

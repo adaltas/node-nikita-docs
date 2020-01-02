@@ -143,9 +143,9 @@ An action is the basic building block in Nikita. It is basically a function, cal
 
 ```js
 {
-  retry: 2,
+  who: 'leon',
   handler: function({options}){
-    console.info(options.retry)
+    console.info(options.who)
   }
 }
 ```
@@ -154,10 +154,10 @@ As you can see, options are made available as the first argument of the handler.
 
 ```js
 {
-  retry: 2,
+  who: 'leon',
   handler: function({options}, callback){
     setImmediate(function(){
-      console.info(options.retry)
+      console.info(options.who)
     })
   }
 }
@@ -170,9 +170,9 @@ To execute an action, you must create a Nikita session and execute the `call` fu
 ```js
 nikita = require('nikita')
 nikita.call({
-  retry: 2,
+  who: 'leon',
   handler: function({options}){
-    console.info(options.retry)
+    console.info(options.who)
   }
 })
 ```
@@ -182,9 +182,9 @@ The function `nikita.call` is very flexible in how arguments are passed. It rece
 ```js
 nikita = require('nikita')
 nikita.call({
-  retry: 2
+  who: 'leon'
 }, function({options}){
-    console.info(options.retry)
+    console.info(options.who)
   }
 )
 ```
@@ -200,7 +200,7 @@ nikita = require('nikita')
 nikita.call(
   // Handler
   function({options}){
-    console.info(options.retry)
+    console.info(options.who)
   },
   // Callback
   function(err, {status}){
@@ -298,7 +298,7 @@ nikita
 
 ### Passing options
 
-The `touch` action is now a separate Node.js module. It is a vanilla JavaScript function which may receive options. There are many options which are globally available to every actions such as `header`, `retry`, `relax`. We encourage you to navigate the documentation. Covering all of them is not in the scope of this tutorial. You can also create your own options. Let's pass the path of the target file as an option:
+The `touch` action is now a separate Node.js module. It is a vanilla JavaScript function. You can create your own options to control the behavior of your actions. In our example, we created the `target` option to know which file to touch:
 
 File "./lib/touch.js":
 
@@ -329,6 +329,10 @@ nikita
   assert(status, true)
 })
 ```
+
+### Passing metadata
+
+There are several properties which are globally available to every actions such as `header`, `retry`, `relax`. Those are [metadata][/metadata/] and they are not to be confused with options. We encourage you to navigate the documentation. Covering all of them is not in the scope of this tutorial.
 
 ### Registering actions
 

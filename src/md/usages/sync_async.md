@@ -23,7 +23,7 @@ console.info('This is executed before');
 
 ## The `call` action
 
-When using the [`call` action](/usages/call/), [handler functions](/options/handler/) in Nikita are executed synchronously or asynchronously. Detection is based on the argument signature. Here's a simple example with the Node.js `fs.touch` function:
+When using the [`call` action](/usages/call/), [handler functions](/action/handler/) in Nikita are executed synchronously or asynchronously. Detection is based on the argument signature. Here's a simple example with the Node.js `fs.touch` function:
 
 ```js
 require('nikita')

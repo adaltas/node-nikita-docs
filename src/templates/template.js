@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles'
 // Gatsby
 import { graphql } from 'gatsby'
 // Local
-import Layout from '../components/doc'
+import Layout from '../components/Layout'
 
 const styles = theme => ({})
 

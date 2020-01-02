@@ -17,8 +17,6 @@ Before going through the documentation, you must be familiar with the core conce
 
 The topics of this section are organized by relevance, the first ones being considered as the most relevant ones. 
 
-* [Actions, options, handlers and callbacks](/usages/actions/)   
-  An action is the single unit of work in Nikita. It is made of a simple JavaScript object which we call options.
 * [Call and user defined handlers](/usages/call/)   
   Nikita gives you the choice between calling your own function, which we call handlers, or calling an registered function by its name.
 * [Sync and async execution](/usages/sync_async/)   

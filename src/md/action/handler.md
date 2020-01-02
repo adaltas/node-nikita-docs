@@ -1,14 +1,15 @@
 ---
-title: Option "handler"
+title: Handler
+sort: 2
 ---
 
-# Option "handler" (function, required)
+# Metadata "handler" (function, required)
 
-The "handler" option define the function that an action implements to get things done. It is fundamental to each action.
+The "handler" property define the function that an action implements to get things done. It is fundamental to each action.
 
-The option is required but most of the time, you don't have to write an handler action on your own. Instead, you will use an existing action which has [registered](/usages/registry/) its handler function.
+The property is required but most of the time, you don't have to write an handler function on your own. Instead, you will use an existing action which was previously [registered](/usages/registry/).
 
-However, you should not be afraid to write your own handler, it is as easy as writing a plain vanilla JavaScript function and using the Nikita `call` action. Functions can run [synchronously or asynchronously](/usages/sync_async/).
+However, you should not be afraid to write your own handler, it is as easy as writing a plain vanilla JavaScript function and using the Nikita `call` action to schedule its execution. Functions can run [synchronously or asynchronously](/usages/sync_async/).
 
 ## Synchronous handlers
 

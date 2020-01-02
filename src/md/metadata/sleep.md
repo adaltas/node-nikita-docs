@@ -1,8 +1,10 @@
 ---
-title: Option "sleep"
+title: Metadata "sleep"
+redirects:
+- /options/sleep/
 ---
 
-# Option "sleep" (number, optional, 3000)
+# Metadata "sleep" (number, optional, 3000)
 
 ## Description
 

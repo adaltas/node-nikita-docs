@@ -15,7 +15,6 @@ import Footer from './shared/Footer'
 import Menu from './shared/Menu'
 import Nav from './shared/Nav'
 
-
 const styles = theme => ({
   root: {
   },

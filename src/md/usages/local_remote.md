@@ -126,7 +126,7 @@ nikita
 
 ## Root access
 
-If root privileges are required and root access is not available because no authorised key has been set, it is possible to let Nikita deploy the public key or execute Nikita with [`sudo`](/options/sudo/).
+If root privileges are required and root access is not available because no authorised key has been set, it is possible to let Nikita deploy the public key or execute Nikita with [`sudo`](/metadata/sudo/).
 
 The `root` option instruct the `ssh.open` action to enable root access through another user. This user must have passwordless sudo enabled.
 

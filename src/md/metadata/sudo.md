@@ -1,8 +1,10 @@
 ---
-title: Option "sudo"
+title: Metadata "sudo"
+redirects:
+- /options/sudo/
 ---
 
-# Option "sudo" (boolean, optional, false)
+# Metadata "sudo" (boolean, optional, false)
 
 ## Introduction
 

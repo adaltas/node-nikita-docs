@@ -1,37 +1,35 @@
 ---
-title: Options
-sort: 3
+title: Metadata
+sort: 4
+redirects:
+- /options/
 ---
 
-# Options
+# Metadata
 
-Options is a plain JavaScript object used to contextualise the execution of an action.
+Metadata is a plain JavaScript object used to contextualise the execution of an action.
 
-## Global options
+## Available properties
 
-* [`attempt`](/options/attempt/) (number, readonly, 0)
-  Indicates the number of times an action has been rescheduled for execution when an error occurred. 
-* [`cascade`](/options/cascade/) (object|array, optional)   
-  Propagates an option and its value to every child actions.
-* [`debug`](/options/debug/) (boolean, optional, false)   
+* [`attempt`](/metadata/attempt/) (number, readonly, 0)
+  Indicates the number of times an action has been rescheduled for execution when an error occurred.
+* [`debug`](/metadata/debug/) (boolean, optional, false)   
   Print detailed logs to the standard error output (`stderr`).
-* [`handler`](/options/handler/) (function, required)   
-  Define the function that an action implements to get things done.
-* [`header`](/options/header/) (string, optional)   
+* [`header`](/metadata/header/) (string, optional)   
   Title of an actions or of a group of actions.
-* [`once`](/options/once/) (boolean|array|string, optional, false)   
+* [`once`](/metadata/once/) (boolean|array|string, optional, false)   
   Ensure that the same actions are only executed once.
-* [`relax`](/options/relax/) (boolean, optional, false)   
+* [`relax`](/metadata/relax/) (boolean, optional, false)   
   Makes an action tolerant to internal errors.
-* [`retry`](/options/retry/) (number|boolean, optional, 1)   
+* [`retry`](/metadata/retry/) (number|boolean, optional, 1)   
   Control over how many time an action is re-scheduled on error before it is finally treated as a failure.
-* [`shy`](/options/shy/) (boolean, optional, false)   
+* [`shy`](/metadata/shy/) (boolean, optional, false)   
   Disables the modification of the session status.
-* [`sleep`](/options/sleep/) (number, optional, 3000)   
+* [`sleep`](/metadata/sleep/) (number, optional, 3000)   
   Time lapse when a failed action is rescheduled.
-* [`tolerant`](/options/tolerant/) (boolean, optional, false)   
+* [`tolerant`](/metadata/tolerant/) (boolean, optional, false)   
   Guaranty the execution of any action wether there was an error or not in a previous actions.
-* [`sudo`](/options/sudo/) (boolean, optional, false)   
+* [`sudo`](/metadata/sudo/) (boolean, optional, false)   
   Escalates the right of the current user with `root` privileges.
 
 ## Usage

@@ -2,20 +2,20 @@ const path = require('path')
 
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.onCreatePage = ({ page, actions }) => {
-  const { createPage } = actions
-
-  return new Promise((resolve, reject) => {
-    if (page.path.match(/^\/test\//)) {
-      page.layout = 'blank'
-      createPage(page)
-    }
-    if (!page.path.match(/^\/$/)) {
-      page.layout = 'doc'
-    }
-    resolve()
-  })
-}
+// exports.onCreatePage = ({ page, actions }) => {
+//   const { createPage } = actions
+// 
+//   return new Promise((resolve, reject) => {
+//     if (page.path.match(/^\/test\//)) {
+//       page.layout = 'blank'
+//       createPage(page)
+//     }
+//     if (!page.path.match(/^\/$/)) {
+//       page.layout = 'doc'
+//     }
+//     resolve()
+//   })
+// }
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -51,7 +51,6 @@ exports.createPages = ({ actions, graphql }) => {
           node {
             frontmatter {
               title
-              layout
               redirects
               disabled
             }
@@ -71,7 +70,6 @@ exports.createPages = ({ actions, graphql }) => {
       createPage({
         path: node.fields.slug,
         component: template,
-        layout: node.frontmatter.layout || 'doc',
         context: {}, // additional data can be passed via context
       })
       if (node.frontmatter.redirects) {

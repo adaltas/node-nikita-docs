@@ -11,7 +11,7 @@ Nikita provides multiple mechanisms to report, dive into the logs and intercept 
 
 ## Quick debugging
 
-While developing, you can use the ["debug" options](/options/debug/) to get visual and detailed information. This option is ["cascade" option](/options/cascade/) and, as such, will be passed to every child actions.
+While developing, you can use the ["debug" options](/metadata/debug/) to get visual and detailed information. This option [cascaded](/action/cascade/) and, as such, will be passed to every child actions.
 
 The option can be provided directly to the action in trouble:
 

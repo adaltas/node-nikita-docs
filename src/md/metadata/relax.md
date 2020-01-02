@@ -1,8 +1,10 @@
 ---
-title: Option "relax"
+title: Metadata "relax"
+redirects:
+- /options/relax/
 ---
 
-# Option "relax" (boolean, optional, false)
+# Metadata "relax" (boolean, optional, false)
 
 The "relax" option makes an action tolerant to internal errors.
 

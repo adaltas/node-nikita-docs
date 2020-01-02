@@ -1,12 +1,14 @@
 ---
-title: Option "tolerant"
+title: Metadata "tolerant"
+redirects:
+- /options/tolerant/
 ---
 
-# Option "tolerant" (boolean, optional, false)
+# Metadata "tolerant" (boolean, optional, false)
 
 ## Description
 
-The "tolerant" option Guaranty the execution of any action wether there was an error or not in a previous actions.
+The "tolerant" option guaranty the execution of any action wether there was an error or not in a previous actions.
 
 ## Usage
 
@@ -20,6 +22,6 @@ require('nikita')
 .call({
   tolerant: true
 }, function(){
-  console.log('I am executed')
+  console.info('I am executed')
 })
 ```

@@ -1,8 +1,10 @@
 ---
-title: Option "once"
+title: Metadata "once"
+redirects:
+- /options/once/
 ---
 
-# Option "once" (boolean|array|string, optional, false)
+# Metadata "once" (boolean|array|string, optional, false)
 
 This option compare multiple actions in a Nikita session and ensure that the same actions are only executed once.
 

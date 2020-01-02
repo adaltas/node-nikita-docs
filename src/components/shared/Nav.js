@@ -81,7 +81,7 @@ class Nav extends React.Component {
             to={menu.data.slug}
             activeClassName={classes.active}
           >
-            <ListItemText primary={menu.data.title} onClick={this.navigate} />
+            <ListItemText primary={menu.data.title} />
             <ListItemSecondaryAction>
               <IconButton onClick={this.handleClick}>
                 {this.state.open ? <ExpandLess /> : <ExpandMore />}

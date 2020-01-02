@@ -28,8 +28,8 @@ module.exports = {
             url: '/usages/',
           },
           {
-            label: 'Options',
-            url: '/options/',
+            label: 'Metadata',
+            url: '/metadata/',
           },
         ],
         xs: 6,
@@ -104,8 +104,15 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
             options: {
               classPrefix: 'language-',
-              inlineCodeMarker: '±',
+              inlineCodeMarker: null,
               aliases: {},
+              showLineNumbers: false,
+              inlineCodeMarker: '±',
+              prompt: {
+                user: "whoami",
+                host: "localhost",
+                global: false,
+              },
             },
           },
         ],

@@ -1,7 +1,6 @@
 ---
 title: Dummy page to declare infering types
 sort: 6
-layout: docs
 disabled: true
 description: CEO description
 keywords: CEO keywords
