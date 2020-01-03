@@ -20,11 +20,11 @@ It is not recommended to call the `emit` function directly but instead your are 
 The existing events provide you with multiple entry points to catch information across the entire session life cycle:
 
 - `lifecycle`   
-  It indicates execution directives which may occur at different steps of the action life cycle. it uses the "message" property as a code to define what is happening. The following values exists: "disabled_false", "disabled_true", "conditions_passed", "conditions_failed". The handler function is called with a `log` argument.
+  It indicates execution directives which may occur at different steps of the action life cycle. it uses the "message" property as a code to define what is happening. The following values exists: `disabled_false`, `disabled_true`, `conditions_passed`, `conditions_failed`. The handler function is called with a `log` argument.
 - `text`   
   It is the default event when the function `log` is called. The handler function is called with a `log` argument.
 - `header`   
-  It is throw before an action is called if it contains the "header" option.
+  It is throw before an action is called if it contains the `header` metadata.
 - `stdin`   
   It represents some stdin content, used for example by the `system.execute` action to provide the script being executed.
 - `diff`   
