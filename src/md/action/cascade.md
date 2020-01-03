@@ -1,5 +1,5 @@
 ---
-title: Metadata "cascade"
+title: Cascade
 sort: 5
 redirects:
 - /options/cascade/

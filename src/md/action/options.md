@@ -3,7 +3,7 @@ title: Options
 sort: 1
 ---
 
-# Options
+# Metadata "options"
 
 Options are used to contextualise the handler function.
 
