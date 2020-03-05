@@ -325,7 +325,7 @@ nikita = require('nikita')
 // New Nikita session
 nikita
 // Calling touch module
-.call('./lib/touch', {'target': './touchme'}, function(err, {status}){
+.call('./lib/touch', {'target': '/tmp/a_file'}, function(err, {status}){
   assert(status, true)
 })
 ```
