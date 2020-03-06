@@ -396,7 +396,7 @@ To extract and compile Redis, we will write a shell script which will only be ex
 ```js
 require('nikita')
 .system.execute({
-  unless_exists: 'redis-stable/src/redis-server'
+  unless_exists: 'redis-stable/src/redis-server',
   cmd: `
   tar xzf cache/redis-stable.tar.gz
   cd redis-stable
