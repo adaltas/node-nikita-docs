@@ -441,7 +441,7 @@ require('nikita')
 // Call any action
 .file.properties({
   // The CLI message
-  header: 'Redis configuration'
+  header: 'Redis configuration',
   target: 'conf/redis.conf',
   separator: ' ',
   content: {
