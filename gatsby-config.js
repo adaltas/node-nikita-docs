@@ -75,12 +75,15 @@ module.exports = {
         path: `${__dirname}/src/md`,
         name: 'markdown-pages',
       },
-      // },{
-      //   resolve: `gatsby-plugin-typography`,
-      //   options: {
-      //     pathToConfigModule: `src/utils/typography.js`,
-      //   },
     },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `${__dirname}/../nikita/packages`,
+    //     name: 'actions',
+    //     ignore: ['**/assets', '**/env', '**/lib', '**/test']
+    //   },
+    // },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

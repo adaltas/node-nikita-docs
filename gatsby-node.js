@@ -2,21 +2,6 @@ const path = require('path')
 
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// exports.onCreatePage = ({ page, actions }) => {
-//   const { createPage } = actions
-// 
-//   return new Promise((resolve, reject) => {
-//     if (page.path.match(/^\/test\//)) {
-//       page.layout = 'blank'
-//       createPage(page)
-//     }
-//     if (!page.path.match(/^\/$/)) {
-//       page.layout = 'doc'
-//     }
-//     resolve()
-//   })
-// }
-
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `MarkdownRemark`) {

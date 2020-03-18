@@ -40,39 +40,37 @@ Utils function exports simple JavaScript functions and are located inside the ".
 
 ## Tests execution
 
-Nikita target Unix-like system including Linux and macOS. Windows is not supported as a targeting node where to execute actions. It is however know to host Nikita. This mean you can run Nikita from a Windows host as long as you are targeting Linux nodes over SSH. 
+Nikita target Unix-like system including Linux and macOS. Windows is not supported as a targeting node where to execute actions. It is however known to work as a Nikita host. This mean you can run Nikita from a Windows host as long as you are targeting Linux nodes over SSH.
 
 Tests are executed with [Mocha](https://mochajs.org/) and [Should.js](https://shouldjs.github.io/). They are all located inside the "./test" folder.
 
-For the tests to execute successfully, you must:   
+For the tests to execute successfully, you must:
 
 *   be online (attempt to fetch an ftp file)
 *   be able to ssh yourself (eg `ssh $(whoami)@localhost`) without a password
 
-To use Lerna, install it globally, bootstrap the packages to avoid dependencies issues with the following : 
+To use Lerna, install it globally, bootstrap the packages to avoid dependencies issues with the following :
 
 ```bash
-# Go to your node-nikita folder
-cd ~/node-nikita
-# Erase the previous node_module files
-rm -rf ll node_modules 
-# Install lerna globally
-npm install -g lerna
+# Clone the repository
+git clone https://github.com/adaltas/node-nikita.git nikita
+# Go to your nikita folder
+cd ~/nikita
+# Install the package dependencies, including lerna
+npm install
 # Equivalent to npm install && npm run prepublish && npm run prepare
-lerna bootstrap
+npx lerna bootstrap
 # Symlink together all dependent packages
-lerna link
+npx lerna link
 ```
 
-`lerna run test` execute the full test suite while `npx mocha test/your_choice/*.coffee` execute a subset of the test suite. 
+`lerna run test` execute the full test suite while `npx mocha test/your_choice/*.coffee` execute a subset of the test suite.
 
 To run all package tests from the project directory run : 
 `yarn workspace @nikitajs/core run test`
 
 To only test the `nikita.file.ini` actions, run the following :
-`cd packages/core && npx mocha test/file.ini/*.coffee`. 
-
-When testing a new action, do not forget to update the ‘register.coffee’ file with the concerned information in order to test it. Otherwise an error will be thrown. 
+`cd packages/core && npx mocha test/file.ini/*.coffee`.
 
 ### SSH or locally
 
@@ -113,7 +111,6 @@ Tests will look by default for a configuration module located at "./test" file l
 
 You can customize the path to the configuration module by setting the environmental variable named "NIKITA\_TEST\_MODULE".
 
-
 ### Environments
 
 Some tests depends on a particular settings to run successfully. Some actions are specific to a particular Linux distribution or issue internally alternatives commands which must be validated. Other actions depends on a service which is not always available on the hosts machine such as a database connection.
@@ -127,7 +124,7 @@ To ensure tests are executed in a proper environment, we leverage [Docker](https
 - `docker-compose.yml`   
   The [Docker Compose](https://docs.docker.com/compose/) file declare the Nikita container with its test environment as well as its service dependencies such as databases services.
 - `Dockerfile`
-  The [Dockerfile](https://docs.docker.com/engine/reference/builder/) declare instructions to build the containers
+  The [Dockerfile](https://docs.docker.com/engine/reference/builder/) declare instructions to build the containers.
 - `test.coffee` 
    The configuration file is used to activate selected tests and configured the Nikita sessions executed inside.
 
