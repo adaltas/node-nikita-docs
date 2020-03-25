@@ -154,3 +154,62 @@ docker-compose run --rm nodejs
 # Run a subset of the tests
 docker-compose run --rm nodejs test/core
 ```
+### LXD
+
+Some tests are executed using LXD. The tests require a local LXD client. On a Linux hosts, you can follow the [installation instructions](https://linuxcontainers.org/lxd/getting-started-cli/). On non Linux hosts, you can setup the client to communicate with a remote LXD server hosted on a virtual machine. You will however have to mount the project directory into the "/nikita" folder of the virtual machine. The provided Vagrantfile definition inside "@nikitajs/core/env/cluster/assets" will set you up.
+
+```bash
+# For windows and MacOS users
+./bin/cluster start
+npm test
+```
+
+For Windows and MacOS users, the procedure is abstracted inside the `./bin/cluster start` command. Below are the manual commands to make it work.
+
+* Install:
+
+```bash
+# Initialize the VM
+cd assets && vagrant up && cd..
+# Set up LXD client
+lxc remote add nikita 127.0.0.1:8443
+lxc remote switch nikita
+# Initialize the container
+npx coffee start.coffee
+```
+
+* Update the VM:
+
+```bash
+lxc remote switch local
+lxc remote remove nikita
+# Note, password is "secret"
+lxc remote add nikita 127.0.0.1:8443
+lxc remote switch nikita
+```
+
+If you are running into an issue with permission on tmp as below:
+
+```bash
+[1/29]: configuring certificate server instance
+[error] IOError: [Errno 13] Permission denied: '/tmp/tmp_Tm1l_'
+```
+
+Host must have `fs.protected_regular` set to `0`r, eg `echo '0' > /proc/sys/fs/protected_regular && sysctl -p && sysctl -a`. In our Physical -> VM -> LXD setup, the parameters shall be set in the VM, no restart is required to install the FreeIPA server, just uninstall it first with `ipa-server-install --uninstall` before re-executing the install command.
+
+Here's an example to run tests for FreeIPA:
+
+```bash
+# For windows and osx user
+../lxd/bin/cluster start
+export NIKITA_HOME=/nikita
+# Start the server
+coffee ./env/ipa/start.coffee
+# Run all the tests
+lxc exec freeipa --cwd /nikita/packages/ipa npm test
+# Run selected tests
+lxc exec freeipa --cwd /nikita/packages/ipa npx mocha test/user/exists.coffee
+# Enter the IPA container
+lxc exec freeipa --cwd /nikita/packages/ipa bash
+npm test
+```
