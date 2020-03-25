@@ -115,7 +115,7 @@ You can customize the path to the configuration module by setting the environmen
 
 Some tests depends on a particular settings to run successfully. Some actions are specific to a particular Linux distribution or issue internally alternatives commands which must be validated. Other actions depends on a service which is not always available on the hosts machine such as a database connection.
 
-Based on your environment support, targeted tests may be activated from the configuration. Tests are labeled with tags. Environment defined the test coverage by activating tags in their `test.coffee` configuration file. For example, to activate the MariaDB tests located in the [db package](path/to/test.js), set the `disable_db` property to `true` and configure the `db.mariadb` properties accordingly.
+Based on your environment support, targeted tests may be activated from the configuration. Tests are labeled with tags. Environment defined the test coverage by activating tags in their `test.coffee` configuration file. For example, to activate the MariaDB tests located in the [db package](package/db/env/mariadb/test.coffee), set the `disable_db` property to `true` and configure the `db.mariadb` properties accordingly.
 
 ### Docker
 
