@@ -7,7 +7,7 @@ sort: 3
 
 ## Introduction
 
-You are encouraged to [contribute](/about/contribute/) to Nikita. There are multiple way to offer assistance to the project. To fix and write actions, you will have get your hands dirty and dive into the source code. This page describe the project layout and how to run the tests.
+You are encouraged to [contribute](/about/contribute/) to Nikita. There are multiple way to offer assistance to the project. To fix and write actions, you will have get your hands dirty and dive into the source code. This page describes the project layout and how to run the tests.
 
 ## Project layout
 
