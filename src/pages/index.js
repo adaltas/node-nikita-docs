@@ -181,7 +181,7 @@ class IndexPage extends React.Component {
               </h3>
               <p>
                 {
-                  'Built from small and reusable actions imbracated into complex system. It follows the Unix philosophie of building small small single-building blocks with a clear API.'
+                  'Built from small and reusable actions imbricated into complex system. It follows the Unix philosophie of building small small single-building blocks with a clear API.'
                 }
               </p>
             </Grid>
